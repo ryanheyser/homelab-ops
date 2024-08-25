@@ -26,49 +26,46 @@ spec:
     keepHistory: false
   values:
     image:
-      # renovate: repository=ghcr.io/advplyr/audiobookshelf
-      repository: ghcr.io/advplyr/audiobookshelf
-      tag: 2.5.0
+      # renovate: repository=codercom/code-server
+      repository: codercom/code-server
+      tag: 4.89.1
 
     env:
       TZ: "America/New_York"
-      AUDIOBOOKSHELF_UID: 1001
-      AUDIOBOOKSHELF_GID: 1001
-      CONFIG_PATH: /config
-      METADATA_PATH: /config/metadata
 
     service:
       main:
         ports:
           http:
-            port: 80
+            port: &port 8080
 
     ingress:
       main:
         enabled: true
         ingressClassName: 'traefik'
         hosts:
-        - host: audiobookshelf.homelab.heyser.xyz
+        - host: code.homelab.heyser.xyz
           paths:
           - path: /
             pathType: Prefix
         tls:
         - hosts:
-          - "audiobookshelf.homelab.heyser.xyz"
+          - "code.homelab.heyser.xyz"
+        - secretName: "code-homelab-heyser-xyz-tls"
+
+    extraVolumeMounts:
+      - name: development
+        existingClaim: coder-development
+        mountPath: /data
+      - name: sshkey
+        existingClaim: coder-sshkey
+        mountPath: /home/coder/.ssh
 
     persistence:
-      config:
-        enabled: true
-        storageClass: "nfs-dynamic"
-        existingClaim: audiobookshelf-config
-        mountPath: /config
-      media:
-        enabled: true
-        existingClaim: audiobookshelf-media
-      cache:
-        enabled: true
-        mountPath: /.npm
-        type: emptyDir
+      enabled: true
+      storageClass: "nfs-dynamic"
+      existingClaim: coder-config
+      mountPath: /config
 
     podSecurityContext:
       runAsUser: 1001

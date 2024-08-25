@@ -42,3 +42,49 @@ spec:
   resources:
     requests:
       storage: 4Ti
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: seedbox-config
+  namespace: qbittorrent
+  annotations:
+    nfs.io/storage-path: "containers/kubernetes/seedbox"
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: "nfs-dynamic"
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: seedbox-downloads
+  namespace: qbittorrent
+  annotations:
+    nfs.io/storage-path: "downloads"
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: "nfs-dynamic"
+  resources:
+    requests:
+      storage: 4Ti
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: seedbox-media
+  namespace: qbittorrent
+  annotations:
+    nfs.io/storage-path: "media"
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: "nfs-dynamic"
+  resources:
+    requests:
+      storage: 4Ti
+---

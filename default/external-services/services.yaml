@@ -1,0 +1,35 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: truenas-ip
+  annotations:
+    traefik.ingress.kubernetes.io/service.serversscheme: "https"
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
+    traefik.ingress.kubernetes.io/service.serverstransport: truenastransport@kubernetescrd
+spec:
+  ports:
+  - name: truenas
+    port: 443
+    protocol: TCP
+    targetPort: 443
+  clusterIP: None
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: plex-ip
+  annotations:
+    traefik.ingress.kubernetes.io/service.serversscheme: "https"
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
+    traefik.ingress.kubernetes.io/service.serverstransport: plextransport@kubernetescrd
+spec:
+  ports:
+  - name: plex
+    port: 443
+    protocol: TCP
+    targetPort: 32400
+  clusterIP: None
+  type: ClusterIP
+---

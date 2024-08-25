@@ -42,7 +42,7 @@ spec:
       ingressClassName: traefik
       enabled: true
       hosts:
-      - host: authentik.homelab.heyser.xyz
+      - host: auth.homelab.heyser.xyz
         paths:
         - path: "/"
           pathType: Prefix
@@ -85,4 +85,3 @@ spec:
                   values:
                   - master
               topologyKey: "kubernetes.io/hostname"
-
