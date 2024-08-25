@@ -14,7 +14,9 @@
         "tzahi12345/youtubedl-material",
         "ghcr.io/advplyr/audiobookshelf",
         "ghcr.io/onedr0p/qbittorrent",
-        "ghcr.io/onedr0p/intel-gpu-exporter"
+        "ghcr.io/onedr0p/intel-gpu-exporter",
+        "codercom/code-server",
+        "adguard/adguardhome"
       ]
     },
     // auto-updates - weekly
@@ -83,7 +85,18 @@
       "requiredStatusChecks": null,
       "matchUpdateTypes": ["digest"],
       "matchPackagePattern": ["ghcr.io/onedr0p"]
+    },
+    {
+      "datasources": ["helm"],
+      "automerge": true,
+      "automergeType": "branch",
+      "requiredStatusChecks": null,
+      "schedule": "after 1am and before 5am",
+      "updateTypes": ["minor", "patch"],
+      "packageNames": [
+        "secrets-store-csi-driver",
+        "vault"
+      ]
     }
   ]
 }
-
