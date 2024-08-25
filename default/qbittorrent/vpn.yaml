@@ -1,0 +1,37 @@
+---
+apiVersion: k8s.cni.cncf.io/v1
+kind: NetworkAttachmentDefinition
+metadata:
+  name: qbittorrent-vpn
+spec:
+  config: '{
+    "plugins": [{
+      "name": "vpnnet1",
+      "type": "bridge",
+      "bridge": "vpnbr",
+      "ipam": {
+        "type": "dhcp"
+        }
+      },{
+        "type": "sbr"
+      }]
+    }'
+---
+apiVersion: k8s.cni.cncf.io/v1
+kind: NetworkAttachmentDefinition
+metadata:
+  name: seedbox-vpn
+spec:
+  config: '{
+    "plugins": [{
+      "name": "vpnnet1",
+      "type": "bridge",
+      "bridge": "vpnbr",
+      "ipam": {
+        "type": "dhcp"
+        }
+      },{
+        "type": "sbr"
+      }]
+    }'
+---

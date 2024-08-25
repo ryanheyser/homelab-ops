@@ -1,0 +1,87 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: truenas
+  namespace: truenas
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+spec:
+  ingressClassName: external
+  rules:
+  - host: storage.homelab.heyser.xyz
+    http:
+      paths:
+      - backend:
+          service:
+            name: truenas-ip
+            port:
+              number: 443
+        path: /
+        pathType: Prefix
+  - host: awoofy.homelab.heyser.xyz
+    http:
+      paths:
+      - backend:
+          service:
+            name: truenas-ip
+            port:
+              number: 443
+        path: /
+        pathType: Prefix
+  - host: kracko.homelab.heyser.xyz
+    http:
+      paths:
+      - backend:
+          service:
+            name: truenas-ip
+            port:
+              number: 443
+        path: /
+        pathType: Prefix
+  - host: awoofy.homelab.heyser.lan
+    http:
+      paths:
+      - backend:
+          service:
+            name: truenas-ip
+            port:
+              number: 443
+        path: /
+        pathType: Prefix
+
+  tls:
+  - hosts:
+    - storage.homelab.heyser.xyz
+    - awoofy.homelab.heyser.xyz
+    - kracko.homelab.heyser.xyz
+    - awoofy.homelab.heyser.lan
+    secretName: truenas-homelab-heyser-xyz-tls
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: plex-external
+  namespace: plex
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+    # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    traefik.ingress.kubernetes.io/service.serversscheme: https
+spec:
+  ingressClassName: external
+  rules:
+  - host: plex.homelab.heyser.xyz
+    http:
+      paths:
+      - backend:
+          service:
+            name: plex-ip
+            port:
+              number: 32400
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - plex.homelab.heyser.xyz
+    secretName: plex-homelab-heyser-xyz-tls

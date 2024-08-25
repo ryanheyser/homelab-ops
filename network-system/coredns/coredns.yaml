@@ -1,0 +1,87 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: coredns
+  namespace: network-system
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://coredns.github.io/helm
+      chart: coredns
+      version: 1.27.1
+      sourceRef:
+        kind: HelmRepository
+        name: coredns-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    replicaCount: 3
+    # serviceType: LoadBalancer
+    # prometheus:
+    #   service:
+    #     enabled: true
+    #   monitor:
+    #     enabled: true
+    service:
+      externalTrafficPolicy: Local
+      # loadBalancerIP: 10.0.6.99
+      # annotations:
+      #   metallb.universe.tf/allow-shared-ip: coredns
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+              - coredns
+          topologyKey: "kubernetes.io/hostname"
+    tolerations:
+    - key: "arm"
+      operator: "Exists"
+    rbac:
+      create: true
+    # isClusterService: false
+    servers:
+    - zones:
+      - zone: .
+      - zone: heyser.xyz.
+        scheme: dns://
+        use_tcp: false
+      port: 53
+      plugins:
+      - name: errors
+      - name: health
+        configBlock: |-
+          lameduck 5s
+      - name: ready
+      - name: prometheus
+        parameters: 0.0.0.0:9153
+      - name: kubernetes
+        parameters: cluster.local in-addr.arpa ip6.arpa
+        configBlock: |-
+          pods insecure
+          fallthrough in-addr.arpa ip6.arpa
+          ttl 30
+      - name: forward
+        parameters: . 10.0.0.11 10.0.100.2
+        configBlock: |-
+          except "cluster.local" "svc.cluster.local" ".svc"
+          policy sequential
+      - name: cache
+        parameters: 30
+      - name: loop
+      - name: reload
+      - name: loadbalance
+      - name: file
+        parameters: /etc/coredns/heyser.xyz
+    zoneFiles:
+    - filename: heyser.xyz
+      domain: heyser.xyz
+      contents: |
+        heyser.xyz.   IN SOA  kyrie.ns.cloudflare.com. dns.cloudflare.com. 2325026458 10000 2400 604800 1800
+        heyser.xyz. IN A   10.0.100.1
+        homelab.heyser.xyz. IN A   10.0.100.1
+        *.homelab.heyser.xyz. IN A   10.0.100.1

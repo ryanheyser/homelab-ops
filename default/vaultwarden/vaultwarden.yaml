@@ -1,0 +1,48 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: vaultwarden
+  namespace: default
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: vaultwarden
+      version: 0.18.0
+      sourceRef:
+        kind: HelmRepository
+        name: vaultwarden
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    domain: vaultwarden.homelab.heyser.xyz
+    resourceType: Deployment
+    adminToken:
+      existingSecret: vaultwarden-admin-token
+    signupDomain: heyser.xyz
+    ingress:
+      enabled: true
+      class: traefik
+      nginxIngressAnnotations: false
+      hostname: vaultwarden.homelab.heyser.xyz
+      tlsSecret: vaultwarden-homelab-heyser-xyz-tls
+    data:
+      class: "nfs-dynamic"
+      existingClaim: vaultwarden-data
+      path: "/data"
+    attachments:
+      class: "nfs-dynamic"
+      existingClaim: vaultwarden-attachments
+      path: "/attachments"
+
+# REPLACE ABOVE WITH APP TEMPLATE SINCE EXISTING STORAGE CLAIM IS UNSUPPORTED

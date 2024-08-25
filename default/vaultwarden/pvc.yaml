@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: vaultwarden-data
+  namespace: vaultwarden
+  annotations:
+    nfs.io/storage-path: "containers/kubernetes/vaultwarden/config"
+spec:
+  accessModes:
+  - ReadWriteMany
+  storageClassName: "nfs-dynamic"
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: vaultwarden-attachments
+  namespace: vaultwarden
+  annotations:
+    nfs.io/storage-path: "containers/kubernetes/vaultwarden/attachments"
+spec:
+  accessModes:
+  - ReadWriteMany
+  storageClassName: "nfs-dynamic"
+  resources:
+    requests:
+      storage: 10Gi

@@ -1,0 +1,19 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: vault-homelab-heyser-xyz
+  namespace: vault-system
+spec:
+  subject:
+    organizations:
+    - Heyser
+  secretName: vault-homelab-heyser-xyz-tls
+  dnsNames:
+  - vault.homelab.heyser.xyz
+  issuerRef:
+    name: letsencrypt-external-ca-issuer
+    # We can reference ClusterIssuers by changing the kind here.
+    # The defaultt value is Issuer (i.e. a locally namespaced Issuer)
+    kind: ClusterIssuer
+    group: cert-manager.io
