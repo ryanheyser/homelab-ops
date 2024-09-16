@@ -2,8 +2,10 @@
 apiVersion: upgrade.cattle.io/v1
 kind: Plan
 metadata:
-  name: k3s-server
+  name: rke2-server
   namespace: upgrade-system
+  labels:
+    rke2-upgrade: server
 spec:
   concurrency: 1
   cordon: true
@@ -13,50 +15,48 @@ spec:
       operator: In
       values:
       - "true"
-    - {key: k3os.io/mode, operator: DoesNotExist}
-    - {key: k3s-upgrade, operator: NotIn, values: ["disabled", "false"]}
-    - key: kubernetes.io/arch
-      operator: In
-      values:
-      - "amd64"
+    - {key: node-role.kubernetes.io/control-plane, operator: In, values: ["true"]}
   serviceAccountName: system-upgrade
   tolerations:
   - key: "node-role.kubernetes.io/master"
     operator: "Exists"
-  drain:
-    force: true
+  - {key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: amd64}
+  - {key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: arm64}
+  - {key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: arm}
+  - {key: arm, operator: Exists}
+  # drain:
+  #   force: true
   upgrade:
-    image: rancher/k3s-upgrade
-  channel: https://update.k3s.io/v1-release/channels/stable
+    image: rancher/rke2-upgrade
+  channel: https://update.rke2.io/v1-release/channels/stable
 ---
 # Agent plan
 apiVersion: upgrade.cattle.io/v1
 kind: Plan
 metadata:
-  name: k3s-agent
+  name: rke2-agent
   namespace: upgrade-system
   labels:
-    k3s-upgrade: agent
+    rke2-upgrade: agent
 spec:
   concurrency: 1
-  channel: https://update.k3s.io/v1-release/channels/stable
+  channel: https://update.rke2.io/v1-release/channels/stable
   nodeSelector:
     matchExpressions:
-      # - {key: k3s-upgrade, operator: Exists}
-      - {key: k3s-upgrade, operator: NotIn, values: ["disabled", "false"]}
-      - {key: k3os.io/mode, operator: DoesNotExist}
-      - {key: node-role.kubernetes.io/master, operator: NotIn, values: ["true"]}
-      - {key: node-role.kubernetes.io/control-plane, operator: DoesNotExist}
+    - {key: beta.kubernetes.io/os, operator: In, values: ["linux"]}
+    - {key: rke2-upgrade, operator: Exists}
+    - {key: node-role.kubernetes.io/master, operator: NotIn, values: ["true"]}
+    - {key: node-role.kubernetes.io/control-plane, operator: DoesNotExist}
   serviceAccountName: system-upgrade
 
   # Specify which node taints should be tolerated by pods applying the upgrade.
   # Anything specified here is appended to the default of:
   # - {key: node.kubernetes.io/unschedulable, effect: NoSchedule, operator: Exists}
   tolerations:
-    - {key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: amd64}
-    - {key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: arm64}
-    - {key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: arm}
-    - {key: arm, operator: Exists}
+  - {key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: amd64}
+  - {key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: arm64}
+  - {key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: arm}
+  - {key: arm, operator: Exists}
 
   prepare:
     # Since v0.5.0-m1 SUC will use the resolved version of the plan for the tag on the prepare container.
