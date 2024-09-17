@@ -1,29 +1,76 @@
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: audiobookshelf-config
-  namespace: audiobookshelf
-  annotations:
-    nfs.io/storage-path: "containers/kubernetes/audiobookshelf"
-spec:
-  accessModes:
-  - ReadWriteOnce
-  storageClassName: "nfs-dynamic"
-  resources:
-    requests:
-      storage: 1Gi
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: audiobookshelf-media
-  namespace: audiobookshelf
+  name: youtubedl-config
+  namespace: youtubedl
   annotations:
-    nfs.io/storage-path: "media"
+    nfs.io/storage-path: "containers/kubernetes/youtubedl-material/config"
 spec:
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   storageClassName: "nfs-dynamic"
   resources:
     requests:
-      storage: 4Ti
+      storage: 100Mi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: youtubedl-audio
+  namespace: youtubedl
+  annotations:
+    nfs.io/storage-path: "media/youtube/audio"
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: "nfs-dynamic"
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: youtubedl-subscriptions
+  namespace: youtubedl
+  annotations:
+    nfs.io/storage-path: "media/youtube/subscriptions"
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: "nfs-dynamic"
+  resources:
+    requests:
+      storage: 100Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: youtubedl-users
+  namespace: youtubedl
+  annotations:
+    nfs.io/storage-path: "containers/kubernetes/youtubedl-material/users"
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: "nfs-dynamic"
+  resources:
+    requests:
+      storage: 100Mi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: youtubedl-video
+  namespace: youtubedl
+  annotations:
+    nfs.io/storage-path: "media/youtube/video"
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: "nfs-dynamic"
+  resources:
+    requests:
+      storage: 100Gi
+---
