@@ -78,55 +78,56 @@ spec:
           operator: "Exists"
           effect: "NoExecute"
       containers:
-        - name: system-upgrade-controller
-          image: rancher/system-upgrade-controller:v0.13.4
-          imagePullPolicy: IfNotPresent
-          securityContext:
-            runAsNonRoot: true
-            runAsUser: 65534
-            runAsGroup: 65534
-            allowPrivilegeEscalation: false
-            seccompProfile: 
-              type: RuntimeDefault
-            capabilities:
-              drop:
-                - ALL
-          envFrom:
-            - configMapRef:
-                name: default-controller-env
-          env:
-            - name: SYSTEM_UPGRADE_CONTROLLER_NAME
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.labels['upgrade.cattle.io/controller']
-            - name: SYSTEM_UPGRADE_CONTROLLER_NAMESPACE
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.namespace
-          volumeMounts:
-            - name: etc-ssl
-              mountPath: /etc/ssl
-              readOnly: true
-            - name: etc-pki
-              mountPath: /etc/pki
-              readOnly: true
-            - name: etc-ca-certificates
-              mountPath: /etc/ca-certificates
-              readOnly: true
-            - name: tmp
-              mountPath: /tmp
-      volumes:
+      - name: system-upgrade-controller
+        # renovate: repository=rancher/system-upgrade-controller
+        image: rancher/system-upgrade-controller:v0.13.4
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 65534
+          runAsGroup: 65534
+          allowPrivilegeEscalation: false
+          seccompProfile: 
+            type: RuntimeDefault
+          capabilities:
+            drop:
+            - ALL
+        envFrom:
+        - configMapRef:
+            name: default-controller-env
+        env:
+        - name: SYSTEM_UPGRADE_CONTROLLER_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['upgrade.cattle.io/controller']
+        - name: SYSTEM_UPGRADE_CONTROLLER_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        volumeMounts:
         - name: etc-ssl
-          hostPath:
-            path: /etc/ssl
-            type: DirectoryOrCreate
+          mountPath: /etc/ssl
+          readOnly: true
         - name: etc-pki
-          hostPath:
-            path: /etc/pki
-            type: DirectoryOrCreate
+          mountPath: /etc/pki
+          readOnly: true
         - name: etc-ca-certificates
-          hostPath:
-            path: /etc/ca-certificates
-            type: DirectoryOrCreate
+          mountPath: /etc/ca-certificates
+          readOnly: true
         - name: tmp
-          emptyDir: {}
+          mountPath: /tmp
+      volumes:
+      - name: etc-ssl
+        hostPath:
+          path: /etc/ssl
+          type: DirectoryOrCreate
+      - name: etc-pki
+        hostPath:
+          path: /etc/pki
+          type: DirectoryOrCreate
+      - name: etc-ca-certificates
+        hostPath:
+          path: /etc/ca-certificates
+          type: DirectoryOrCreate
+      - name: tmp
+        emptyDir: {}
