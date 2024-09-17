@@ -18,7 +18,7 @@
         "codercom/code-server",
         "adguard/adguardhome",
         "ghcr.io/onedr0p/intel-gpu-exporter",
-        "ghcr.io/alexellis/registry-creds",
+        "ghcr.io/alexellis/registry-creds"
       ]
     },
     // auto-updates - weekly
