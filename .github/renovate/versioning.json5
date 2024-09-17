@@ -21,6 +21,12 @@
       "versionScheme": "regex:^nightly-0\\.(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)$",
       "packageNames": ["hotio/readarr"]
     },
+    ,
+    {
+      "datasources": ["docker"],
+      "versionScheme": "regex:^nightly-(?<major>\\d+)-(?<minor>\\d+)-(?<patch>\\d+)$",
+      "packageNames": ["tzahi12345/youtubedl-material"]
+    },
     {
       "datasources": ["docker"],
       "versioning": "loose",
