@@ -7,66 +7,59 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://coredns.github.io/helm
-      chart: coredns
-      version: 1.32.0
+      # renovate: registryUrl=https://charts.rancher.io
+      chart: rke2-coredns
+      version: 1.29.006
       sourceRef:
         kind: HelmRepository
         name: coredns-charts
         namespace: flux-system
       interval: 5m
   values:
-    replicaCount: 3
-    # serviceType: LoadBalancer
-    # prometheus:
-    #   service:
-    #     enabled: true
-    #   monitor:
-    #     enabled: true
+    # nodelocal:
+    #   enabled: true
     service:
+      clusterIP: 10.254.0.10
       externalTrafficPolicy: Local
-      # loadBalancerIP: 10.0.6.99
-      # annotations:
-      #   metallb.universe.tf/allow-shared-ip: coredns
-    affinity:
-      podAntiAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-        - labelSelector:
-            matchExpressions:
-            - key: app.kubernetes.io/name
-              operator: In
-              values:
-              - coredns
-          topologyKey: "kubernetes.io/hostname"
-    tolerations:
-    - key: "arm"
-      operator: "Exists"
+      annotations:
+        metallb.universe.tf/allow-shared-ip: coredns
     rbac:
       create: true
-    # isClusterService: false
+    prometheus:
+      service:
+        enabled: false
+        annotations:
+          prometheus.io/scrape: "true"
+          prometheus.io/port: "9153"
+      monitor:
+        enabled: false
+    autoscaler:
+      enabled: true
+      min: 2
+      max: 5
     servers:
     - zones:
       - zone: .
-      - zone: heyser.xyz.
-        scheme: dns://
-        use_tcp: false
       port: 53
       plugins:
       - name: errors
+      # Serves a /health endpoint on :8080, required for livenessProbe
       - name: health
         configBlock: |-
           lameduck 5s
+      # Serves a /ready endpoint on :8181, required for readinessProbe
       - name: ready
-      - name: prometheus
-        parameters: 0.0.0.0:9153
+      # Required to query kubernetes API for data
       - name: kubernetes
-        parameters: cluster.local in-addr.arpa ip6.arpa
+        parameters: cluster.local in-addr.arpa ip6.arpa homelab.heyser.lan homelab.heyser.xyz
         configBlock: |-
           pods insecure
-          fallthrough in-addr.arpa ip6.arpa
+          fallthrough in-addr.arpa ip6.arpa homelab.heyser.lan homelab.heyser.xyz
           ttl 30
+      - name: prometheus
+        parameters: 0.0.0.0:9153
       - name: forward
-        parameters: . 10.0.0.11 10.0.100.2
+        parameters: . 10.0.100.3 10.0.0.1
         configBlock: |-
           except "cluster.local" "svc.cluster.local" ".svc"
           policy sequential
@@ -75,8 +68,6 @@ spec:
       - name: loop
       - name: reload
       - name: loadbalance
-      - name: file
-        parameters: /etc/coredns/heyser.xyz
     zoneFiles:
     - filename: heyser.xyz
       domain: heyser.xyz
