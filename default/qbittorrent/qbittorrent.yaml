@@ -76,13 +76,13 @@ spec:
         externalTrafficPolicy: Local
     ingress:
       main:
-        className: traefik
+        className: "traefik"
         # ingressClassName: nginx
         # annotations:
         #   nginx.ingress.kubernetes.io/auth-url: "https://auth.homelab.heyser.xyz/oauth2/auth"
         #   nginx.ingress.kubernetes.io/auth-signin: https://auth.homelab.heyser.xyz/oauth2/start
         hosts:
-        - host: &host qbittorrent.homelab.heyser.xyz
+        - host: &host "qbittorrent.homelab.heyser.xyz"
           paths:
           - path: /
             pathType: Prefix
