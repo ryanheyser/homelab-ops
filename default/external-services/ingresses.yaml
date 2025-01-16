@@ -8,7 +8,7 @@ metadata:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
-  ingressClassName: external
+  ingressClassName: traefik
   rules:
   - host: storage.homelab.heyser.xyz
     http:
@@ -69,7 +69,7 @@ metadata:
     # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     traefik.ingress.kubernetes.io/service.serversscheme: https
 spec:
-  ingressClassName: external
+  ingressClassName: traefik
   rules:
   - host: plex.homelab.heyser.xyz
     http:
