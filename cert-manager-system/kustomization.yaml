@@ -4,5 +4,4 @@ namespace: cert-manager-system
 resources:
 - ./namespace.yaml
 - ./chart
-- ./crds
 - ./cloudflare
