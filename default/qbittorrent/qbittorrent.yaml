@@ -92,7 +92,7 @@ spec:
         tls:
         - hosts:
           - *host
-        - secretName: qbittorrent-homelab-heyser-xyz-tls
+          secretName: qbittorrent-homelab-heyser-xyz-tls
     # Note: If downloading very large torrents it might be worth using NFS for your download directory.
     # Beware if you are downloading torrents directly to a ZFS dataset that dataset will accrue fragmentation.
     persistence:
