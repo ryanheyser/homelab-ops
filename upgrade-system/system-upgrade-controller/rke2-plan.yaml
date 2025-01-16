@@ -61,7 +61,7 @@ spec:
   prepare:
     # Since v0.5.0-m1 SUC will use the resolved version of the plan for the tag on the prepare container.
     # image: rancher/k3s-upgrade:v1.17.4-k3s1
-    image: rancher/k3s-upgrade
-    args: ["prepare", "k3s-server"]
+    image: rancher/rke2-upgrade
+    args: ["prepare", "rke2-server"]
   upgrade:
-    image: rancher/k3s-upgrade
+    image: rancher/rke2-upgrade
