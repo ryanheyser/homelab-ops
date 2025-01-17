@@ -9,7 +9,7 @@ spec:
     spec:
       # renovate: registryUrl=https://charts.goauthentik.io
       chart: authentik
-      version: 2024.8.2
+      version: 2024.12.2
       sourceRef:
         kind: HelmRepository
         name: authentik
@@ -26,31 +26,44 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    replicas: 3
-    strategy:
+    global:
+      affinity:
+        podAntiAffinity: hard
+    deploymentStrategy:
       type: RollingUpdate
       rollingUpdate:
         maxSurge: 1
         maxUnavailable: 1
+    server:
+      replicas: 3
+      pdb:
+        enabled: true
+        minAvailable: 1
+      ingress:
+        ingressClassName: traefik
+        enabled: true
+        hosts:
+        - host: &host "auth.homelab.heyser.xyz"
+          paths:
+          - path: "/"
+            pathType: Prefix
+        tls:
+        - *host
     worker:
       replicas: 3
-      strategy:
-        type: RollingUpdate
-        rollingUpdate:
-          maxSurge: 1
-          maxUnavailable: 1
-    ingress:
-      ingressClassName: traefik
-      enabled: true
-      hosts:
-      - host: auth.homelab.heyser.xyz
-        paths:
-        - path: "/"
-          pathType: Prefix
+      pdb:
+        enabled: true
+        minAvailable: 1
     postgresql:
       enabled: true
       global:
         storageClass: nfs-dynamic
+      auth:
+        existingSecret: "authentik-credentials"
+        secretKeys:
+          adminPasswordKey: "adminPassword"
+          userPasswordKey: "userPassword"
+          replicationPasswordKey: "replicationPassword"
       primary:
         affinity:
           podAntiAffinity:
@@ -69,13 +82,9 @@ spec:
         replicaCount: 3
     redis:
       enabled: true
-      global:
-        storageClass: nfs-dynamic
       auth:
-        enabled: true
+        enabled: false
       master:
-        persistence:
-          existingClaim: "authentik-redis-data-claim"
         affinity:
           podAntiAffinity:
             requiredDuringSchedulingIgnoredDuringExecution:

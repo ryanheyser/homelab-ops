@@ -1,3 +1,4 @@
+---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -7,13 +8,13 @@ spec:
   interval: 15m
   chart:
     spec:
-      chart: vaultwarden
-      version: 0.29.0
+      chart: app-template
+      version: 3.6.1
       sourceRef:
         kind: HelmRepository
-        name: vaultwarden
+        name: bjw-s
         namespace: flux-system
-  maxHistory: 2
+  maxHistory: 3
   install:
     createNamespace: true
     remediation:
@@ -25,24 +26,101 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    domain: vaultwarden.homelab.heyser.xyz
-    resourceType: Deployment
-    adminToken:
-      existingSecret: vaultwarden-admin-token
-    signupDomain: heyser.xyz
-    ingress:
-      enabled: true
-      class: traefik
-      nginxIngressAnnotations: false
-      hostname: vaultwarden.homelab.heyser.xyz
-      tlsSecret: vaultwarden-homelab-heyser-xyz-tls
-    data:
-      class: "nfs-dynamic"
-      existingClaim: vaultwarden-data
-      path: "/data"
-    attachments:
-      class: "nfs-dynamic"
-      existingClaim: vaultwarden-attachments
-      path: "/attachments"
+    controllers:
+      main:
+        strategy: Recreate
+        containers:
+          main:
+            image:
+              # renovate: repository=vaultwarden/server
+              repository: vaultwarden/server
+              tag: 1.32.7
+              pullPolicy: IfNotPresent
 
-# REPLACE ABOVE WITH APP TEMPLATE SINCE EXISTING STORAGE CLAIM IS UNSUPPORTED
+            # -- environment variables.
+            # See [image docs](https://github.com/dani-garcia/vaultwarden/blob/main/.env.template) for more details.
+            env:
+              # -- Config dir
+              DATA_FOLDER: "config"
+
+    # -- Configures service settings for the chart.
+    service:
+      main:
+        controller: main
+        ports:
+          http:
+            port: 80
+          websocket:
+            enabled: true
+            port: 3012
+
+    ingress:
+      # -- Enable and configure ingress settings for the chart under this key.
+      main:
+        hosts:
+          - host: &host "vaultwarden.homelab.heyser.xyz"
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  identifier: main
+                  port: http
+              - path: /notifications/hub/negotiate
+                pathType: Prefix
+                service:
+                  identifier: main
+                  port: http
+              - path: /notifications/hub
+                pathType: Prefix
+                service:
+                  identifier: main
+                  port: websocket
+            secretName: vaultwarden-homelab-heyser-xyz-tls
+
+    route:
+      # -- Enable and configure route settings for the chart under this key.
+      main:
+        parentRefs:
+          - name: gateway
+            namespace: gateway-namespace
+            sectionName: gateway-section
+        hostnames:
+          - *host
+        rules:
+          - matches:
+              - path:
+                  type: PathPrefix
+                  value: /
+            backendRefs:
+              - kind: Service
+                port: 80
+                name: main
+                namespace: default
+                weight: 1
+          - matches:
+              - path:
+                  type: PathPrefix
+                  value: /notifications/hub/negotiate
+            backendRefs:
+              - kind: Service
+                port: 80
+                name: main
+                namespace: default
+                weight: 1
+          - matches:
+              - path:
+                  type: PathPrefix
+                  value: /notifications/hub
+            backendRefs:
+              - kind: Service
+                port: 3012
+                name: main
+                namespace: default
+                weight: 1
+
+    # -- Configure persistence settings for the chart under this key.
+    persistence:
+      config:
+        existingClaim: vaultwarden-config
+        globalMounts:
+            - path: /config

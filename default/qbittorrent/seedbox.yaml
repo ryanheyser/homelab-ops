@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 3.6.1
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -28,16 +28,42 @@ spec:
     defaultPodOptions:
       annotations:
         k8s.v1.cni.cncf.io/networks: "seedbox-vpn"
-    image:
-      # renovate: repository=ghcr.io/onedr0p/qbittorrent
-      repository: ghcr.io/onedr0p/qbittorrent
-      tag: 4.6.7
-    env:
-      TZ: America/New_York
-      QBITTORRENT__PORT: &port 80
-      QBITTORRENT__BT_PORT: &port-bt 6882
+    controllers:
+      main:
+        defaultContainerOptions:
+          resources:
+            requests:
+              cpu: 10m
+              memory: 250Mi
+            limits:
+              memory: 2Gi
+        annotations:
+          reloader.stakater.com/auto: "true"
+        pod:
+          securityContext:
+            fsGroup: 1001
+            fsGroupChangePolicy: "OnRootMismatch"
+            supplementalGroups: [568,911]
+          tolerations:
+            - key: "arm"
+              operator: "Exists"
+        containers:
+          main:
+            image:
+              # renovate: repository=ghcr.io/onedr0p/qbittorrent
+              repository: ghcr.io/onedr0p/qbittorrent
+              tag: 4.6.7
+            securityContext:
+              runAsUser: 1001
+              runAsGroup: 1001
+            env:
+              TZ: America/New_York
+              QBITTORRENT__PORT: &port 80
+              QBITTORRENT__BT_PORT: &port-bt 6882
     service:
       main:
+        controller: main
+        type: ClusterIP
         annotations:
           metallb.universe.tf/allow-shared-ip: "qbittorrent-share"
           metallb.universe.tf/address-pool: "default"
@@ -45,7 +71,7 @@ spec:
           http:
             port: *port
       bittorrent:
-        enabled: true
+        controller: main
         type: LoadBalancer
         loadBalancerIP: 10.0.101.5
         annotations:
@@ -60,48 +86,31 @@ spec:
         externalTrafficPolicy: Local
     ingress:
       main:
-        enabled: true
-        ingressClassName: traefik
+        className: "traefik"
         # ingressClassName: nginx
         # annotations:
-          # nginx.ingress.kubernetes.io/auth-url: "https://auth.homelab.heyser.xyz/oauth2/auth"
-          # nginx.ingress.kubernetes.io/auth-signin: https://auth.homelab.heyser.xyz/oauth2/start
+        #   nginx.ingress.kubernetes.io/auth-url: "https://auth.homelab.heyser.xyz/oauth2/auth"
+        #   nginx.ingress.kubernetes.io/auth-signin: https://auth.homelab.heyser.xyz/oauth2/start
         hosts:
-        - host: &host seedbox.homelab.heyser.xyz
+        - host: &host "seedbox.homelab.heyser.xyz"
           paths:
           - path: /
             pathType: Prefix
+            service: 
+              identifier: main
+              port: http
         tls:
         - hosts:
           - *host
-        - secretName: seedbox-homelab-heyser-xyz-tls
-    podSecurityContext:
-      runAsUser: 1001
-      runAsGroup: 1001
-      fsGroup: 1001
-      fsGroupChangePolicy: "OnRootMismatch"
-      supplementalGroups: [568]
+          secretName: seedbox-homelab-heyser-xyz-tls
     # Note: If downloading very large torrents it might be worth using NFS for your download directory.
     # Beware if you are downloading torrents directly to a ZFS dataset that dataset will accrue fragmentation.
     persistence:
       config:
-        enabled: true
         existingClaim: seedbox-config
       downloads:
-        enabled: true
         existingClaim: seedbox-downloads
       media:
-        enabled: true
         existingClaim: seedbox-media
       incomplete:
-        enabled: true
         type: emptyDir
-    resources:
-      requests:
-        cpu: 10m
-        memory: 250Mi
-      limits:
-        memory: 2Gi
-    tolerations:
-    - key: "arm"
-      operator: "Exists"

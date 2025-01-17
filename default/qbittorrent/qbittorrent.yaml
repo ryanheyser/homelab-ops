@@ -30,13 +30,23 @@ spec:
         k8s.v1.cni.cncf.io/networks: "qbittorrent-vpn"
     controllers:
       main:
+        defaultContainerOptions:
+          resources:
+            requests:
+              cpu: 10m
+              memory: 250Mi
+            limits:
+              memory: 2Gi
         annotations:
           reloader.stakater.com/auto: "true"
         pod:
           securityContext:
             fsGroup: 1001
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [568]
+            supplementalGroups: [568,911]
+          tolerations:
+            - key: "arm"
+              operator: "Exists"
         containers:
           main:
             image:
@@ -104,12 +114,3 @@ spec:
         existingClaim: qbittorrent-media
       incomplete:
         type: emptyDir
-    resources:
-      requests:
-        cpu: 10m
-        memory: 250Mi
-      limits:
-        memory: 2Gi
-    tolerations:
-    - key: "arm"
-      operator: "Exists"

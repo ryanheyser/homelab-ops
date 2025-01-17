@@ -8,12 +8,12 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 3.6.1
       sourceRef:
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
-  maxHistory: 2
+  maxHistory: 3
   install:
     createNamespace: true
     remediation:
@@ -25,51 +25,56 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    image:
-      # renovate: repository=tzahi12345/youtubedl-material
-      repository: tzahi12345/youtubedl-material
-      tag: nightly-2024-09-17
-
-    env:
-      TZ: "America/New_York"
-
+    controllers:
+      main:
+        defaultContainerOptions:
+          resources:
+            requests:
+              cpu: 10m
+              memory: 250Mi
+            limits:
+              memory: 2Gi
+        annotations:
+          reloader.stakater.com/auto: "true"
+        pod:
+          securityContext:
+            fsGroup: 1001
+            fsGroupChangePolicy: "OnRootMismatch"
+            supplementalGroups: [568,911]
+          tolerations:
+            - key: "arm"
+              operator: "Exists"
+        containers:
+          main:
+            image:
+              # renovate: repository=tzahi12345/youtubedl-material
+              repository: tzahi12345/youtubedl-material
+              tag: nightly-2024-09-17
+            securityContext:
+              runAsUser: 1001
+              runAsGroup: 1001
+            env:
+              TZ: America/New_York
     ingress:
       main:
-        enabled: true
-        ingressClassName: 'traefik'
+        className: 'traefik'
         hosts:
-        - host: youtubedl.homelab.heyser.xyz
+        - host: &host "youtubedl.homelab.heyser.xyz"
           paths:
           - path: /
             pathType: Prefix
         tls:
         - hosts:
-          - "youtubedl.homelab.heyser.xyz"
-
+          - *host
+          secretName: youtubedl-homelab-heyser-xyz-tls
     persistence:
       config:
-        enabled: true
         existingClaim: youtubedl-config
       audio:
-        enabled: true
         existingClaim: youtubedl-audio
       subscriptions:
-        enabled: true
         existingClaim: youtubedl-subscriptions
       users:
-        enabled: true
         existingClaim: youtubedl-users
       video:
-        enabled: true
         existingClaim: youtubedl-video
-
-    resources:
-      requests:
-        memory: 100Mi
-        cpu: 50m
-      limits:
-        memory: 500Mi
-
-    tolerations:
-    - key: "arm"
-      operator: "Exists"

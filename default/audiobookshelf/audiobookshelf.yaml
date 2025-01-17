@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 3.6.1
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -25,64 +25,73 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    image:
-      # renovate: repository=ghcr.io/advplyr/audiobookshelf
-      repository: ghcr.io/advplyr/audiobookshelf
-      tag: 2.13.4
-
-    env:
-      TZ: "America/New_York"
-      AUDIOBOOKSHELF_UID: 1001
-      AUDIOBOOKSHELF_GID: 1001
-      CONFIG_PATH: /config
-      METADATA_PATH: /config/metadata
-
+    controllers:
+      main:
+        defaultContainerOptions:
+          resources:
+            requests:
+              cpu: 10m
+              memory: 250Mi
+            limits:
+              memory: 2Gi
+        annotations:
+          reloader.stakater.com/auto: "true"
+        pod:
+          securityContext:
+            fsGroup: 1001
+            fsGroupChangePolicy: "OnRootMismatch"
+            supplementalGroups: [568,911]
+          tolerations:
+            - key: "arm"
+              operator: "Exists"
+        containers:
+          main:
+            image:
+              # renovate: repository=ghcr.io/advplyr/audiobookshelf
+              repository: ghcr.io/advplyr/audiobookshelf
+              tag: 2.13.4
+            securityContext:
+              runAsUser: 1001
+              runAsGroup: 1001
+            env:
+              TZ: "America/New_York"
+              AUDIOBOOKSHELF_UID: 1001
+              AUDIOBOOKSHELF_GID: 1001
+              CONFIG_PATH: /config
+              METADATA_PATH: /config/metadata
     service:
       main:
+        controller: main
+        type: ClusterIP
         ports:
           http:
             port: 80
 
     ingress:
       main:
-        enabled: true
-        ingressClassName: 'traefik'
+        className: 'traefik'
         hosts:
-        - host: audiobookshelf.homelab.heyser.xyz
+        - host: &host "audiobookshelf.homelab.heyser.xyz"
           paths:
           - path: /
             pathType: Prefix
         tls:
         - hosts:
-          - "audiobookshelf.homelab.heyser.xyz"
+          - *host
+          secretName: audiobookshelf-homelab-heyser-xyz-tls
 
     persistence:
       config:
-        enabled: true
-        storageClass: "nfs-dynamic"
         existingClaim: audiobookshelf-config
-        mountPath: /config
+        advancedMounts:
+            main:
+              main:
+                - path: "/config"
       media:
-        enabled: true
         existingClaim: audiobookshelf-media
       cache:
-        enabled: true
-        mountPath: /.npm
+        advancedMounts:
+            main:
+              main:
+                - path: "/.npm"
         type: emptyDir
-
-    podSecurityContext:
-      runAsUser: 1001
-      runAsGroup: 1001
-      fsGroup: 1001
-      fsGroupChangePolicy: OnRootMismatch
-
-    resources:
-      requests:
-        memory: 100Mi
-        cpu: 50m
-      limits:
-        memory: 500Mi
-
-    tolerations:
-    - key: "arm"
-      operator: "Exists"

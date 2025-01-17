@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 3.6.1
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -25,25 +25,57 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    image:
-      # renovate: repository=linuxserver/calibre
-      repository: linuxserver/calibre
-      tag: 7.18.0
-    env:
-      TZ: America/New_York
-      PUID: "1001"
-      PGID: "1001"
-      GUAC_USER:
-      - secretRef:
-          name: calibre-secret
-          key: calibre-user
-      GUAC_PASS:
-      - secretRef:
-          name: calibre-secret
-          key: calibre-pass
-      UMASK_SET: "022"
+    controllers:
+      main:
+        defaultContainerOptions:
+          resources:
+            requests:
+              cpu: 10m
+              memory: 250Mi
+            limits:
+              memory: 2Gi
+        pod:
+          securityContext:
+            fsGroup: 1001
+            fsGroupChangePolicy: "OnRootMismatch"
+            supplementalGroups: [568,911]
+          tolerations:
+            - key: "arm"
+              operator: "Exists"
+          affinity:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                - nodeSelectorTerms:
+                  - matchExpressions:
+                      key: "kubernetes.io/arch"
+                      operator: "In"
+                      values:
+                      - "amd64"
+        containers:
+          main:
+            image:
+              # renovate: repository=linuxserver/calibre
+              repository: linuxserver/calibre
+              tag: 7.18.0
+            securityContext:
+              runAsUser: 1001
+              runAsGroup: 1001
+            env:
+              TZ: America/New_York
+              PUID: "1001"
+              PGID: "1001"
+              GUAC_USER:
+              - secretRef:
+                  name: calibre-secret
+                  key: calibre-user
+              GUAC_PASS:
+              - secretRef:
+                  name: calibre-secret
+                  key: calibre-pass
+              UMASK_SET: "022"
     service:
       main:
+        controller: main
         annotations:
           metallb.universe.tf/allow-shared-ip: "calibre-share"
           metallb.universe.tf/address-pool: "default"
@@ -51,7 +83,7 @@ spec:
           http:
             port: 80
       webserver:
-        enabled: true
+        controller: main
         type: LoadBalancer
         loadBalancerIP: 10.0.101.4
         annotations:
@@ -59,7 +91,7 @@ spec:
           metallb.universe.tf/address-pool: "default"
         externalTrafficPolicy: Local
       connect:
-        enabled: true
+        controller: main
         type: LoadBalancer
         loadBalancerIP: 10.0.101.4
         annotations:
@@ -73,21 +105,23 @@ spec:
             targetPort: 9090
     ingress:
       main:
-        enabled: true
-        ingressClassName: traefik
+        className: "traefik"
         # ingressClassName: nginx
         # annotations:
         #   nginx.ingress.kubernetes.io/auth-url: "https://auth.homelab.heyser.xyz/oauth2/auth"
         #   nginx.ingress.kubernetes.io/auth-signin: https://auth.homelab.heyser.xyz/oauth2/start
         hosts:
-        - host: calibre.homelab.heyser.xyz
+        - host: &host "calibre.homelab.heyser.xyz"
           paths:
           - path: /
             pathType: Prefix
+            service:
+              indentifier: main
+              port: http
         tls:
         - hosts:
-          - calibre.homelab.heyser.xyz
-        - secretName: calibre-homelab-heyser-xyz-tls
+          - *host
+          secretName: calibre-homelab-heyser-xyz-tls
       webserver:
         enabled: true
         ingressClassName: traefik
@@ -96,7 +130,7 @@ spec:
         #   nginx.ingress.kubernetes.io/auth-url: "https://auth.homelab.heyser.xyz/oauth2/auth"
         #   nginx.ingress.kubernetes.io/auth-signin: https://auth.homelab.heyser.xyz/oauth2/start
         hosts:
-        - host: calibre-web.homelab.heyser.xyz
+        - host: &webhost "calibre-web.homelab.heyser.xyz"
           paths:
           - path: /
             pathType: Prefix
@@ -105,41 +139,21 @@ spec:
             port: 8081
         tls:
         - hosts:
-          - calibre-web.homelab.heyser.xyz
+          - &webhost
         - secretName: calibre-web-homelab-heyser-xyz-tls
-      
-    podSecurityContext:
-      runAsUser: 1001
-      runAsGroup: 1001
-      fsGroup: 1001
-      fsGroupChangePolicy: "OnRootMismatch"
-      supplementalGroups: [568]
+
     # Note: If downloading very large torrents it might be worth using NFS for your download directory.
     # Beware if you are downloading torrents directly to a ZFS dataset that dataset will accrue fragmentation.
     persistence:
       config:
-        enabled: true
         existingClaim: calibre-config-config
-        mountPath: "/config"
+        advancedMounts:
+          main:
+            main:
+              - path: "/config"
       library:
-        enabled: true
         existingClaim: calibre-library-claim
-        mountPath: "/calibre-library"
-    resources:
-      requests:
-        cpu: 10m
-        memory: 250Mi
-      limits:
-        memory: 2Gi
-    tolerations:
-    - key: "arm"
-      operator: "Exists"
-    affinity:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-        - nodeSelectorTerms:
-          - matchExpressions:
-              key: "kubernetes.io/arch"
-              operator: "In"
-              values:
-              - "amd64"
+        advancedMounts:
+          main:
+            main:
+              - path: "/calibre-library"

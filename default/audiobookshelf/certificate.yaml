@@ -1,0 +1,18 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: audiobookshelf-homelab-heyser-xyz
+spec:
+  subject:
+    organizations:
+    - Heyser
+  secretName: audiobookshelf-homelab-heyser-xyz-tls
+  dnsNames:
+  - audiobookshelf.homelab.heyser.xyz
+  issuerRef:
+    name: letsencrypt-external-ca-issuer
+    # We can reference ClusterIssuers by changing the kind here.
+    # The defaultt value is Issuer (i.e. a locally namespaced Issuer)
+    kind: ClusterIssuer
+    group: cert-manager.io
