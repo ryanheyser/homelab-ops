@@ -41,6 +41,10 @@ spec:
             env:
               # -- Config dir
               DATA_FOLDER: "config"
+            envFrom:
+              - secretRef:
+                  name: vaultwarden-admin-token
+                  optional: false
 
     # -- Configures service settings for the chart.
     service:
