@@ -64,15 +64,11 @@ spec:
               TZ: America/New_York
               PUID: "1001"
               PGID: "1001"
-              GUAC_USER:
-              - secretRef:
-                  name: calibre-secret
-                  key: calibre-user
-              GUAC_PASS:
-              - secretRef:
-                  name: calibre-secret
-                  key: calibre-pass
               UMASK_SET: "022"
+            envFrom:
+              - secretRef:
+                    name: calibre-credentials
+                    optional: false
     service:
       main:
         controller: main
