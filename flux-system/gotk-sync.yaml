@@ -16,12 +16,106 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: flux-system
+  name: external-secrets
   namespace: flux-system
 spec:
-  interval: 10m0s
-  path: ./
-  prune: true
+  interval: 10m
+  targetNamespace: kube-system
   sourceRef:
     kind: GitRepository
     name: flux-system
+  path: "./external-secrets"
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: cert-manager-system
+  namespace: flux-system
+spec:
+  interval: 10m
+  targetNamespace: cert-manager-system
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: "./cert-manager-system"
+  dependsOn:
+    - name: external-secrets
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: kube-system
+  namespace: flux-system
+spec:
+  interval: 10m
+  targetNamespace: kube-system
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: "./flux-system"
+  dependsOn:
+    - name: external-secrets
+    - name: cert-manager-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: network-system
+  namespace: flux-system
+spec:
+  interval: 10m
+  targetNamespace: network-system
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: "./network-system"
+  dependsOn:
+    - name: external-secrets
+    - name: cert-manager-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: vault-system
+  namespace: flux-system
+spec:
+  interval: 10m
+  targetNamespace: vault-system
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: "./vault-system"
+  dependsOn:
+    - name: cert-manager-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: default
+  namespace: flux-system
+spec:
+  interval: 10m
+  targetNamespace: default
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: "./default"
+  dependsOn:
+    - name: external-secrets
+    - name: cert-manager-system
+    - name: kube-system
+    - name: network-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: upgrade-system
+  namespace: flux-system
+spec:
+  interval: 10m
+  targetNamespace: upgrade-system
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: "./upgrade-system"
+---
