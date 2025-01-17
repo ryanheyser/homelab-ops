@@ -75,6 +75,9 @@ spec:
                 service:
                   identifier: main
                   port: websocket
+        tls:
+          - hosts:
+              - *host
             secretName: vaultwarden-homelab-heyser-xyz-tls
 
     route:
