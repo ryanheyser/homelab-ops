@@ -39,18 +39,6 @@ spec:
             fsGroup: 1001
             fsGroupChangePolicy: "OnRootMismatch"
             supplementalGroups: [568,911]
-          tolerations:
-            - key: "arm"
-              operator: "Exists"
-          affinity:
-            nodeAffinity:
-              requiredDuringSchedulingIgnoredDuringExecution:
-                - nodeSelectorTerms:
-                  - matchExpressions:
-                      key: "kubernetes.io/arch"
-                      operator: "In"
-                      values:
-                      - "amd64"
         containers:
           main:
             image:
@@ -119,7 +107,6 @@ spec:
           - *host
           secretName: calibre-homelab-heyser-xyz-tls
       webserver:
-        enabled: true
         ingressClassName: traefik
         # ingressClassName: nginx
         # annotations:
@@ -130,13 +117,14 @@ spec:
           paths:
           - path: /
             pathType: Prefix
-          service:
-            name: "calibre-webserver"
-            port: 8081
+            service:
+              service:
+                identifier: webserver
+                port: http
         tls:
         - hosts:
-          - &webhost
-        - secretName: calibre-web-homelab-heyser-xyz-tls
+          - *webhost
+          secretName: calibre-web-homelab-heyser-xyz-tls
 
     # Note: If downloading very large torrents it might be worth using NFS for your download directory.
     # Beware if you are downloading torrents directly to a ZFS dataset that dataset will accrue fragmentation.
