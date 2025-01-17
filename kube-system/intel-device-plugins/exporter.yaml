@@ -42,8 +42,8 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
         pod:
-          securityContext:
-            privileged: true
+          # securityContext:
+          #   privileged: true
           tolerations:
             - key: "arm"
               operator: "Exists"
@@ -55,6 +55,9 @@ spec:
               # renovate: repository=ghcr.io/onedr0p/qbittorrent
               repository: ghcr.io/onedr0p/intel-gpu-exporter
               tag: rolling@sha256:1511f71b317fa7b7ef297bd2fb27f403800562b3461fc414992c245ee68335e2
+            securityContext:
+              allowPrivilegeEscalation: false
+              runAsUser: 0
             env:
               TZ: America/New_York
     service:
