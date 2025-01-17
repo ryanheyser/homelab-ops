@@ -107,7 +107,7 @@ spec:
           - *host
           secretName: calibre-homelab-heyser-xyz-tls
       webserver:
-        ingressClassName: traefik
+        className: traefik
         # ingressClassName: nginx
         # annotations:
         #   nginx.ingress.kubernetes.io/auth-url: "https://auth.homelab.heyser.xyz/oauth2/auth"
@@ -118,9 +118,8 @@ spec:
           - path: /
             pathType: Prefix
             service:
-              service:
-                identifier: webserver
-                port: http
+              identifier: webserver
+              port: http
         tls:
         - hosts:
           - *webhost
