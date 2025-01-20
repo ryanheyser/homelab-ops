@@ -54,10 +54,7 @@ spec:
               UMASK_SET: "022"
             envFrom:
               - secretRef:
-                  name: calibre-user
-                  optional: false
-              - secretRef:
-                  name: calibre-pass
+                  name: calibre-credentials
                   optional: false
     service:
       main:
