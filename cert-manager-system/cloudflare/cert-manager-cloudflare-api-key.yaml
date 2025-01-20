@@ -4,6 +4,7 @@ metadata:
   name: cloudflare-api-key
   namespace: cert-manager-system
 spec:
+  refreshInterval: "1h"
   secretStoreRef:
     kind: ClusterSecretStore
     name: vault
