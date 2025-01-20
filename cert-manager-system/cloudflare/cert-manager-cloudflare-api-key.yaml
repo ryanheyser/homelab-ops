@@ -10,6 +10,9 @@ spec:
   target:
     name: cloudflare-api-key
     creationPolicy: Owner
-  dataFrom:
-  - extract:
-      key: cloudflare
+  data:
+    - secretKey: "api-key"
+      remoteRef:
+        key: "secret/cloudflare-api-key"
+        property: "api-key"
+
