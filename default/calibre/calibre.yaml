@@ -43,7 +43,7 @@ spec:
             image:
               # renovate: repository=linuxserver/calibre
               repository: linuxserver/calibre
-              tag: 7.18.0
+              tag: 7.24.0
             securityContext:
               runAsUser: 1001
               runAsGroup: 1001
