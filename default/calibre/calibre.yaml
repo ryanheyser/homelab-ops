@@ -73,6 +73,9 @@ spec:
           metallb.universe.tf/allow-shared-ip: "calibre-share"
           metallb.universe.tf/address-pool: "default"
         externalTrafficPolicy: Local
+        ports:
+          webserver:
+            port: 8081
       connect:
         controller: main
         type: LoadBalancer
