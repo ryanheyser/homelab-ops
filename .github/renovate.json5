@@ -62,12 +62,12 @@
       '.github/**',
     ],
   },
-  "docker": {
-    "fileMatch": ["(^|/)(.*)?[^/]+\\.ya?ml$"],
-    ignorePaths: [
-      '.github/**',
-    ],
-  }
+  // "docker": {
+  //   "fileMatch": ["(^|/)(.*)?[^/]+\\.ya?ml$"],
+  //   ignorePaths: [
+  //     '.github/**',
+  //   ],
+  // }
 
   // "packageRules": [
   //   // Setup datasources
