@@ -5,7 +5,6 @@
     ":disableRateLimiting",
     ":dependencyDashboard",
     ":enablePreCommit",
-
     ":semanticCommits",
     ":automergeDigest",
     ":automergeBranchPush",
@@ -36,26 +35,24 @@
   ignorePaths: [
     "setup/**",
     ".taskfiles/**",
+    ".github/**",
+    "secrets/**",
   ],
   "ansible": {
-    "fileMatch": ["./.+\\.ya?ml$"],
+    "fileMatch": ["(^|/)(.*)?[^/]+\\.ya?ml$"],
   },
   "helm-values": {
-    "fileMatch": ["./.+\\.ya?ml$"],
+    "fileMatch": ["(^|/)(.*)?[^/]+\\.ya?ml$"],
   },
   "flux": {
-    "fileMatch": ["./.+\\.ya?ml$"],
-    "ignorePaths": [
-      ".github"
-    ],
+    "fileMatch": ["(^|/)(.*)?[^/]+\\.ya?ml$"],
   },
   "kubernetes": {
-    "fileMatch": ["\\.ya?ml$"],
-    "ignorePaths": [
-      "flux-system/",
-      ".github"
-    ],
+    "fileMatch": ["(^|/)(.*)?[^/]+\\.ya?ml$"],
   },
+  "docker": {
+    "fileMatch": ["(^|/)(.*)?[^/]+\\.ya?ml$"],
+  }
 
   // "packageRules": [
   //   // Setup datasources
