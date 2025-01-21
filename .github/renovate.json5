@@ -40,18 +40,33 @@
   ],
   "ansible": {
     "fileMatch": ["(^|/)(.*)?[^/]+\\.ya?ml$"],
+    ignorePaths: [
+      '.github/**',
+    ],
   },
   "helm-values": {
     "fileMatch": ["(^|/)(.*)?[^/]+\\.ya?ml$"],
+    ignorePaths: [
+      '.github/**',
+    ],
   },
   "flux": {
     "fileMatch": ["(^|/)(.*)?[^/]+\\.ya?ml$"],
+    ignorePaths: [
+      '.github/**',
+    ],
   },
   "kubernetes": {
     "fileMatch": ["(^|/)(.*)?[^/]+\\.ya?ml$"],
+    ignorePaths: [
+      '.github/**',
+    ],
   },
   "docker": {
     "fileMatch": ["(^|/)(.*)?[^/]+\\.ya?ml$"],
+    ignorePaths: [
+      '.github/**',
+    ],
   }
 
   // "packageRules": [
