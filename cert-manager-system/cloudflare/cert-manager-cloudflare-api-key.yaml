@@ -14,6 +14,6 @@ spec:
   data:
     - secretKey: "api-key"
       remoteRef:
-        key: "secret/cloudflare-api-key"
+        key: "cloudflare-api-key"
         property: "api-key"
 
