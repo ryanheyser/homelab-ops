@@ -55,6 +55,12 @@ spec:
               runAsGroup: 1001
             env:
               TZ: America/New_York
+    service:
+      main:
+        controller: main
+        ports:
+          http:
+            port: 17442
     ingress:
       main:
         className: 'traefik'
