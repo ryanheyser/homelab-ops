@@ -31,7 +31,15 @@ spec:
     podDisruptionBudget:
       enabled: true
       minAvailable: 1
-    # webhook:
+    webhook:
+      replicaCount: 3
+      strategy:
+        type: RollingUpdate
+        maxSurge: 1
+        maxUnavailable: 1
+      podDisruptionBudget:
+        enabled: true
+        minAvailable: 1
     #   enabled: true
     #   tolerations:
     #   - key: "arm"
