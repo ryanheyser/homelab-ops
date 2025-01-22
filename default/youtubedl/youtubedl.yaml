@@ -102,7 +102,7 @@ spec:
         advancedMounts:
           main:
             main:
-              - path: "/users"
+              - path: "/app/users"
       video:
         existingClaim: youtubedl-video
         advancedMounts:
