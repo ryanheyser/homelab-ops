@@ -55,6 +55,8 @@ spec:
               runAsGroup: 1000
             env:
               TZ: America/New_York
+              UID: 1000
+              GID: 1000
     service:
       main:
         controller: main
@@ -79,11 +81,31 @@ spec:
     persistence:
       config:
         existingClaim: youtubedl-config
+        advancedMounts:
+          main:
+            main:
+              - path: "/app/appdata"
       audio:
         existingClaim: youtubedl-audio
+        advancedMounts:
+          main:
+            main:
+              - path: "/app/audio"
       subscriptions:
         existingClaim: youtubedl-subscriptions
+        advancedMounts:
+          main:
+            main:
+              - path: "/app/subscriptions"
       users:
         existingClaim: youtubedl-users
+        advancedMounts:
+          main:
+            main:
+              - path: "/users"
       video:
         existingClaim: youtubedl-video
+        advancedMounts:
+          main:
+            main:
+              - path: "/app/video"
