@@ -101,10 +101,9 @@ spec:
           paths:
           - path: /
             pathType: Prefix
-            backend:
-              service:
-                identifier: main
-                port: http
+            service:
+              identifier: main
+              port: http
         tls:
         - hosts:
           - *host
@@ -120,10 +119,9 @@ spec:
           paths:
           - path: /
             pathType: Prefix
-            backend:
-              service:
-                identifier: webserver
-                port: http
+            service:
+              identifier: webserver
+              port: webserver
         tls:
         - hosts:
           - *webhost
