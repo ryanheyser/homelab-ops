@@ -125,7 +125,25 @@ spec:
         tls:
         - hosts:
           - *webhost
-          secretName: calibre-web-homelab-heyser-xyz-tls
+          secretName: calibre-homelab-heyser-xyz-tls
+      connect:
+        className: traefik
+        # ingressClassName: nginx
+        # annotations:
+        #   nginx.ingress.kubernetes.io/auth-url: "https://auth.homelab.heyser.xyz/oauth2/auth"
+        #   nginx.ingress.kubernetes.io/auth-signin: https://auth.homelab.heyser.xyz/oauth2/start
+        hosts:
+        - host: &webhost "calibre-connect.homelab.heyser.xyz"
+          paths:
+          - path: /
+            pathType: Prefix
+            service:
+              identifier: connect
+              port: connect
+        tls:
+        - hosts:
+          - *webhost
+          secretName: calibre-homelab-heyser-xyz-tls
 
     # Note: If downloading very large torrents it might be worth using NFS for your download directory.
     # Beware if you are downloading torrents directly to a ZFS dataset that dataset will accrue fragmentation.

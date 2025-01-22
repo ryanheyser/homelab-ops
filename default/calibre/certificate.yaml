@@ -10,24 +10,8 @@ spec:
   secretName: calibre-homelab-heyser-xyz-tls
   dnsNames:
   - calibre.homelab.heyser.xyz
-  issuerRef:
-    name: letsencrypt-external-ca-issuer
-    # We can reference ClusterIssuers by changing the kind here.
-    # The defaultt value is Issuer (i.e. a locally namespaced Issuer)
-    kind: ClusterIssuer
-    group: cert-manager.io
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: calibre-web-homelab-heyser-xyz
-spec:
-  subject:
-    organizations:
-    - Heyser
-  secretName: calibre-web-homelab-heyser-xyz-tls
-  dnsNames:
   - calibre-web.homelab.heyser.xyz
+  - calibre-connect.homelab.heyser.xyz
   issuerRef:
     name: letsencrypt-external-ca-issuer
     # We can reference ClusterIssuers by changing the kind here.
