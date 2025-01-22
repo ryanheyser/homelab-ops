@@ -45,11 +45,13 @@ spec:
       ingress:
         ingressClassName: traefik
         enabled: true
+        # hosts:
+        # - host: &host "auth.homelab.heyser.xyz"
+        #   paths:
+        #   - path: "/"
+        #     pathType: Prefix
         hosts:
-        - host: &host "auth.homelab.heyser.xyz"
-          paths:
-          - path: "/"
-            pathType: Prefix
+          - &host "auth.homelab.heyser.xyz"
         tls:
         - hosts:
             - *host
