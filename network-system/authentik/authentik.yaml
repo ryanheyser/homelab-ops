@@ -29,6 +29,9 @@ spec:
     global:
       affinity:
         podAntiAffinity: hard
+      envFrom:
+        - secretRef:
+            name: authentik-secret-key
     deploymentStrategy:
       type: RollingUpdate
       rollingUpdate:
@@ -36,9 +39,6 @@ spec:
         maxUnavailable: 1
     server:
       replicas: 3
-      envFrom:
-        - secretRef:
-            name: authentik-secret-key
       pdb:
         enabled: true
         minAvailable: 1
@@ -58,9 +58,6 @@ spec:
           secretName: authentik-homelab-heyser-xyz-tls
     worker:
       replicas: 3
-      envFrom:
-        - secretRef:
-            name: authentik-secret-key
       pdb:
         enabled: true
         minAvailable: 1
