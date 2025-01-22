@@ -26,8 +26,9 @@ spec:
     replicaCount: 3
     strategy:
       type: RollingUpdate
-      maxSurge: 1
-      maxUnavailable: 1
+      rollingUpdate:
+        maxSurge: 1
+        maxUnavailable: 1
     podDisruptionBudget:
       enabled: true
       minAvailable: 1
@@ -35,8 +36,9 @@ spec:
       replicaCount: 3
       strategy:
         type: RollingUpdate
-        maxSurge: 1
-        maxUnavailable: 1
+        rollingUpdate:
+          maxSurge: 1
+          maxUnavailable: 1
       podDisruptionBudget:
         enabled: true
         minAvailable: 1
