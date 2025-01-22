@@ -45,8 +45,8 @@ spec:
               repository: linuxserver/calibre
               tag: 7.24.0
             securityContext:
-              runAsUser: 1001
-              runAsGroup: 1001
+              runAsUser: 0
+              runAsGroup: 0
             env:
               TZ: America/New_York
               PUID: "1001"
