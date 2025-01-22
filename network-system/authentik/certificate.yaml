@@ -1,0 +1,19 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: authentik-homelab-heyser-xyz
+  namespace: network-system
+spec:
+  subject:
+    organizations:
+    - Heyser
+  secretName: authentik-homelab-heyser-xyz-tls
+  dnsNames:
+  - authentik.homelab.heyser.xyz
+  issuerRef:
+    name: letsencrypt-external-ca-issuer
+    # We can reference ClusterIssuers by changing the kind here.
+    # The defaultt value is Issuer (i.e. a locally namespaced Issuer)
+    kind: ClusterIssuer
+    group: cert-manager.io

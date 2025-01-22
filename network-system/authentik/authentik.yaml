@@ -51,7 +51,9 @@ spec:
           - path: "/"
             pathType: Prefix
         tls:
-        - *host
+        - hosts:
+            - *host
+          secretName: authentik-homelab-heyser-xyz-tls
     worker:
       replicas: 3
       envFrom:

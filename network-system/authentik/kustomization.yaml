@@ -4,4 +4,5 @@ namespace: network-system
 resources:
 - ./pvc.yaml
 - ./secret.yaml
+- ./certificate.yaml
 - ./authentik.yaml
