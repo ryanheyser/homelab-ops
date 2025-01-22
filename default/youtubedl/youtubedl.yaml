@@ -49,10 +49,10 @@ spec:
             image:
               # renovate: repository=tzahi12345/youtubedl-material
               repository: tzahi12345/youtubedl-material
-              tag: nightly-2025-01-14
+              tag: nightly-2025-01-21
             securityContext:
-              runAsUser: 1000
-              runAsGroup: 1000
+              runAsUser: 0
+              runAsGroup: 0
             env:
               TZ: America/New_York
               UID: 1000
