@@ -36,12 +36,9 @@ spec:
         maxUnavailable: 1
     server:
       replicas: 3
-      env:
-        - name: AUTHENTIK_SECRET_KEY
-          valueFrom:
-            secretKeyRef:
-              name: authentik-secret-key
-              key: secret_key
+      envFrom:
+        - secretRef:
+            name: authentik-secret-key
       pdb:
         enabled: true
         minAvailable: 1
@@ -57,12 +54,9 @@ spec:
         - *host
     worker:
       replicas: 3
-      env:
-        - name: AUTHENTIK_SECRET_KEY
-          valueFrom:
-            secretKeyRef:
-              name: authentik-secret-key
-              key: secret_key
+      envFrom:
+        - secretRef:
+            name: authentik-secret-key
       pdb:
         enabled: true
         minAvailable: 1
