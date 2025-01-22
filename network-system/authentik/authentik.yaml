@@ -101,3 +101,4 @@ spec:
                   values:
                   - master
               topologyKey: "kubernetes.io/hostname"
+
