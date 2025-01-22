@@ -52,6 +52,7 @@ spec:
               PUID: "1001"
               PGID: "1001"
               UMASK_SET: "022"
+              DISABLE_IPV6: "true"
             envFrom:
               - secretRef:
                   name: calibre-credentials
