@@ -24,13 +24,14 @@ spec:
       # path: /kracko
       server: "10.0.0.10"
       path: "/kracko"  
-      mountOptions:
-        - "vers=4"
-        - "minorversion=1"
-        - "local_lock=posix"
-        - "proto=tcp"
-        - "noresvport"
-        - "ac"
+      ## If mount options are set, the chart attempts to patch the persistent volume claims and fails
+      # mountOptions:
+      #   - "vers=4"
+      #   - "minorversion=1"
+      #   - "local_lock=posix"
+      #   - "proto=tcp"
+      #   - "noresvport"
+      #   - "ac"
     storageClass:
       defaultClass: true
       name: "nfs-dynamic"
