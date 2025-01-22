@@ -133,7 +133,7 @@ spec:
         #   nginx.ingress.kubernetes.io/auth-url: "https://auth.homelab.heyser.xyz/oauth2/auth"
         #   nginx.ingress.kubernetes.io/auth-signin: https://auth.homelab.heyser.xyz/oauth2/start
         hosts:
-        - host: &webhost "calibre-connect.homelab.heyser.xyz"
+        - host: &connecthost "calibre-connect.homelab.heyser.xyz"
           paths:
           - path: /
             pathType: Prefix
@@ -142,7 +142,7 @@ spec:
               port: connect
         tls:
         - hosts:
-          - *webhost
+          - *connecthost
           secretName: calibre-homelab-heyser-xyz-tls
 
     # Note: If downloading very large torrents it might be worth using NFS for your download directory.
