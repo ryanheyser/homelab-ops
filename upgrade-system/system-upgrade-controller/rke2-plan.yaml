@@ -24,6 +24,12 @@ spec:
   - {key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: arm64}
   - {key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: arm}
   - {key: arm, operator: Exists}
+  - key: node-role.kubernetes.io/control-plane
+    operator: Equal
+    effect: NoSchedule
+  - effect: PreferNoSchedule
+    key: node-role.kubernetes.io
+    value: master
   # drain:
   #   force: true
   upgrade:
@@ -57,6 +63,12 @@ spec:
   - {key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: arm64}
   - {key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: arm}
   - {key: arm, operator: Exists}
+  - key: node-role.kubernetes.io/control-plane
+    operator: Equal
+    effect: NoSchedule
+  - effect: PreferNoSchedule
+    key: node-role.kubernetes.io
+    value: master
 
   prepare:
     # Since v0.5.0-m1 SUC will use the resolved version of the plan for the tag on the prepare container.

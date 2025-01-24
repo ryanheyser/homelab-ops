@@ -16,3 +16,11 @@ spec:
         name: stakater-charts
         namespace: flux-system
       interval: 5m
+  values:
+    tolerations:
+      - key: node-role.kubernetes.io/control-plane
+        operator: Equal
+        effect: NoSchedule
+      - effect: PreferNoSchedule
+        key: node-role.kubernetes.io
+        value: master

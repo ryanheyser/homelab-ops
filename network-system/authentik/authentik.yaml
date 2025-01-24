@@ -32,6 +32,13 @@ spec:
       envFrom:
         - secretRef:
             name: authentik-secret-key
+      tolerations:
+        - key: node-role.kubernetes.io/control-plane
+          operator: Equal
+          effect: NoSchedule
+        - effect: PreferNoSchedule
+          key: node-role.kubernetes.io
+          value: master
     deploymentStrategy:
       type: RollingUpdate
       rollingUpdate:

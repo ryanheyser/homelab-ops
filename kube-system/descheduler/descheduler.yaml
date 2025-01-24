@@ -34,6 +34,12 @@ spec:
     tolerations:
     - key: "arm"
       operator: "Exists"
+    - key: node-role.kubernetes.io/control-plane
+      operator: Equal
+      effect: NoSchedule
+    - effect: PreferNoSchedule
+      key: node-role.kubernetes.io
+      value: master
     deschedulerPolicy:
       evictLocalStoragePods: true
       strategies:

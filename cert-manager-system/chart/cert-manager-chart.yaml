@@ -43,9 +43,15 @@ spec:
         enabled: true
         minAvailable: 1
     #   enabled: true
-    #   tolerations:
-    #   - key: "arm"
-    #     operator: "Exists"
+      tolerations:
+      - key: "arm"
+        operator: "Exists"
+      - key: node-role.kubernetes.io/control-plane
+        operator: Equal
+        effect: NoSchedule
+      - effect: PreferNoSchedule
+        key: node-role.kubernetes.io
+        value: master
     # extraArgs:
     # - --dns01-recursive-nameservers=1.1.1.1:53
     # - --dns01-recursive-nameservers-only
@@ -62,6 +68,12 @@ spec:
     tolerations:
     - key: "arm"
       operator: "Exists"
+    - key: node-role.kubernetes.io/control-plane
+      operator: Equal
+      effect: NoSchedule
+    - effect: PreferNoSchedule
+      key: node-role.kubernetes.io
+      value: master
     cainjector:
       replicaCount: 3
       # extraArgs:
@@ -69,6 +81,12 @@ spec:
       tolerations:
       - key: "arm"
         operator: "Exists"
+      - key: node-role.kubernetes.io/control-plane
+        operator: Equal
+        effect: NoSchedule
+      - effect: PreferNoSchedule
+        key: node-role.kubernetes.io
+        value: master
       strategy:
         type: RollingUpdate
         maxSurge: 1
@@ -86,7 +104,6 @@ spec:
                     values:
                     - cert-manager
               topologyKey: "kubernetes.io/hostname"
-      
     # prometheus:
     #   enabled: true
     #   servicemonitor:
