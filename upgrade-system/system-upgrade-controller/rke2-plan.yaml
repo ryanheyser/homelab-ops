@@ -8,6 +8,9 @@ metadata:
     rke2-upgrade: server
 spec:
   concurrency: 1
+  channel: https://update.rke2.io/v1-release/channels/stable
+  # renovate: depName=rancher/rke2
+  version: v1.32.1+rke2r1
   cordon: true
   nodeSelector:
     matchExpressions:
@@ -34,7 +37,6 @@ spec:
   #   force: true
   upgrade:
     image: rancher/rke2-upgrade
-  channel: https://update.rke2.io/v1-release/channels/stable
 ---
 # Agent plan
 apiVersion: upgrade.cattle.io/v1
@@ -47,6 +49,8 @@ metadata:
 spec:
   concurrency: 1
   channel: https://update.rke2.io/v1-release/channels/stable
+  # renovate: depName=rancher/rke2
+  version: v1.32.1+rke2r1
   nodeSelector:
     matchExpressions:
     - {key: beta.kubernetes.io/os, operator: In, values: ["linux"]}
