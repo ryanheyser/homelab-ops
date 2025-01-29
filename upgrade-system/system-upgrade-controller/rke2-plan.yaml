@@ -50,7 +50,6 @@ spec:
   nodeSelector:
     matchExpressions:
     - {key: beta.kubernetes.io/os, operator: In, values: ["linux"]}
-    - {key: rke2-upgrade, operator: Exists}
     - {key: node-role.kubernetes.io/master, operator: NotIn, values: ["true"]}
     - {key: node-role.kubernetes.io/control-plane, operator: DoesNotExist}
   serviceAccountName: system-upgrade
