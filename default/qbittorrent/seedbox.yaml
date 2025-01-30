@@ -64,13 +64,10 @@ spec:
       main:
         controller: main
         type: ClusterIP
-        annotations:
-          metallb.universe.tf/allow-shared-ip: "qbittorrent-share"
-          metallb.universe.tf/address-pool: "default"
         ports:
           http:
             port: *port
-      bittorrent:
+      seedbox:
         controller: main
         type: LoadBalancer
         loadBalancerIP: 10.0.101.5
@@ -78,7 +75,7 @@ spec:
           metallb.universe.tf/allow-shared-ip: "qbittorrent-share"
           metallb.universe.tf/address-pool: "default"
         ports:
-          bittorrent:
+          seedbox:
             enabled: true
             port: *port-bt
             protocol: TCP

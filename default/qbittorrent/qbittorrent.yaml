@@ -64,9 +64,6 @@ spec:
       main:
         controller: main
         type: ClusterIP
-        annotations:
-          metallb.universe.tf/allow-shared-ip: "qbittorrent-share"
-          metallb.universe.tf/address-pool: "default"
         ports:
           http:
             port: *port
