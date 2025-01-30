@@ -6,7 +6,7 @@ spec:
   subject:
     organizations:
     - Heyser
-  secretName: vaultwarden-heyser-xyz-tls
+  secretName: vaultwarden-homelab-heyser-xyz-tls
   dnsNames:
   - vaultwarden.homelab.heyser.xyz
   issuerRef:
