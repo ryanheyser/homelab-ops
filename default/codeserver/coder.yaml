@@ -67,11 +67,10 @@ spec:
     ingress:
       main:
         annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-prod
-          kubernetes.io/ingress.class: traefik
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
           traefik.ingress.kubernetes.io/router.tls: "true"
-        className: 'traefik'
+          traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt-prod"
+        className: traefik
         hosts:
         - host: &host "code.homelab.heyser.xyz"
           paths:
