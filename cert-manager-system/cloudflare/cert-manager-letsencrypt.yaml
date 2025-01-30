@@ -14,7 +14,8 @@ spec:
       dns01:
         cloudflare:
           email: rumblpak@gmail.com
-          apiKeySecretRef:
+          # apiKeySecretRef:
+          apiTokenSecretRef:
             name: cloudflare-api-key
             key: api-key
 ---
@@ -34,7 +35,8 @@ spec:
       dns01:
         cloudflare:
           email: rumblpak@gmail.com
-          apiKeySecretRef:
+          # apiKeySecretRef:
+          apiTokenSecretRef:
             name: cloudflare-api-key
             key: api-key
 ---
