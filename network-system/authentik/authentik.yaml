@@ -59,9 +59,11 @@ spec:
         #     pathType: Prefix
         hosts:
           - &host "auth.homelab.heyser.xyz"
+          - &althost "authentik.homelab.heyser.xyz"
         tls:
         - hosts:
             - *host
+            - *althost
           secretName: authentik-homelab-heyser-xyz-tls
     worker:
       replicas: 3

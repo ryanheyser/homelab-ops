@@ -11,6 +11,7 @@ spec:
   secretName: authentik-homelab-heyser-xyz-tls
   dnsNames:
   - authentik.homelab.heyser.xyz
+  - auth.homelab.heyser.xyz
   issuerRef:
     name: letsencrypt-prod
     # We can reference ClusterIssuers by changing the kind here.
