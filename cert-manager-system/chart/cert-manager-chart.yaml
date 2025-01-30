@@ -42,7 +42,6 @@ spec:
       podDisruptionBudget:
         enabled: true
         minAvailable: 1
-    #   enabled: true
       tolerations:
       - key: "arm"
         operator: "Exists"
