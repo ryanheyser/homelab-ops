@@ -66,6 +66,8 @@ spec:
 
     ingress:
       main:
+        annotations:
+        - traefik.ingress.kubernetes.io/router.entrypoints: 'web, websecure'
         className: 'traefik'
         hosts:
         - host: &host "code.homelab.heyser.xyz"
