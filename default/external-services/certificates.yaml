@@ -13,9 +13,8 @@ spec:
     - storage.homelab.heyser.xyz
     - awoofy.homelab.heyser.xyz
     - kracko.homelab.heyser.xyz
-    - awoofy.homelab.heyser.lan
   issuerRef:
-    name: letsencrypt-external-ca-issuer
+    name: letsencrypt-prod
     # We can reference ClusterIssuers by changing the kind here.
     # The default value is Issuer (i.e. a locally namespaced Issuer)
     kind: ClusterIssuer
@@ -34,9 +33,8 @@ spec:
   dnsNames:
   - plex.homelab.heyser.xyz
   - plex.heyser.xyz
-  - plex.lan
   issuerRef:
-    name: letsencrypt-external-ca-issuer
+    name: letsencrypt-prod
     # We can reference ClusterIssuers by changing the kind here.
     # The default value is Issuer (i.e. a locally namespaced Issuer)
     kind: ClusterIssuer
