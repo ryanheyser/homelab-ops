@@ -70,6 +70,7 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
           traefik.ingress.kubernetes.io/router.tls: "true"
           traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt-prod"
+          traefik.ingress.kubernetes.io/service.nativelb: "true"
         className: traefik
         hosts:
         - host: &host "code.homelab.heyser.xyz"
