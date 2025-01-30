@@ -67,7 +67,7 @@ spec:
         ports:
           http:
             port: *port
-      seedbox:
+      bittorrent:
         controller: main
         type: LoadBalancer
         loadBalancerIP: 10.0.101.5
