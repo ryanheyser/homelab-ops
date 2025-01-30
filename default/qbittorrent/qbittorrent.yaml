@@ -41,9 +41,9 @@ spec:
           reloader.stakater.com/auto: "true"
         pod:
           securityContext:
-            fsGroup: 1001
+            fsGroup: 911
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [568,911]
+            supplementalGroups: [568,1000,1001]
           tolerations:
             - key: "arm"
               operator: "Exists"
@@ -54,8 +54,8 @@ spec:
               repository: ghcr.io/onedr0p/qbittorrent
               tag: 5.0.3
             securityContext:
-              runAsUser: 1001
-              runAsGroup: 1001
+              runAsUser: 911
+              runAsGroup: 911
             env:
               TZ: America/New_York
               QBITTORRENT__PORT: &port 80
