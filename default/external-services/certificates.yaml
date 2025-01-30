@@ -3,7 +3,6 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: truenas-homelab-heyser-xyz
-  namespace: truenas
 spec:
   subject:
     organizations:
@@ -24,7 +23,6 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: plex-homelab-heyser-xyz
-  namespace: plex
 spec:
   subject:
     organizations:
