@@ -62,7 +62,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: plex-external
+  name: plex
   namespace: plex
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: HTTPS
@@ -81,7 +81,18 @@ spec:
               number: 32400
         path: /
         pathType: Prefix
+  - host: plex.heyser.xyz
+    http:
+      paths:
+      - backend:
+          service:
+            name: plex-ip
+            port:
+              number: 32400
+        path: /
+        pathType: Prefix
   tls:
   - hosts:
     - plex.homelab.heyser.xyz
+    - plex.heyser.xyz
     secretName: plex-homelab-heyser-xyz-tls
