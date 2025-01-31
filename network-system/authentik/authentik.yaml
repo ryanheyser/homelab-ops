@@ -49,6 +49,9 @@ spec:
       pdb:
         enabled: true
         minAvailable: 1
+      service:
+        annotations:
+          traefik.ingress.kubernetes.io/service.nativelb: "true"
       ingress:
         ingressClassName: traefik
         enabled: true
@@ -57,7 +60,6 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
           # traefik.ingress.kubernetes.io/router.tls: "true"
           # traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt-prod"
-          traefik.ingress.kubernetes.io/service.nativelb: "true"
           traefik.ingress.kubernetes.io/router.middlewares: ""
         # hosts:
         # - host: &host "auth.homelab.heyser.xyz"
