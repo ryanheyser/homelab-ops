@@ -14,7 +14,7 @@ spec:
             - name: cloudflare-ddns-star-root
               image: mirioeggmann/cloudflare-ddns:latest
               envFrom:
-              - secretMapRef:
+              - secretRef:
                   name: cloudflare-ddns-star-root
                   optional: false
               env:
@@ -23,7 +23,7 @@ spec:
             - name: cloudflare-ddns-root
               image: mirioeggmann/cloudflare-ddns:latest
               envFrom:
-              - secretMapRef:
+              - secretRef:
                   name: cloudflare-ddns-root
                   optional: false
               env:
@@ -32,7 +32,7 @@ spec:
             - name: cloudflare-ddns-star-homelab
               image: mirioeggmann/cloudflare-ddns:latest
               envFrom:
-              - secretMapRef:
+              - secretRef:
                   name: cloudflare-ddns-star-homelab
                   optional: false
               env:
