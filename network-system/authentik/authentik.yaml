@@ -52,6 +52,12 @@ spec:
       ingress:
         ingressClassName: traefik
         enabled: true
+        annotations:
+          kubernetes.io/ingress.class: traefik
+          traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+          # traefik.ingress.kubernetes.io/router.tls: "true"
+          # traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt-prod"
+          traefik.ingress.kubernetes.io/service.nativelb: "true"
         # hosts:
         # - host: &host "auth.homelab.heyser.xyz"
         #   paths:
