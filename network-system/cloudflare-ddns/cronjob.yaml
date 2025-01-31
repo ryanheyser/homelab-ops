@@ -1,0 +1,41 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cloudflare-ddns
+  namespace: network-system
+spec:
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    spec:
+      ttlSecondsAfterFinished: 3600
+      template:
+        spec:
+          containers:
+            - name: cloudflare-ddns-star-root
+              image: mirioeggmann/cloudflare-ddns:latest
+              envFrom:
+              - secretMapRef:
+                  name: cloudflare-ddns-star-root
+                  optional: false
+              env:
+              - name: NAME
+                value: "*.heyser.xyz"
+            - name: cloudflare-ddns-root
+              image: mirioeggmann/cloudflare-ddns:latest
+              envFrom:
+              - secretMapRef:
+                  name: cloudflare-ddns-root
+                  optional: false
+              env:
+              - name: NAME
+                value: "heyser.xyz"
+            - name: cloudflare-ddns-star-homelab
+              image: mirioeggmann/cloudflare-ddns:latest
+              envFrom:
+              - secretMapRef:
+                  name: cloudflare-ddns-star-homelab
+                  optional: false
+              env:
+              - name: NAME
+                value: "*.homelab.heyser.xyz"
+          restartPolicy: OnFailure

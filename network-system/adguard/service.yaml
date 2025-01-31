@@ -8,14 +8,14 @@ metadata:
     app.kubernetes.io/name: adguard-home
     app.kubernetes.io/instance: adguard
   annotations:
-    cni.projectcalico.org/ipAddrs: '["10.0.100.2"]'
+    cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
     traefik.ingress.kubernetes.io/service.nativelb: "true"
-    metallb.universe.tf/loadBalancerIPs: 10.0.100.2
+    metallb.universe.tf/loadBalancerIPs: 10.0.100.3
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
   externalIPs:
-    - 10.0.100.2
+    - 10.0.100.3
   ports:
   - port: 53
     targetPort: 53
@@ -35,14 +35,14 @@ metadata:
     app.kubernetes.io/instance: adguard
     app.kubernetes.io/name: adguard-home
   annotations:
-    cni.projectcalico.org/ipAddrs: '["10.0.100.2"]'
+    cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
     traefik.ingress.kubernetes.io/service.nativelb: "true"
-    metallb.universe.tf/loadBalancerIPs: 10.0.100.2
+    metallb.universe.tf/loadBalancerIPs: 10.0.100.3
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
   externalIPs:
-    - 10.0.100.2
+    - 10.0.100.3
   ports:
   - port: 53
     targetPort: 53
@@ -62,14 +62,14 @@ metadata:
     app.kubernetes.io/instance: adguard
     app.kubernetes.io/name: adguard-home
   annotations:
-    cni.projectcalico.org/ipAddrs: '["10.0.100.2"]'
+    cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
     traefik.ingress.kubernetes.io/service.nativelb: "true"
-    metallb.universe.tf/loadBalancerIPs: 10.0.100.2
+    metallb.universe.tf/loadBalancerIPs: 10.0.100.3
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
   externalIPs:
-    - 10.0.100.2
+    - 10.0.100.3
   ports:
   - port: 3000
     targetPort: http

@@ -68,11 +68,10 @@ spec:
       webserver:
         controller: main
         type: LoadBalancer
-        loadBalancerIP: 10.0.101.4
         annotations:
           metallb.universe.tf/allow-shared-ip: "calibre-share"
           metallb.universe.tf/address-pool: "default"
-          metallb.universe.tf/loadBalancerIPs: 10.0.101.4
+          metallb.universe.tf/loadBalancerIPs: 10.0.101.2
           traefik.ingress.kubernetes.io/service.nativelb: "true"
         externalTrafficPolicy: Local
         ports:
@@ -81,11 +80,10 @@ spec:
       connect:
         controller: main
         type: LoadBalancer
-        loadBalancerIP: 10.0.101.4
         annotations:
           metallb.universe.tf/allow-shared-ip: "calibre-share"
           metallb.universe.tf/address-pool: "default"
-          metallb.universe.tf/loadBalancerIPs: 10.0.101.4
+          metallb.universe.tf/loadBalancerIPs: 10.0.101.2
           traefik.ingress.kubernetes.io/service.nativelb: "true"
         ports:
           connect:
