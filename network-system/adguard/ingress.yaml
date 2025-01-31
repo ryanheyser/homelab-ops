@@ -1,0 +1,42 @@
+---
+# Source: adguard-home/templates/common.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: adguard-home
+  namespace: network-system
+  labels:
+    app.kubernetes.io/instance: adguard
+    app.kubernetes.io/name: adguard-home
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+    traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - "dns.homelab.heyser.xyz"
+        - "adguard.homelab.heyser.xyz"
+      secretName: "adguard-homelab-heyser-xyz-tls"
+  rules:
+    - host: "dns.homelab.heyser.xyz"
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: adguard-home
+                port:
+                  number: 3000
+    - host: "adguard.homelab.heyser.xyz"
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: adguard-home
+                port:
+                  number: 3000

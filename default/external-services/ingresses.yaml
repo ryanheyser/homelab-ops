@@ -4,8 +4,11 @@ kind: Ingress
 metadata:
   name: truenas
   annotations:
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    # nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+    traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
 spec:
   ingressClassName: traefik
   rules:
@@ -63,9 +66,11 @@ kind: Ingress
 metadata:
   name: plex
   annotations:
-    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+    # nginx.ingress.kubernetes.io/backend-protocol: HTTPS
     # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    traefik.ingress.kubernetes.io/service.serversscheme: https
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+    traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
 spec:
   ingressClassName: traefik
   rules:

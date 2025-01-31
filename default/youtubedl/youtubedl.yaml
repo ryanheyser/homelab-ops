@@ -59,12 +59,18 @@ spec:
               GID: 1000
     service:
       main:
+        annotations:
+          traefik.ingress.kubernetes.io/service.nativelb: "true"
         controller: main
         ports:
           http:
             port: 17442
     ingress:
       main:
+        annotations:
+          kubernetes.io/ingress.class: traefik
+          traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+          traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
         className: 'traefik'
         hosts:
         - host: &host "youtubedl.homelab.heyser.xyz"

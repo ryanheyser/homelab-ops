@@ -58,6 +58,8 @@ spec:
 
     service:
       main:
+        annotations:
+          traefik.ingress.kubernetes.io/service.nativelb: "true"
         controller: main
         type: ClusterIP
         ports:
@@ -69,9 +71,6 @@ spec:
         annotations:
           kubernetes.io/ingress.class: traefik
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
-          # traefik.ingress.kubernetes.io/router.tls: "true"
-          # traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt-prod"
-          traefik.ingress.kubernetes.io/service.nativelb: "true"
           traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
         className: traefik
         hosts:
