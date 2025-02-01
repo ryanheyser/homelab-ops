@@ -20,7 +20,7 @@ spec:
             name: truenas-ip
             port:
               number: 443
-        path: /ui
+        path: /
         pathType: Prefix
   - host: awoofy.homelab.heyser.xyz
     http:
@@ -30,7 +30,7 @@ spec:
             name: truenas-ip
             port:
               number: 443
-        path: /ui
+        path: /
         pathType: Prefix
   - host: kracko.homelab.heyser.xyz
     http:
@@ -40,7 +40,7 @@ spec:
             name: truenas-ip
             port:
               number: 443
-        path: /ui
+        path: /
         pathType: Prefix
   tls:
   - hosts:
@@ -70,7 +70,7 @@ spec:
             name: plex-ip
             port:
               number: 32400
-        path: /web
+        path: /
         pathType: Prefix
   - host: plex.heyser.xyz
     http:
@@ -80,7 +80,7 @@ spec:
             name: plex-ip
             port:
               number: 32400
-        path: /web
+        path: /
         pathType: Prefix
   tls:
   - hosts:
