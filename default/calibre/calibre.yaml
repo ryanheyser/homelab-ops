@@ -72,6 +72,7 @@ spec:
           metallb.universe.tf/allow-shared-ip: "calibre-share"
           metallb.universe.tf/address-pool: "default"
           metallb.universe.tf/loadBalancerIPs: 10.0.101.2
+          cni.projectcalico.org/ipAddrs: '["10.0.101.2"]'
           traefik.ingress.kubernetes.io/service.nativelb: "true"
         externalTrafficPolicy: Local
         ports:
@@ -84,6 +85,7 @@ spec:
           metallb.universe.tf/allow-shared-ip: "calibre-share"
           metallb.universe.tf/address-pool: "default"
           metallb.universe.tf/loadBalancerIPs: 10.0.101.2
+          cni.projectcalico.org/ipAddrs: '["10.0.101.2"]'
           traefik.ingress.kubernetes.io/service.nativelb: "true"
         ports:
           connect:

@@ -72,11 +72,11 @@ spec:
       bittorrent:
         controller: main
         type: LoadBalancer
-        loadBalancerIP: 10.0.101.5
         annotations:
           metallb.universe.tf/allow-shared-ip: "qbittorrent-share"
           metallb.universe.tf/address-pool: "default"
           metallb.universe.tf/loadBalancerIPs: 10.0.101.5
+          cni.projectcalico.org/ipAddrs: '["10.0.101.5"]'
         ports:
           bittorrent:
             enabled: true
@@ -93,7 +93,7 @@ spec:
         #   nginx.ingress.kubernetes.io/auth-signin: https://auth.homelab.heyser.xyz/oauth2/start
           kubernetes.io/ingress.class: traefik
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
-          traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+          # traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
         hosts:
         - host: &host "qbittorrent.homelab.heyser.xyz"
           paths:
