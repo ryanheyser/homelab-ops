@@ -6,7 +6,7 @@ metadata:
   annotations:
     traefik.ingress.kubernetes.io/service.serversscheme: "https"
     traefik.ingress.kubernetes.io/service.passhostheader: "true"
-    traefik.ingress.kubernetes.io/service.nativelb: "true"
+    # traefik.ingress.kubernetes.io/service.nativelb: "true"
     traefik.ingress.kubernetes.io/service.serverstransport: truenastransport@kubernetescrd
 spec:
   ports:
@@ -28,7 +28,7 @@ metadata:
   annotations:
     traefik.ingress.kubernetes.io/service.serversscheme: "https"
     traefik.ingress.kubernetes.io/service.passhostheader: "true"
-    traefik.ingress.kubernetes.io/service.nativelb: "true"
+    # traefik.ingress.kubernetes.io/service.nativelb: "true"
     traefik.ingress.kubernetes.io/service.serverstransport: plextransport@kubernetescrd
 spec:
   ports:
