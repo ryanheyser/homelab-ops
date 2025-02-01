@@ -17,25 +17,16 @@ spec:
               - secretRef:
                   name: cloudflare-ddns-star-root
                   optional: false
-              env:
-              - name: NAME
-                value: "*.heyser.xyz"
             - name: cloudflare-ddns-root
               image: mirioeggmann/cloudflare-ddns:latest
               envFrom:
               - secretRef:
                   name: cloudflare-ddns-root
                   optional: false
-              env:
-              - name: NAME
-                value: "heyser.xyz"
             - name: cloudflare-ddns-star-homelab
               image: mirioeggmann/cloudflare-ddns:latest
               envFrom:
               - secretRef:
                   name: cloudflare-ddns-star-homelab
                   optional: false
-              env:
-              - name: NAME
-                value: "*.homelab.heyser.xyz"
           restartPolicy: OnFailure
