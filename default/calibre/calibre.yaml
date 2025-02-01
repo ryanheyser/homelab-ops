@@ -68,6 +68,8 @@ spec:
       webserver:
         controller: main
         type: LoadBalancer
+        externalIPs:
+        - 10.0.101.2
         annotations:
           metallb.universe.tf/allow-shared-ip: "calibre-share"
           metallb.universe.tf/address-pool: "default"
@@ -81,6 +83,8 @@ spec:
       connect:
         controller: main
         type: LoadBalancer
+        externalIPs:
+        - 10.0.101.2
         annotations:
           metallb.universe.tf/allow-shared-ip: "calibre-share"
           metallb.universe.tf/address-pool: "default"
