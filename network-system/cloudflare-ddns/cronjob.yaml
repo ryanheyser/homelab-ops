@@ -12,19 +12,22 @@ spec:
         spec:
           containers:
             - name: cloudflare-ddns-star-root
-              image: mirioeggmann/cloudflare-ddns:latest
+              # renovate: repository=mirioeggmann/cloudflare-ddns
+              image: mirioeggmann/cloudflare-ddns:cdd0ea3b0fc795627a059b654769e3b39e3903dc
               envFrom:
               - secretRef:
                   name: cloudflare-ddns-star-root
                   optional: false
             - name: cloudflare-ddns-root
-              image: mirioeggmann/cloudflare-ddns:latest
+              # renovate: repository=mirioeggmann/cloudflare-ddns
+              image: mirioeggmann/cloudflare-ddns:cdd0ea3b0fc795627a059b654769e3b39e3903dc
               envFrom:
               - secretRef:
                   name: cloudflare-ddns-root
                   optional: false
             - name: cloudflare-ddns-star-homelab
-              image: mirioeggmann/cloudflare-ddns:latest
+              # renovate: repository=mirioeggmann/cloudflare-ddns
+              image: mirioeggmann/cloudflare-ddns:cdd0ea3b0fc795627a059b654769e3b39e3903dc
               envFrom:
               - secretRef:
                   name: cloudflare-ddns-star-homelab
