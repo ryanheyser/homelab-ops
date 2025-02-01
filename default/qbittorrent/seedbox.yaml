@@ -72,6 +72,8 @@ spec:
       bittorrent:
         controller: main
         type: LoadBalancer
+        externalIPs:
+        - 10.0.101.5
         annotations:
           metallb.universe.tf/allow-shared-ip: "qbittorrent-share"
           metallb.universe.tf/address-pool: "default"
