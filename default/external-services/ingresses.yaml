@@ -69,7 +69,7 @@ spec:
           service:
             name: plex-ip
             port:
-              number: 32400
+              number: 443
         path: /
         pathType: Prefix
   - host: plex.heyser.xyz
@@ -79,7 +79,7 @@ spec:
           service:
             name: plex-ip
             port:
-              number: 32400
+              number: 443
         path: /
         pathType: Prefix
   tls:
