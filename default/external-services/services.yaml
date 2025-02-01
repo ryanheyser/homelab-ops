@@ -15,6 +15,10 @@ spec:
     protocol: TCP
     targetPort: 443
   clusterIP: None
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
   type: ClusterIP
 ---
 apiVersion: v1
@@ -33,5 +37,9 @@ spec:
     protocol: TCP
     targetPort: 32400
   clusterIP: None
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
   type: ClusterIP
 ---
