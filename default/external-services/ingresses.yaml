@@ -42,23 +42,11 @@ spec:
               number: 443
         path: /
         pathType: Prefix
-  - host: awoofy.homelab.heyser.lan
-    http:
-      paths:
-      - backend:
-          service:
-            name: truenas-ip
-            port:
-              number: 443
-        path: /
-        pathType: Prefix
-
   tls:
   - hosts:
     - storage.homelab.heyser.xyz
     - awoofy.homelab.heyser.xyz
     - kracko.homelab.heyser.xyz
-    - awoofy.homelab.heyser.lan
     secretName: truenas-homelab-heyser-xyz-tls
 ---
 apiVersion: networking.k8s.io/v1
