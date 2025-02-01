@@ -2,12 +2,56 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: truenas-ip
+  name: truenas-awoofy-ip
   annotations:
     traefik.ingress.kubernetes.io/service.serversscheme: "https"
     traefik.ingress.kubernetes.io/service.passhostheader: "true"
     # traefik.ingress.kubernetes.io/service.nativelb: "true"
-    traefik.ingress.kubernetes.io/service.serverstransport: truenastransport@kubernetescrd
+    traefik.ingress.kubernetes.io/service.serverstransport: awoofytransport@kubernetescrd
+spec:
+  ports:
+  - name: truenas
+    port: 443
+    protocol: TCP
+    targetPort: 443
+  clusterIP: None
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: truenas-storage-ip
+  annotations:
+    traefik.ingress.kubernetes.io/service.serversscheme: "https"
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
+    # traefik.ingress.kubernetes.io/service.nativelb: "true"
+    traefik.ingress.kubernetes.io/service.serverstransport: storagetransport@kubernetescrd
+spec:
+  ports:
+  - name: truenas
+    port: 443
+    protocol: TCP
+    targetPort: 443
+  clusterIP: None
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: truenas-kracko-ip
+  annotations:
+    traefik.ingress.kubernetes.io/service.serversscheme: "https"
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
+    # traefik.ingress.kubernetes.io/service.nativelb: "true"
+    traefik.ingress.kubernetes.io/service.serverstransport: krackotransport@kubernetescrd
 spec:
   ports:
   - name: truenas
