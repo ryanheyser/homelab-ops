@@ -2,9 +2,25 @@
 apiVersion: traefik.io/v1alpha1
 kind: ServersTransport
 metadata:
-  name: truenastransport
+  name: awoofytransport
 spec:
   serverName: awoofy.homelab.heyser.xyz
+  insecureSkipVerify: true
+---
+apiVersion: traefik.io/v1alpha1
+kind: ServersTransport
+metadata:
+  name: storagetransport
+spec:
+  serverName: storage.homelab.heyser.xyz
+  insecureSkipVerify: true
+---
+apiVersion: traefik.io/v1alpha1
+kind: ServersTransport
+metadata:
+  name: krackotransport
+spec:
+  serverName: kracko.homelab.heyser.xyz
   insecureSkipVerify: true
 ---
 apiVersion: traefik.io/v1alpha1
