@@ -61,10 +61,10 @@ spec:
 
     ingress:
       # -- Enable and configure ingress settings for the chart under this key.
-      annotations:
+      additionalAnnotations:
         kubernetes.io/ingress.class: traefik
         traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
-        traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+        # traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
       main:
         hosts:
           - host: &host "vaultwarden.homelab.heyser.xyz"
