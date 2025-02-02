@@ -154,7 +154,7 @@ spec:
   - port: 443
     targetPort: 443
     protocol: TCP
-    name: http-dns
+    name: dns-http
   selector:
     app.kubernetes.io/name: adguard-home
     app.kubernetes.io/instance: adguard
