@@ -74,7 +74,7 @@ data:
         cache_time: 30
         rewrites: []
         blocked_services: []
-        local_domain_name: heyser.lan
+        local_domain_name: homelab.heyser.xyz
         resolve_clients: true
         local_ptr_upstreams:
         - 10.0.0.1
