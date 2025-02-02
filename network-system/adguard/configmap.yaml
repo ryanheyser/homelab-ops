@@ -92,8 +92,8 @@ data:
         strict_sni_check: false
         certificate_chain: ""
         private_key: ""
-        certificate_path: ""
-        private_key_path: ""
+        certificate_path: "/opt/adguardcertificate/tls.crt"
+        private_key_path: "/opt/adguardcertificate/tls.key"
       filters:
       - enabled: true
         url: https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
