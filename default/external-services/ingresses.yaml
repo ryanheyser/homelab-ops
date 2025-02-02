@@ -79,7 +79,7 @@ spec:
           service:
             name: plex-ip
             port:
-              number: 443
+              number: 32400
         path: /
         pathType: Prefix
   tls:
