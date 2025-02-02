@@ -11,15 +11,15 @@ subsets:
     port: 443
     protocol: TCP
 ---
-apiVersion: v1
-kind: Endpoints
-metadata:
-  name: plex-ip
-subsets:
-- addresses:
-  - ip: 10.0.1.1
-  ports:
-  - name: plex
-    port: 32400
-    protocol: TCP
+#apiVersion: v1
+#kind: Endpoints
+#metadata:
+  #name: plex-ip
+#subsets:
+#- addresses:
+  #- ip: 10.0.1.1
+  #ports:
+  #- name: plex
+    #port: 32400
+    #protocol: TCP
 ---
