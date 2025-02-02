@@ -90,6 +90,9 @@ spec:
         - name: http
           containerPort: 3000
           protocol: TCP
+        - name: dns-http
+          containerPort: 443
+          protocol: TCP
         volumeMounts:
         - name: adguard-home-config
           mountPath: /tmp/AdGuardHome.yaml
