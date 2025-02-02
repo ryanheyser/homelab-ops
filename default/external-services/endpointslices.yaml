@@ -5,6 +5,7 @@ metadata:
   name: plex-ip
   labels:
     kubernetes.io/service-name: plex-ip
+addressType: IPv4
 endpoints:
   - addresses:
       - 10.0.1.1
@@ -12,4 +13,6 @@ endpoints:
       ready: true
       serving: true
 ports:
-  - port: 32400
+  - name: plex
+    port: 32400
+    protocol: TCP
