@@ -4,6 +4,6 @@ namespace: default
 resources:
 - ./certificates.yaml
 - ./services.yaml
-- ./endpoints.yaml
+- ./endpointslices.yaml
 - ./servertransports.yaml
 - ./ingresses.yaml
