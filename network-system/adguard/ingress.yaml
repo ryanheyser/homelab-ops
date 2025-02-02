@@ -7,7 +7,7 @@ metadata:
   namespace: network-system
   labels:
     app.kubernetes.io/instance: adguard
-    app.kubernetes.io/name: adguard-dns
+    app.kubernetes.io/name: adguard-home
   annotations:
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
@@ -22,11 +22,11 @@ spec:
     - host: "dns.homelab.heyser.xyz"
       http:
         paths:
-          - path: "/"
+          - path: "/dns-query"
             pathType: Prefix
             backend:
               service:
-                name: adguard-home
+                name: adguard-dns
                 port:
                   number: 443
 ---
