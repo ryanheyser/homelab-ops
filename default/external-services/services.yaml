@@ -7,7 +7,7 @@ metadata:
     traefik.ingress.kubernetes.io/service.serversscheme: "https"
     traefik.ingress.kubernetes.io/service.passhostheader: "true"
     # traefik.ingress.kubernetes.io/service.nativelb: "true"
-    traefik.ingress.kubernetes.io/service.serverstransport: awoofytransport@kubernetescrd
+    traefik.ingress.kubernetes.io/service.serverstransport: default-awoofytransport@kubernetescrd
 spec:
   ports:
   - name: truenas
@@ -29,7 +29,7 @@ metadata:
     traefik.ingress.kubernetes.io/service.serversscheme: "https"
     traefik.ingress.kubernetes.io/service.passhostheader: "true"
     # traefik.ingress.kubernetes.io/service.nativelb: "true"
-    traefik.ingress.kubernetes.io/service.serverstransport: storagetransport@kubernetescrd
+    traefik.ingress.kubernetes.io/service.serverstransport: default-storagetransport@kubernetescrd
 spec:
   ports:
   - name: truenas
@@ -51,7 +51,7 @@ metadata:
     traefik.ingress.kubernetes.io/service.serversscheme: "https"
     traefik.ingress.kubernetes.io/service.passhostheader: "true"
     # traefik.ingress.kubernetes.io/service.nativelb: "true"
-    traefik.ingress.kubernetes.io/service.serverstransport: krackotransport@kubernetescrd
+    traefik.ingress.kubernetes.io/service.serverstransport: default-krackotransport@kubernetescrd
 spec:
   ports:
   - name: truenas
@@ -73,7 +73,7 @@ metadata:
     traefik.ingress.kubernetes.io/service.serversscheme: "https"
     traefik.ingress.kubernetes.io/service.passhostheader: "true"
     # traefik.ingress.kubernetes.io/service.nativelb: "true"
-    traefik.ingress.kubernetes.io/service.serverstransport: plextransport@kubernetescrd
+    traefik.ingress.kubernetes.io/service.serverstransport: default-plextransport@kubernetescrd
 spec:
   ports:
   - name: plex
