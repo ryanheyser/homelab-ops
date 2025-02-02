@@ -94,6 +94,12 @@ data:
         private_key: ""
         certificate_path: "/opt/adguardcertificate/tls.crt"
         private_key_path: "/opt/adguardcertificate/tls.key"
+      filtering:
+        protection_enabled: true
+        filtering_enabled: true
+        rewrites:
+        - domain: '*.homelab.heyser.xyz'
+          answer: 10.0.100.1
       filters:
       - enabled: true
         url: https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
