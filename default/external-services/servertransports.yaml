@@ -31,4 +31,5 @@ spec:
   #serverName: plex.homelab.heyser.xyz
   peerCertURI: 10.0.1.1
   insecureSkipVerify: true
+  disableHTTP2: true
 ---
