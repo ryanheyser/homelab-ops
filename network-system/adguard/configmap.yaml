@@ -78,7 +78,7 @@ data:
         resolve_clients: true
         local_ptr_upstreams:
         - 10.0.0.1
-        - 10.254.0.10
+        - 169.254.20.10
       tls:
         enabled: true
         server_name: "dns.homelab.heyser.xyz"
