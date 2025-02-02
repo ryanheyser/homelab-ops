@@ -25,6 +25,59 @@ spec:
     app.kubernetes.io/name: adguard-home
     app.kubernetes.io/instance: adguard
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: adguard-home-dns-tls-tcp
+  namespace: network-system
+  labels:
+    app.kubernetes.io/name: adguard-home
+    app.kubernetes.io/instance: adguard
+  annotations:
+    cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
+    traefik.ingress.kubernetes.io/service.nativelb: "true"
+    metallb.universe.tf/loadBalancerIPs: 10.0.100.3
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Local
+  externalIPs:
+    - 10.0.100.3
+  ports:
+  - port: 853
+    targetPort: 853
+    protocol: TCP
+    name: dns-tls-tcp
+  selector:
+    app.kubernetes.io/name: adguard-home
+    app.kubernetes.io/instance: adguard
+---
+# Source: adguard-home/templates/common.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: adguard-home-dns-quic-udp
+  namespace: network-system
+  labels:
+    app.kubernetes.io/instance: adguard
+    app.kubernetes.io/name: adguard-home
+  annotations:
+    cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
+    traefik.ingress.kubernetes.io/service.nativelb: "true"
+    metallb.universe.tf/loadBalancerIPs: 10.0.100.3
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Local
+  externalIPs:
+    - 10.0.100.3
+  ports:
+  - port: 784
+    targetPort: 784
+    protocol: UDP
+    name: dns-quic-udp
+  selector:
+    app.kubernetes.io/name: adguard-home
+    app.kubernetes.io/instance: adguard
+---
 # Source: adguard-home/templates/common.yaml
 apiVersion: v1
 kind: Service
@@ -79,3 +132,31 @@ spec:
     app.kubernetes.io/name: adguard-home
     app.kubernetes.io/instance: adguard
 ---
+# Source: adguard-home/templates/common.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: adguard-home-https
+  namespace: network-system
+  labels:
+    app.kubernetes.io/instance: adguard
+    app.kubernetes.io/name: adguard-home
+  annotations:
+    cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
+    traefik.ingress.kubernetes.io/service.nativelb: "true"
+    metallb.universe.tf/loadBalancerIPs: 10.0.100.3
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Local
+  externalIPs:
+    - 10.0.100.3
+  ports:
+  - port: 443
+    targetPort: 443
+    protocol: TCP
+    name: http-dns
+  selector:
+    app.kubernetes.io/name: adguard-home
+    app.kubernetes.io/instance: adguard
+---
+
