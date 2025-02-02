@@ -78,8 +78,14 @@ spec:
         - name: dns-tcp
           containerPort: 53
           protocol: TCP
+        - name: dns-tls-tcp
+          containerPort: 853
+          protocol: TCP
         - name: dns-udp
           containerPort: 53
+          protocol: UDP
+        - name: dns-quic-udp
+          containerPort: 784
           protocol: UDP
         - name: http
           containerPort: 3000
@@ -90,6 +96,9 @@ spec:
           subPath: AdGuardHome.yaml
         - name: config
           mountPath: /opt/adguardhome/conf
+        - name: certificate
+          mountPath: /opt/adguardcertificate
+          readOnly: true
         resources:
           limits:
             cpu: "2"
@@ -125,6 +134,10 @@ spec:
       - name: config
         emptyDir:
           medium: Memory
+      - name: certificate
+        secret:
+          secretName: adguard-homelab-heyser-xyz-tls
+          optional: false
       tolerations:
       - effect: PreferNoSchedule
         key: node-role.kubernetes.io
