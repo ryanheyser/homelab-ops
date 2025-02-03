@@ -26,6 +26,7 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    installCRDs: false
     oauthSecretVolume:
       secret:
         secretName: tailscale-credentials

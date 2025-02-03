@@ -2,6 +2,12 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: network-system
 resources:
+# renovate: registryUrl=https://pkgs.tailscale.com/helmcharts
+- https://raw.githubusercontent.com/tailscale/tailscale/refs/tags/v1.78.3/cmd/k8s-operator/deploy/crds/tailscale.com_connectors.yaml
+- https://raw.githubusercontent.com/tailscale/tailscale/refs/tags/v1.78.3/cmd/k8s-operator/deploy/crds/tailscale.com_dnsconfigs.yaml
+- https://raw.githubusercontent.com/tailscale/tailscale/refs/tags/v1.78.3/cmd/k8s-operator/deploy/crds/tailscale.com_proxyclasses.yaml
+- https://raw.githubusercontent.com/tailscale/tailscale/refs/tags/v1.78.3/cmd/k8s-operator/deploy/crds/tailscale.com_proxygroups.yaml
+- https://raw.githubusercontent.com/tailscale/tailscale/refs/tags/v1.78.3/cmd/k8s-operator/deploy/crds/tailscale.com_recorders.yaml
 - ./secret.yaml
 - ./tailscale-operator.yaml
 - ./connector.yaml
