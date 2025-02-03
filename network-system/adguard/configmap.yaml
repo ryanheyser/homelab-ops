@@ -142,16 +142,17 @@ data:
           id: 8
       whitelist_filters: []
       user_rules:
-        - '10.0.0.9 vm.homelab.heyser.xyz'
-        - '10.0.0.9 proxmox.homelab.heyser.xyz'
-        - '10.0.0.12 vm.homelab.heyser.xyz'
-        - '10.0.0.12 proxmox.homelab.heyser.xyz'
-        - '10.0.0.13 vm.homelab.heyser.xyz'
-        - '10.0.0.13 proxmox.homelab.heyser.xyz'
-        - '10.0.0.14 vm.homelab.heyser.xyz'
-        - '10.0.0.14 proxmox.homelab.heyser.xyz'
-        - '10.0.0.15 vm.homelab.heyser.xyz'
-        - '10.0.0.15 proxmox.homelab.heyser.xyz'
+        - '||vm.homelab.heyser.xyz^$dnsrewrite=NOERROR;A;10.0.1.9'
+        - '||vm.homelab.heyser.xyz^$dnsrewrite=NOERROR;A;10.0.1.12'
+        - '||vm.homelab.heyser.xyz^$dnsrewrite=NOERROR;A;10.0.1.13'
+        - '||vm.homelab.heyser.xyz^$dnsrewrite=NOERROR;A;10.0.1.14'
+        - '||vm.homelab.heyser.xyz^$dnsrewrite=NOERROR;A;10.0.1.15'
+        - '||proxmox.homelab.heyser.xyz^$dnsrewrite=NOERROR;A;10.0.1.9'
+        - '||proxmox.homelab.heyser.xyz^$dnsrewrite=NOERROR;A;10.0.1.12'
+        - '||proxmox.homelab.heyser.xyz^$dnsrewrite=NOERROR;A;10.0.1.13'
+        - '||proxmox.homelab.heyser.xyz^$dnsrewrite=NOERROR;A;10.0.1.14'
+        - '||proxmox.homelab.heyser.xyz^$dnsrewrite=NOERROR;A;10.0.1.15'
+        - '||*.homelab.heyser.xyz^$dnsrewrite=NOERROR;A;10.0.100.1'
         - '@@||aa.paramountplus.com^'
         - '@@||cbsinteractive.hb.omtrdc.net^'
         - '@@||ads.play.cbsi.video^'
@@ -177,7 +178,7 @@ data:
         - '@@||iprofiles.apple.com^'
         - '@@||mdmenrollment.apple.com^'
         - '@@||setup.icloud.com^'
-        - '@@||vpp.itunes.apple.com       ^'
+        - '@@||vpp.itunes.apple.com^'
         - '@@||appldnld.apple.com^'
         - '@@||configuration.apple.com^'
         - '@@||gdmf.apple.com^'
@@ -327,8 +328,8 @@ data:
             answer: 10.0.100.3
           - domain: 'calibreconnect.homelab.heyser.xyz'
             answer: 10.0.101.2
-          - domain: '*.homelab.heyser.xyz'
-            answer: 10.0.100.1
+          # - domain: '*.homelab.heyser.xyz'
+          #   answer: 10.0.100.1
         safe_fs_patterns:
           - /opt/adguardhome/work/data/userfilters/*
         safebrowsing_cache_size: 1048576
