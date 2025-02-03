@@ -58,7 +58,9 @@
         "intel-device-plugins-operator",
         "intel-device-plugins-gpu",
         "coredns",
-        "cert-manager"
+        "cert-manager",
+        "tailscale",
+        "tailscale-operator"
       ]
     },
     {
