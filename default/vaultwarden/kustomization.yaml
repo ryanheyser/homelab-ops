@@ -6,3 +6,4 @@ resources:
 - ./pvc.yaml
 - ./secret.yaml
 - ./vaultwarden.yaml
+- ./tailscale.yaml

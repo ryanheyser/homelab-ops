@@ -6,3 +6,4 @@ resources:
 - ./pvc.yaml
 - ./secret.yaml
 - ./calibre.yaml
+- ./tailscale.yaml

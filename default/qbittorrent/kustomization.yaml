@@ -7,3 +7,4 @@ resources:
 - ./vpn.yaml
 - ./qbittorrent.yaml
 - ./seedbox.yaml
+- ./tailscale.yaml

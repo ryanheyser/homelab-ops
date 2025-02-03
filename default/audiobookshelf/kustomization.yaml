@@ -5,3 +5,4 @@ resources:
 - ./pvc.yaml
 - ./certificate.yaml
 - ./audiobookshelf.yaml
+- ./tailscale.yaml
