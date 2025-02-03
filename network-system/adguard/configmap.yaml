@@ -142,6 +142,8 @@ data:
           id: 8
       whitelist_filters: []
       user_rules:
+        - '||*.homelab.heyser.xyz^$dnsrewrite=NOERROR;A;10.0.100.1'
+        - '@@||vm.homelab.heyser.xyz^$important,dnsrewrite'
         - '||vm.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.9'
         - '||vm.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.12'
         - '||vm.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.13'
@@ -152,7 +154,6 @@ data:
         - '||proxmox.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.13'
         - '||proxmox.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.14'
         - '||proxmox.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.15'
-        - '||*.homelab.heyser.xyz^$dnsrewrite=NOERROR;A;10.0.100.1'
         - '@@||aa.paramountplus.com^'
         - '@@||cbsinteractive.hb.omtrdc.net^'
         - '@@||ads.play.cbsi.video^'
