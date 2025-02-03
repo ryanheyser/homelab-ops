@@ -271,11 +271,11 @@ data:
         parental_block_host: family-block.dns.adguard.com
         safebrowsing_block_host: standard-block.dns.adguard.com
         rewrites:
-          - domain: dns.homelab.heyser.xyz
+          - domain: 'dns.homelab.heyser.xyz'
             answer: 10.0.100.3
-          - domain: calibreconnect.homelab.heyser.xyz
+          - domain: 'calibreconnect.homelab.heyser.xyz'
             answer: 10.0.101.2
-          - domain: *.homelab.heyser.xyz
+          - domain: '*.homelab.heyser.xyz'
             answer: 10.0.100.1
         safe_fs_patterns:
           - /opt/adguardhome/work/data/userfilters/*
