@@ -1,0 +1,31 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: tailscale-operator
+  namespace: network-system
+spec:
+  interval: 15m
+  chart:
+    spec:
+      # renovate: registryUrl=https://pkgs.tailscale.com/helmcharts
+      chart: tailscale-operator
+      version: 1.78.3
+      sourceRef:
+        kind: HelmRepository
+        name: tailscale
+        namespace: flux-system
+  maxHistory: 3
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    oauthSecretVolume:
+      secret:
+        secretName: tailscale-credentials

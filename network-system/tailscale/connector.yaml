@@ -1,0 +1,29 @@
+---
+apiVersion: tailscale.com/v1alpha1
+kind: Connector
+metadata:
+  name: ts-k8s-pod-cidrs
+spec:
+  hostname: ts-k8s-pod-cidrs
+  subnetRouter:
+    advertiseRoutes:
+      - "10.255.0.0/16"
+---
+apiVersion: tailscale.com/v1alpha1
+kind: Connector
+metadata:
+  name: ts-k8s-home-cidrs
+spec:
+  hostname: ts-k8s-home-cidrs
+  subnetRouter:
+    advertiseRoutes:
+      - "10.0.0.0/18"
+---
+apiVersion: tailscale.com/v1alpha1
+kind: Connector
+metadata:
+  name: ts-k8s-exit-node
+spec:
+  hostname: ts-k8s-exit-node
+  exitNode: true
+---
