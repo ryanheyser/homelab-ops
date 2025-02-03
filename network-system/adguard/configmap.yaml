@@ -132,6 +132,14 @@ data:
           url: https://blocklistproject.github.io/Lists/adguard/abuse-ags.txt
           name: BLP - abuse
           id: 6
+        - enabled: true
+          url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_48.txt
+          name: HaGeZi's Pro Blocklist
+          id: 7
+        - enabled: true
+          url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_9.txt
+          name: The Big List of Hacked Malware Web Sites
+          id: 8
       whitelist_filters: []
       user_rules:
         - '@@||aa.paramountplus.com^'
