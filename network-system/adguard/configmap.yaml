@@ -149,11 +149,50 @@ data:
         - '||vm.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.13'
         - '||vm.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.14'
         - '||vm.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.15'
+        - '@@||proxmox.homelab.heyser.xyz^$dnsrewrite'
         - '||proxmox.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.9'
         - '||proxmox.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.12'
         - '||proxmox.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.13'
         - '||proxmox.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.14'
         - '||proxmox.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.15'
+        - '@@||kubernetes.homelab.heyser.xyz^$dnsrewrite'
+        - '||kubernetes.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.10'
+        - '@@||madoo.homelab.heyser.xyz^$dnsrewrite'
+        - '||madoo.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.11'
+        - '@@||magoo.homelab.heyser.xyz^$dnsrewrite'
+        - '||magoo.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.12'
+        - '@@||moggy.homelab.heyser.xyz^$dnsrewrite'
+        - '||moggy.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.13'
+        - '@@||minny.homelab.heyser.xyz^$dnsrewrite'
+        - '||minny.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.14'
+        - '@@||mirra.homelab.heyser.xyz^$dnsrewrite'
+        - '||mirra.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.15'
+        - '@@||peezer.homelab.heyser.xyz^$dnsrewrite'
+        - '||peezer.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.21'
+        - '@@||peloo.homelab.heyser.xyz^$dnsrewrite'
+        - '||peloo.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.22'
+        - '@@||peran.homelab.heyser.xyz^$dnsrewrite'
+        - '||peran.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.23'
+        - '@@||perara.homelab.heyser.xyz^$dnsrewrite'
+        - '||perara.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.24'
+        - '@@||phanta.homelab.heyser.xyz^$dnsrewrite'
+        - '||phanta.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.25'
+        - '@@||posura.homelab.heyser.xyz^$dnsrewrite'
+        - '||posura.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.26'
+        - '@@||pteran.homelab.heyser.xyz^$dnsrewrite'
+        - '||pteran.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.27'
+        - '@@||void.homelab.heyser.xyz^$dnsrewrite'
+        - '||void.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.70'
+        - '@@||storage.homelab.heyser.xyz^$dnsrewrite'
+        - '||storage.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.8'
+        - '@@||kracko.homelab.heyser.xyz^$dnsrewrite'
+        - '||kracko.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.8'
+        - '@@||awoofy.homelab.heyser.xyz^$dnsrewrite'
+        - '||awoofy.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.8'
+        - '@@||dns.homelab.heyser.xyz^$dnsrewrite'
+        - '||dns.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.100.3'
+        - '@@||calibreconnect.homelab.heyser.xyz^$dnsrewrite'
+        - '||calibreconnect.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.101.2'
         - '@@||aa.paramountplus.com^'
         - '@@||cbsinteractive.hb.omtrdc.net^'
         - '@@||ads.play.cbsi.video^'
@@ -290,47 +329,7 @@ data:
         blocking_mode: default
         parental_block_host: family-block.dns.adguard.com
         safebrowsing_block_host: standard-block.dns.adguard.com
-        rewrites:
-          - domain: 'kubernetes.homelab.heyser.xyz'
-            answer: 10.0.1.10
-          - domain: 'madoo.homelab.heyser.xyz'
-            answer: 10.0.1.11
-          - domain: 'magoo.homelab.heyser.xyz'
-            answer: 10.0.1.12
-          - domain: 'moggy.homelab.heyser.xyz'
-            answer: 10.0.1.13
-          - domain: 'minny.homelab.heyser.xyz'
-            answer: 10.0.1.14
-          - domain: 'mirra.homelab.heyser.xyz'
-            answer: 10.0.1.15
-          - domain: 'peezer.homelab.heyser.xyz'
-            answer: 10.0.1.21
-          - domain: 'peloo.homelab.heyser.xyz'
-            answer: 10.0.1.22
-          - domain: 'peran.homelab.heyser.xyz'
-            answer: 10.0.1.23
-          - domain: 'perara.homelab.heyser.xyz'
-            answer: 10.0.1.24
-          - domain: 'phanta.homelab.heyser.xyz'
-            answer: 10.0.1.25
-          - domain: 'posura.homelab.heyser.xyz'
-            answer: 10.0.1.26
-          - domain: 'pteran.homelab.heyser.xyz'
-            answer: 10.0.1.27
-          - domain: 'void.homelab.heyser.xyz'
-            answer: 10.0.0.70
-          - domain: 'storage.homelab.heyser.xyz'
-            answer: 10.0.0.8
-          - domain: 'kracko.homelab.heyser.xyz'
-            answer: 10.0.0.8
-          - domain: 'awoofy.homelab.heyser.xyz'
-            answer: 10.0.0.8
-          - domain: 'dns.homelab.heyser.xyz'
-            answer: 10.0.100.3
-          - domain: 'calibreconnect.homelab.heyser.xyz'
-            answer: 10.0.101.2
-          # - domain: '*.homelab.heyser.xyz'
-          #   answer: 10.0.100.1
+        rewrites: []
         safe_fs_patterns:
           - /opt/adguardhome/work/data/userfilters/*
         safebrowsing_cache_size: 1048576
