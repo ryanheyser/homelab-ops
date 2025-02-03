@@ -98,6 +98,10 @@ data:
         protection_enabled: true
         filtering_enabled: true
         rewrites:
+        - domain: 'calibreconnect.homelab.heyser.xyz'
+          answer: 10.0.101.2
+        - domain: 'dns.homelab.heyser.xyz'
+          answer: 10.0.100.3
         - domain: '*.homelab.heyser.xyz'
           answer: 10.0.100.1
       filters:
