@@ -142,6 +142,16 @@ data:
           id: 8
       whitelist_filters: []
       user_rules:
+        - '10.0.0.9 vm.homelab.heyser.xyz'
+        - '10.0.0.9 proxmox.homelab.heyser.xyz'
+        - '10.0.0.12 vm.homelab.heyser.xyz'
+        - '10.0.0.12 proxmox.homelab.heyser.xyz'
+        - '10.0.0.13 vm.homelab.heyser.xyz'
+        - '10.0.0.13 proxmox.homelab.heyser.xyz'
+        - '10.0.0.14 vm.homelab.heyser.xyz'
+        - '10.0.0.14 proxmox.homelab.heyser.xyz'
+        - '10.0.0.15 vm.homelab.heyser.xyz'
+        - '10.0.0.15 proxmox.homelab.heyser.xyz'
         - '@@||aa.paramountplus.com^'
         - '@@||cbsinteractive.hb.omtrdc.net^'
         - '@@||ads.play.cbsi.video^'
@@ -279,6 +289,40 @@ data:
         parental_block_host: family-block.dns.adguard.com
         safebrowsing_block_host: standard-block.dns.adguard.com
         rewrites:
+          - domain: 'kubernetes.homelab.heyser.xyz'
+            answer: 10.0.1.10
+          - domain: 'madoo.homelab.heyser.xyz'
+            answer: 10.0.1.11
+          - domain: 'magoo.homelab.heyser.xyz'
+            answer: 10.0.1.12
+          - domain: 'moggy.homelab.heyser.xyz'
+            answer: 10.0.1.13
+          - domain: 'minny.homelab.heyser.xyz'
+            answer: 10.0.1.14
+          - domain: 'mirra.homelab.heyser.xyz'
+            answer: 10.0.1.15
+          - domain: 'peezer.homelab.heyser.xyz'
+            answer: 10.0.1.21
+          - domain: 'peloo.homelab.heyser.xyz'
+            answer: 10.0.1.22
+          - domain: 'peran.homelab.heyser.xyz'
+            answer: 10.0.1.23
+          - domain: 'perara.homelab.heyser.xyz'
+            answer: 10.0.1.24
+          - domain: 'phanta.homelab.heyser.xyz'
+            answer: 10.0.1.25
+          - domain: 'posura.homelab.heyser.xyz'
+            answer: 10.0.1.26
+          - domain: 'pteran.homelab.heyser.xyz'
+            answer: 10.0.1.27
+          - domain: 'void.homelab.heyser.xyz'
+            answer: 10.0.0.70
+          - domain: 'storage.homelab.heyser.xyz'
+            answer: 10.0.0.8
+          - domain: 'kracko.homelab.heyser.xyz'
+            answer: 10.0.0.8
+          - domain: 'awoofy.homelab.heyser.xyz'
+            answer: 10.0.0.8
           - domain: 'dns.homelab.heyser.xyz'
             answer: 10.0.100.3
           - domain: 'calibreconnect.homelab.heyser.xyz'
