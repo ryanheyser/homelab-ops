@@ -65,7 +65,7 @@ spec:
         controller: main
         ports:
           http:
-            port: 80
+            port: 8080
       webserver:
         controller: main
         type: LoadBalancer
