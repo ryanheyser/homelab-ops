@@ -35,9 +35,9 @@ spec:
               memory: 2Gi
         pod:
           securityContext:
-            fsGroup: 1001
+            fsGroup: 1000
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [568,911]
+            supplementalGroups: [568,911,1001]
         containers:
           main:
             image:
@@ -49,8 +49,9 @@ spec:
               runAsGroup: 0
             env:
               TZ: America/New_York
-              PUID: "1001"
+              PUID: "1000"
               PGID: "1001"
+              GUID: "1000"
               UMASK_SET: "022"
               DISABLE_IPV6: "true"
             envFrom:
