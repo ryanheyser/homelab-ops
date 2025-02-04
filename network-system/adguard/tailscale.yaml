@@ -1,0 +1,16 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: adguard-tailscale
+  namespace: network-system
+spec:
+  defaultBackend:
+    service:
+      name: adguard-home
+      port:
+        number: 3000
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - adguard
