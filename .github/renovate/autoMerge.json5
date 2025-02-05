@@ -42,6 +42,7 @@
     {
       "datasources": ["helm"],
       "automerge": true,
+      "automergeType": "branch",
       "requiredStatusChecks": null,
       "schedule": "after 1am and before 5am",
       "updateTypes": ["minor", "patch"],
@@ -68,6 +69,7 @@
       "matchManagers": ["github-actions"],
       "matchDatasources": ["github-tags"],
       "automerge": true,
+      "automergeType": "branch",
       "ignoreTests": true,
       "automergeType": "branch",
       "matchUpdateTypes": ["minor", "patch"]
@@ -124,7 +126,7 @@
       "automergeType": "branch",
       "requiredStatusChecks": null,
       "schedule": "after 1am and before 5am",
-      "updateTypes": ["minor", "patch"],
+      "updateTypes": ["patch"],
       "packageNames": [
         "secrets-store-csi-driver",
         "vault"
