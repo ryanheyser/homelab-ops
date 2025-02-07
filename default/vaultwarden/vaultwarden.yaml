@@ -75,6 +75,11 @@ spec:
                 service:
                   identifier: main
                   port: http
+              - path: /admin
+                pathType: Prefix
+                service:
+                  identifier: main
+                  port: http
               - path: /notifications/hub/negotiate
                 pathType: Prefix
                 service:
@@ -104,6 +109,16 @@ spec:
               - path:
                   type: PathPrefix
                   value: /
+            backendRefs:
+              - kind: Service
+                port: 80
+                name: main
+                namespace: default
+                weight: 1
+          - matches:
+              - path:
+                  type: PathPrefix
+                  value: /admin
             backendRefs:
               - kind: Service
                 port: 80
