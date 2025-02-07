@@ -19,7 +19,8 @@
         "adguard/adguardhome",
         "ghcr.io/onedr0p/intel-gpu-exporter",
         "ghcr.io/alexellis/registry-creds",
-        "vaultwarden/server"
+        "vaultwarden/server",
+        "linuxserver/calibre"
       ]
     },
     // auto-updates - weekly
