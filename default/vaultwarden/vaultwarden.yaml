@@ -43,7 +43,6 @@ spec:
               DATA_FOLDER: "/config"
               DOMAIN: "https://vaultwarden.homelab.heyser.xyz"
               SIGNUPS_ALLOWED: "false"
-              ICON_CACHE_FOLDER: "/iconcache"
 
             envFrom:
               - secretRef:
@@ -156,11 +155,3 @@ spec:
         existingClaim: vaultwarden-config
         globalMounts:
           - path: /config
-      iconCache:
-        enabled: true
-        type: emptyDir
-        accessMode: ReadWriteMany
-        globalMounts:
-          - path: /iconcache
-            readOnly: false
-        size: 1Gi
