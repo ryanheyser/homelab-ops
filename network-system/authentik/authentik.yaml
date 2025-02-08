@@ -146,6 +146,8 @@ spec:
               topologyKey: "kubernetes.io/hostname"
       replicas:
         replicaCount: 3
+        pdb:
+          minAvailable: 1
         persistence:
           enabled: true
           storageClass: nfs-dynamic-ss
