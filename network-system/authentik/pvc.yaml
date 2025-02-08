@@ -7,7 +7,7 @@ metadata:
     nfs.io/storage-path: "containers/kubernetes/authentik/postgresql"
 spec:
   accessModes:
-  - ReadWriteOnce
+  - ReadWriteMany
   storageClassName: "nfs-dynamic"
   resources:
     requests:
@@ -22,7 +22,7 @@ metadata:
     nfs.io/storage-path: "containers/kubernetes/authentik/redis"
 spec:
   accessModes:
-  - ReadWriteOnce
+  - ReadWriteMany
   storageClassName: "nfs-dynamic"
   resources:
     requests:
