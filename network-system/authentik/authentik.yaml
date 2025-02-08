@@ -106,7 +106,7 @@ spec:
       # readReplicas:
         # replicaCount: 3
     redis:
-      enabled: true
+      enabled: false
       auth:
         enabled: false
       master:
