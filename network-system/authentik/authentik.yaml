@@ -82,7 +82,7 @@ spec:
     postgresql:
       enabled: true
       global:
-        storageClass: nfs-dynamic
+        defaultStorageClass: nfs-dynamic
       auth:
         existingSecret: "authentik-credentials"
         secretKeys:
@@ -90,26 +90,50 @@ spec:
           userPasswordKey: "userPassword"
           replicationPasswordKey: "replicationPassword"
       primary:
-        # affinity:
-          # podAntiAffinity:
-            # requiredDuringSchedulingIgnoredDuringExecution:
-            # - labelSelector:
-                # matchExpressions:
-                # - key: app.kubernetes.io/component
-                  # operator: In
-                  # values:
-                  # - primary
-              # topologyKey: "kubernetes.io/hostname"
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: app.kubernetes.io/component
+                  operator: In
+                  values:
+                  - primary
+              topologyKey: "kubernetes.io/hostname"
         persistence:
           enabled: true
           existingClaim: "authentik-postgresql-data-claim"
-      # readReplicas:
-        # replicaCount: 3
+      readReplicas:
+        replicaCount: 3
+        persistence:
+          enabled: true
+          storageClass: nfs-dynamic-ss
+          size: 10Gi
+          annotations:
+            nfs.io/storage-path: "containers/kubernetes/authentik/postgresql-readreplicas"
+      volumePermissions:
+        enabled: true
+      backup:
+        enabled: true
+        storage:
+          enabled: true
+          storageClass: nfs-dynamic-ss
+          size: 100Gi
+          annotations:
+            nfs.io/storage-path: "containers/kubernetes/authentik/postgresql-backup"
     redis:
-      enabled: false
+      enabled: true
+      global:
+        defaultStorageClass: nfs-dynamic
       auth:
         enabled: false
       master:
+        persistence:
+          enabled: true
+          annotations:
+            nfs.io/storage-path: "containers/kubernetes/authentik/redis"
+          storageClass: nfs-dynamic
+          size: 10Gi
         affinity:
           podAntiAffinity:
             requiredDuringSchedulingIgnoredDuringExecution:
