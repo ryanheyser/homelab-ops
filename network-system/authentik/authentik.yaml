@@ -90,16 +90,16 @@ spec:
           userPasswordKey: "userPassword"
           replicationPasswordKey: "replicationPassword"
       primary:
-        affinity:
-          podAntiAffinity:
-            requiredDuringSchedulingIgnoredDuringExecution:
-            - labelSelector:
-                matchExpressions:
-                - key: app.kubernetes.io/component
-                  operator: In
-                  values:
-                  - primary
-              topologyKey: "kubernetes.io/hostname"
+        # affinity:
+          # podAntiAffinity:
+            # requiredDuringSchedulingIgnoredDuringExecution:
+            # - labelSelector:
+                # matchExpressions:
+                # - key: app.kubernetes.io/component
+                  # operator: In
+                  # values:
+                  # - primary
+              # topologyKey: "kubernetes.io/hostname"
         persistence:
           enabled: true
           existingClaim: "authentik-postgresql-data-claim"
