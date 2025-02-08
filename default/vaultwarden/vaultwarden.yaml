@@ -159,6 +159,7 @@ spec:
       iconCache:
         enabled: true
         type: emptyDir
+        accessMode: ReadWriteMany
         globalMounts:
           - path: /iconcache
             readOnly: false
