@@ -20,10 +20,10 @@ spec:
     replicaCount: 3
     strategyType: RollingUpdate
     nfs:
-      # server: 10.0.0.8
-      # path: /kracko
-      server: "10.0.0.10"
-      path: "/kracko"  
+      server: 10.0.0.8
+      path: /kracko
+      # server: "10.0.0.10"
+      # path: "/kracko"  
       ## If mount options are set, the chart attempts to patch the persistent volume claims and fails
       # mountOptions:
       #   - "vers=4"
