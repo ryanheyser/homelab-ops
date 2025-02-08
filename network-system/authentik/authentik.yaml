@@ -90,6 +90,8 @@ spec:
           userPasswordKey: "userPassword"
           replicationPasswordKey: "replicationPassword"
       primary:
+        pdb:
+          maxUnavailable: 1
         affinity:
           podAntiAffinity:
             requiredDuringSchedulingIgnoredDuringExecution:
@@ -102,9 +104,25 @@ spec:
               topologyKey: "kubernetes.io/hostname"
         persistence:
           enabled: true
-          existingClaim: "authentik-postgresql-data-claim"
+          # existingClaim: "authentik-postgresql-data-claim"
+          annotations:
+            nfs.io/storage-path: "containers/kubernetes/authentik/postgresql-primary"
+          storageClass: nfs-dynamic
+          size: 10Gi
       readReplicas:
         replicaCount: 3
+        pdb:
+          maxUnavailable: 1
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: app.kubernetes.io/component
+                  operator: In
+                  values:
+                  - read
+              topologyKey: "kubernetes.io/hostname"
         persistence:
           enabled: true
           storageClass: nfs-dynamic-ss
