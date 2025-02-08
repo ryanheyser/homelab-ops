@@ -103,8 +103,8 @@ spec:
         persistence:
           enabled: true
           existingClaim: "authentik-postgresql-data-claim"
-      readReplicas:
-        replicaCount: 3
+      # readReplicas:
+        # replicaCount: 3
     redis:
       enabled: true
       auth:
