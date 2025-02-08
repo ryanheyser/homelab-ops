@@ -62,7 +62,8 @@
         "coredns",
         "cert-manager",
         "tailscale",
-        "tailscale-operator"
+        "tailscale-operator",
+        "audiobookshelf"
       ]
     },
     {
