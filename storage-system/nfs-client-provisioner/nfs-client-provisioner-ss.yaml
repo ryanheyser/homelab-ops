@@ -21,7 +21,7 @@ spec:
     strategyType: RollingUpdate
     nfs:
       server: 10.0.0.8
-      path: /kracko
+      path: /mnt/kracko
       # server: "10.0.0.10"
       # path: "/kracko"  
       ## If mount options are set, the chart attempts to patch the persistent volume claims and fails
