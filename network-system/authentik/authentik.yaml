@@ -46,6 +46,9 @@ spec:
         maxUnavailable: 1
     server:
       replicas: 3
+      env:
+        - name: AUTHENTIK_REDIS__DB
+          value: 1
       pdb:
         enabled: true
         minAvailable: 1
@@ -141,6 +144,7 @@ spec:
             nfs.io/storage-path: "containers/kubernetes/authentik/postgresql-backup"
     redis:
       enabled: true
+      architecture: replication
       global:
         defaultStorageClass: nfs-dynamic
       auth:
