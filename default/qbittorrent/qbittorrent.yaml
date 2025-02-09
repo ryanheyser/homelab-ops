@@ -60,7 +60,7 @@ spec:
               TZ: America/New_York
               QBITTORRENT__PORT: &port 80
               QBITTORRENT__BT_PORT: &port-bt 6881
-      extraVolumeMounts:
+    extraVolumeMounts:
       - name: config
         existingClaim: qbittorrent-config
         mountPath: /config
