@@ -43,11 +43,27 @@ spec:
               DATA_FOLDER: "/config"
               DOMAIN: "https://vaultwarden.homelab.heyser.xyz"
               SIGNUPS_ALLOWED: "false"
+              UID: 568
+              GID: 568
+              PUID: 568
+              PGID: 568
 
             envFrom:
               - secretRef:
                   name: vaultwarden-admin-token
                   optional: false
+
+            pod:
+              securityContext:
+                fsGroup: 568
+                fsGroupChangePolicy: "OnRootMismatch"
+                supplementalGroups: [568,911,1000,1001]
+            
+            containers:
+              main:
+                securityContext:
+                  runAsUser: 568
+                  runAsGroup: 568
 
     # -- Configures service settings for the chart.
     service:
