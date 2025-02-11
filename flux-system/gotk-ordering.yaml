@@ -11,11 +11,11 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  healthChecks:
-    - apiiVersion: apps/v1
-      kind: Deployment
-      name: cert-manager
-      namespace: cert-manager-system
+  # healthChecks:
+  #   - apiiVersion: apps/v1
+  #     kind: Deployment
+  #     name: cert-manager
+  #     namespace: cert-manager-system
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
