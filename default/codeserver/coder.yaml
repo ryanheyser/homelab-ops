@@ -38,9 +38,9 @@ spec:
           reloader.stakater.com/auto: "true"
         pod:
           securityContext:
-            fsGroup: 1001
+            fsGroup: 1000
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [568,911]
+            supplementalGroups: [568,911,1001]
           tolerations:
             - key: "arm"
               operator: "Exists"
@@ -51,8 +51,8 @@ spec:
               repository: codercom/code-server
               tag: 4.96.4
             securityContext:
-              runAsUser: 1001
-              runAsGroup: 1001
+              runAsUser: 1000
+              runAsGroup: 1000
             env:
               TZ: "America/New_York"
 
