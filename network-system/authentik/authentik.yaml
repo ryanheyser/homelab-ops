@@ -52,7 +52,7 @@ spec:
       replicas: 3
       env:
         - name: AUTHENTIK_REDIS__DB
-          value: 1
+          value: "1"
       pdb:
         enabled: true
         minAvailable: 1
