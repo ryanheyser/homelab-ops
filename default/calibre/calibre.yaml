@@ -44,7 +44,7 @@ spec:
               # renovate: repository=busybox
               repository: busybox
               tag: 1.37.0-glibc
-            command: ['sh', '-c', 'chown -R 1000:1000 /calibre']
+            command: ['sh', '-c', 'chown -R 1000:1000 /config']
             securityContext:
               runAsUser: 0
               runAsGroup: 0
