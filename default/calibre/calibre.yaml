@@ -176,9 +176,15 @@ spec:
             main:
               - path: "/config"
                 readOnly: false
+            chown:
+              - path: "/config"
+                readOnly: false
       library:
         existingClaim: calibre-library
         advancedMounts:
           main:
             main:
               - path: "/config/Calibre Library"
+            chown:
+              - path: "/config/Calibre Library"
+
