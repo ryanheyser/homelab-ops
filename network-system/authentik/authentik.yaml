@@ -203,6 +203,14 @@ spec:
                   - master
               topologyKey: "kubernetes.io/hostname"
       replicas:
+        podSecurityContext:
+          enabled: true
+          fsGroup: 1000
+        containerSecurityContext:
+          enabled: true
+          runAsUser: 1000
+          runAsGroup: 1000
+          runAsNonRoot: true
         replicaCount: 3
         pdb:
           maxUnavailable: 1
