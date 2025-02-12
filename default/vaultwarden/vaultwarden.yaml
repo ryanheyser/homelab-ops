@@ -33,7 +33,7 @@ spec:
             image:
               # renovate: repository=vaultwarden/server
               repository: vaultwarden/server
-              tag: 1.33.1
+              tag: 1.33.2
               pullPolicy: IfNotPresent
 
             # -- environment variables.
