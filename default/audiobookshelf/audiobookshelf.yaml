@@ -49,7 +49,7 @@ spec:
             image:
               # renovate: repository=ghcr.io/advplyr/audiobookshelf
               repository: ghcr.io/advplyr/audiobookshelf
-              tag: 2.19.0
+              tag: 2.19.1
             securityContext:
               runAsUser: 1000
               runAsGroup: 1000
