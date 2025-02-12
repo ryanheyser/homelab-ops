@@ -174,7 +174,7 @@ spec:
       enabled: true
       architecture: replication
       global:
-        defaultStorageClass: nfs-dynamic
+        defaultStorageClass: nfs-dynamic-ss
       auth:
         enabled: false
       master:
