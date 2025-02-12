@@ -37,7 +37,7 @@ spec:
           securityContext:
             fsGroup: 1000
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [0,568,911,1000,1001]
+            supplementalGroups: [0,568,911,1001]
         containers:
           main:
             image:
@@ -46,7 +46,8 @@ spec:
               tag: 7.25.0
             securityContext:
               runAsUser: 0
-              runAsGroup: 0
+              runAsGroup: 1000
+              allowPrivilegeEscalation: true
             env:
               TZ: America/New_York
               PUID: "1000"
