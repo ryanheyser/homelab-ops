@@ -30,6 +30,10 @@ spec:
         strategy: Recreate
         containers:
           main:
+            securityContext:
+              runAsUser: 1000
+              runAsGroup: 1000
+
             image:
               # renovate: repository=vaultwarden/server
               repository: vaultwarden/server
@@ -52,19 +56,12 @@ spec:
               - secretRef:
                   name: vaultwarden-admin-token
                   optional: false
-
-            pod:
-              securityContext:
-                fsGroup: 1000
-                fsGroupChangePolicy: "OnRootMismatch"
-                supplementalGroups: [568,911,1001]
-            
-            containers:
-              main:
-                securityContext:
-                  runAsUser: 1000
-                  runAsGroup: 1000
-
+        pod:
+          securityContext:
+            fsGroup: 1000
+            fsGroupChangePolicy: "OnRootMismatch"
+            supplementalGroups: [568,911,1001]
+                
     # -- Configures service settings for the chart.
     service:
       main:
