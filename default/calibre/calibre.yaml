@@ -45,6 +45,11 @@ spec:
               repository: busybox
               tag: 1.37.0-glibc
             command: ['sh', '-c', 'chown -R 1000:1000 /calibre']
+            securityContext:
+              runAsUser: 0
+              runAsGroup: 0
+              allowPrivilegeEscalation: true
+              privileged: true
         containers:
           main:
             image:
