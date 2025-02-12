@@ -46,8 +46,9 @@ spec:
               tag: 7.25.0
             securityContext:
               runAsUser: 0
-              runAsGroup: 1000
+              runAsGroup: 0
               allowPrivilegeEscalation: true
+              privileged: true
             env:
               TZ: America/New_York
               PUID: "1000"
@@ -167,6 +168,7 @@ spec:
           main:
             main:
               - path: "/config"
+                readOnly: false
       library:
         existingClaim: calibre-library
         advancedMounts:
