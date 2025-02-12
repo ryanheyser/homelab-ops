@@ -97,6 +97,14 @@ spec:
           userPasswordKey: "userPassword"
           replicationPasswordKey: "replicationPassword"
       primary:
+        podSecurityContext:
+          enabled: true
+          fsGroup: 1000
+        containerSecurityContext:
+          enabled: true
+          runAsUser: 1000
+          runAsGroup: 1000
+          runAsNonRoot: true
         pdb:
           maxUnavailable: 1
         affinity:
@@ -117,6 +125,14 @@ spec:
           storageClass: nfs-dynamic
           size: 10Gi
       readReplicas:
+        podSecurityContext:
+          enabled: true
+          fsGroup: 1000
+        containerSecurityContext:
+          enabled: true
+          runAsUser: 1000
+          runAsGroup: 1000
+          runAsNonRoot: true
         replicaCount: 3
         pdb:
           maxUnavailable: 1
@@ -154,6 +170,14 @@ spec:
       auth:
         enabled: false
       master:
+        podSecurityContext:
+          enabled: true
+          fsGroup: 1000
+        containerSecurityContext:
+          enabled: true
+          runAsUser: 1000
+          runAsGroup: 1000
+          runAsNonRoot: true
         persistence:
           enabled: true
           annotations:
