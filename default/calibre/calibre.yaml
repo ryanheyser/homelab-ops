@@ -37,7 +37,7 @@ spec:
           securityContext:
             fsGroup: 1000
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [568,911,1001]
+            supplementalGroups: [0,568,911,1000,1001]
         containers:
           main:
             image:
@@ -45,8 +45,8 @@ spec:
               repository: linuxserver/calibre
               tag: 7.25.0
             securityContext:
-              runAsUser: 1000
-              runAsGroup: 1000
+              runAsUser: 0
+              runAsGroup: 0
             env:
               TZ: America/New_York
               PUID: "1000"
