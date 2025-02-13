@@ -38,18 +38,6 @@ spec:
             fsGroup: 1000
             fsGroupChangePolicy: "OnRootMismatch"
             supplementalGroups: [0,568,911,1001]
-        initContainers:
-          chown:
-            image:
-              # renovate: repository=busybox
-              repository: busybox
-              tag: 1.37.0-glibc
-            command: ['sh', '-c', 'chown -R 1000:1000 /config']
-            securityContext:
-              runAsUser: 0
-              runAsGroup: 0
-              allowPrivilegeEscalation: true
-              privileged: true
         containers:
           main:
             image:
@@ -181,15 +169,9 @@ spec:
             main:
               - path: "/config"
                 readOnly: false
-            chown:
-              - path: "/config"
-                readOnly: false
       library:
         existingClaim: calibre-library
         advancedMounts:
           main:
             main:
               - path: "/config/Calibre Library"
-            chown:
-              - path: "/config/Calibre Library"
-
