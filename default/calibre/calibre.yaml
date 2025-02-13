@@ -41,9 +41,8 @@ spec:
         containers:
           main:
             image:
-              # renovate: repository=linuxserver/calibre
               repository: linuxserver/calibre
-              tag: 7.25.0
+              tag: 5.44.0
             securityContext:
               runAsUser: 0
               runAsGroup: 0
