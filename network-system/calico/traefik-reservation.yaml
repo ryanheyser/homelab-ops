@@ -1,0 +1,8 @@
+apiVersion: projectcalico.org/v3
+kind: IPReservation
+metadata:
+  name: traefik-ipv4-reservation
+  namespace: network-system
+spec:
+  reservedCIDRs:
+    - 10.0.100.1
