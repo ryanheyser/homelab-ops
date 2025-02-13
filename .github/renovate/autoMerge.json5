@@ -37,7 +37,9 @@
         "restic/restic",
         "alpine",
         "ubuntu",
-        "debian"
+        "debian",
+        "ghcr.io/fluxcd/notification-controller",
+        "ghcr.io/fluxcd/source-controller"
       ]
     },
     {
