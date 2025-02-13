@@ -7,7 +7,7 @@ spec:
   interval: 15m
   chart:
     spec:
-      # renovate: registryUrl=pkgs.tailscale.com/helmcharts
+      # renovate: registryUrl=https://pkgs.tailscale.com/helmcharts
       chart: tailscale-operator
       version: 1.80.0
       sourceRef:
