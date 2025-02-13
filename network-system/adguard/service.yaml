@@ -11,6 +11,7 @@ metadata:
     cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
     traefik.ingress.kubernetes.io/service.nativelb: "true"
     metallb.universe.tf/loadBalancerIPs: 10.0.100.3
+    metallb.universe.tf/allow-shared-ip: "adguard-share"
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
@@ -37,6 +38,7 @@ metadata:
     cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
     traefik.ingress.kubernetes.io/service.nativelb: "true"
     metallb.universe.tf/loadBalancerIPs: 10.0.100.3
+    metallb.universe.tf/allow-shared-ip: "adguard-share"
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
@@ -64,6 +66,7 @@ metadata:
     cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
     traefik.ingress.kubernetes.io/service.nativelb: "true"
     metallb.universe.tf/loadBalancerIPs: 10.0.100.3
+    metallb.universe.tf/allow-shared-ip: "adguard-share"
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
@@ -91,6 +94,7 @@ metadata:
     cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
     traefik.ingress.kubernetes.io/service.nativelb: "true"
     metallb.universe.tf/loadBalancerIPs: 10.0.100.3
+    metallb.universe.tf/allow-shared-ip: "adguard-share"
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
@@ -118,6 +122,7 @@ metadata:
     cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
     traefik.ingress.kubernetes.io/service.nativelb: "true"
     metallb.universe.tf/loadBalancerIPs: 10.0.100.3
+    metallb.universe.tf/allow-shared-ip: "adguard-share"
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
@@ -145,6 +150,7 @@ metadata:
     cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
     traefik.ingress.kubernetes.io/service.nativelb: "true"
     metallb.universe.tf/loadBalancerIPs: 10.0.100.3
+    metallb.universe.tf/allow-shared-ip: "adguard-share"
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
