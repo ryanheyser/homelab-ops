@@ -42,7 +42,7 @@ spec:
           main:
             image:
               repository: linuxserver/calibre
-              tag: 5.44.0
+              tag: 7.26.0
             securityContext:
               runAsUser: 0
               runAsGroup: 0
