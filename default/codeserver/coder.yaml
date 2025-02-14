@@ -86,14 +86,6 @@ spec:
           - *host
           secretName: "code-homelab-heyser-xyz-tls"
 
-    extraVolumeMounts:
-      - name: development
-        existingClaim: coder-development
-        mountPath: /data
-      - name: sshkey
-        existingClaim: coder-sshkey
-        mountPath: /home/coder/.ssh
-
     persistence:
       config:
         existingClaim: coder-config
@@ -101,3 +93,15 @@ spec:
             main:
               main:
                 - path: "/config"
+      development:
+        existingClaim: coder-development
+        advancedMounts:
+            main:
+              main:
+                - path: "/data"
+      sshkey:
+        existingClaim: coder-sshkey
+        advancedMounts:
+            main:
+              main:
+                - path: "/home/coder/.ssh"
