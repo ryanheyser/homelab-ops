@@ -68,7 +68,8 @@
         "cert-manager",
         "tailscale",
         "tailscale-operator",
-        "audiobookshelf"
+        "audiobookshelf",
+        "reflector"
       ]
     },
     {
