@@ -41,8 +41,10 @@ spec:
         containers:
           main:
             image:
-              repository: linuxserver/calibre
-              tag: 5.44.0
+              # repository: linuxserver/calibre
+              # tag: 5.44.0
+              repository: ghcr.io/ryanheyser/calibre
+              tag: 7.26.0
             securityContext:
               runAsUser: 0
               runAsGroup: 0
