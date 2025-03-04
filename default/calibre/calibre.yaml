@@ -45,6 +45,7 @@ spec:
               # tag: 5.44.0
               repository: ghcr.io/ryanheyser/docker-calibre
               tag: v7.26.0
+              pullPolicy: Always
             securityContext:
               runAsUser: 0
               runAsGroup: 0
