@@ -49,7 +49,7 @@ spec:
             image:
               # renovate: repository=codercom/code-server
               repository: codercom/code-server
-              tag: 4.97.2
+              tag: 4.98.0
             securityContext:
               runAsUser: 1000
               runAsGroup: 1000
