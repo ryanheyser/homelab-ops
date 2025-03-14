@@ -8,7 +8,7 @@ patches:
 - patch: |
     - op: add
       path: /spec/driftDetection/mode
-      value: enaabled
+      value: enabled
   target:
     kind: Deployment
     name: "helm-controller"
