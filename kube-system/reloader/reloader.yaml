@@ -19,6 +19,9 @@ spec:
   values:
     reloader:
       enableHA: true
+      podDisruptionBudget:
+        enabled: true
+        minAvailable: 1
       deployment:
         replicas: 3
         affinity:
