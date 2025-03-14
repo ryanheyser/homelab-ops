@@ -21,7 +21,16 @@ spec:
       enableHA: true
       deployment:
         replicas: 3
-        affinity: {}
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              - labelSelector:
+                  matchExpressions:
+                    - key: app
+                      operator: In
+                      values:
+                        - reloader-reloader
+                topologyKey: "kubernetes.io/hostname"
     tolerations:
       - key: node-role.kubernetes.io/control-plane
         operator: Equal
