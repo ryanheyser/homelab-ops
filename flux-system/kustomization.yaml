@@ -4,3 +4,11 @@ resources:
 - ./gotk-components.yaml
 - ./gotk-sync.yaml
 - ./gotk-ordering.yaml
+patches:
+- patch: |
+    - op: add
+      path: /spec/driftDetection/mode
+      value: enaabled
+  target:
+    kind: Deployment
+    name: "helm-controller"
