@@ -157,16 +157,16 @@ spec:
       volumePermissions:
         enabled: false
       backup:
-        podSecurityContext:
-          enabled: true
-          fsGroup: 1000
-        containerSecurityContext:
-          enabled: true
-          runAsUser: 1000
-          runAsGroup: 1000
-          runAsNonRoot: true
         enabled: true
         cronjob:
+          podSecurityContext:
+            enabled: true
+            fsGroup: 1000
+          containerSecurityContext:
+            enabled: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            runAsNonRoot: true
           annotations:
             nfs.io/storage-path: "containers/kubernetes/authentik/postgresql-backup"
           storage:
