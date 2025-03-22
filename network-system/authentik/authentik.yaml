@@ -169,13 +169,13 @@ spec:
         cronjob:
           annotations:
             nfs.io/storage-path: "containers/kubernetes/authentik/postgresql-backup"
-        storage:
-          enabled: true
-          storageClass: nfs-dynamic-ss
-          size: 100Gi
-          annotations:
-            nfs.io/storage-path: "containers/kubernetes/authentik/postgresql-backup"
-    redis:
+          storage:
+            enabled: true
+            storageClass: nfs-dynamic-ss
+            size: 100Gi
+            annotations:
+              nfs.io/storage-path: "containers/kubernetes/authentik/postgresql-backup"
+      redis:
       enabled: true
       architecture: replication
       global:
