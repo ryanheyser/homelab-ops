@@ -166,6 +166,9 @@ spec:
           runAsGroup: 1000
           runAsNonRoot: true
         enabled: true
+        cronjob:
+          annotations:
+            nfs.io/storage-path: "containers/kubernetes/authentik/postgresql-backup"
         storage:
           enabled: true
           storageClass: nfs-dynamic-ss
