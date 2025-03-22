@@ -171,7 +171,7 @@ spec:
             nfs.io/storage-path: "containers/kubernetes/authentik/postgresql-backup"
           storage:
             enabled: true
-            storageClass: nfs-dynamic-ss
+            storageClass: nfs-dynamic
             size: 100Gi
             annotations:
               nfs.io/storage-path: "containers/kubernetes/authentik/postgresql-backup"
