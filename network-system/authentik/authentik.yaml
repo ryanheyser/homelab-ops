@@ -175,7 +175,7 @@ spec:
             size: 100Gi
             annotations:
               nfs.io/storage-path: "containers/kubernetes/authentik/postgresql-backup"
-      redis:
+    redis:
       enabled: true
       architecture: replication
       global:
