@@ -90,5 +90,5 @@ spec:
   # type: ClusterIP
   # sessionAffinity: None
   type: ExternalName
-  externalName: plex.homelab.heyser.xyz
+  externalName: 10.0.1.1
 ---
