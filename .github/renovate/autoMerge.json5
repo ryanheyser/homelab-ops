@@ -20,7 +20,8 @@
         "ghcr.io/onedr0p/intel-gpu-exporter",
         "ghcr.io/alexellis/registry-creds",
         "vaultwarden/server",
-        "emberstack/kubernetes-reflector"
+        "emberstack/kubernetes-reflector",
+        "ghcr.io/ryanheyser/docker-calibre"
         //"linuxserver/calibre"
       ]
     },
