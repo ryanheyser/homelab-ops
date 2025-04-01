@@ -43,6 +43,8 @@ jobs:
     #     sudo chmod +x /usr/local/bin/yq
 
     - uses: chrisdickinson/setup-yq@69aa9efdf7a9240129b103a65373c05cbc375679 # v1.0.0
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       with:
         yq-version: 3.3.2
         yq-url: https://github.com/mikefarah/yq/releases/download/{version}/yq_{platform}_{arch}
