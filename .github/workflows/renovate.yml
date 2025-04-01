@@ -43,6 +43,9 @@ jobs:
     #     sudo chmod +x /usr/local/bin/yq
 
     - uses: chrisdickinson/setup-yq@69aa9efdf7a9240129b103a65373c05cbc375679 # v1.0.0
+      with:
+        yq-version: 3.3.2
+        yq-url: https://github.com/mikefarah/yq/releases/download/{version}/yq_{platform}_{arch}
 
     - name: Create pull request for HelmRelease annotations
       uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7
