@@ -19,6 +19,7 @@ spec:
       values:
       - "true"
     - {key: node-role.kubernetes.io/control-plane, operator: In, values: ["true"]}
+    - {key: node-role.kubernetes.io/etcd, operator: In, values: ["true"]}
   serviceAccountName: system-upgrade
   tolerations:
   - key: "node-role.kubernetes.io/master"
@@ -33,6 +34,9 @@ spec:
   - effect: PreferNoSchedule
     key: node-role.kubernetes.io
     value: master
+  - key: node-role.kubernetes.io/etcd
+    operator: Equal
+    effect: NoSchedule
   # drain:
   #   force: true
   upgrade:
@@ -56,6 +60,7 @@ spec:
     - {key: beta.kubernetes.io/os, operator: In, values: ["linux"]}
     - {key: node-role.kubernetes.io/master, operator: NotIn, values: ["true"]}
     - {key: node-role.kubernetes.io/control-plane, operator: DoesNotExist}
+    - {key: node-role.kubernetes.io/etcd, operator: DoesNotExist}
   serviceAccountName: system-upgrade
 
   # Specify which node taints should be tolerated by pods applying the upgrade.
