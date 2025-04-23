@@ -63,7 +63,7 @@ spec:
       containers:
       - name: adguard-home
         # renovate: repository=adguard/adguardhome
-        image: "adguard/adguardhome:v0.107.60"
+        image: "adguard/adguardhome:v0.107.61"
         imagePullPolicy: IfNotPresent
         args:
         - --config
