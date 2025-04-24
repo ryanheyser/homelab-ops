@@ -64,8 +64,8 @@ spec:
               QBITTORRENT__BT_PORT: &port-bt 6881
     service:
       main:
-        annotations:
-          traefik.ingress.kubernetes.io/service.nativelb: "true"
+        # annotations:
+          # traefik.ingress.kubernetes.io/service.nativelb: "true"
         controller: main
         type: ClusterIP
         ports:
