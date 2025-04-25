@@ -14,7 +14,7 @@ metadata:
     metallb.universe.tf/allow-shared-ip: "adguard-share"
 spec:
   type: LoadBalancer
-  externalTrafficPolicy: Local
+  externalTrafficPolicy: Cluster
   externalIPs:
   - 10.0.100.3
   ports:
@@ -41,7 +41,7 @@ metadata:
     metallb.universe.tf/allow-shared-ip: "adguard-share"
 spec:
   type: LoadBalancer
-  externalTrafficPolicy: Local
+  externalTrafficPolicy: Cluster
   externalIPs:
   - 10.0.100.3
   ports:
@@ -69,7 +69,7 @@ metadata:
     metallb.universe.tf/allow-shared-ip: "adguard-share"
 spec:
   type: LoadBalancer
-  externalTrafficPolicy: Local
+  externalTrafficPolicy: Cluster
   externalIPs:
   - 10.0.100.3
   ports:
@@ -97,7 +97,6 @@ metadata:
     metallb.universe.tf/allow-shared-ip: "adguard-share"
 spec:
   type: LoadBalancer
-  # externalTrafficPolicy: Local
   externalTrafficPolicy: Cluster
   externalIPs:
   - 10.0.100.3
