@@ -60,8 +60,8 @@ spec:
 
     service:
       main:
-        annotations:
-          traefik.ingress.kubernetes.io/service.nativelb: "true"
+        # annotations:
+          # traefik.ingress.kubernetes.io/service.nativelb: "true"
         controller: main
         type: ClusterIP
         ports:
