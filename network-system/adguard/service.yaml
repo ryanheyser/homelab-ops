@@ -15,8 +15,8 @@ metadata:
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
-  externalIPs:
-    - 10.0.100.3
+  # externalIPs:
+  #   - 10.0.100.3
   ports:
   - port: 53
     targetPort: 53
@@ -42,8 +42,8 @@ metadata:
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
-  externalIPs:
-    - 10.0.100.3
+  # externalIPs:
+  #   - 10.0.100.3
   ports:
   - port: 853
     targetPort: 853
@@ -70,8 +70,8 @@ metadata:
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
-  externalIPs:
-    - 10.0.100.3
+  # externalIPs:
+  #   - 10.0.100.3
   ports:
   - port: 784
     targetPort: 784
@@ -98,8 +98,8 @@ metadata:
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
-  externalIPs:
-    - 10.0.100.3
+  # externalIPs:
+  #   - 10.0.100.3
   ports:
   - port: 53
     targetPort: 53
@@ -126,8 +126,8 @@ metadata:
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
-  externalIPs:
-    - 10.0.100.3
+  # externalIPs:
+  #   - 10.0.100.3
   ports:
   - port: 3000
     targetPort: http
@@ -154,8 +154,8 @@ metadata:
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
-  externalIPs:
-    - 10.0.100.3
+  # externalIPs:
+  #   - 10.0.100.3
   ports:
   - port: 443
     targetPort: 443
