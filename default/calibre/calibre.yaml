@@ -67,8 +67,8 @@ spec:
                   optional: false
     service:
       main:
-        annotations:
-          traefik.ingress.kubernetes.io/service.nativelb: "true"
+        # annotations:
+          # traefik.ingress.kubernetes.io/service.nativelb: "true"
         controller: main
         ports:
           http:
@@ -83,8 +83,8 @@ spec:
           metallb.universe.tf/address-pool: "default"
           metallb.universe.tf/loadBalancerIPs: 10.0.101.2
           cni.projectcalico.org/ipAddrs: '["10.0.101.2"]'
-          traefik.ingress.kubernetes.io/service.nativelb: "true"
-        externalTrafficPolicy: Local
+          # traefik.ingress.kubernetes.io/service.nativelb: "true"
+        externalTrafficPolicy: Cluster
         ports:
           webserver:
             port: 8081
@@ -98,7 +98,8 @@ spec:
           metallb.universe.tf/address-pool: "default"
           metallb.universe.tf/loadBalancerIPs: 10.0.101.2
           cni.projectcalico.org/ipAddrs: '["10.0.101.2"]'
-          traefik.ingress.kubernetes.io/service.nativelb: "true"
+          # traefik.ingress.kubernetes.io/service.nativelb: "true"
+        externalTrafficPolicy: Cluster
         ports:
           connect:
             enabled: true
