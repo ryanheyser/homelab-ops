@@ -67,8 +67,8 @@ spec:
     # -- Configures service settings for the chart.
     service:
       main:
-        annotations:
-          traefik.ingress.kubernetes.io/service.nativelb: "true"
+        # annotations:
+          # traefik.ingress.kubernetes.io/service.nativelb: "true"
         controller: main
         ports:
           http:
