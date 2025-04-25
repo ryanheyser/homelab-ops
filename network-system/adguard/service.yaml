@@ -126,7 +126,7 @@ metadata:
 spec:
   # type: LoadBalancer
   type: ClusterIP
-  externalTrafficPolicy: Local
+  # externalTrafficPolicy: Local
   # externalIPs:
   #   - 10.0.100.3
   ports:
@@ -155,7 +155,7 @@ metadata:
 spec:
   # type: LoadBalancer
   type: ClusterIP
-  externalTrafficPolicy: Local
+  # externalTrafficPolicy: Local
   # externalIPs:
   #   - 10.0.100.3
   ports:
