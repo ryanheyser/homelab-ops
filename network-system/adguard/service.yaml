@@ -99,6 +99,8 @@ spec:
   type: LoadBalancer
   # externalTrafficPolicy: Local
   externalTrafficPolicy: Cluster
+  externalIPs:
+  - 10.0.100.3
   ports:
   - port: 53
     targetPort: 53
