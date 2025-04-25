@@ -97,9 +97,8 @@ metadata:
     metallb.universe.tf/allow-shared-ip: "adguard-share"
 spec:
   type: LoadBalancer
-  externalTrafficPolicy: Local
-  externalIPs:
-  - 10.0.100.3
+  # externalTrafficPolicy: Local
+  externalTrafficPolicy: Cluster
   ports:
   - port: 53
     targetPort: 53
