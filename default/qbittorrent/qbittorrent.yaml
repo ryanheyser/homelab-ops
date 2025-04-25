@@ -87,7 +87,7 @@ spec:
             port: *port-bt
             protocol: TCP
             targetPort: *port-bt
-        externalTrafficPolicy: Local
+        externalTrafficPolicy: Cluster
     ingress:
       main:
         className: "traefik"
