@@ -37,9 +37,9 @@ spec:
               memory: 2Gi
         pod:
           securityContext:
-            fsGroup: 1000
+            fsGroup: 3001
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [0,568,911,1001]
+            supplementalGroups: [0,568,911,1000,1001]
         containers:
           main:
             image:
