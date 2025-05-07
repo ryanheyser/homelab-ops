@@ -40,9 +40,9 @@ spec:
           reloader.stakater.com/auto: "true"
         pod:
           securityContext:
-            fsGroup: 1000
+            fsGroup: 3001
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [568,911,1001]
+            supplementalGroups: [568,911,1000,1001]
           tolerations:
             - key: "arm"
               operator: "Exists"
@@ -58,7 +58,7 @@ spec:
             env:
               TZ: America/New_York
               UID: 1000
-              GID: 1000
+              GID: 3001
     service:
       main:
         # annotations:
