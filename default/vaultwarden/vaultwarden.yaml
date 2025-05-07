@@ -34,7 +34,7 @@ spec:
           main:
             securityContext:
               runAsUser: 1000
-              runAsGroup: 1000
+              runAsGroup: 3001
 
             image:
               # renovate: repository=vaultwarden/server
@@ -50,9 +50,9 @@ spec:
               DOMAIN: "https://vaultwarden.homelab.heyser.xyz"
               SIGNUPS_ALLOWED: "false"
               UID: 1000
-              GID: 1000
+              GID: 3001
               PUID: 1000
-              PGID: 1000
+              PGID: 3001
 
             envFrom:
               - secretRef:
@@ -60,9 +60,9 @@ spec:
                   optional: false
         pod:
           securityContext:
-            fsGroup: 1000
+            fsGroup: 3001
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [568,911,1001]
+            supplementalGroups: [568,911,1000,1001]
                 
     # -- Configures service settings for the chart.
     service:
