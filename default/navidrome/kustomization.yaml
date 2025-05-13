@@ -5,4 +5,4 @@ resources:
 - ./certificate.yaml
 - ./pvc.yaml
 - ./tailscale.yaml
-- ./qbittorrent.yaml
+- ./navidrome.yaml
