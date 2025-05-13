@@ -59,6 +59,7 @@ spec:
               TZ: America/New_York
               ND_DATAFOLDER: /data
               ND_MUSICFOLDER: /music
+              ND_CACHEFOLDER: /cache
               ND_SCANNER_SCHEDULE: "@every 1h"
               ND_LOGLEVEL: info
               ND_SESSIONTIMEOUT: 24h
@@ -120,4 +121,10 @@ spec:
               - path: "/music"
                 readOnly: false
       cache:
-        emptyDir: {}
+        type: emptyDir
+        advancedMounts:
+          main:
+            main:
+              - path: "/cache"
+                readOnly: false
+
