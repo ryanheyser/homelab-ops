@@ -5,7 +5,7 @@ metadata:
 spec:
   defaultBackend:
     service:
-      name: navidrome-main
+      name: navidrome
       port:
         number: 4533
   ingressClassName: tailscale
