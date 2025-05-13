@@ -105,5 +105,15 @@ spec:
     persistence:
       data:
         existingClaim: navidrome-data
+        advancedMounts:
+          main:
+            main:
+              - path: "/data"
+                readOnly: false
       music:
         existingClaim: navidrome-music
+        advancedMounts:
+          main:
+            main:
+              - path: "/music"
+                readOnly: false
