@@ -71,7 +71,7 @@ spec:
         ports:
           http:
             port: 4533
-            targetPort: 4533
+            # targetPort: 4533
     ingress:
       main:
         className: "traefik"
