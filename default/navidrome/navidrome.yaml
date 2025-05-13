@@ -90,7 +90,7 @@ spec:
             service: 
               identifier: main
               port: http
-        - host: &host "music.homelab.heyser.xyz"
+        - host: &mhost "music.homelab.heyser.xyz"
           paths:
           - path: /
             pathType: Prefix
@@ -100,9 +100,8 @@ spec:
         tls:
         - hosts:
           - *host
+          - *mhost
           secretName: navidrome-homelab-heyser-xyz-tls
-    # Note: If downloading very large torrents it might be worth using NFS for your download directory.
-    # Beware if you are downloading torrents directly to a ZFS dataset that dataset will accrue fragmentation.
     persistence:
       data:
         existingClaim: navidrome-data
