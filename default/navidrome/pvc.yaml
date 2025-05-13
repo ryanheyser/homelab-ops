@@ -17,7 +17,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: navidrome-music
   annotations:
-    nfs.io/storage-path: "music"
+    nfs.io/storage-path: "media/music"
 spec:
   accessModes:
   - ReadWriteOnce
