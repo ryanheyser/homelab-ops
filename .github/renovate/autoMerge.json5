@@ -21,7 +21,9 @@
         "ghcr.io/alexellis/registry-creds",
         "vaultwarden/server",
         "emberstack/kubernetes-reflector",
-        "ghcr.io/ryanheyser/docker-calibre"
+        "ghcr.io/ryanheyser/docker-calibre",
+        "docker.io/deluan/navidrome",
+        "deluan/navidrome"
         //"linuxserver/calibre"
       ]
     },
