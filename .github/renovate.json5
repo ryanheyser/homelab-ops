@@ -70,4 +70,5 @@
       '.github/**',
     ],
   },
+  'github-actions': {},
 }
