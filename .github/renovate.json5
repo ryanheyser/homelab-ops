@@ -38,41 +38,41 @@
     'secrets/**',
   ],
   ansible: {
-    fileMatch: [
-      '(^|/)(.*)?[^/]+\\.ya?ml$',
+    managerFilePatterns: [
+      '/(^|/)(.*)?[^/]+\\.ya?ml$/',
     ],
     ignorePaths: [
       '.github/**',
     ],
   },
   'helm-values': {
-    fileMatch: [
-      '(^|/)(.*)?[^/]+\\.ya?ml$',
+    managerFilePatterns: [
+      '/(^|/)(.*)?[^/]+\\.ya?ml$/',
     ],
     ignorePaths: [
       '.github/**',
     ],
   },
   flux: {
-    fileMatch: [
-      '(^|/)(.*)?[^/]+\\.ya?ml$',
+    managerFilePatterns: [
+      '/(^|/)(.*)?[^/]+\\.ya?ml$/',
     ],
     ignorePaths: [
       '.github/**',
     ],
   },
   kubernetes: {
-    fileMatch: [
-      '(^|/)(.*)?[^/]+\\.ya?ml$',
+    managerFilePatterns: [
+      '/(^|/)(.*)?[^/]+\\.ya?ml$/',
     ],
     ignorePaths: [
       '.github/**',
     ],
   },
   'github-actions': {
-    fileMatch: [
-      '(^|/)(workflow-templates|\.(?:github|gitea|forgejo)/(?:workflows|actions))/.+\.ya?ml$/',
-      '(^|/)action\.ya?ml$/'
+    managerFilePatterns: [
+      '/(^|/)(workflow-templates|.(?:github|gitea|forgejo)/(?:workflows|actions))/.+.ya?ml$//',
+      '/(^|/)action.ya?ml$//',
     ],
   },
 }
