@@ -1,0 +1,124 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: metallb
+  namespace: network-system
+spec:
+  driftDetection:
+    mode: enabled
+  interval: 15m
+  chart:
+    spec:
+      # renovate: registryUrl=https://helm.traefik.io/traefik
+      chart: traefik
+      version: 35.3.0
+      sourceRef:
+        kind: HelmRepository
+        name: traefik
+        namespace: flux-system
+  maxHistory: 3
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    globalArguments:
+    - "--global.checknewversion"
+    - "--global.sendanonymoususage=false"
+    deployment:
+      replicas: null 
+    logs:
+      general:
+        level: DEBUG
+        format: json
+      access:
+        enabled: true
+        format: json
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "50Mi"
+      limits:
+        cpu: "300m"
+        memory: "150Mi"
+    experimental:
+      plugins:
+        # enabled: true
+        bouncer:
+          moduleName: github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin
+          # renovate: depName=maxlerebourg/crowdsec-bouncer-traefik-plugin
+          version: 1.4.2
+      kubernetesGateway:
+        enabled: true
+    providers:
+      kubernetesCRD:
+        allowCrossNamespace: true
+        allowExternalNameServices: true
+        allowEmptyServices: true
+        nativeLBByDefault: true
+        # ingressClass: traefik
+      kubernetesIngress:
+        allowExternalNameServices: true
+        allowEmptyServices: true
+        nativeLBByDefault: true
+        publishedService:
+          enabled: true
+        # comment out ingressClass to allow all ingresses to be processed  
+        # ingressClass: traefik 
+      kubernetesGateway:
+        enabled: true
+    # nodeSelector:
+    #   ingress-ready: 'true'
+    ingressClass:
+      enabled: true
+      isDefaultClass: true
+      name: traefik
+    service:
+      annotations:
+        cni.projectcalico.org/ipAddrs: '["10.0.100.1"]'
+        metallb.universe.tf/address-pool: "system"
+        metallb.universe.tf/loadBalancerIPs: 10.0.100.1
+        traefik.ingress.kubernetes.io/service.nativelb: "true"
+      spec:
+        # loadBalancerIP: 10.0.100.1
+        externalIPs:
+        - 10.0.100.1
+        externalTrafficPolicy: Cluster
+    ports:
+      websecure:
+        asDefault: true
+        http3:
+          enabled: true
+          advertisedPort: 443
+        middlewares:
+          # - network-system-authentik@kubernetescrd
+      web:
+        middlewares:
+          # - network-system-authentik@kubernetescrd
+    tolerations:
+      - key: node-role.kubernetes.io/control-plane
+        operator: Equal
+        effect: NoSchedule
+      - effect: PreferNoSchedule
+        key: node-role.kubernetes.io
+        value: master
+    podDisruptionBudget:
+      enabled: true
+      maxUnavailable: 1
+    autoscaling:
+      enabled: true
+      minReplicas: 3
+      maxReplicas: 5
+      metrics:
+        - type: Resource
+          resource:
+            name: cpu
+            target:
+              type: Utilization
+              averageUtilization: 80
