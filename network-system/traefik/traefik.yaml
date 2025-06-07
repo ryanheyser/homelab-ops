@@ -28,9 +28,9 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    globalArguments:
-    - "--global.checknewversion"
-    - "--global.sendanonymoususage=false"
+    global:
+      checkNewVersion: true
+      sendAnonymousUsage: false
     deployment:
       replicas: null 
     logs:
