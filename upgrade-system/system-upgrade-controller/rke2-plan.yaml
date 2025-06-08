@@ -14,12 +14,7 @@ spec:
   cordon: true
   nodeSelector:
     matchExpressions:
-    - key: node-role.kubernetes.io/master
-      operator: In
-      values:
-      - "true"
     - {key: node-role.kubernetes.io/control-plane, operator: In, values: ["true"]}
-    - {key: node-role.kubernetes.io/etcd, operator: In, values: ["true"]}
   serviceAccountName: system-upgrade
   tolerations:
   - key: "node-role.kubernetes.io/master"
