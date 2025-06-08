@@ -57,7 +57,7 @@ spec:
           effect: "NoSchedule"
         - key: "node-role.kubernetes.io/etcd"
           operator: "Exists"
-          effect: "NoExecute"
+          effect: "NoSchedule"
       containers:
         - name: system-upgrade-controller
           image: rancher/system-upgrade-controller:v0.15.2
