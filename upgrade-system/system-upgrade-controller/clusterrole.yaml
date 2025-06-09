@@ -4,6 +4,13 @@ metadata:
   name: system-upgrade-controller
 rules:
 - apiGroups:
+  - ""
+  resources:
+  - events
+  verbs: 
+  - create
+  - update
+- apiGroups:
   - batch
   resources:
   - jobs
