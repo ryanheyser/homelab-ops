@@ -3,6 +3,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: truenas-storage-tailscale
+  annotations:
+    tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
 spec:
   defaultBackend:
     service:
@@ -48,6 +50,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: plex-tailscale
+  annotations:
+    tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
 spec:
   defaultBackend:
     service:
