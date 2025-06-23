@@ -1,0 +1,17 @@
+---
+apiVersion: tailscale.com/v1alpha1
+kind: ProxyGroup
+metadata:
+  name: ts-proxygroup
+spec:
+  type: egress
+  replicas: 3
+---
+apiVersion: tailscale.com/v1alpha1
+kind: ProxyClass
+metadata:
+  generation: 2
+  name: ts-proxyclass
+spec:
+  tailscale:
+    acceptRoutes: true

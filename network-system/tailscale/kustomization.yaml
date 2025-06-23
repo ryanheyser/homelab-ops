@@ -11,3 +11,4 @@ resources:
 - ./secret.yaml
 - ./tailscale-operator.yaml
 - ./connector.yaml
+- ./proxy.yaml

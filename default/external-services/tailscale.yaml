@@ -5,6 +5,10 @@ metadata:
   name: truenas-storage-tailscale
   annotations:
     tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
+    tailscale.com/tailnet-fqdn: storage.tail1170fc.ts.net
+    tailscale.com/proxy-group: ts-proxygroup
+  labels:
+    tailscale.com/proxy-class: ts-proxyclass
 spec:
   defaultBackend:
     service:
