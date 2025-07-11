@@ -1,0 +1,15 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mangayomi-server-tailscale
+spec:
+  defaultBackend:
+    service:
+      name: mangayomi-server
+      port:
+        number: 8080
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - mangayomi-server

@@ -1,0 +1,121 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: mangayomi-server
+  namespace: default
+spec:
+  driftDetection:
+    mode: enabled
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.7.3
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controllers:
+      main:
+        defaultContainerOptions:
+          resources:
+            requests:
+              cpu: 10m
+              memory: 250Mi
+            limits:
+              memory: 2Gi
+        annotations:
+          reloader.stakater.com/auto: "true"
+        pod:
+          securityContext:
+            fsGroup: 3001
+            fsGroupChangePolicy: "OnRootMismatch"
+            supplementalGroups: [568,911,1000,1001]
+          tolerations:
+            - key: "arm"
+              operator: "Exists"
+        containers:
+          main:
+            image:
+               # renovate: repository=ghcr.io/rumblpak/mangayomi-server
+              repository: ghcr.io/rumblpak/mangayomi-server
+              tag: 0.1.0
+            securityContext:
+              runAsUser: 1000
+              runAsGroup: 3001
+            env:
+              TZ: America/New_York
+              HOST: 0.0.0.0
+              PORT: 8080
+              SESSION_TTL_DAYS: 30
+            envFrom:
+              - secretRef:
+                  name: mangayomi-server-secret-key
+                  optional: false
+              - secretRef:
+                  name: mangayomi-server-mongo-config
+                  optional: false
+          mongo:
+            image:
+              # renovate: repository=mongo
+              repository: mongo
+              tag: 8.0.11
+            envFrom:
+              - secretRef:
+                  name: mangayomi-server-mongo-config
+                  optional: false
+    service:
+      main:
+        controller: main
+        type: ClusterIP
+        ports:
+          http:
+            port: 8080
+            targetPort: 8080
+      mongo:
+        controller: mongo
+        type: ClusterIP
+        ports:
+          mongo:
+            port: 27017
+            targetPort: 27017
+    ingress:
+      main:
+        className: 'traefik'
+        annotations:
+          kubernetes.io/ingress.class: traefik
+          traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+          # traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+        hosts:
+        - host: &host "mangayomi-server.homelab.heyser.xyz"
+          paths:
+          - path: /
+            pathType: Prefix
+            service:
+              identifier: main
+              port: http
+        tls:
+        - hosts:
+          - *host
+          secretName: mangayomi-server-homelab-heyser-xyz-tls
+
+    persistence:
+      mongo-data:
+        existingClaim: mangayomi-server-mongo-data
+        advancedMounts:
+          main:
+            main:
+              - path: "/data"
+                readOnly: false
