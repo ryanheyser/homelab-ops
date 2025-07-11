@@ -4,5 +4,6 @@ namespace: default
 resources:
 - ./pvc.yaml
 - ./certificate.yaml
+- ./secret.yaml
 - ./mangayomi-server.yaml
 - ./tailscale.yaml
