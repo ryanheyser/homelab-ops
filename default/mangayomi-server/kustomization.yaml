@@ -4,6 +4,7 @@ namespace: default
 resources:
 - ./pvc.yaml
 - ./certificate.yaml
-- ./secret.yaml
+- ./secret-key.yaml
+- ./secret-mongo-config.yaml
 - ./mangayomi-server.yaml
 - ./tailscale.yaml
