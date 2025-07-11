@@ -67,6 +67,25 @@ spec:
               - secretRef:
                   name: mangayomi-server-mongo-config
                   optional: false
+      mongo:
+        defaultContainerOptions:
+          resources:
+            requests:
+              cpu: 10m
+              memory: 250Mi
+            limits:
+              memory: 2Gi
+        annotations:
+          reloader.stakater.com/auto: "true"
+        pod:
+          securityContext:
+            fsGroup: 3001
+            fsGroupChangePolicy: "OnRootMismatch"
+            supplementalGroups: [568,911,1000,1001]
+          tolerations:
+            - key: "arm"
+              operator: "Exists"
+        containers:
           mongo:
             image:
               # renovate: repository=mongo
