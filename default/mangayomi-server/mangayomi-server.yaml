@@ -51,7 +51,7 @@ spec:
             image:
                # renovate: repository=ghcr.io/rumblpak/mangayomi-server
               repository: ghcr.io/rumblpak/mangayomi-server
-              tag: 0.1.0
+              tag: v0.1.0
             securityContext:
               runAsUser: 1000
               runAsGroup: 3001
