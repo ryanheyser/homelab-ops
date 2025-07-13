@@ -24,14 +24,9 @@ spec:
   - {key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: arm}
   - {key: arm, operator: Exists}
   - key: node-role.kubernetes.io/control-plane
-    operator: Equal
-    effect: NoSchedule
-  - effect: PreferNoSchedule
-    key: node-role.kubernetes.io
-    value: master
+    operator: "Exists"
   - key: node-role.kubernetes.io/etcd
-    operator: Equal
-    effect: NoSchedule
+    operator: "Exists"
   # drain:
   #   force: true
   upgrade:
