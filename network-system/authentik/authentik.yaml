@@ -101,11 +101,11 @@ spec:
       primary:
         podSecurityContext:
           enabled: true
-          fsGroup: 1000
+          fsGroup: 3001
         containerSecurityContext:
           enabled: true
           runAsUser: 1000
-          runAsGroup: 1000
+          runAsGroup: 3001
           runAsNonRoot: true
         pdb:
           maxUnavailable: 1
@@ -129,11 +129,11 @@ spec:
       readReplicas:
         podSecurityContext:
           enabled: true
-          fsGroup: 1000
+          fsGroup: 3001
         containerSecurityContext:
           enabled: true
           runAsUser: 1000
-          runAsGroup: 1000
+          runAsGroup: 3001
           runAsNonRoot: true
         replicaCount: 3
         pdb:
@@ -161,11 +161,11 @@ spec:
         cronjob:
           podSecurityContext:
             enabled: true
-            fsGroup: 1000
+            fsGroup: 3001
           containerSecurityContext:
             enabled: true
             runAsUser: 1000
-            runAsGroup: 1000
+            runAsGroup: 3001
             runAsNonRoot: true
           annotations:
             nfs.io/storage-path: "containers/kubernetes/authentik/postgresql-backup"
@@ -185,11 +185,11 @@ spec:
       master:
         podSecurityContext:
           enabled: true
-          fsGroup: 1000
+          fsGroup: 3001
         containerSecurityContext:
           enabled: true
           runAsUser: 1000
-          runAsGroup: 1000
+          runAsGroup: 3001
           runAsNonRoot: true
         persistence:
           enabled: true
@@ -210,11 +210,11 @@ spec:
       replica:
         podSecurityContext:
           enabled: true
-          fsGroup: 1000
+          fsGroup: 3001
         containerSecurityContext:
           enabled: true
           runAsUser: 1000
-          runAsGroup: 1000
+          runAsGroup: 3001
           runAsNonRoot: true
         replicaCount: 0
         pdb:
