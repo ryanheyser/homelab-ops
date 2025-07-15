@@ -1,5 +1,5 @@
 ---
-# Source: adguard-home/templates/common.yaml
+Source: adguard-home/templates/common.yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
