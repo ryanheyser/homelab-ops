@@ -42,6 +42,7 @@
         "alpine",
         "ubuntu",
         "debian",
+        "mongo",
         "ghcr.io/fluxcd/notification-controller",
         "ghcr.io/fluxcd/kustomize-controller",
         "ghcr.io/fluxcd/helm-controller",
