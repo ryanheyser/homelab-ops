@@ -4,7 +4,7 @@ namespace: default
 resources:
 - ./pvc.yaml
 - ./certificate.yaml
-- ./secret-key.yaml
+- ./secret-booklore-config.yaml
 - ./secret-database-config.yaml
 - ./booklore.yaml
 - ./tailscale.yaml
