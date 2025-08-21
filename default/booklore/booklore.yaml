@@ -105,10 +105,10 @@ spec:
             port: 6060
             targetPort: 6060
       mariadb:
-        controller: mongo
+        controller: mariadb
         type: ClusterIP
         ports:
-          mongo:
+          mariadb:
             port: 3306
             targetPort: 3306
     ingress:
