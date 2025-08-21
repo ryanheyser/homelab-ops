@@ -1,0 +1,18 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: booklore-homelab-heyser-xyz
+spec:
+  subject:
+    organizations:
+    - Heyser
+  secretName: booklore-homelab-heyser-xyz-tls
+  dnsNames:
+  - booklore.homelab.heyser.xyz
+  issuerRef:
+    name: letsencrypt-prod
+    # We can reference ClusterIssuers by changing the kind here.
+    # The defaultt value is Issuer (i.e. a locally namespaced Issuer)
+    kind: ClusterIssuer
+    group: cert-manager.io
