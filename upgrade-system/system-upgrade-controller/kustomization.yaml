@@ -7,4 +7,5 @@ resources:
 - ./clusterrole.yaml
 - ./clusterrolebinding.yaml
 - ./system-upgrade-controller.yaml
-- ./rke2-plan.yaml
+- ./rke2-server-plan.yaml
+- ./rke2-agent-plan.yaml
