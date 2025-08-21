@@ -41,3 +41,17 @@ spec:
   resources:
     requests:
       storage: 100Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: booklore-bookdrop
+  annotations:
+    nfs.io/storage-path: "books/booklore/bookdrop"
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: "nfs-dynamic"
+  resources:
+    requests:
+      storage: 100Gi

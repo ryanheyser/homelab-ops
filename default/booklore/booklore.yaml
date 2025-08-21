@@ -146,10 +146,17 @@ spec:
             main:
               - path: "/books"
                 readOnly: false
-      mariadb-config:
-        existingClaim: booklore-mariadb-config
+      booklore-bookdrop:
+        existingClaim: booklore-bookdrop
         advancedMounts:
           main:
             main:
+              - path: "/bookdrop"
+                readOnly: false
+      mariadb-config:
+        existingClaim: booklore-mariadb-config
+        advancedMounts:
+          mariadb:
+            mariadb:
               - path: "/config"
                 readOnly: false
