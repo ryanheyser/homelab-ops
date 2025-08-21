@@ -49,8 +49,8 @@ spec:
         containers:
           main:
             image:
-               # renovate: repository=ghcr.io/adityachandelgit/booklore-app
-              repository: ghcr.io/adityachandelgit/booklore-app
+               # renovate: repository=booklore/booklore
+              repository: booklore/booklore
               tag: v0.37.0
             securityContext:
               runAsUser: 1000
