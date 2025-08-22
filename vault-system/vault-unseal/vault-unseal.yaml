@@ -118,20 +118,20 @@ spec:
         existingClaim: vault-0-config
         advancedMounts:
           main:
-            vault-0:
+            vault0:
               - path: "/.vault-unseal"
                 readOnly: false
       vault-1-config:
         existingClaim: vault-1-config
         advancedMounts:
           main:
-            vault-1:
+            vault1:
               - path: "/.vault-unseal"
                 readOnly: false
       vault-2-config:
         existingClaim: vault-2-config
         advancedMounts:
           main:
-            vault-2:
+            vault2:
               - path: "/.vault-unseal"
                 readOnly: false
