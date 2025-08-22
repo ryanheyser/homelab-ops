@@ -68,7 +68,7 @@ spec:
                   optional: false
             args: 
               - unseal
-              - --address=http://vault-0.vault.vault-system.svc:8200
+              - --address=http://vault-0.vault-internal:8200
               - --shard=${shard0}
               - --shard=${shard1}
           vault1:
@@ -89,7 +89,7 @@ spec:
                   optional: false
             args: 
               - unseal
-              - --address=http://vault-1.vault.vault-system.svc:8200
+              - --address=http://vault-1.vault-internal:8200
               - --shard=${shard0}
               - --shard=${shard1}
           vault2:
@@ -110,7 +110,7 @@ spec:
                   optional: false
             args: 
               - unseal
-              - --address=http://vault-2.vault.vault-system.svc:8200
+              - --address=http://vault-2.vault-internal:8200
               - --shard=${shard0}
               - --shard=${shard1}
     persistence:
