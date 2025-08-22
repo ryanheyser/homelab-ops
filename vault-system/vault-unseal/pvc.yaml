@@ -43,3 +43,33 @@ spec:
     requests:
       storage: 10Gi
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: vault-3-config
+  namespace: vault-system
+  annotations:
+    nfs.io/storage-path: "containers/kubernetes/vault-unseal/vault-3-config"
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: "nfs-dynamic"
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: vault-4-config
+  namespace: vault-system
+  annotations:
+    nfs.io/storage-path: "containers/kubernetes/vault-unseal/vault-4-config"
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: "nfs-dynamic"
+  resources:
+    requests:
+      storage: 10Gi
+---
