@@ -23,7 +23,8 @@
         "emberstack/kubernetes-reflector",
         "ghcr.io/ryanheyser/docker-calibre",
         "docker.io/deluan/navidrome",
-        "deluan/navidrome"
+        "deluan/navidrome",
+        "booklore/booklore"
         //"linuxserver/calibre"
       ]
     },
