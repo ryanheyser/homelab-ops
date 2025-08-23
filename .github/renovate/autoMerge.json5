@@ -44,6 +44,7 @@
         "ubuntu",
         "debian",
         "mongo",
+        "mariadb",
         "ghcr.io/fluxcd/notification-controller",
         "ghcr.io/fluxcd/kustomize-controller",
         "ghcr.io/fluxcd/helm-controller",
