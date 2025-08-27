@@ -44,6 +44,19 @@
     },
     {
       "customType": "regex",
+      "description": "Process app-template version",
+      "fileMatch": ["\\.y(a)?ml(\\.j2)?$"],
+      "matchStringsStrategy": "combination",
+      "matchStrings": [
+        "chart:(\\s+)?app-template"
+        "version:(\\s+)?((?<currentValue>.*))",
+      ],
+      "datasourceTemplate": "helm",
+      //"datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}helm{{/if}}",
+      //"versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}",
+    },
+    {
+      "customType": "regex",
       "description": "Process tailscale crd version",
       "fileMatch": ["tailscale/kustomization\\.y(a)?ml$"],
       "matchStringsStrategy": "combination",

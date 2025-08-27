@@ -75,7 +75,8 @@
         "tailscale",
         "tailscale-operator",
         "audiobookshelf",
-        "reflector"
+        "reflector",
+        "app-template"
       ]
     },
     {
