@@ -9,7 +9,7 @@ spec:
   interval: 15m
   chart:
     spec:
-      # renovate: registryUrl=https://traefik.github.io/charts
+      # renovate: registryUrl=https://traefik.github.io/charts datasource=helm
       chart: traefik
       version: 37.0.0
       sourceRef:
