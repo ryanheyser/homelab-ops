@@ -48,6 +48,7 @@
       "fileMatch": ["\\.y(a)?ml(\\.j2)?$"],
       "matchStringsStrategy": "combination",
       "matchStrings": [
+        "#(\\s+)?renovate:(\\s+)((\\S)?registryUrl=(?<registryUrl>.*))",
         "chart:(\\s+)?app-template"
         "version:(\\s+)?((?<currentValue>.*))",
       ],
