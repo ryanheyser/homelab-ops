@@ -20,7 +20,7 @@
       "description": "Process app-template version",
       "fileMatch": ["\\.y(a)?ml$"],
       "ignorePaths": ["flux-system/**"],
-      "matchStringsStrategy": "combination",
+      "matchStringsStrategy": "recursive",
       "matchStrings": [
         "#(\\s+)?renovate:(\\s+)((\\S)?registryUrl=(?<registryUrl>\\S+))( datasource=(?<datasource>\\S+))?",
         "chart:(\\s+)?((?<depName>.*))",
