@@ -53,7 +53,7 @@ spec:
         bouncer:
           moduleName: github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin
           # renovate: traefik-plugin depName=maxlerebourg/crowdsec-bouncer-traefik-plugin datasource=github-releases
-          version: 1.4.4
+          version: 37.0.0
       kubernetesGateway:
         enabled: true
     providers:
