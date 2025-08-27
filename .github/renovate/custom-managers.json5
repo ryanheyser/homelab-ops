@@ -20,12 +20,12 @@
       "fileMatch": ["\\.y(a)?ml$"],
       "matchStringsStrategy": "combination",
       "matchStrings": [
-        "#(\\s+)?renovate:(\\s+)((\\S)?registryUrl=(?<registryUrl>.*))",
+        "#(\\s+)?renovate:(\\s+)((\\S)?registryUrl=(?<registryUrl>.*))( datasource=(?<datasource>\\S+))?",
         "chart:(\\s+)?((?<depName>.*))",
         "version:(\\s+)?((?<currentValue>.*))",
       ],
-      "datasourceTemplate": "helm",
-      //"datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}helm{{/if}}",
+      //"datasourceTemplate": "helm",
+      "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}helm{{/if}}",
       //"versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}",
     },
     {
