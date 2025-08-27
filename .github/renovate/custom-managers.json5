@@ -20,7 +20,7 @@
       "fileMatch": ["\\.y(a)?ml$"],
       "matchStringsStrategy": "combination",
       "matchStrings": [
-        "#(\\s+)?renovate:(\\s+)((\\S)?registryUrl=(?<registryUrl>.*))( datasource=(?<datasource>\\S+))?",
+        "#(\\s+)?renovate:(\\s+)((\\S)?registryUrl=(?<registryUrl>\\S+))( datasource=(?<datasource>\\S+))?",
         "chart:(\\s+)?((?<depName>.*))",
         "version:(\\s+)?((?<currentValue>.*))",
       ],
