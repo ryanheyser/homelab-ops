@@ -49,7 +49,7 @@
       "matchStringsStrategy": "combination",
       "matchStrings": [
         "#(\\s+)?renovate:(\\s+)((\\S)?registryUrl=(?<registryUrl>.*))",
-        "chart:(\\s+)?app-template"
+        "chart:(\\s+)?app-template",
         "version:(\\s+)?((?<currentValue>.*))",
       ],
       "datasourceTemplate": "helm",
