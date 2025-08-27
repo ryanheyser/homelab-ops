@@ -36,6 +36,7 @@
     'setup/**',
     '.taskfiles/**',
     'secrets/**',
+    'flux-system/**',
   ],
   ansible: {
     managerFilePatterns: [
@@ -43,6 +44,7 @@
     ],
     ignorePaths: [
       '.github/**',
+      'flux-system/**',
     ],
   },
   'helm-values': {
@@ -51,6 +53,7 @@
     ],
     ignorePaths: [
       '.github/**',
+      'flux-system/**',
     ],
   },
   flux: {
@@ -59,6 +62,7 @@
     ],
     ignorePaths: [
       '.github/**',
+      'flux-system/**',
     ],
   },
   kubernetes: {
@@ -67,12 +71,16 @@
     ],
     ignorePaths: [
       '.github/**',
+      'flux-system/**',
     ],
   },
   'github-actions': {
     managerFilePatterns: [
       '/(^|/)(workflow-templates|.(?:github|gitea|forgejo)/(?:workflows|actions))/.+.ya?ml$/',
       '/(^|/)action.ya?ml$/',
+    ],
+    ignorePaths: [
+      'flux-system/**',
     ],
   },
 }
