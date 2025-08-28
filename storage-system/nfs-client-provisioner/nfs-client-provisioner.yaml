@@ -19,6 +19,8 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    nameOverride: nfs-subdir-external-provisioner
+    fullnameOverride: nfs-subdir-external-provisioner
     replicaCount: 3
     strategyType: RollingUpdate
     nfs:
@@ -45,12 +47,15 @@ spec:
     podAnnotations:
       app.kubernetes.io/component: nfs
     tolerations:
-    - effect: PreferNoSchedule
-      key: node-role.kubernetes.io
-      value: master
-    - key: node-role.kubernetes.io/control-plane
-      operator: Equal
-      effect: NoSchedule
+      - key: node-role.kubernetes.io/control-plane
+        operator: Exists
+        effect: PreferNoSchedule
+      - key: node-role.kubernetes.io/etcd
+        operator: Exists
+        effect: PreferNoSchedule
+      - key: node-role.kubernetes.io/master
+        operator: Exists
+        effect: PreferNoSchedule
     affinity:
       podAntiAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:

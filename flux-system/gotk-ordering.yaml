@@ -11,26 +11,17 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  # healthChecks:
-  #   - apiiVersion: apps/v1
-  #     kind: Deployment
-  #     name: cert-manager
-  #     namespace: cert-manager-system
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: vault
-  namespace: flux-system
-spec:
-  interval: 10m0s
-  path: "./vault-system"
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  dependsOn:
-    - name: cert-manager-system
+  wait: true
+  timeout: 10m0s
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      name: cert-manager
+      namespace: cert-manager-system
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: cert-manager
+      namespace: cert-manager-system
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -46,6 +37,73 @@ spec:
     name: flux-system
   dependsOn:
     - name: cert-manager-system
+  wait: true
+  timeout: 10m0s
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      name: descheduler
+      namespace: kube-system
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: descheduler
+      namespace: kube-system
+    - apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      name: external-secrets
+      namespace: kube-system
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: external-secrets
+      namespace: kube-system
+    - apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      name: hami
+      namespace: kube-system
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: hami-scheduler
+      namespace: kube-system
+    - apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      name: intel-device-plugin-operator
+      namespace: kube-system
+    - apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      name: intel-device-plugin-gpu
+      namespace: kube-system
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: inteldeviceplugins-controller-manager
+      namespace: kube-system
+    - apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      name: node-feature-discovery
+      namespace: kube-system
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: node-feature-discovery-master
+      namespace: kube-system
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: node-feature-discovery-gc
+      namespace: kube-system
+    - apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      name: reflector
+      namespace: kube-system
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: reflector
+      namespace: kube-system
+    - apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      name: reloader
+      namespace: kube-system
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: reloader-reloader
+      namespace: kube-system
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -62,6 +120,25 @@ spec:
   dependsOn:
     - name: cert-manager-system
     - name: kube-system
+  wait: true
+  timeout: 10m0s
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      name: nfs-subdir-external-provisioner
+      namespace: storage-system
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: nfs-subdir-external-provisioner
+      namespace: storage-system
+    - apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      name: nfs-subdir-external-provisioner-ss
+      namespace: storage-system
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: nfs-subdir-external-provisioner-ss
+      namespace: storage-system
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -77,6 +154,49 @@ spec:
     name: flux-system
   dependsOn:
     - name: storage
+  wait: true
+  timeout: 10m0s
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: adguard-home
+      namespace: network-system
+    - apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      name: authentik
+      namespace: network-system
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: authentik-server
+      namespace: network-system
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: authentik-worker
+      namespace: network-system
+    - apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      name: metallb
+      namespace: network-system
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: metallb-controller
+      namespace: network-system
+    - apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      name: tailscale-operator
+      namespace: network-system
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: operator
+      namespace: network-system
+    - apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      name: traefik
+      namespace: network-system
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: traefik
+      namespace: network-system
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -92,6 +212,15 @@ spec:
     name: flux-system
   dependsOn:
     - name: storage
+  wait: true
+  timeout: 10m0s
+  healthChecks:
+    - apiVersion: external-secrets.io/v1
+      kind: ClusterSecretStore
+      name: vault
+      namespace: kube-system
+      failed: status.conditions.filter(e, e.type == 'Ready').all(e, e.status == 'False')
+      current: status.conditions.filter(e, e.type == 'Ready').all(e, e.status == 'True')
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -115,6 +244,27 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
+  name: vault-system
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  path: "./vault-system"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  dependsOn:
+    - name: external-secrets
+    - name: network-system
+    - name: storage-system
+    - name: kube-system
+    - name: cert-manager-system
+    - name: default
+    - name: upgrade-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
   name: upgrade-system
   namespace: flux-system
 spec:
@@ -126,4 +276,23 @@ spec:
     name: flux-system
   dependsOn:
     - name: default
----
+    - name: vault-system
+  wait: true
+  timeout: 10m0s
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: system-upgrade-controller
+      namespace: upgrade-system
+    - apiVersion: upgrade.cattle.io/v1
+      kind: Plan
+      name: rke2-server
+      namespace: upgrade-system
+      failed: status.conditions.filter(e, e.type == 'PlanIsValid').all(e, e.status == 'False')
+      current: status.conditions.filter(e, e.type == 'PlanIsValid').all(e, e.status == 'True')
+    - apiVersion: upgrade.cattle.io/v1
+      kind: Plan
+      name: rke2-agent
+      namespace: upgrade-system
+      failed: status.conditions.filter(e, e.type == 'PlanIsValid').all(e, e.status == 'False')
+      current: status.conditions.filter(e, e.type == 'PlanIsValid').all(e, e.status == 'True')
