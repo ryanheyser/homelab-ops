@@ -24,6 +24,12 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: truenas-awoofy-tailscale
+  annotations:
+    tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
+    tailscale.com/tailnet-fqdn: awoofy.tail1170fc.ts.net
+    tailscale.com/proxy-group: ts-proxygroup
+  labels:
+    tailscale.com/proxy-class: ts-proxyclass
 spec:
   defaultBackend:
     service:
@@ -39,6 +45,12 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: truenas-kracko-tailscale
+  annotations:
+    tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
+    tailscale.com/tailnet-fqdn: kracko.tail1170fc.ts.net
+    tailscale.com/proxy-group: ts-proxygroup
+  labels:
+    tailscale.com/proxy-class: ts-proxyclass
 spec:
   defaultBackend:
     service:
@@ -56,6 +68,10 @@ metadata:
   name: plex-tailscale
   annotations:
     tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
+    tailscale.com/tailnet-fqdn: plex.tail1170fc.ts.net
+    tailscale.com/proxy-group: ts-proxygroup
+  labels:
+    tailscale.com/proxy-class: ts-proxyclass
 spec:
   defaultBackend:
     service:
