@@ -248,6 +248,7 @@ spec:
   interval: 10m0s
   path: "./vault-system"
   prune: true
+  wait: false
   sourceRef:
     kind: GitRepository
     name: flux-system
