@@ -1,0 +1,215 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: vault-unseal
+  namespace: vault-system
+spec:
+  driftDetection:
+    mode: enabled
+  interval: 15m
+  chart:
+    spec:
+      # renovate: registryUrl=https://helm.releases.hashicorp.com
+      chart: vault
+      version: 0.30.1
+      sourceRef:
+        kind: HelmRepository
+        name: hashicorp-charts
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    global:
+      namespace: vault-system
+      enabled: true
+      tlsDisable: true
+    injector:
+      replicas: 3
+      logFormat: "json"
+      certs:
+        secretName: null
+      image:
+        # renovate: repository=hashicorp/vault-k8s
+        repository: "hashicorp/vault-k8s"
+        tag: "1.7.0"
+      agentImage:
+        # renovate: repository=hashicorp/vault
+        repository: "hashicorp/vault"
+        tag: "1.20.2"
+      strategy:
+        rollingUpdate:
+          maxSurge: "25%"
+          maxUnavailable: "25%"
+        type: RollingUpdate
+      securityContext:
+        pod:
+          runAsNonRoot: true
+          runAsGroup: 3001
+          runAsUser: 1000
+    server:
+      uid: 1000
+      gid: 3001
+      image:
+        # renovate: repository=hashicorp/vault
+        repository: "hashicorp/vault"
+        tag: "1.20.2"
+        # Overrides the default Image Pull Policy
+        pullPolicy: IfNotPresent
+      updateStrategyType: "RollingUpdate"
+      statefulset:
+        securityContext:
+          pod:
+            runAsNonRoot: true
+            runAsGroup: 3001
+            runAsUser: 1000
+            fsGroup: 3001
+            fsGroupChangePolicy: "OnRootMismatch"
+            supplementalGroups: [568,911,1000,1001]
+          container:
+            allowPrivilegeEscalation: false
+            runAsGroup: 3001
+            runAsUser: 1000
+      logLevel: "debug"
+      logFormat: "json"
+      readinessProbe:
+        initialDelaySeconds: 20
+      service:
+        annotations:
+          traefik.ingress.kubernetes.io/service.nativelb: "true"
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: traefik
+          traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+          # traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+        ingressClassName: traefik
+        pathType: Prefix
+        hosts:
+          - host: vault.homelab.heyser.xyz
+          - host: vault-ui.homelab.heyser.xyz
+        tls:
+          - secretName: vault-homelab-heyser-xyz-tls
+            hosts:
+              - vault.homelab.heyser.xyz
+              - vault-ui.homelab.heyser.xyz
+      tolerations:
+        - key: "node-role.kubernetes.io/control-plane"
+          operator: "Exists"
+        - key: "node-role.kubernetes.io/master"
+          operator: "Exists"
+        - key: "node-role.kubernetes.io/etcd"
+          operator: "Exists"
+      volumes:
+        - name: pgp-keys
+          configMap:
+            name: vault-pgp-key
+      volumeMounts:
+        - name: pgp-keys
+          mountPath: /vault/config/pgp-keys
+          readOnly: true
+      dataStorage:
+        enabled: true
+        size: 40Gi
+        annotations:
+          nfs.io/storage-path: "containers/kubernetes/vault/data"
+        storageClass: "nfs-dynamic-ss"
+        accessMode: ReadWriteMany
+      auditStorage:
+        enabled: true
+        size: 10Gi
+        annotations:
+          nfs.io/storage-path: "containers/kubernetes/vault/audit"
+        storageClass: "nfs-dynamic-ss"
+        accessMode: ReadWriteMany
+      extraEnvironmentVars:
+        VAULT_CLIENT_TIMEOUT: "900s"
+      standalone:
+        enabled: false
+      ha:
+        enabled: true
+        replicas: 5
+        statefulSet:
+          securityContext:
+            pod:
+              runAsNonRoot: true
+              runAsGroup: 3001
+              runAsUser: 1000
+              fsGroup: 3001
+            container:
+              allowPrivilegeEscalation: false
+              runAsGroup: 3001
+              runAsUser: 1000
+        raft:
+          enabled: true
+          setNodeId: true
+          disruptionBudget:
+            enabled: true
+            maxUnavailable: 1
+          config: |
+            ui = true
+            disable_mlock = true
+            listener "tcp" {
+              tls_disable = 1
+              address = "0.0.0.0:8200"
+              cluster_address = "0.0.0.0:8201"
+              telemetry {
+                unauthenticated_metrics_access = "true"
+              }
+            }
+            disable_sealwrap = true
+            storage "raft" {
+              path = "/vault/data"
+              retry_join {
+                auto_join = "provider=k8s label_selector=\"app.kubernetes.io/name = vault,component = server\" namespace=\"{{ .Release.Namespace }}\""
+                auto_join_port = 8200
+                auto_join_scheme = "http"
+              }
+            }
+            autopilot {
+              last_contact_failure_threshold = "15m"
+              server_stabilization_time = "30s"
+            }
+            telemetry {
+              prometheus_retention_time = "30s"
+              disable_hostname = true
+            }
+            service_registration "kubernetes" {}
+    ui:
+      enabled: true
+    csi:
+      enabled: true
+      image:
+        # renovate: repository=hashicorp/vault-csi-provider
+        repository: "hashicorp/vault-csi-provider"
+        tag: "1.5.1"
+        pullPolicy: IfNotPresent
+      daemonSet:
+        updateStrategy:
+          type: RollingUpdate
+          maxUnavailable: 1
+        securityContext:
+          pod:
+            runAsNonRoot: true
+            runAsGroup: 3001
+            runAsUser: 1000
+            fsGroup: 3001
+          container:
+            allowPrivilegeEscalation: false
+            runAsGroup: 3001
+            runAsUser: 1000
+      agent:
+        logFormat: json
+        image:
+          # renovate: repository=hashicorp/vault
+          repository: "hashicorp/vault"
+          tag: "1.20.2"
+          pullPolicy: IfNotPresent
