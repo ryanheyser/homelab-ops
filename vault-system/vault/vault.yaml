@@ -186,7 +186,7 @@ spec:
     ui:
       enabled: true
     csi:
-      enabled: true
+      enabled: false
       image:
         # renovate: repository=hashicorp/vault-csi-provider
         repository: "hashicorp/vault-csi-provider"
