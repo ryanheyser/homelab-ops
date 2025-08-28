@@ -13,15 +13,15 @@ spec:
     name: flux-system
   wait: true
   timeout: 10m0s
-  healthChecks:
-    - apiVersion: helm.toolkit.fluxcd.io/v2
-      kind: HelmRelease
-      name: cert-manager
-      namespace: cert-manager-system
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: cert-manager
-      namespace: cert-manager-system
+  # healthChecks:
+  #   - apiVersion: helm.toolkit.fluxcd.io/v2
+  #     kind: HelmRelease
+  #     name: cert-manager
+  #     namespace: cert-manager-system
+  #   - apiVersion: apps/v1
+  #     kind: Deployment
+  #     name: cert-manager
+  #     namespace: cert-manager-system
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -39,71 +39,71 @@ spec:
     - name: cert-manager-system
   wait: true
   timeout: 10m0s
-  healthChecks:
-    - apiVersion: helm.toolkit.fluxcd.io/v2
-      kind: HelmRelease
-      name: descheduler
-      namespace: kube-system
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: descheduler
-      namespace: kube-system
-    - apiVersion: helm.toolkit.fluxcd.io/v2
-      kind: HelmRelease
-      name: external-secrets
-      namespace: kube-system
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: external-secrets
-      namespace: kube-system
-    - apiVersion: helm.toolkit.fluxcd.io/v2
-      kind: HelmRelease
-      name: hami
-      namespace: kube-system
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: hami-scheduler
-      namespace: kube-system
-    - apiVersion: helm.toolkit.fluxcd.io/v2
-      kind: HelmRelease
-      name: intel-device-plugin-operator
-      namespace: kube-system
-    - apiVersion: helm.toolkit.fluxcd.io/v2
-      kind: HelmRelease
-      name: intel-device-plugin-gpu
-      namespace: kube-system
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: inteldeviceplugins-controller-manager
-      namespace: kube-system
-    - apiVersion: helm.toolkit.fluxcd.io/v2
-      kind: HelmRelease
-      name: node-feature-discovery
-      namespace: kube-system
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: node-feature-discovery-master
-      namespace: kube-system
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: node-feature-discovery-gc
-      namespace: kube-system
-    - apiVersion: helm.toolkit.fluxcd.io/v2
-      kind: HelmRelease
-      name: reflector
-      namespace: kube-system
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: reflector
-      namespace: kube-system
-    - apiVersion: helm.toolkit.fluxcd.io/v2
-      kind: HelmRelease
-      name: reloader
-      namespace: kube-system
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: reloader-reloader
-      namespace: kube-system
+  # healthChecks:
+  #   - apiVersion: helm.toolkit.fluxcd.io/v2
+  #     kind: HelmRelease
+  #     name: descheduler
+  #     namespace: kube-system
+  #   - apiVersion: apps/v1
+  #     kind: Deployment
+  #     name: descheduler
+  #     namespace: kube-system
+  #   - apiVersion: helm.toolkit.fluxcd.io/v2
+  #     kind: HelmRelease
+  #     name: external-secrets
+  #     namespace: kube-system
+  #   - apiVersion: apps/v1
+  #     kind: Deployment
+  #     name: external-secrets
+  #     namespace: kube-system
+  #   - apiVersion: helm.toolkit.fluxcd.io/v2
+  #     kind: HelmRelease
+  #     name: hami
+  #     namespace: kube-system
+  #   - apiVersion: apps/v1
+  #     kind: Deployment
+  #     name: hami-scheduler
+  #     namespace: kube-system
+  #   - apiVersion: helm.toolkit.fluxcd.io/v2
+  #     kind: HelmRelease
+  #     name: intel-device-plugin-operator
+  #     namespace: kube-system
+  #   - apiVersion: helm.toolkit.fluxcd.io/v2
+  #     kind: HelmRelease
+  #     name: intel-device-plugin-gpu
+  #     namespace: kube-system
+  #   - apiVersion: apps/v1
+  #     kind: Deployment
+  #     name: inteldeviceplugins-controller-manager
+  #     namespace: kube-system
+  #   - apiVersion: helm.toolkit.fluxcd.io/v2
+  #     kind: HelmRelease
+  #     name: node-feature-discovery
+  #     namespace: kube-system
+  #   - apiVersion: apps/v1
+  #     kind: Deployment
+  #     name: node-feature-discovery-master
+  #     namespace: kube-system
+  #   - apiVersion: apps/v1
+  #     kind: Deployment
+  #     name: node-feature-discovery-gc
+  #     namespace: kube-system
+  #   - apiVersion: helm.toolkit.fluxcd.io/v2
+  #     kind: HelmRelease
+  #     name: reflector
+  #     namespace: kube-system
+  #   - apiVersion: apps/v1
+  #     kind: Deployment
+  #     name: reflector
+  #     namespace: kube-system
+  #   - apiVersion: helm.toolkit.fluxcd.io/v2
+  #     kind: HelmRelease
+  #     name: reloader
+  #     namespace: kube-system
+  #   - apiVersion: apps/v1
+  #     kind: Deployment
+  #     name: reloader-reloader
+  #     namespace: kube-system
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -122,23 +122,23 @@ spec:
     - name: kube-system
   wait: true
   timeout: 10m0s
-  healthChecks:
-    - apiVersion: helm.toolkit.fluxcd.io/v2
-      kind: HelmRelease
-      name: nfs-subdir-external-provisioner
-      namespace: storage-system
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: nfs-subdir-external-provisioner
-      namespace: storage-system
-    - apiVersion: helm.toolkit.fluxcd.io/v2
-      kind: HelmRelease
-      name: nfs-subdir-external-provisioner-ss
-      namespace: storage-system
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: nfs-subdir-external-provisioner-ss
-      namespace: storage-system
+  # healthChecks:
+  #   - apiVersion: helm.toolkit.fluxcd.io/v2
+  #     kind: HelmRelease
+  #     name: nfs-subdir-external-provisioner
+  #     namespace: storage-system
+  #   - apiVersion: apps/v1
+  #     kind: Deployment
+  #     name: nfs-subdir-external-provisioner
+  #     namespace: storage-system
+  #   - apiVersion: helm.toolkit.fluxcd.io/v2
+  #     kind: HelmRelease
+  #     name: nfs-subdir-external-provisioner-ss
+  #     namespace: storage-system
+  #   - apiVersion: apps/v1
+  #     kind: Deployment
+  #     name: nfs-subdir-external-provisioner-ss
+  #     namespace: storage-system
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -156,47 +156,47 @@ spec:
     - name: storage
   wait: true
   timeout: 10m0s
-  healthChecks:
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: adguard-home
-      namespace: network-system
-    - apiVersion: helm.toolkit.fluxcd.io/v2
-      kind: HelmRelease
-      name: authentik
-      namespace: network-system
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: authentik-server
-      namespace: network-system
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: authentik-worker
-      namespace: network-system
-    - apiVersion: helm.toolkit.fluxcd.io/v2
-      kind: HelmRelease
-      name: metallb
-      namespace: network-system
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: metallb-controller
-      namespace: network-system
-    - apiVersion: helm.toolkit.fluxcd.io/v2
-      kind: HelmRelease
-      name: tailscale-operator
-      namespace: network-system
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: operator
-      namespace: network-system
-    - apiVersion: helm.toolkit.fluxcd.io/v2
-      kind: HelmRelease
-      name: traefik
-      namespace: network-system
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: traefik
-      namespace: network-system
+  # healthChecks:
+  #   - apiVersion: apps/v1
+  #     kind: Deployment
+  #     name: adguard-home
+  #     namespace: network-system
+  #   - apiVersion: helm.toolkit.fluxcd.io/v2
+  #     kind: HelmRelease
+  #     name: authentik
+  #     namespace: network-system
+  #   - apiVersion: apps/v1
+  #     kind: Deployment
+  #     name: authentik-server
+  #     namespace: network-system
+  #   - apiVersion: apps/v1
+  #     kind: Deployment
+  #     name: authentik-worker
+  #     namespace: network-system
+  #   - apiVersion: helm.toolkit.fluxcd.io/v2
+  #     kind: HelmRelease
+  #     name: metallb
+  #     namespace: network-system
+  #   - apiVersion: apps/v1
+  #     kind: Deployment
+  #     name: metallb-controller
+  #     namespace: network-system
+  #   - apiVersion: helm.toolkit.fluxcd.io/v2
+  #     kind: HelmRelease
+  #     name: tailscale-operator
+  #     namespace: network-system
+  #   - apiVersion: apps/v1
+  #     kind: Deployment
+  #     name: operator
+  #     namespace: network-system
+  #   - apiVersion: helm.toolkit.fluxcd.io/v2
+  #     kind: HelmRelease
+  #     name: traefik
+  #     namespace: network-system
+  #   - apiVersion: apps/v1
+  #     kind: Deployment
+  #     name: traefik
+  #     namespace: network-system
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -214,11 +214,11 @@ spec:
     - name: storage
   wait: true
   timeout: 10m0s
-  healthCheckExprs:
-    - apiVersion: external-secrets.io/v1
-      kind: ClusterSecretStore
-      failed: status.conditions.filter(e, e.type == 'Ready').all(e, e.status == 'False')
-      current: status.conditions.filter(e, e.type == 'Ready').all(e, e.status == 'True')
+  # healthCheckExprs:
+  #   - apiVersion: external-secrets.io/v1
+  #     kind: ClusterSecretStore
+  #     failed: status.conditions.filter(e, e.type == 'Ready').all(e, e.status == 'False')
+  #     current: status.conditions.filter(e, e.type == 'Ready').all(e, e.status == 'True')
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -277,13 +277,13 @@ spec:
     - name: vault-system
   wait: true
   timeout: 10m0s
-  healthChecks:
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: system-upgrade-controller
-      namespace: upgrade-system
-  healthCheckExprs:
-    - apiVersion: upgrade.cattle.io/v1
-      kind: Plan
-      failed: status.conditions.filter(e, e.type == 'PlanIsValid').all(e, e.status == 'False')
-      current: status.conditions.filter(e, e.type == 'PlanIsValid').all(e, e.status == 'True')
+  # healthChecks:
+  #   - apiVersion: apps/v1
+  #     kind: Deployment
+  #     name: system-upgrade-controller
+  #     namespace: upgrade-system
+  # healthCheckExprs:
+  #   - apiVersion: upgrade.cattle.io/v1
+  #     kind: Plan
+  #     failed: status.conditions.filter(e, e.type == 'PlanIsValid').all(e, e.status == 'False')
+  #     current: status.conditions.filter(e, e.type == 'PlanIsValid').all(e, e.status == 'True')
