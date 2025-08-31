@@ -149,6 +149,17 @@
         "traefik",
         "vault"
       ]
+    },
+    {
+      "datasources": ["docker"],
+      "automerge": true,
+      "automergeType": "branch",
+      "requiredStatusChecks": null,
+      "schedule": ["before 3am on Monday"],
+      "updateTypes": ["patch"],
+      "packageNames": [
+        "hashicorp/vault"
+      ]
     }
   ]
 }
