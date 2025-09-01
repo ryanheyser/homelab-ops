@@ -136,6 +136,6 @@ spec:
         existingClaim: mangayomi-server-mongo-data
         advancedMounts:
           main:
-            main:
+            mongo:
               - path: "/data"
                 readOnly: false
