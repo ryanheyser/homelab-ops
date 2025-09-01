@@ -49,10 +49,10 @@ spec:
             - key: "arm"
               operator: "Exists"
         cronjob:
-          schedule: "*/15 * * * *"
+          schedule: "*/5 * * * *"
           failedJobsHistory: 1
           successfulJobsHistory: 1
-          ttlSecondsAfterFinished: 3600
+          ttlSecondsAfterFinished: 1800
         containers:
           vault0:
             image:
