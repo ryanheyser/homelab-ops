@@ -87,8 +87,17 @@
       "automerge": true,
       "automergeType": "branch",
       "ignoreTests": true,
-      "automergeType": "branch",
-      "matchUpdateTypes": ["minor", "patch"]
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackagePattern": [
+        "actions/checkout",
+        "actions/setup-node",
+        "actions/setup-go",
+        "actions/setup-python",
+        "actions/cache",
+        "actions/upload-artifact",
+        "actions/download-artifact",
+        "renovatebot/github-action"
+      ]
     },
     {
       "description": "Auto merge GitHub Releases",
