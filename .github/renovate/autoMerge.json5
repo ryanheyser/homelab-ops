@@ -74,6 +74,7 @@
         "cert-manager",
         "tailscale",
         "tailscale-operator",
+        "traefik",
         "audiobookshelf",
         "reflector",
         "app-template"
