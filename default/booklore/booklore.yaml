@@ -43,14 +43,14 @@ spec:
           securityContext:
             fsGroup: 3001
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [568,911,1000,1001]
+            supplementalGroups: [ 568, 911, 1000, 1001 ]
           tolerations:
-            - key: "arm"
-              operator: "Exists"
+          - key: "arm"
+            operator: "Exists"
         containers:
           main:
             image:
-               # renovate: repository=booklore/booklore
+              # renovate: repository=booklore/booklore
               repository: booklore/booklore
               tag: v1.3.3
             securityContext:
@@ -61,10 +61,12 @@ spec:
               PUID: 1000
               PGID: 3001
               SWAGGER_ENABLED: "false"
+              USER_ID: 1000
+              GROUP_ID: 3001
             envFrom:
-              - secretRef:
-                  name: booklore-config
-                  optional: false
+            - secretRef:
+                name: booklore-config
+                optional: false
       mariadb:
         defaultContainerOptions:
           resources:
@@ -79,10 +81,10 @@ spec:
           securityContext:
             fsGroup: 3001
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [568,911,1000,1001]
+            supplementalGroups: [ 568, 911, 1000, 1001 ]
           tolerations:
-            - key: "arm"
-              operator: "Exists"
+          - key: "arm"
+            operator: "Exists"
         containers:
           mariadb:
             image:
@@ -94,9 +96,9 @@ spec:
               PUID: 1000
               PGID: 3001
             envFrom:
-              - secretRef:
-                  name: booklore-database-config
-                  optional: false
+            - secretRef:
+                name: booklore-database-config
+                optional: false
     service:
       main:
         controller: main
@@ -138,26 +140,26 @@ spec:
         advancedMounts:
           main:
             main:
-              - path: "/app/data"
-                readOnly: false
+            - path: "/app/data"
+              readOnly: false
       booklore-books:
         existingClaim: booklore-books
         advancedMounts:
           main:
             main:
-              - path: "/books"
-                readOnly: false
+            - path: "/books"
+              readOnly: false
       booklore-bookdrop:
         existingClaim: booklore-bookdrop
         advancedMounts:
           main:
             main:
-              - path: "/bookdrop"
-                readOnly: false
+            - path: "/bookdrop"
+              readOnly: false
       mariadb-config:
         existingClaim: booklore-mariadb-config
         advancedMounts:
           mariadb:
             mariadb:
-              - path: "/config"
-                readOnly: false
+            - path: "/config"
+              readOnly: false

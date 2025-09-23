@@ -43,14 +43,14 @@ spec:
           securityContext:
             fsGroup: 3001
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [568,911,1000,1001]
+            supplementalGroups: [ 568, 911, 1000, 1001 ]
           tolerations:
-            - key: "arm"
-              operator: "Exists"
+          - key: "arm"
+            operator: "Exists"
         containers:
           main:
             image:
-               # renovate: repository=ghcr.io/rumblpak/mangayomi-server
+              # renovate: repository=ghcr.io/rumblpak/mangayomi-server
               repository: ghcr.io/rumblpak/mangayomi-server
               tag: v0.1.0
             securityContext:
@@ -62,12 +62,12 @@ spec:
               PORT: 8080
               SESSION_TTL_DAYS: 30
             envFrom:
-              - secretRef:
-                  name: mangayomi-server-secret-key
-                  optional: false
-              - secretRef:
-                  name: mangayomi-server-mongo-config
-                  optional: false
+            - secretRef:
+                name: mangayomi-server-secret-key
+                optional: false
+            - secretRef:
+                name: mangayomi-server-mongo-config
+                optional: false
       mongo:
         defaultContainerOptions:
           resources:
@@ -82,10 +82,10 @@ spec:
           securityContext:
             fsGroup: 3001
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [568,911,1000,1001]
+            supplementalGroups: [ 568, 911, 1000, 1001 ]
           tolerations:
-            - key: "arm"
-              operator: "Exists"
+          - key: "arm"
+            operator: "Exists"
         containers:
           mongo:
             image:
@@ -93,9 +93,9 @@ spec:
               repository: mongo
               tag: 8.0.13
             envFrom:
-              - secretRef:
-                  name: mangayomi-server-mongo-config
-                  optional: false
+            - secretRef:
+                name: mangayomi-server-mongo-config
+                optional: false
     service:
       main:
         controller: main
@@ -135,7 +135,7 @@ spec:
       mongo-data:
         existingClaim: mangayomi-server-mongo-data
         advancedMounts:
-          main:
+          mongo:
             mongo:
-              - path: "/data"
-                readOnly: false
+            - path: "/data"
+              readOnly: false
