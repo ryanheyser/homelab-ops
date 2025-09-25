@@ -6,5 +6,6 @@ resources:
 - ./certificate.yaml
 - ./secret-booklore-config.yaml
 - ./secret-database-config.yaml
-- ./booklore.yaml
-- ./tailscale.yaml
+
+# - ./booklore.yaml
+# - ./tailscale.yaml
