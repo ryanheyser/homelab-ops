@@ -43,7 +43,7 @@ spec:
           securityContext:
             fsGroup: 3001
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [ 0, 568, 911, 1000, 1001 ]
+            supplementalGroups: [ 568, 911, 1000, 1001 ]
           tolerations:
           - key: "arm"
             operator: "Exists"
@@ -54,15 +54,15 @@ spec:
               repository: booklore/booklore
               tag: v1.3.3
             securityContext:
-              runAsUser: 1000
-              runAsGroup: 3001
+              runAsUser: 0
+              runAsGroup: 0
             env:
               TZ: America/New_York
               PUID: 1000
               PGID: 3001
               SWAGGER_ENABLED: "false"
-              USER_ID: 0
-              GROUP_ID: 0
+              USER_ID: 1000
+              GROUP_ID: 3001
             envFrom:
             - secretRef:
                 name: booklore-config
