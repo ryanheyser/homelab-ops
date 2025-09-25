@@ -61,8 +61,8 @@ spec:
               PUID: 1000
               PGID: 3001
               SWAGGER_ENABLED: "false"
-              USER_ID: 1000
-              GROUP_ID: 3001
+              USER_ID: 0
+              GROUP_ID: 0
             envFrom:
             - secretRef:
                 name: booklore-config
