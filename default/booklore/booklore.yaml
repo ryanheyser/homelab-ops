@@ -44,7 +44,6 @@ spec:
             fsGroup: 3001
             fsGroupChangePolicy: "OnRootMismatch"
             supplementalGroups: [ 568, 911, 1000, 1001 ]
-            allowPrivilegeEscalation: true
           tolerations:
           - key: "arm"
             operator: "Exists"
