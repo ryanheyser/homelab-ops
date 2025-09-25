@@ -41,9 +41,9 @@ spec:
           reloader.stakater.com/auto: "true"
         pod:
           securityContext:
-            fsGroup: 3001
+            fsGroup: 0
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [ 568, 911, 1000, 1001 ]
+            supplementalGroups: [ 568, 911, 1000, 1001, 3001 ]
           tolerations:
           - key: "arm"
             operator: "Exists"
@@ -61,8 +61,8 @@ spec:
               PUID: 1000
               PGID: 3001
               SWAGGER_ENABLED: "false"
-              USER_ID: 1000
-              GROUP_ID: 3001
+              USER_ID: 0
+              GROUP_ID: 0
             envFrom:
             - secretRef:
                 name: booklore-config
