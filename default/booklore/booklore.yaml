@@ -43,7 +43,7 @@ spec:
           securityContext:
             fsGroup: 3001
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [ 568, 911, 1000, 1001 ]
+            supplementalGroups: [ 0, 568, 911, 1000, 1001 ]
           tolerations:
           - key: "arm"
             operator: "Exists"
