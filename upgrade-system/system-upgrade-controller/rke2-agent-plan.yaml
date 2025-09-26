@@ -14,25 +14,25 @@ spec:
   version: v1.34.1+rke2r1
   nodeSelector:
     matchExpressions:
-    - {key: beta.kubernetes.io/os, operator: In, values: ["linux"]}
-    - {key: node-role.kubernetes.io/master, operator: NotIn, values: ["true"]}
-    - {key: node-role.kubernetes.io/control-plane, operator: DoesNotExist}
-    - {key: node-role.kubernetes.io/etcd, operator: DoesNotExist}
+    - { key: beta.kubernetes.io/os, operator: In, values: [ "linux" ] }
+    - { key: node-role.kubernetes.io/master, operator: DoesNotExist }
+    - { key: node-role.kubernetes.io/control-plane, operator: DoesNotExist }
+    - { key: node-role.kubernetes.io/etcd, operator: DoesNotExist }
   serviceAccountName: system-upgrade
 
   # Specify which node taints should be tolerated by pods applying the upgrade.
   # Anything specified here is appended to the default of:
   # - {key: node.kubernetes.io/unschedulable, effect: NoSchedule, operator: Exists}
   tolerations:
-  - {key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: amd64}
-  - {key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: arm64}
-  - {key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: arm}
-  - {key: arm, operator: Exists}
+  - { key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: amd64 }
+  - { key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: arm64 }
+  - { key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: arm }
+  - { key: arm, operator: Exists }
 
   prepare:
     # Since v0.5.0-m1 SUC will use the resolved version of the plan for the tag on the prepare container.
     # image: rancher/k3s-upgrade:v1.17.4-k3s1
     image: rancher/rke2-upgrade
-    args: ["prepare", "rke2-server"]
+    args: [ "prepare", server-plan" ]
   upgrade:
     image: rancher/rke2-upgrade
