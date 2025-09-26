@@ -52,7 +52,7 @@ spec:
             image:
               # renovate: repository=booklore/booklore
               repository: booklore/booklore
-              tag: v1.3.3
+              tag: v1.3.4
             securityContext:
               runAsUser: 1000
               runAsGroup: 3001
