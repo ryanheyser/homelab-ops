@@ -15,15 +15,15 @@ spec:
   cordon: true
   nodeSelector:
     matchExpressions:
-    - {key: node-role.kubernetes.io/control-plane, operator: In, values: ["true"]}
+    - { key: node-role.kubernetes.io/control-plane, operator: Exists }
   serviceAccountName: system-upgrade
   tolerations:
   - key: "node-role.kubernetes.io/master"
     operator: "Exists"
-  - {key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: amd64}
-  - {key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: arm64}
-  - {key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: arm}
-  - {key: arm, operator: Exists}
+  - { key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: amd64 }
+  - { key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: arm64 }
+  - { key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: arm }
+  - { key: arm, operator: Exists }
   - key: node-role.kubernetes.io/control-plane
     operator: "Exists"
   - key: node-role.kubernetes.io/etcd
