@@ -31,20 +31,20 @@ spec:
     global:
       securityContext:
         runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
+        runAsGroup: 3001
+        fsGroup: 3001
       affinity:
         podAntiAffinity: hard
       envFrom:
-        - secretRef:
-            name: authentik-secret-key
+      - secretRef:
+          name: authentik-secret-key
       tolerations:
-        - key: node-role.kubernetes.io/control-plane
-          operator: Equal
-          effect: NoSchedule
-        - effect: PreferNoSchedule
-          key: node-role.kubernetes.io
-          value: master
+      - key: node-role.kubernetes.io/control-plane
+        operator: Equal
+        effect: NoSchedule
+      - effect: PreferNoSchedule
+        key: node-role.kubernetes.io
+        value: master
     deploymentStrategy:
       type: RollingUpdate
       rollingUpdate:
@@ -53,8 +53,8 @@ spec:
     server:
       replicas: 3
       env:
-        - name: AUTHENTIK_REDIS__DB
-          value: "1"
+      - name: AUTHENTIK_REDIS__DB
+        value: "1"
       pdb:
         enabled: true
         minAvailable: 1
@@ -70,18 +70,18 @@ spec:
           # traefik.ingress.kubernetes.io/router.tls: "true"
           # traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt-prod"
           # traefik.ingress.kubernetes.io/router.middlewares: ""
-        # hosts:
-        # - host: &host "auth.homelab.heyser.xyz"
-        #   paths:
-        #   - path: "/"
-        #     pathType: Prefix
+          # hosts:
+          # - host: &host "auth.homelab.heyser.xyz"
+          #   paths:
+          #   - path: "/"
+          #     pathType: Prefix
         hosts:
-          - &host "auth.homelab.heyser.xyz"
-          - &althost "authentik.homelab.heyser.xyz"
+        - &host "auth.homelab.heyser.xyz"
+        # - &althost "authentik.homelab.heyser.xyz"
         tls:
         - hosts:
-            - *host
-            - *althost
+          - *host
+          # - *althost
           secretName: authentik-homelab-heyser-xyz-tls
     worker:
       replicas: 3
@@ -225,4 +225,3 @@ spec:
           size: 10Gi
           annotations:
             nfs.io/storage-path: "containers/kubernetes/authentik/redis-replicas"
-      
