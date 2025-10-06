@@ -91,7 +91,7 @@ spec:
             image:
               # renovate: repository=mongo
               repository: mongo
-              tag: 8.0.14
+              tag: 8.0.15
             envFrom:
             - secretRef:
                 name: mangayomi-server-mongo-config
