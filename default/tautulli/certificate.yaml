@@ -1,0 +1,18 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: immich-homelab-heyser-xyz
+spec:
+  subject:
+    organizations:
+    - Heyser
+  secretName: immich-homelab-heyser-xyz-tls
+  dnsNames:
+  - immich.homelab.heyser.xyz
+  issuerRef:
+    name: letsencrypt-prod
+    # We can reference ClusterIssuers by changing the kind here.
+    # The defaultt value is Issuer (i.e. a locally namespaced Issuer)
+    kind: ClusterIssuer
+    group: cert-manager.io
