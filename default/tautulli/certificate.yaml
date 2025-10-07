@@ -2,14 +2,14 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: immich-homelab-heyser-xyz
+  name: tautulli-homelab-heyser-xyz
 spec:
   subject:
     organizations:
     - Heyser
-  secretName: immich-homelab-heyser-xyz-tls
+  secretName: tautulli-homelab-heyser-xyz-tls
   dnsNames:
-  - immich.homelab.heyser.xyz
+  - tautulli.homelab.heyser.xyz
   issuerRef:
     name: letsencrypt-prod
     # We can reference ClusterIssuers by changing the kind here.
