@@ -54,8 +54,8 @@ spec:
               repository: ghcr.io/tautulli/tautulli
               tag: v2.16.0
             securityContext:
-              runAsUser: 1000
-              runAsGroup: 3001
+              runAsUser: 0
+              runAsGroup: 0
             env:
               TZ: America/New_York
               PUID: 1000
