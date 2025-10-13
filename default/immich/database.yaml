@@ -5,7 +5,7 @@ metadata:
 spec:
   instances: 1
 
-  logLevel: trace
+  logLevel: debug
   # postgresUID: 26
   # postgresGID: 26
 
