@@ -50,11 +50,15 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
           traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
         hosts:
-        - host: immich.homelab.heyser.xyz
+        - host: &host immich.homelab.heyser.xyz
           paths:
           - path: /
             service:
               identifier: main
+        tls:
+        - hosts:
+          - *host
+          secretName: immich-homelab-heyser-xyz-tls
 
     machine-learning:
       enabled: true
