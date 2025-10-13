@@ -3,7 +3,7 @@ kind: Cluster
 metadata:
   name: immich-database
 spec:
-  instances: 1
+  instances: 3
 
   logLevel: debug
   # postgresUID: 26
@@ -11,9 +11,9 @@ spec:
 
   primaryUpdateStrategy: unsupervised
 
-  inheritedMetadata:
-    annotations:
-      nfs.io/storage-path: "containers/kubernetes/immich/database"
+  # inheritedMetadata:
+  #   annotations:
+  #     nfs.io/storage-path: "containers/kubernetes/immich/database"
 
   storage:
     size: 1Ti

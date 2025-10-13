@@ -39,6 +39,7 @@ spec:
     storageClass:
       defaultClass: false
       name: "nfs-dynamic-immich-database"
+      pathPattern: "${.PVC.name}"
       accessModes: ReadWriteMany
       archiveOnDelete: false
       provisionerName: k8s-sigs.io/nfs-subdir-external-provisioner-immich-database
