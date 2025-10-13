@@ -6,8 +6,8 @@ spec:
   instances: 3
 
   logLevel: debug
-  # postgresUID: 26
-  # postgresGID: 26
+  postgresUID: 26
+  postgresGID: 26
 
   primaryUpdateStrategy: unsupervised
 
