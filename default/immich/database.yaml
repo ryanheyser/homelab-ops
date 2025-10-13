@@ -5,9 +5,6 @@ metadata:
 spec:
   instances: 1
 
-  postgresUID: 0
-  postgresGID: 0
-
   primaryUpdateStrategy: unsupervised
 
   inheritedMetadata:
