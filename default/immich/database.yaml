@@ -1,0 +1,38 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: immich-database
+spec:
+  instances: 1
+
+  primaryUpdateStrategy: unsupervised
+
+  inheritedMetadata:
+    annotations:
+      nfs.io/storage-path: "containers/kubernetes/immich/database"
+
+  storage:
+    size: 1Ti
+    pvcTemplate:
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Ti
+        storageClassName: nfs-dynamic
+
+  # repository: ghcr.io/tensorchord/cloudnative-vectorchord
+  imageName: ghcr.io/tensorchord/cloudnative-vectorchord:17.6
+
+  postgresql:
+    shared_preload_libraries:
+    - "vchord.so"
+
+  bootstrap:
+    initdb:
+      # TODO: Use managed extensions (pg 18)
+      postInitApplicationSQL:
+      # Commands based on: https://immich.app/docs/administration/postgres-standalone/#without-superuser-permission
+      - CREATE EXTENSION vchord CASCADE;
+      - CREATE EXTENSION earthdistance CASCADE;
