@@ -5,8 +5,8 @@ metadata:
 spec:
   instances: 1
 
-  postgresUID: 1000
-  postgresGID: 3001
+  postgresUID: 0
+  postgresGID: 0
 
   primaryUpdateStrategy: unsupervised
 
@@ -25,7 +25,7 @@ spec:
       storageClassName: nfs-dynamic
 
   # repository: ghcr.io/tensorchord/cloudnative-vectorchord
-  imageName: ghcr.io/tensorchord/cloudnative-vectorchord:17.6
+  imageName: ghcr.io/tensorchord/cloudnative-vectorchord:17.6-0.5.3
 
   postgresql:
     shared_preload_libraries:
@@ -36,5 +36,5 @@ spec:
       # TODO: Use managed extensions (pg 18)
       postInitApplicationSQL:
       # Commands based on: https://immich.app/docs/administration/postgres-standalone/#without-superuser-permission
-      - CREATE EXTENSION vchord CASCADE;
-      - CREATE EXTENSION earthdistance CASCADE;
+      - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
+      - CREATE EXTENSION IF NOT EXISTS earthdistance CASCADE;
