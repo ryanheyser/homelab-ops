@@ -6,8 +6,8 @@ spec:
   instances: 1
 
   logLevel: trace
-  postgresUID: 26
-  postgresGID: 26
+  # postgresUID: 26
+  # postgresGID: 26
 
   primaryUpdateStrategy: unsupervised
 
@@ -23,7 +23,7 @@ spec:
       resources:
         requests:
           storage: 1Ti
-      storageClassName: nfs-dynamic
+      storageClassName: nfs-dynamic-immich-database
 
   # repository: ghcr.io/tensorchord/cloudnative-vectorchord
   imageName: ghcr.io/tensorchord/cloudnative-vectorchord:17.6-0.5.3

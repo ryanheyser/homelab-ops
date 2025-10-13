@@ -1,0 +1,67 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: nfs-subdir-external-provisioner-immich-database
+  namespace: storage-system
+spec:
+  driftDetection:
+    mode: enabled
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
+      chart: nfs-subdir-external-provisioner
+      version: 4.0.18
+      sourceRef:
+        kind: HelmRepository
+        name: nfs-subdir-external-provisioner-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    nameOverride: nfs-subdir-external-provisioner-immich-database
+    fullnameOverride: nfs-subdir-external-provisioner-immich-database
+    replicaCount: 3
+    strategyType: RollingUpdate
+    nfs:
+      server: 10.0.0.8
+      path: /mnt/kracko/containers/kubernetes/immich/database
+      # server: "10.0.0.10"
+      # path: "/kracko"  
+      ## If mount options are set, the chart attempts to patch the persistent volume claims and fails
+      # mountOptions:
+      #   - "vers=4"
+      #   - "minorversion=1"
+      #   - "local_lock=posix"
+      #   - "proto=tcp"
+      #   - "noresvport"
+      #   - "ac"
+    storageClass:
+      defaultClass: false
+      name: "nfs-dynamic-immich-database"
+      accessModes: ReadWriteMany
+      archiveOnDelete: false
+      provisionerName: k8s-sigs.io/nfs-subdir-external-provisioner-immich-database
+      reclaimPolicy: Retain
+    podAnnotations:
+      app.kubernetes.io/component: nfs
+    tolerations:
+    - key: node-role.kubernetes.io/control-plane
+      operator: Exists
+      effect: PreferNoSchedule
+    - key: node-role.kubernetes.io/etcd
+      operator: Exists
+      effect: PreferNoSchedule
+    - key: node-role.kubernetes.io/master
+      operator: Exists
+      effect: PreferNoSchedule
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: app
+              operator: In
+              values:
+              - nfs-subdir-external-provisioner-immich-database
+          topologyKey: "kubernetes.io/hostname"
