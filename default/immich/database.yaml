@@ -14,13 +14,12 @@ spec:
   storage:
     size: 1Ti
     pvcTemplate:
-      spec:
-        accessModes:
-        - ReadWriteOnce
-        resources:
-          requests:
-            storage: 1Ti
-        storageClassName: nfs-dynamic
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 1Ti
+      storageClassName: nfs-dynamic
 
   # repository: ghcr.io/tensorchord/cloudnative-vectorchord
   imageName: ghcr.io/tensorchord/cloudnative-vectorchord:17.6
