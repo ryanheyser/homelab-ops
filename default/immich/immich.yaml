@@ -40,7 +40,7 @@ spec:
               IMMICH_LOG_LEVEL: "debug"
               NO_COLOR: "true"
               UPLOAD_LOCATION: "/library"
-              DB_HOSTNAME: "immich-database-rw.default.svc.cluster.local"
+              DB_HOSTNAME: "immich-database-rw"
               DB_STORAGE_TYPE: "HDD"
               REDIS_HOSTNAME: "immich-valkey"
               IMMICH_MACHINE_LEARNING_URL: "http://immich-machine-learning:3000"
