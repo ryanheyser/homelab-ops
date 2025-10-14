@@ -6,3 +6,4 @@ resources:
 - ./pvc.yaml
 - ./certificate.yaml
 - ./immich.yaml
+- ./tailscale.yaml
