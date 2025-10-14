@@ -12,7 +12,7 @@ spec:
       chart: immich
       version: 0.10.0
       sourceRef:
-        kind: HelmRepository
+        kind: OCIRepository
         name: immich
         namespace: flux-system
   maxHistory: 3
