@@ -13,7 +13,7 @@ spec:
 
   # inheritedMetadata:
   #   annotations:
-  #     nfs.io/storage-path: "containers/kubernetes/immich/database"
+  #     nfs.io/storage-path: ""
 
   storage:
     size: 1Ti
