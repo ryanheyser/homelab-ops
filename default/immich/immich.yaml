@@ -37,6 +37,12 @@ spec:
               tag: v2.0.1
             env:
               TZ: America/New_York
+              IMMICH_LOG_LEVEL: "debug"
+              NO_COLOR: "true"
+              UPLOAD_LOCATION: "/library"
+              DB_HOSTNAME: "immich-database-rw.default.svc.cluster.local"
+              DB_STORAGE_TYPE: "HDD"
+
     immich:
       persistence:
         library:
