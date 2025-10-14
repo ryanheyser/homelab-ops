@@ -4,4 +4,5 @@ namespace: default
 resources:
 - ./database.yaml
 - ./pvc.yaml
+- ./certificate.yaml
 - ./immich.yaml
