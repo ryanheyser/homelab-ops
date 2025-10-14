@@ -38,12 +38,47 @@ spec:
             env:
               TZ: America/New_York
               IMMICH_LOG_LEVEL: "debug"
+              IMMICH_MACHINE_LEARNING_URL: "http://immich-machine-learning:3000"
               NO_COLOR: "true"
               UPLOAD_LOCATION: "/library"
-              DB_HOSTNAME: "immich-database-rw"
-              DB_STORAGE_TYPE: "HDD"
               REDIS_HOSTNAME: "immich-valkey"
-              IMMICH_MACHINE_LEARNING_URL: "http://immich-machine-learning:3000"
+              DB_STORAGE_TYPE: "HDD"
+              DB_HOSTNAME:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-database-app
+                    key: host
+                    optional: false
+              DB_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-database-app
+                    key: pgpass
+                    optional: false
+              DB_USERNAME:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-database-app
+                    key: user
+                    optional: false
+              DB_URL:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-database-app
+                    key: fdqn-url
+                    optional: false
+              DB_PORT:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-database-app
+                    key: port
+                    optional: false
+              DB_DATABASE_NAME:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-database-app
+                    key: dbname
+                    optional: false
 
     immich:
       persistence:
