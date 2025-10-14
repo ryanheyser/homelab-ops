@@ -65,7 +65,7 @@ spec:
                 valueFrom:
                   secretKeyRef:
                     name: immich-database-app
-                    key: fqdn-url
+                    key: fqdn-uri
                     optional: false
               DB_PORT:
                 valueFrom:
