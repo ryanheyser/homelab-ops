@@ -68,9 +68,9 @@ spec:
           containers:
             main:
               image:
-                # renovate: repository=ghcr.io/valkey/valkey
-                repository: ghcr.io/valkey/valkey
-                tag: 8.1.4-alpine@sha256:e706d1213aaba6896c162bb6a3a9e1894e1a435f28f8f856d14fab2e10aa098b
+                # renovate: repository=docker.io/valkey/valkey
+                repository: docker.io/valkey/valkey
+                tag: 8.1.4-alpine
                 pullPolicy: IfNotPresent
 
     machine-learning:
