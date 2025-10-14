@@ -23,7 +23,7 @@ spec:
       resources:
         requests:
           storage: 1Ti
-      storageClassName: nfs-dynamic-immich-database
+      storageClassName: nfs-dynamic-database
 
   # repository: ghcr.io/tensorchord/cloudnative-vectorchord
   imageName: ghcr.io/tensorchord/cloudnative-vectorchord:17.6-0.5.3
