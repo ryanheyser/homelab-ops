@@ -7,3 +7,4 @@ resources:
 - ./certificate.yaml
 - ./immich.yaml
 - ./tailscale.yaml
+- ./loadbalancer.yaml

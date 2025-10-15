@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: immich-loadbalancer
+  namespace: default
+  annotations:
+    metallb.io/ip-allocated-from-pool: default
+    metallb.universe.tf/address-pool: default
+    metallb.universe.tf/allow-shared-ip: "immich"
+    metallb.universe.tf/loadBalancerIPs: 10.0.101.6
+spec:
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/name: server
+    app.kubernetes.io/instance: immich
+    app.kubernetes.io/controller: main
+  ports:
+  - name: http
+    protocol: TCP
+    port: 2283
+    targetPort: 2283
+  sessionAffinity: None
+  internalTrafficPolicy: Cluster
+  externalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  allocateLoadBalancerNodePorts: true
