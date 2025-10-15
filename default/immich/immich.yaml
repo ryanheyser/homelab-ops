@@ -130,7 +130,7 @@ spec:
           image:
             # renovate: repository=ghcr.io/immich-app/immich-machine-learning
             repository: ghcr.io/immich-app/immich-machine-learning
-            tag: v2.0.1
+            tag: v2.1.0
           env:
             TZ: America/New_York
             TRANSFORMERS_CACHE: /cache
