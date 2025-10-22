@@ -113,7 +113,7 @@ spec:
               image:
                 # renovate: repository=docker.io/valkey/valkey
                 repository: docker.io/valkey/valkey
-                tag: 8.1.4-alpine
+                tag: 9.0.0-alpine
                 pullPolicy: IfNotPresent
 
     machine-learning:
