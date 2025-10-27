@@ -3,11 +3,11 @@ kind: Kustomization
 namespace: network-system
 resources:
 # renovate: registryUrl=https://pkgs.tailscale.com/helmcharts
-- https://raw.githubusercontent.com/tailscale/tailscale/refs/tags/v1.90.2/cmd/k8s-operator/deploy/crds/tailscale.com_connectors.yaml
-- https://raw.githubusercontent.com/tailscale/tailscale/refs/tags/v1.90.2/cmd/k8s-operator/deploy/crds/tailscale.com_dnsconfigs.yaml
-- https://raw.githubusercontent.com/tailscale/tailscale/refs/tags/v1.90.2/cmd/k8s-operator/deploy/crds/tailscale.com_proxyclasses.yaml
-- https://raw.githubusercontent.com/tailscale/tailscale/refs/tags/v1.90.2/cmd/k8s-operator/deploy/crds/tailscale.com_proxygroups.yaml
-- https://raw.githubusercontent.com/tailscale/tailscale/refs/tags/v1.90.2/cmd/k8s-operator/deploy/crds/tailscale.com_recorders.yaml
+- https://raw.githubusercontent.com/tailscale/tailscale/refs/tags/v1.90.3/cmd/k8s-operator/deploy/crds/tailscale.com_connectors.yaml
+- https://raw.githubusercontent.com/tailscale/tailscale/refs/tags/v1.90.3/cmd/k8s-operator/deploy/crds/tailscale.com_dnsconfigs.yaml
+- https://raw.githubusercontent.com/tailscale/tailscale/refs/tags/v1.90.3/cmd/k8s-operator/deploy/crds/tailscale.com_proxyclasses.yaml
+- https://raw.githubusercontent.com/tailscale/tailscale/refs/tags/v1.90.3/cmd/k8s-operator/deploy/crds/tailscale.com_proxygroups.yaml
+- https://raw.githubusercontent.com/tailscale/tailscale/refs/tags/v1.90.3/cmd/k8s-operator/deploy/crds/tailscale.com_recorders.yaml
 - ./secret.yaml
 - ./tailscale-operator.yaml
 - ./connector.yaml
