@@ -29,6 +29,19 @@ spec:
   values:
     controllers:
       main:
+        defaultContainerOptions:
+          resources:
+            requests:
+              memory: 2Gi
+              gpu.intel.com/i915: 1
+            limits:
+              memory: 4Gi
+              gpu.intel.com/i915: 1
+        pod:
+          securityContext:
+            fsGroup: 3001
+            fsGroupChangePolicy: "OnRootMismatch"
+            supplementalGroups: [ 0, 568, 911, 1000, 1001 ]
         containers:
           main:
             image:
@@ -118,24 +131,30 @@ spec:
 
     machine-learning:
       enabled: true
-      resources:
-        requests:
-          cpu: 500m
-          memory: 1Gi
-          gpu.intel.com/i915: 1
-        limits:
-          cpu: 1
-          memory: 2Gi
-          gpu.intel.com/i915: 1
-      containers:
+      controllers:
         main:
-          image:
-            # renovate: repository=ghcr.io/immich-app/immich-machine-learning
-            repository: ghcr.io/immich-app/immich-machine-learning
-            tag: v2.1.0
-          env:
-            TZ: America/New_York
-            TRANSFORMERS_CACHE: /cache
+          defaultContainerOptions:
+            resources:
+              requests:
+                memory: 2Gi
+                gpu.intel.com/i915: 1
+              limits:
+                memory: 4Gi
+                gpu.intel.com/i915: 1
+          pod:
+            securityContext:
+              fsGroup: 3001
+              fsGroupChangePolicy: "OnRootMismatch"
+              supplementalGroups: [ 0, 568, 911, 1000, 1001 ]
+          containers:
+            main:
+              image:
+                # renovate: repository=ghcr.io/immich-app/immich-machine-learning
+                repository: ghcr.io/immich-app/immich-machine-learning
+                tag: v2.1.0
+              env:
+                TZ: America/New_York
+                TRANSFORMERS_CACHE: /cache
       persistence:
         cache:
           enabled: true
