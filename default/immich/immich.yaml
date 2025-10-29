@@ -28,11 +28,6 @@ spec:
     keepHistory: false
   values:
     controllers:
-      replicas: 2
-      strategy: RollingUpdate
-      rollingUpdate:
-        surge: 1
-        unavailable: 1
       main:
         defaultContainerOptions:
           resources:
