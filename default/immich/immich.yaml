@@ -101,6 +101,11 @@ spec:
     server:
       controllers:
         main:
+          replicas: 2
+          strategy: RollingUpdate
+          rollingUpdate:
+            unavailable: 1
+            surge: 1
           defaultContainerOptions:
             resources:
               requests:
