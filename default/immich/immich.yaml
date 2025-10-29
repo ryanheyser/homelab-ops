@@ -99,6 +99,32 @@ spec:
           existingClaim: immich-library
 
     server:
+      controllers:
+        replicas: 2
+        strategy: RollingUpdate
+        rollingUpdate:
+          surge: 1
+          unavailable: 1
+        main:
+          defaultContainerOptions:
+            resources:
+              requests:
+                memory: 2Gi
+                gpu.intel.com/i915: 1
+              limits:
+                memory: 4Gi
+                gpu.intel.com/i915: 1
+          pod:
+            securityContext:
+              fsGroup: 3001
+              fsGroupChangePolicy: "OnRootMismatch"
+              supplementalGroups: [ 0, 568, 911, 1000, 1001 ]
+          containers:
+            main:
+              image:
+                # renovate: repository=ghcr.io/immich-app/immich-server
+                repository: ghcr.io/immich-app/immich-server
+                tag: v2.1.0
       ingress:
         main:
           enabled: true
