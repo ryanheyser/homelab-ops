@@ -41,4 +41,4 @@ spec:
       - CREATE EXTENSION IF NOT EXISTS earthdistance CASCADE;
     recovery:
       backup:
-        name: backup-example
+        name: null
