@@ -39,3 +39,4 @@ spec:
       # Commands based on: https://immich.app/docs/administration/postgres-standalone/#without-superuser-permission
       - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
       - CREATE EXTENSION IF NOT EXISTS earthdistance CASCADE;
+    recovery: null
