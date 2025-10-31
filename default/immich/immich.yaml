@@ -159,14 +159,17 @@ spec:
       enabled: true
       controllers:
         main:
+          replicas: 3
+          strategy: RollingUpdate
+          rollingUpdate:
+            unavailable: 1
+            surge: 1
           defaultContainerOptions:
             resources:
               requests:
                 memory: 2Gi
-                gpu.intel.com/i915: 1
               limits:
                 memory: 4Gi
-                gpu.intel.com/i915: 1
           pod:
             securityContext:
               fsGroup: 3001
