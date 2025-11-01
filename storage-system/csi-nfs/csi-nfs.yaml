@@ -70,8 +70,6 @@ spec:
                 values:
                 - csi-nfs
             topologyKey: "kubernetes.io/hostname"
-    volumeSnapshotClass:
-      create: true
     storageClass:
       create: true
       name: nfs-dynamic-database
