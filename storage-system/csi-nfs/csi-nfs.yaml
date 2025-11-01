@@ -70,12 +70,6 @@ spec:
                 values:
                 - csi-nfs
             topologyKey: "kubernetes.io/hostname"
-    externalSnapshotter:
-      enabled: true
-      controller:
-        replicas: 2
-      customResourceDefinitions:
-        enabled: true
     volumeSnapshotClass:
       create: true
     storageClass:
