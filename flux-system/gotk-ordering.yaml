@@ -36,7 +36,7 @@ spec:
     kind: GitRepository
     name: flux-system
   dependsOn:
-    - name: cert-manager-system
+  - name: cert-manager-system
   wait: true
   timeout: 10m0s
   # healthChecks:
@@ -108,7 +108,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: storage
+  name: storage-system
   namespace: flux-system
 spec:
   interval: 10m0s
@@ -118,8 +118,8 @@ spec:
     kind: GitRepository
     name: flux-system
   dependsOn:
-    - name: cert-manager-system
-    - name: kube-system
+  - name: cert-manager-system
+  - name: kube-system
   wait: true
   timeout: 10m0s
   # healthChecks:
@@ -153,7 +153,7 @@ spec:
     kind: GitRepository
     name: flux-system
   dependsOn:
-    - name: storage
+  - name: storage
   wait: true
   timeout: 10m0s
   # healthChecks:
@@ -211,7 +211,7 @@ spec:
     kind: GitRepository
     name: flux-system
   dependsOn:
-    - name: storage
+  - name: storage
   wait: true
   timeout: 10m0s
   # healthCheckExprs:
@@ -233,11 +233,11 @@ spec:
     kind: GitRepository
     name: flux-system
   dependsOn:
-    - name: external-secrets
-    - name: network-system
-    - name: storage-system
-    - name: kube-system
-    - name: cert-manager-system
+  - name: external-secrets
+  - name: network-system
+  - name: storage-system
+  - name: kube-system
+  - name: cert-manager-system
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -253,13 +253,13 @@ spec:
     kind: GitRepository
     name: flux-system
   dependsOn:
-    - name: external-secrets
-    - name: network-system
-    - name: storage-system
-    - name: kube-system
-    - name: cert-manager-system
-    - name: default
-    - name: upgrade-system
+  - name: external-secrets
+  - name: network-system
+  - name: storage-system
+  - name: kube-system
+  - name: cert-manager-system
+  - name: default
+  - name: upgrade-system
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -274,8 +274,8 @@ spec:
     kind: GitRepository
     name: flux-system
   dependsOn:
-    - name: default
-    - name: vault-system
+  - name: default
+  - name: vault-system
   wait: true
   timeout: 10m0s
   # healthChecks:
