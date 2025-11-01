@@ -1,10 +1,10 @@
-# apiVersion: kustomize.config.k8s.io/v1beta1
-# kind: Kustomization
-# namespace: default
-# resources:
-# - ./database.yaml
-# - ./pvc.yaml
-# - ./certificate.yaml
-# - ./immich.yaml
-# - ./tailscale.yaml
-# - ./loadbalancer.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: default
+resources:
+  # - ./database.yaml
+  # - ./pvc.yaml
+  # - ./certificate.yaml
+  # - ./immich.yaml
+  # - ./tailscale.yaml
+  # - ./loadbalancer.yaml
