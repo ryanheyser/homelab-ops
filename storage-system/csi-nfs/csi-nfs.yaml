@@ -87,6 +87,7 @@ spec:
         subdir: "${pvc.metadata.name}"
       reclaimPolicy: Retain
       volumeBindingMode: Immediate
+      mountPermissions: "0777"
       mountOptions:
       - "vers=4"
       - "minorversion=1"
