@@ -70,6 +70,12 @@ spec:
                 values:
                 - csi-nfs
             topologyKey: "kubernetes.io/hostname"
+    externalSnapshotter:
+      enabled: true
+      controller:
+        replicas: 2
+      customResourceDefinitions:
+        enabled: true
     storageClass:
       create: true
       name: nfs-dynamic-database
