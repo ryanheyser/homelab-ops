@@ -24,8 +24,9 @@
         "ghcr.io/ryanheyser/docker-calibre",
         "docker.io/deluan/navidrome",
         "deluan/navidrome",
-        "booklore/booklore"
-        //"linuxserver/calibre"
+        "booklore/booklore",
+        "ghcr.io/immich-app/immich-server",
+        "ghcr.io/immich-app/immich-machine-learning"
       ]
     },
     // auto-updates - weekly
