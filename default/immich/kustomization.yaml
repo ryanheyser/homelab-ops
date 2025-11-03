@@ -3,8 +3,10 @@ kind: Kustomization
 namespace: default
 resources:
 - ./pvc.yaml
+- ./secret.yaml
 
 # - ./database.yaml
+# - ./database-backup.yaml
 # - ./certificate.yaml
 # - ./immich.yaml
 # - ./tailscale.yaml
