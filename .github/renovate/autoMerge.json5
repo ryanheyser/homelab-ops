@@ -77,7 +77,8 @@
         "traefik",
         "audiobookshelf",
         "reflector",
-        "app-template"
+        "app-template",
+        "immich"
       ]
     },
     {
