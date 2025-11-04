@@ -38,7 +38,7 @@
       "matchStringsStrategy": "recursive",
       "matchStrings": [
         "#(\\s+)?renovate:(\\s+)((\\S)?repository=(?<registryUrl>\\S+))( depName=(?<depName>\\S+))?",
-        "(repository:(\\s+)?((?<depName>.*)))?",
+        "repository:(\\s+)?((?<depName>.*))",
         "(tag|image)?:(\\s+)?((?<currentValue>.*))",
       ],
       "datasourceTemplate": "docker",
