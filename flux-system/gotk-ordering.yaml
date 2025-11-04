@@ -259,7 +259,6 @@ spec:
   - name: kube-system
   - name: cert-manager-system
   - name: default
-  - name: upgrade-system
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
