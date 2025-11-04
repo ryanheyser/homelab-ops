@@ -37,9 +37,9 @@
       "ignorePaths": ["flux-system/**"],
       "matchStringsStrategy": "recursive",
       "matchStrings": [
-        "#(\\s+)?renovate:(\\s+)((\\S)?repository=(?<registryUrl>\\S+))",
-        "repository:(\\s+)?((?<depName>.*))",
-        "tag:(\\s+)?((?<currentValue>.*))",
+        "#(\\s+)?renovate:(\\s+)((\\S)?repository=(?<registryUrl>\\S+))( depName=(?<depName>\\S+))?",
+        "(repository:(\\s+)?((?<depName>.*)))?",
+        "(tag|image)?:(\\s+)?((?<currentValue>.*))",
       ],
       "datasourceTemplate": "docker",
       //"versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}",

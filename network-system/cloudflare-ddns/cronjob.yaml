@@ -11,25 +11,25 @@ spec:
       template:
         spec:
           containers:
-            - name: cloudflare-ddns-star-root
-              # renovate: repository=mirioeggmann/cloudflare-ddns
-              image: mirioeggmann/cloudflare-ddns:cdd0ea3b0fc795627a059b654769e3b39e3903dc
-              envFrom:
-              - secretRef:
-                  name: cloudflare-ddns-star-root
-                  optional: false
-            - name: cloudflare-ddns-root
-              # renovate: repository=mirioeggmann/cloudflare-ddns
-              image: mirioeggmann/cloudflare-ddns:cdd0ea3b0fc795627a059b654769e3b39e3903dc
-              envFrom:
-              - secretRef:
-                  name: cloudflare-ddns-root
-                  optional: false
-            - name: cloudflare-ddns-star-homelab
-              # renovate: repository=mirioeggmann/cloudflare-ddns
-              image: mirioeggmann/cloudflare-ddns:cdd0ea3b0fc795627a059b654769e3b39e3903dc
-              envFrom:
-              - secretRef:
-                  name: cloudflare-ddns-star-homelab
-                  optional: false
+          - name: cloudflare-ddns-star-root
+            # renovate: repository=mirioeggmann/cloudflare-ddns depName=mirioeggmann/cloudflare-ddns
+            image: mirioeggmann/cloudflare-ddns:661bb6f10ed69e910dad7f68654685610306586d
+            envFrom:
+            - secretRef:
+                name: cloudflare-ddns-star-root
+                optional: false
+          - name: cloudflare-ddns-root
+            # renovate: repository=mirioeggmann/cloudflare-ddns depName=mirioeggmann/cloudflare-ddns
+            image: mirioeggmann/cloudflare-ddns:661bb6f10ed69e910dad7f68654685610306586d
+            envFrom:
+            - secretRef:
+                name: cloudflare-ddns-root
+                optional: false
+          - name: cloudflare-ddns-star-homelab
+            # renovate: repository=mirioeggmann/cloudflare-ddns depName=mirioeggmann/cloudflare-ddns
+            image: mirioeggmann/cloudflare-ddns:661bb6f10ed69e910dad7f68654685610306586d
+            envFrom:
+            - secretRef:
+                name: cloudflare-ddns-star-homelab
+                optional: false
           restartPolicy: OnFailure
