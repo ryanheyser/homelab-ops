@@ -5,15 +5,53 @@ metadata:
   name: ts-k8s-pod-cidrs
 spec:
   hostname: ts-k8s-pod-cidrs
+  proxyClass: ts-proxyclass
   subnetRouter:
     advertiseRoutes:
-      - "10.255.0.0/16"
+    - "10.255.0.0/16"
 ---
 apiVersion: tailscale.com/v1alpha1
 kind: Connector
 metadata:
   name: ts-k8s-exit-node
 spec:
-  hostname: ts-k8s-exit-node
+  replicas: 3
+  proxyClass: ts-proxyclass
+  hostnamePrefix: ts-k8s-exit-node
   exitNode: true
 ---
+apiVersion: tailscale.com/v1alpha1
+kind: Connector
+metadata:
+  name: ts-k8s-netflix
+spec:
+  replicas: 2
+  hostnamePrefix: ts-k8s-netflix
+  proxyClass: ts-proxyclass
+  appConnector: {}
+  tags:
+  - tag:app-netflix
+---
+apiVersion: tailscale.com/v1alpha1
+kind: Connector
+metadata:
+  name: ts-k8s-hulu
+spec:
+  replicas: 2
+  hostnamePrefix: ts-k8s-hulu
+  proxyClass: ts-proxyclass
+  appConnector: {}
+  tags:
+  - tag:app-hulu
+---
+apiVersion: tailscale.com/v1alpha1
+kind: Connector
+metadata:
+  name: ts-k8s-disneyplus
+spec:
+  replicas: 2
+  hostnamePrefix: ts-k8s-disneyplus
+  proxyClass: ts-proxyclass
+  appConnector: {}
+  tags:
+  - tag:app-disneyplus
