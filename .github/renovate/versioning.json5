@@ -7,6 +7,7 @@
       matchPackageNames: [
         "ghcr.io/onedr0p/plex",
         "ghcr.io/onedr0p/qbittorrent",
+        "mirioeggmann/cloudflare-ddns"
       ],
       versioning: "loose",
     },
