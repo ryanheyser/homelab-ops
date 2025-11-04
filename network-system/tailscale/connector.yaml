@@ -30,6 +30,7 @@ spec:
   proxyClass: ts-proxyclass
   appConnector: {}
   tags:
+  - tag:k8s
   - tag:app-netflix
 ---
 apiVersion: tailscale.com/v1alpha1
@@ -42,6 +43,7 @@ spec:
   proxyClass: ts-proxyclass
   appConnector: {}
   tags:
+  - tag:k8s
   - tag:app-hulu
 ---
 apiVersion: tailscale.com/v1alpha1
@@ -54,4 +56,5 @@ spec:
   proxyClass: ts-proxyclass
   appConnector: {}
   tags:
+  - tag:k8s
   - tag:app-disneyplus
