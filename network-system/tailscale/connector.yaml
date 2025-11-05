@@ -7,6 +7,9 @@ spec:
   replicas: 2
   hostnamePrefix: ts-k8s-pod-cidrs
   proxyClass: ts-proxyclass
+  tags:
+  - tag:k8s
+  - tag:subnet-router
   subnetRouter:
     advertiseRoutes:
     - "10.254.0.0/16"
@@ -32,6 +35,9 @@ spec:
   replicas: 3
   proxyClass: ts-proxyclass
   hostnamePrefix: ts-k8s-exit-node
+  tags:
+  - tag:k8s
+  - tag:exit-node
   exitNode: true
 ---
 apiVersion: tailscale.com/v1alpha1
