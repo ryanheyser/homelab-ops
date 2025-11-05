@@ -7,4 +7,5 @@ resources:
 - ./endpoints.yaml
 - ./servertransports.yaml
 - ./ingresses.yaml
-- ./tailscale.yaml
+
+# - ./tailscale.yaml
