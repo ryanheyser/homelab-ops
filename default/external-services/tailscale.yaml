@@ -1,85 +1,85 @@
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: truenas-storage-tailscale
-  annotations:
-    tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
-    tailscale.com/tailnet-fqdn: storage.tail1170fc.ts.net
-    tailscale.com/proxy-group: ts-proxygroup
-  labels:
-    tailscale.com/proxy-class: ts-proxyclass
-spec:
-  defaultBackend:
-    service:
-      name: truenas-storage-ip
-      port:
-        number: 443
-  ingressClassName: tailscale
-  tls:
-    - hosts:
-        - storage
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: truenas-awoofy-tailscale
-  annotations:
-    tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
-    tailscale.com/tailnet-fqdn: awoofy.tail1170fc.ts.net
-    tailscale.com/proxy-group: ts-proxygroup
-  labels:
-    tailscale.com/proxy-class: ts-proxyclass
-spec:
-  defaultBackend:
-    service:
-      name: truenas-awoofy-ip
-      port:
-        number: 443
-  ingressClassName: tailscale
-  tls:
-    - hosts:
-        - awoofy
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: truenas-kracko-tailscale
-  annotations:
-    tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
-    tailscale.com/tailnet-fqdn: kracko.tail1170fc.ts.net
-    tailscale.com/proxy-group: ts-proxygroup
-  labels:
-    tailscale.com/proxy-class: ts-proxyclass
-spec:
-  defaultBackend:
-    service:
-      name: truenas-kracko-ip
-      port:
-        number: 443
-  ingressClassName: tailscale
-  tls:
-    - hosts:
-        - kracko
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: plex-tailscale
-  annotations:
-    tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
-    tailscale.com/tailnet-fqdn: plex.tail1170fc.ts.net
-    tailscale.com/proxy-group: ts-proxygroup
-  labels:
-    tailscale.com/proxy-class: ts-proxyclass
-spec:
-  defaultBackend:
-    service:
-      name: plex-ip
-      port:
-        number: 32400
-  ingressClassName: tailscale
-  tls:
-    - hosts:
-        - plex
----
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: truenas-storage-tailscale
+#   annotations:
+#     tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
+#     tailscale.com/tailnet-fqdn: storage.tail1170fc.ts.net
+#     tailscale.com/proxy-group: ts-proxygroup
+#   labels:
+#     tailscale.com/proxy-class: ts-proxyclass
+# spec:
+#   defaultBackend:
+#     service:
+#       name: truenas-storage-ip
+#       port:
+#         number: 443
+#   ingressClassName: tailscale
+#   tls:
+#     - hosts:
+#         - storage
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: truenas-awoofy-tailscale
+#   annotations:
+#     tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
+#     tailscale.com/tailnet-fqdn: awoofy.tail1170fc.ts.net
+#     tailscale.com/proxy-group: ts-proxygroup
+#   labels:
+#     tailscale.com/proxy-class: ts-proxyclass
+# spec:
+#   defaultBackend:
+#     service:
+#       name: truenas-awoofy-ip
+#       port:
+#         number: 443
+#   ingressClassName: tailscale
+#   tls:
+#     - hosts:
+#         - awoofy
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: truenas-kracko-tailscale
+#   annotations:
+#     tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
+#     tailscale.com/tailnet-fqdn: kracko.tail1170fc.ts.net
+#     tailscale.com/proxy-group: ts-proxygroup
+#   labels:
+#     tailscale.com/proxy-class: ts-proxyclass
+# spec:
+#   defaultBackend:
+#     service:
+#       name: truenas-kracko-ip
+#       port:
+#         number: 443
+#   ingressClassName: tailscale
+#   tls:
+#     - hosts:
+#         - kracko
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: plex-tailscale
+#   annotations:
+#     tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
+#     tailscale.com/tailnet-fqdn: plex.tail1170fc.ts.net
+#     tailscale.com/proxy-group: ts-proxygroup
+#   labels:
+#     tailscale.com/proxy-class: ts-proxyclass
+# spec:
+#   defaultBackend:
+#     service:
+#       name: plex-ip
+#       port:
+#         number: 32400
+#   ingressClassName: tailscale
+#   tls:
+#     - hosts:
+#         - plex
+# ---
