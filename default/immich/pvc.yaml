@@ -26,15 +26,3 @@ spec:
   resources:
     requests:
       storage: 10Gi
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: immich-db-test
-spec:
-  accessModes:
-  - ReadWriteOnce
-  storageClassName: "nfs-dynamic-database"
-  resources:
-    requests:
-      storage: 10Gi
