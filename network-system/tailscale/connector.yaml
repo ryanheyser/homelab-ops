@@ -60,3 +60,16 @@ spec:
   tags:
   - tag:k8s
   - tag:app-disneyplus
+---
+apiVersion: tailscale.com/v1alpha1
+kind: Connector
+metadata:
+  name: ts-k8s-homelab
+spec:
+  replicas: 2
+  hostnamePrefix: ts-k8s-homelab
+  proxyClass: ts-proxyclass
+  appConnector: {}
+  tags:
+  - tag:k8s
+  - tag:app-homelab
