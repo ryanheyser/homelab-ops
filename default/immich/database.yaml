@@ -62,14 +62,14 @@ spec:
     retentionPolicy: "7d"
 
   bootstrap:
-    initdb:
-      # TODO: Use managed extensions (pg 18)
-      postInitApplicationSQL:
-      # Commands based on: https://immich.app/docs/administration/postgres-standalone/#without-superuser-permission
-      - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
-      - CREATE EXTENSION IF NOT EXISTS earthdistance CASCADE;
-    # recovery:
-    #   source: immich-database
+    # initdb:
+    #   # TODO: Use managed extensions (pg 18)
+    #   postInitApplicationSQL:
+    #   # Commands based on: https://immich.app/docs/administration/postgres-standalone/#without-superuser-permission
+    #   - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
+    #   - CREATE EXTENSION IF NOT EXISTS earthdistance CASCADE;
+    recovery:
+      source: immich-database
 
   externalClusters:
   - name: immich-database
