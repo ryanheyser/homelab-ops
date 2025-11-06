@@ -23,6 +23,9 @@ spec:
   replicas: 2
   hostnamePrefix: ts-k8s-home-cidrs
   proxyClass: ts-proxyclass
+  tags:
+  - tag:k8s
+  - tag:subnet-router
   subnetRouter:
     advertiseRoutes:
     - "10.0.0.0/18"
