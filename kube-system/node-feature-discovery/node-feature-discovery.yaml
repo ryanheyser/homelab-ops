@@ -48,6 +48,8 @@ spec:
         operator: "Exists"
       - effect: "NoSchedule"
         operator: "Exists"
+      - effect: "PreferNoSchedule"
+        operator: "Exists"
     master:
       replicaCount: 1
       tolerations:
@@ -56,6 +58,8 @@ spec:
       - key: "node-role.kubernetes.io/control-plane"
         operator: "Exists"
       - key: "node-role.kubernetes.io/master"
+        operator: "Exists"
+      - key: "node-role.kubernetes.io/etcd"
         operator: "Exists"
     topologyUpdater:
       enabled: true
@@ -72,4 +76,6 @@ spec:
       - effect: "NoExecute"
         operator: "Exists"
       - effect: "NoSchedule"
+        operator: "Exists"
+      - effect: "PreferNoSchedule"
         operator: "Exists"
