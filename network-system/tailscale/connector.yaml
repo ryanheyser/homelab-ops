@@ -10,6 +10,7 @@ spec:
   tags:
   - tag:k8s
   - tag:subnet-router
+  - tag:subnet-router-pod-cidrs
   subnetRouter:
     advertiseRoutes:
     - "10.254.0.0/16"
@@ -26,6 +27,7 @@ spec:
   tags:
   - tag:k8s
   - tag:subnet-router
+  - tag:subnet-router-home-cidrs
   subnetRouter:
     advertiseRoutes:
     - "10.0.0.0/18"
