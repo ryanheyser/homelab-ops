@@ -6,8 +6,7 @@ resources:
 - ./secret.yaml
 - ./database.yaml
 - ./database-backup.yaml
-
-# - ./certificate.yaml
-# - ./immich.yaml
-# - ./tailscale.yaml
-# - ./loadbalancer.yaml
+- ./certificate.yaml
+- ./immich.yaml
+- ./loadbalancer.yaml
+- ./tailscale.yaml
