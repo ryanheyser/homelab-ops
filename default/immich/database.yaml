@@ -25,12 +25,41 @@ spec:
           storage: 1Ti
       storageClassName: nfs-dynamic-database
 
-  # repository: ghcr.io/tensorchord/cloudnative-vectorchord
-  imageName: ghcr.io/tensorchord/cloudnative-vectorchord:17.5-0.4.3
+  # repository: ghcr.io/cloudnative-pg/postgresql
+  imageName: ghcr.io/cloudnative-pg/postgresql:18.0-standard-trixie
 
   postgresql:
+    parameters:
+      shared_buffers: "512MB"
+      work_mem: "50MB"
+    extensions:
+    - name: vchord
+      image:
+        # repository: ghcr.io/tensorchord/vchord-scratch
+        reference: ghcr.io/tensorchord/vchord-scratch:pg18-v0.5.3
+      dynamic_library_path:
+      - /usr/lib/postgresql/18/lib/
+      extension_control_path:
+      - /usr/share/postgresql/18/
     shared_preload_libraries:
     - "vchord.so"
+
+  backup:
+    barmanObjectStore:
+      destinationPath: "s3://immich/"
+      endpointURL: "http://10.0.0.8:9000"
+      s3Credentials:
+        accessKeyId:
+          name: immich-minio-credentials
+          key: minio-user
+        secretAccessKey:
+          name: immich-minio-credentials
+          key: minio-password
+      tags:
+        backupRetentionPolicy: "expire"
+      historyTags:
+        backupRetentionPolicy: "keep"
+    retentionPolicy: "7d"
 
   bootstrap:
     initdb:
@@ -39,3 +68,22 @@ spec:
       # Commands based on: https://immich.app/docs/administration/postgres-standalone/#without-superuser-permission
       - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
       - CREATE EXTENSION IF NOT EXISTS earthdistance CASCADE;
+    # recovery:
+    #   source: immich-database
+
+  externalClusters:
+  - name: immich-database
+    barmanObjectStore:
+      destinationPath: "s3://immich/"
+      endpointURL: "http://10.0.0.8:9000"
+      s3Credentials:
+        accessKeyId:
+          name: immich-minio-credentials
+          key: minio-user
+        secretAccessKey:
+          name: immich-minio-credentials
+          key: minio-password
+
+  affinity:
+    enablePodAntiAffinity: true
+    topologyKey: "kubernetes.io/hostname"
