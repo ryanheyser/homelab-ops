@@ -7,6 +7,46 @@ spec:
     acceptRoutes: true
   metrics:
     enable: true
+  statefulSet:
+    pod:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: tailscale.com/parent-resource
+                operator: In
+                values:
+                - ts-k8s-home-cidrs
+            topologyKey: "kubernetes.io/hostname"
+          - labelSelector:
+              matchExpressions:
+              - key: tailscale.com/parent-resource
+                operator: In
+                values:
+                - ts-k8s-pod-cidrs
+            topologyKey: "kubernetes.io/hostname"
+          - labelSelector:
+              matchExpressions:
+              - key: tailscale.com/parent-resource
+                operator: In
+                values:
+                - ts-k8s-disneyplus
+            topologyKey: "kubernetes.io/hostname"
+          - labelSelector:
+              matchExpressions:
+              - key: tailscale.com/parent-resource
+                operator: In
+                values:
+                - ts-k8s-hulu
+            topologyKey: "kubernetes.io/hostname"
+          - labelSelector:
+              matchExpressions:
+              - key: tailscale.com/parent-resource
+                operator: In
+                values:
+                - ts-k8s-netflix
+            topologyKey: "kubernetes.io/hostname"
 ---
 apiVersion: tailscale.com/v1alpha1
 kind: ProxyGroup
