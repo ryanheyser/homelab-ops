@@ -17,6 +17,13 @@ spec:
               - key: tailscale.com/parent-resource
                 operator: In
                 values:
+                - ts-proxygroup
+            topologyKey: "kubernetes.io/hostname"
+          - labelSelector:
+              matchExpressions:
+              - key: tailscale.com/parent-resource
+                operator: In
+                values:
                 - ts-k8s-home-cidrs
             topologyKey: "kubernetes.io/hostname"
           - labelSelector:
