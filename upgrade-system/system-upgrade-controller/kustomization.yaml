@@ -10,3 +10,11 @@ resources:
 # - https://github.com/rancher/system-upgrade-controller/releases/download/v0.18.0/system-upgrade-controller.yaml
 - ./rke2-server-plan.yaml
 - ./rke2-agent-plan.yaml
+patchesJson6902:
+  - target:
+      group: ""
+      version: v1
+      kind: Namespace
+      name: system-upgrade
+    patch: |-
+      - op: remove
