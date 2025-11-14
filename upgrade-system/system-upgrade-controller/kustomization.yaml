@@ -4,8 +4,11 @@ namespace: upgrade-system
 resources:
 # renovate: depName=rancher/system-upgrade-controller
 - https://github.com/rancher/system-upgrade-controller/releases/download/v0.18.0/crd.yaml
-- ./clusterrole.yaml
-- ./clusterrolebinding.yaml
-- ./system-upgrade-controller.yaml
+# renovate: depName=rancher/system-upgrade-controller
+- https://raw.githubusercontent.com/rancher/system-upgrade-controller/refs/tags/v0.18.0/manifests/clusterrole.yaml
+# renovate: depName=rancher/system-upgrade-controller
+- https://raw.githubusercontent.com/rancher/system-upgrade-controller/refs/tags/v0.18.0/manifests/clusterrolebinding.yaml
+# renovate: depName=rancher/system-upgrade-controller
+- https://github.com/rancher/system-upgrade-controller/releases/download/v0.18.0/system-upgrade-controller.yaml
 - ./rke2-server-plan.yaml
 - ./rke2-agent-plan.yaml
