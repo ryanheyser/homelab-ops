@@ -7,7 +7,7 @@ resources:
 # renovate: depName=rancher/system-upgrade-controller
 - https://raw.githubusercontent.com/rancher/system-upgrade-controller/refs/tags/v0.18.0/manifests/clusterrole.yaml
 # renovate: depName=rancher/system-upgrade-controller
-- https://raw.githubusercontent.com/rancher/system-upgrade-controller/refs/tags/v0.18.0/manifests/clusterrolebinding.yaml
+- https://raw.githubusercontent.com/rancher/system-upgrade-controller/refs/tags/v0.18.0/manifests/clusterrolebinding.yamlrefs/tags/v0.18.0/manifests/clusterrolebinding.yaml
 # renovate: depName=rancher/system-upgrade-controller
 - https://github.com/rancher/system-upgrade-controller/releases/download/v0.18.0/system-upgrade-controller.yaml
 - ./rke2-server-plan.yaml
