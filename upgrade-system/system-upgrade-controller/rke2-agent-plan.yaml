@@ -27,6 +27,7 @@ spec:
   - { key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: amd64 }
   - { key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: arm64 }
   - { key: kubernetes.io/arch, effect: NoSchedule, operator: Equal, value: arm }
+  - { key: node.kubernetes.io/unschedulable, effect: NoSchedule, operator: "Exists" }
   - { key: arm, operator: Exists }
 
   prepare:
