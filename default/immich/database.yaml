@@ -26,7 +26,7 @@ spec:
       storageClassName: nfs-dynamic-database
 
   # repository: ghcr.io/cloudnative-pg/postgresql
-  imageName: ghcr.io/cloudnative-pg/postgresql:18.0-standard-trixie
+  imageName: ghcr.io/cloudnative-pg/postgresql:18.0-system-trixie
 
   postgresql:
     parameters:
@@ -71,7 +71,6 @@ spec:
     recovery:
       source: immich-database
       database: immich
-      owner: self
 
   externalClusters:
   - name: immich-database
