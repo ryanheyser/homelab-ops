@@ -70,6 +70,8 @@ spec:
     #   - CREATE EXTENSION IF NOT EXISTS earthdistance CASCADE;
     recovery:
       source: immich-database
+      database: immich
+      owner: self
 
   externalClusters:
   - name: immich-database
