@@ -4,7 +4,7 @@ namespace: default
 resources:
 - ./pvc.yaml
 - ./secret.yaml
-# - ./database-objectstore.yaml
+- ./database-objectstore.yaml
 - ./database.yaml
 - ./database-backup.yaml
 - ./certificate.yaml
