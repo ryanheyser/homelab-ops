@@ -110,10 +110,10 @@ spec:
             resources:
               requests:
                 memory: 2Gi
-                # gpu.intel.com/i915: 1
+                # gpu.intel.com/i915: 0
               limits:
                 memory: 4Gi
-                # gpu.intel.com/i915: 1
+                # gpu.intel.com/i915: 0
           pod:
             securityContext:
               fsGroup: 3001
