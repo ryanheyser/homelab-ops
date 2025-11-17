@@ -19,4 +19,4 @@ spec:
       backupRetentionPolicy: "keep"
     wal:
       compression: zstd
-    retentionPolicy: "7d"
+  retentionPolicy: "7d"
