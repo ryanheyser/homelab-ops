@@ -4,3 +4,17 @@ metadata:
   name: minio
 spec:
   configuration:
+    destinationPath: "s3://immich/"
+      endpointURL: "http://10.0.0.8:9000"
+      s3Credentials:
+        accessKeyId:
+          name: immich-minio-credentials
+          key: minio-user
+        secretAccessKey:
+          name: immich-minio-credentials
+          key: minio-password
+      tags:
+        backupRetentionPolicy: "expire"
+      historyTags:
+        backupRetentionPolicy: "keep"
+    retentionPolicy: "7d"
