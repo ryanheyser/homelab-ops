@@ -8,3 +8,6 @@ spec:
   cluster:
     name: immich-database
   backupOwnerReference: self
+  method: plugin
+  pluginCondiguration:
+    name: barman-cloud.cloudnative-pg.io

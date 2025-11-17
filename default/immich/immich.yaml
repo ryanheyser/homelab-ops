@@ -175,6 +175,10 @@ spec:
               fsGroup: 3001
               fsGroupChangePolicy: "OnRootMismatch"
               supplementalGroups: [ 0, 568, 911, 1000, 1001 ]
+          ports:
+          - name: http
+            containerPort: 3000
+            protocol: TCP
           containers:
             main:
               image:
@@ -184,6 +188,11 @@ spec:
               env:
                 TZ: America/New_York
                 TRANSFORMERS_CACHE: /cache
+      service:
+        main:
+          ports:
+            http:
+              port: 3000
       persistence:
         cache:
           enabled: true
