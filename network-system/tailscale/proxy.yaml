@@ -13,7 +13,7 @@ spec:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:
-            - matchExpressions:
+              matchExpressions:
               - key: tailscale.com/parent-resource
                 operator: In
                 values:
@@ -22,43 +22,48 @@ spec:
           preferredDuringSchedulingIgnoredDuringExecution:
           - weight: 100
             podAffinityTerm:
-              matchExpressions:
-              - key: tailscale.com/parent-resource
-                operator: In
-                values:
-                - ts-proxygroup
+              labelSelector:
+                matchExpressions:
+                - key: tailscale.com/parent-resource
+                  operator: In
+                  values:
+                  - ts-proxygroup
             topologyKey: "kubernetes.io/hostname"
           - weight: 99
             podAffinityTerm:
-              matchExpressions:
-              - key: tailscale.com/parent-resource
-                operator: In
-                values:
-                - ts-k8s-pod-cidrs
+              labelSelector:
+                matchExpressions:
+                - key: tailscale.com/parent-resource
+                  operator: In
+                  values:
+                  - ts-k8s-pod-cidrs
             topologyKey: "kubernetes.io/hostname"
           - weight: 1
             podAffinityTerm:
-              matchExpressions:
-              - key: tailscale.com/parent-resource
-                operator: In
-                values:
-                - ts-k8s-disneyplus
+              labelSelector:
+                matchExpressions:
+                - key: tailscale.com/parent-resource
+                  operator: In
+                  values:
+                  - ts-k8s-disneyplus
             topologyKey: "kubernetes.io/hostname"
           - weight: 2
             podAffinityTerm:
-              matchExpressions:
-              - key: tailscale.com/parent-resource
-                operator: In
-                values:
-                - ts-k8s-hulu
+              labelSelector:
+                matchExpressions:
+                - key: tailscale.com/parent-resource
+                  operator: In
+                  values:
+                  - ts-k8s-hulu
             topologyKey: "kubernetes.io/hostname"
           - weight: 3
             podAffinityTerm:
-              matchExpressions:
-              - key: tailscale.com/parent-resource
-                operator: In
-                values:
-                - ts-k8s-netflix
+              labelSelector:
+                matchExpressions:
+                - key: tailscale.com/parent-resource
+                  operator: In
+                  values:
+                  - ts-k8s-netflix
             topologyKey: "kubernetes.io/hostname"
 ---
 apiVersion: tailscale.com/v1alpha1
