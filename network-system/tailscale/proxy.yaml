@@ -28,7 +28,7 @@ spec:
                   operator: In
                   values:
                   - ts-proxygroup
-            topologyKey: "kubernetes.io/hostname"
+              topologyKey: "kubernetes.io/hostname"
           - weight: 99
             podAffinityTerm:
               labelSelector:
@@ -37,7 +37,7 @@ spec:
                   operator: In
                   values:
                   - ts-k8s-pod-cidrs
-            topologyKey: "kubernetes.io/hostname"
+              topologyKey: "kubernetes.io/hostname"
           - weight: 1
             podAffinityTerm:
               labelSelector:
@@ -46,7 +46,7 @@ spec:
                   operator: In
                   values:
                   - ts-k8s-disneyplus
-            topologyKey: "kubernetes.io/hostname"
+              topologyKey: "kubernetes.io/hostname"
           - weight: 2
             podAffinityTerm:
               labelSelector:
@@ -55,7 +55,7 @@ spec:
                   operator: In
                   values:
                   - ts-k8s-hulu
-            topologyKey: "kubernetes.io/hostname"
+              topologyKey: "kubernetes.io/hostname"
           - weight: 3
             podAffinityTerm:
               labelSelector:
@@ -64,7 +64,7 @@ spec:
                   operator: In
                   values:
                   - ts-k8s-netflix
-            topologyKey: "kubernetes.io/hostname"
+              topologyKey: "kubernetes.io/hostname"
 ---
 apiVersion: tailscale.com/v1alpha1
 kind: ProxyGroup
