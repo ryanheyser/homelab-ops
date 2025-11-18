@@ -12,7 +12,7 @@ spec:
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
-          - nodeSelectorTerms:
+          - labelSelector:
             - matchExpressions:
               - key: tailscale.com/parent-resource
                 operator: In
@@ -21,7 +21,7 @@ spec:
             topologyKey: "kubernetes.io/hostname"
           preferredDuringSchedulingIgnoredDuringExecution:
           - weight: 100
-            preference:
+            podAffinityTerm:
               matchExpressions:
               - key: tailscale.com/parent-resource
                 operator: In
@@ -29,7 +29,7 @@ spec:
                 - ts-proxygroup
             topologyKey: "kubernetes.io/hostname"
           - weight: 99
-            preference:
+            podAffinityTerm:
               matchExpressions:
               - key: tailscale.com/parent-resource
                 operator: In
@@ -37,7 +37,7 @@ spec:
                 - ts-k8s-pod-cidrs
             topologyKey: "kubernetes.io/hostname"
           - weight: 1
-            preference:
+            podAffinityTerm:
               matchExpressions:
               - key: tailscale.com/parent-resource
                 operator: In
@@ -45,7 +45,7 @@ spec:
                 - ts-k8s-disneyplus
             topologyKey: "kubernetes.io/hostname"
           - weight: 2
-            preference:
+            podAffinityTerm:
               matchExpressions:
               - key: tailscale.com/parent-resource
                 operator: In
@@ -53,7 +53,7 @@ spec:
                 - ts-k8s-hulu
             topologyKey: "kubernetes.io/hostname"
           - weight: 3
-            preference:
+            podAffinityTerm:
               matchExpressions:
               - key: tailscale.com/parent-resource
                 operator: In
