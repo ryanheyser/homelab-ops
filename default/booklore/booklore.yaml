@@ -91,7 +91,7 @@ spec:
             image:
               # renovate: repository=mariadb
               repository: mariadb
-              tag: 11.8.4
+              tag: 11.8.5
             env:
               TZ: America/New_York
               PUID: 1000
