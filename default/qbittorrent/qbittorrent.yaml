@@ -55,7 +55,7 @@ spec:
             image:
               # renovate: repository=ghcr.io/home-operations/qbittorrent
               repository: ghcr.io/home-operations/qbittorrent
-              tag: 5.1.3
+              tag: 5.1.4
             securityContext:
               runAsUser: 1000
               runAsGroup: 3001
