@@ -47,7 +47,7 @@ spec:
               # repository: linuxserver/calibre
               # tag: 5.44.0
               repository: ghcr.io/ryanheyser/docker-calibre
-              tag: v8.14.0
+              tag: v8.15.0
               pullPolicy: Always
             securityContext:
               runAsUser: 0
