@@ -32,7 +32,7 @@ spec:
       checkNewVersion: true
       sendAnonymousUsage: false
     deployment:
-      replicas: null 
+      replicas: null
     logs:
       general:
         level: DEBUG
@@ -79,6 +79,24 @@ spec:
       enabled: true
       isDefaultClass: true
       name: traefik
+    gateway:
+      enabled: true
+      listeners:
+        web:
+          port: 80
+          protocol: HTTP
+          namespacePolicy:
+            from: All
+        websecure:
+          port: 443
+          protocol: HTTPS
+          namespacePolicy:
+            from: All
+          certificateRefs:
+          - kind: Secret
+            name: wildcard-homelab-heyser-xyz-tls
+            namespace: Same
+          mode: Terminate
     service:
       annotations:
         cni.projectcalico.org/ipAddrs: '["10.0.100.1"]'
@@ -96,18 +114,16 @@ spec:
         http3:
           enabled: true
           advertisedPort: 443
-        middlewares:
-          # - network-system-authentik@kubernetescrd
+        middlewares: # - network-system-authentik@kubernetescrd
       web:
-        middlewares:
-          # - network-system-authentik@kubernetescrd
+        middlewares: # - network-system-authentik@kubernetescrd
     tolerations:
-      - key: node-role.kubernetes.io/control-plane
-        operator: Equal
-        effect: NoSchedule
-      - effect: PreferNoSchedule
-        key: node-role.kubernetes.io
-        value: master
+    - key: node-role.kubernetes.io/control-plane
+      operator: Equal
+      effect: NoSchedule
+    - effect: PreferNoSchedule
+      key: node-role.kubernetes.io
+      value: master
     podDisruptionBudget:
       enabled: true
       maxUnavailable: 1
@@ -116,9 +132,9 @@ spec:
       minReplicas: 3
       maxReplicas: 5
       metrics:
-        - type: Resource
-          resource:
-            name: cpu
-            target:
-              type: Utilization
-              averageUtilization: 80
+      - type: Resource
+        resource:
+          name: cpu
+          target:
+            type: Utilization
+            averageUtilization: 80
