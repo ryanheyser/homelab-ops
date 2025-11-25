@@ -98,6 +98,7 @@ spec:
         - group: gateway.networking.k8s.io
           kind: Gateway
           name: default-gateway
+          namespace: default
         hostnames:
         - *host
         rules:
