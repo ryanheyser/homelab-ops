@@ -95,7 +95,7 @@ spec:
           certificateRefs:
           - kind: Secret
             name: wildcard-homelab-heyser-xyz-tls
-            namespace: Same
+            namespace: network-system
           mode: Terminate
     service:
       annotations:
