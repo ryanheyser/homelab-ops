@@ -79,6 +79,23 @@ spec:
       enabled: true
       isDefaultClass: true
       name: traefik
+    ports:
+      web:
+        port: 80
+        expose: true
+        exposedPort: 80
+      websecure:
+        asDefault: true
+        allowACMEByPass: true
+        port: 443
+        expose: true
+        exposedPort: 443
+        http3:
+          enabled: true
+          advertisedPort: 443
+      tls:
+        enabled: true
+        certResolver: letsencrypt-prod
     gateway:
       enabled: true
       listeners:
