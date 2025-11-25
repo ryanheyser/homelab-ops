@@ -111,6 +111,7 @@ spec:
     ports:
       websecure:
         port: 8443
+        containerPorrt: 8443
         asDefault: true
         allowACMEByPass: true
         http3:
@@ -119,6 +120,12 @@ spec:
         middlewares: # - network-system-authentik@kubernetescrd
       web:
         port: 8000
+        containerPort: 8000
+        redirections:
+          entryPoint:
+            to: websecure
+            scheme: https
+            permanent: true
         middlewares: # - network-system-authentik@kubernetescrd
       tls:
         enabled: true
