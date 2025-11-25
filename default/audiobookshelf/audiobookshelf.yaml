@@ -43,10 +43,10 @@ spec:
           securityContext:
             fsGroup: 3001
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [568,911,1000,1001]
+            supplementalGroups: [ 568, 911, 1000, 1001 ]
           tolerations:
-            - key: "arm"
-              operator: "Exists"
+          - key: "arm"
+            operator: "Exists"
         containers:
           main:
             image:
@@ -90,18 +90,37 @@ spec:
           - *host
           secretName: audiobookshelf-homelab-heyser-xyz-tls
 
+    route:
+      main:
+        enabled: false
+        kind: HTTPRoute
+        parentRefs:
+        - group: gateway.networking.k8s.io
+          kind: Gateway
+          name: default-gateway
+        hostnames:
+        - *host
+        rules:
+        - matches:
+          - type: PathPrefix
+            pathPrefix: /
+          backendRefs:
+          - kind: Service
+            name: audiobookshelf
+            port: 80
+
     persistence:
       config:
         existingClaim: audiobookshelf-config
         advancedMounts:
+          main:
             main:
-              main:
-                - path: "/config"
+            - path: "/config"
       media:
         existingClaim: audiobookshelf-media
       cache:
         advancedMounts:
+          main:
             main:
-              main:
-                - path: "/.npm"
+            - path: "/.npm"
         type: emptyDir
