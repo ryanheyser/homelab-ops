@@ -110,6 +110,7 @@ spec:
         externalTrafficPolicy: Cluster
     ports:
       websecure:
+        port: 8443
         asDefault: true
         allowACMEByPass: true
         http3:
@@ -117,6 +118,7 @@ spec:
           advertisedPort: 443
         middlewares: # - network-system-authentik@kubernetescrd
       web:
+        port: 8000
         middlewares: # - network-system-authentik@kubernetescrd
       tls:
         enabled: true
