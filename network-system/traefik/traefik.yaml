@@ -111,7 +111,7 @@ spec:
     ports:
       websecure:
         port: 8443
-        containerPorrt: 8443
+        containerPort: 8443
         asDefault: true
         allowACMEByPass: true
         http3:
