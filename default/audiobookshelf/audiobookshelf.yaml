@@ -102,12 +102,16 @@ spec:
         - *host
         rules:
         - matches:
-          - type: PathPrefix
-            pathPrefix: /
+          - path:
+              type: PathPrefix
+              value: /
           backendRefs:
           - kind: Service
             name: audiobookshelf
             port: 80
+          timeouts:
+            backendRequest: 10s
+            request: 30s
 
     persistence:
       config:
