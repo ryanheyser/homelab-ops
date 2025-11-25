@@ -92,7 +92,7 @@ spec:
 
     route:
       main:
-        enabled: false
+        enabled: true
         kind: HTTPRoute
         parentRefs:
         - group: gateway.networking.k8s.io
