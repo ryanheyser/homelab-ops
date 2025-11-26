@@ -97,8 +97,8 @@ spec:
         parentRefs:
         - group: gateway.networking.k8s.io
           kind: Gateway
-          name: default-gateway
-          namespace: default
+          name: traefik-gateway
+          namespace: network-system
         hostnames:
         - *host
         rules:
