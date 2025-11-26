@@ -132,11 +132,9 @@ spec:
         certResolver: letsencrypt-prod
     tolerations:
     - key: node-role.kubernetes.io/control-plane
-      operator: Equal
-      effect: NoSchedule
-    - effect: PreferNoSchedule
-      key: node-role.kubernetes.io
-      value: master
+      operator: Exists
+    - key: node-role.kubernetes.io/master
+      operator: Exists
     podDisruptionBudget:
       enabled: true
       maxUnavailable: 1
