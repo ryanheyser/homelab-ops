@@ -83,12 +83,12 @@ spec:
       enabled: true
       listeners:
         web:
-          port: 8000
+          port: 80
           protocol: HTTP
           namespacePolicy:
             from: All
         websecure:
-          port: 8443
+          port: 443
           protocol: HTTPS
           namespacePolicy:
             from: All
@@ -110,8 +110,8 @@ spec:
         externalTrafficPolicy: Cluster
     ports:
       websecure:
-        port: 8443
-        containerPort: 8443
+        port: 443
+        containerPort: 443
         asDefault: true
         allowACMEByPass: true
         http3:
@@ -119,17 +119,17 @@ spec:
           advertisedPort: 443
         middlewares: # - network-system-authentik@kubernetescrd
       web:
-        port: 8000
-        containerPort: 8000
+        port: 80
+        containerPort: 80
         redirections:
           entryPoint:
             to: websecure
             scheme: https
             permanent: true
         middlewares: # - network-system-authentik@kubernetescrd
-      tls:
-        enabled: true
-        certResolver: letsencrypt-prod
+      # tls:
+        # enabled: true
+        # certResolver: letsencrypt-prod
     tolerations:
     - key: node-role.kubernetes.io/control-plane
       operator: Exists
