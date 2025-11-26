@@ -35,7 +35,7 @@ spec:
       replicas: null
     logs:
       general:
-        level: DEBUG
+        level: INFO
         format: json
       access:
         enabled: true
