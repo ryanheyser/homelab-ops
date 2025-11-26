@@ -42,11 +42,11 @@ spec:
         format: json
     resources:
       requests:
-        cpu: "200m"
-        memory: "100Mi"
+        cpu: "500m"
+        memory: "200Mi"
       limits:
-        cpu: "400m"
-        memory: "300Mi"
+        cpu: "1000m"
+        memory: "400Mi"
     experimental:
       plugins:
         # enabled: true
@@ -126,10 +126,11 @@ spec:
             to: websecure
             scheme: https
             permanent: true
-        middlewares: # - network-system-authentik@kubernetescrd
-      # tls:
-        # enabled: true
-        # certResolver: letsencrypt-prod
+        middlewares:
+          # - network-system-authentik@kubernetescrd
+          # tls:
+          # enabled: true
+          # certResolver: letsencrypt-prod
     tolerations:
     - key: node-role.kubernetes.io/control-plane
       operator: Exists
