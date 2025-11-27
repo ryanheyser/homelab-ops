@@ -98,7 +98,7 @@ spec:
           #   nginx.ingress.kubernetes.io/auth-signin: https://auth.homelab.heyser.xyz/oauth2/start
           kubernetes.io/ingress.class: traefik
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
-          traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+          # traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
         hosts:
         - host: &host "qbittorrent.homelab.heyser.xyz"
           paths:
