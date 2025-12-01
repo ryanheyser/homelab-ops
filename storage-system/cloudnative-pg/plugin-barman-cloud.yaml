@@ -29,6 +29,9 @@ spec:
     keepHistory: false
   values:
     replicaCount: 1
+    containerSecurityContext:
+      runAsUser: 26
+      runAsGroup: 26
     # updateStrategy:
     # WARNING: the RollingUpdate strategy is not supported by the operator yet so it can
     # currently only use the Recreate strategy.
