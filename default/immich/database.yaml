@@ -68,15 +68,15 @@ spec:
       barmanObjectName: minio
 
   bootstrap:
-    # initdb:
-    #   # TODO: Use managed extensions (pg 18)
-    #   postInitApplicationSQL:
-    #   # Commands based on: https://immich.app/docs/administration/postgres-standalone/#without-superuser-permission
-    #   - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
-    #   - CREATE EXTENSION IF NOT EXISTS earthdistance CASCADE;
-    recovery:
-      source: immich-database
-      database: immich
+    initdb:
+      # TODO: Use managed extensions (pg 18)
+      postInitApplicationSQL:
+      # Commands based on: https://immich.app/docs/administration/postgres-standalone/#without-superuser-permission
+      - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
+      - CREATE EXTENSION IF NOT EXISTS earthdistance CASCADE;
+    # recovery:
+    #   source: immich-database
+    #   database: immich
 
   externalClusters:
   - name: immich-database
