@@ -5,7 +5,7 @@ metadata:
 spec:
   configuration:
     destinationPath: "s3://immich/"
-    endpointURL: "http://10.0.0.8:9000"
+    endpointURL: "http://10.0.0.8:30292"
     s3Credentials:
       accessKeyId:
         name: immich-minio-credentials
