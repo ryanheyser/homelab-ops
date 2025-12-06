@@ -26,7 +26,7 @@ spec:
       storageClassName: nfs-dynamic-database
 
   # repository: ghcr.io/cloudnative-pg/postgresql
-  imageName: ghcr.io/cloudnative-pg/postgresql:18.0-system-trixie
+  imageName: ghcr.io/cloudnative-pg/postgresql:18.1-standard-trixie
 
   postgresql:
     parameters:
