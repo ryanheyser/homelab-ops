@@ -20,3 +20,6 @@ spec:
     wal:
       compression: zstd
   retentionPolicy: "7d"
+  instanceSidecarConfiguration:
+    logLevel: debug
+    retentionPolicyIntervalSeconds: 3600
