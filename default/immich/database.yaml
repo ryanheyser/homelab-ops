@@ -78,13 +78,13 @@ spec:
     #   source: immich-database
     #   database: immich
 
-  externalClusters:
-  - name: immich-database
-    plugin:
-      name: barman-cloud.cloudnative-pg.io
-      parameters:
-        barmanObjectName: minio
-        serverName: minio
+  # externalClusters:
+  # - name: immich-database
+  #   plugin:
+  #     name: barman-cloud.cloudnative-pg.io
+  #     parameters:
+  #       barmanObjectName: minio
+  #       serverName: minio
     # barmanObjectStore:
     #   serverName: minio
     #   destinationPath: "s3://immich/"
