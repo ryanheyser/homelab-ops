@@ -61,11 +61,11 @@ spec:
   #       backupRetentionPolicy: "keep"
   #   retentionPolicy: "7d"
 
-  plugins:
-  - name: barman-cloud.cloudnative-pg.io
-    isWALArchiver: true
-    parameters:
-      barmanObjectName: minio
+  # plugins:
+  # - name: barman-cloud.cloudnative-pg.io
+  #   isWALArchiver: true
+  #   parameters:
+  #     barmanObjectName: minio
 
   bootstrap:
     initdb:
