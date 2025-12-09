@@ -148,7 +148,7 @@ spec:
               image:
                 # renovate: repository=valkey/valkey
                 repository: valkey/valkey
-                tag: 9.0.0-alpine
+                tag: 9.0.1-alpine
                 pullPolicy: IfNotPresent
 
     machine-learning:
