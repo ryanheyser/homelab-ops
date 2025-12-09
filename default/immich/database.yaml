@@ -61,30 +61,30 @@ spec:
   #       backupRetentionPolicy: "keep"
   #   retentionPolicy: "7d"
 
-  plugins:
-  - name: barman-cloud.cloudnative-pg.io
-    isWALArchiver: true
-    parameters:
-      barmanObjectName: minio
+  # plugins:
+  # - name: barman-cloud.cloudnative-pg.io
+  #   isWALArchiver: true
+  #   parameters:
+  #     barmanObjectName: minio
 
   bootstrap:
-    initdb:
+    # initdb:
       # TODO: Use managed extensions (pg 18)
-      postInitApplicationSQL:
+      # postInitApplicationSQL:
       # Commands based on: https://immich.app/docs/administration/postgres-standalone/#without-superuser-permission
-      - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
-      - CREATE EXTENSION IF NOT EXISTS earthdistance CASCADE;
-    # recovery:
-    #   source: immich-database
-    #   database: immich
+      # - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
+      # - CREATE EXTENSION IF NOT EXISTS earthdistance CASCADE;
+    recovery:
+      source: immich-database
+      database: immich
 
-  # externalClusters:
-  # - name: immich-database
-  #   plugin:
-  #     name: barman-cloud.cloudnative-pg.io
-  #     parameters:
-  #       barmanObjectName: minio
-  #       serverName: minio
+  externalClusters:
+  - name: immich-database
+    plugin:
+      name: barman-cloud.cloudnative-pg.io
+      parameters:
+        barmanObjectName: minio
+        serverName: minio
     # barmanObjectStore:
     #   serverName: minio
     #   destinationPath: "s3://immich/"
