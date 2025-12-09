@@ -17,8 +17,8 @@ spec:
       backupRetentionPolicy: "expire"
     historyTags:
       backupRetentionPolicy: "keep"
-    wal:
-      compression: zstd
+    # wal:
+    #   compression: zstd
   retentionPolicy: "7d"
   instanceSidecarConfiguration:
     logLevel: debug
