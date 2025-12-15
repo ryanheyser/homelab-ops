@@ -89,11 +89,11 @@ spec:
                     values:
                     - "true"
           securityContext:
-            runAsUser: 1000
-            runAsGroup: 3001
-            fsGroup: 3001
+            runAsUser: 1
+            runAsGroup: 1
+            fsGroup: 1
             fsGroupChangePolicy: "Always"
-            supplementalGroups: [ 568, 911, 1000, 1001 ]
+            supplementalGroups: [ 568, 911, 999, 1000, 1001, 3001 ]
           tolerations:
           - key: "arm"
             operator: "Exists"
