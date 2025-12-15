@@ -92,6 +92,9 @@ spec:
               # renovate: repository=mongo
               repository: mongo
               tag: 8.2.2
+            securityContext:
+              runAsUser: 1000
+              runAsGroup: 3001
             envFrom:
             - secretRef:
                 name: mangayomi-server-mongo-config
