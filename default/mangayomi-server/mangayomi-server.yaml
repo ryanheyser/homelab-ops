@@ -89,8 +89,10 @@ spec:
                     values:
                     - "true"
           securityContext:
+            runAsUser: 1000
+            runAsGroup: 3001
             fsGroup: 3001
-            fsGroupChangePolicy: "OnRootMismatch"
+            fsGroupChangePolicy: "Always"
             supplementalGroups: [ 568, 911, 1000, 1001 ]
           tolerations:
           - key: "arm"
@@ -102,9 +104,7 @@ spec:
               repository: mongo
               tag: 8.2.2
             securityContext:
-              runAsUser: 1000
-              # runAsGroup: 3001
-              runAsGroup: 1000
+              allowPrivilegeEscalation: false
             envFrom:
             - secretRef:
                 name: mangayomi-server-mongo-config
