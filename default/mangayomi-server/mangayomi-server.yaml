@@ -70,6 +70,8 @@ spec:
                 optional: false
       mongo:
         defaultContainerOptions:
+          nodeSelector:
+            feature.node.kubernetes.io/cpu-cpuid.AVX: "true"
           resources:
             requests:
               cpu: 10m
