@@ -41,9 +41,9 @@ spec:
           reloader.stakater.com/auto: "true"
         pod:
           securityContext:
-            fsGroup: 3001
+            fsGroup: 568
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [ 568, 911, 1000, 1001 ]
+            supplementalGroups: [ 911, 1000, 1001, 3001 ]
           tolerations:
           - key: "arm"
             operator: "Exists"
@@ -54,8 +54,8 @@ spec:
               repository: ghcr.io/rumblpak/mangayomi-server
               tag: v0.1.0
             securityContext:
-              runAsUser: 1000
-              runAsGroup: 3001
+              runAsUser: 568
+              runAsGroup: 568
             env:
               TZ: America/New_York
               HOST: 0.0.0.0
