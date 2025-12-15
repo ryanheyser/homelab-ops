@@ -68,47 +68,47 @@ spec:
             - secretRef:
                 name: mangayomi-server-mongo-config
                 optional: false
-      mongo:
-        defaultContainerOptions:
-          resources:
-            requests:
-              cpu: 10m
-              memory: 250Mi
-            limits:
-              memory: 2Gi
-        annotations:
-          reloader.stakater.com/auto: "true"
-        pod:
-          affinity:
-            nodeAffinity:
-              requiredDuringSchedulingIgnoredDuringExecution:
-                nodeSelectorTerms:
-                - matchExpressions:
-                  - key: feature.node.kubernetes.io/cpu-cpuid.AVX
-                    operator: In
-                    values:
-                    - "true"
-          securityContext:
-            runAsUser: 1
-            runAsGroup: 1
-            fsGroup: 1
-            fsGroupChangePolicy: "Always"
-            supplementalGroups: [ 568, 911, 999, 1000, 1001, 3001 ]
-          tolerations:
-          - key: "arm"
-            operator: "Exists"
-        containers:
-          mongo:
-            image:
-              # renovate: repository=mongo
-              repository: mongo
-              tag: 8.2.2
-            securityContext:
-              allowPrivilegeEscalation: false
-            envFrom:
-            - secretRef:
-                name: mangayomi-server-mongo-config
-                optional: false
+      # mongo:
+      #   defaultContainerOptions:
+      #     resources:
+      #       requests:
+      #         cpu: 10m
+      #         memory: 250Mi
+      #       limits:
+      #         memory: 2Gi
+      #   annotations:
+      #     reloader.stakater.com/auto: "true"
+      #   pod:
+      #     affinity:
+      #       nodeAffinity:
+      #         requiredDuringSchedulingIgnoredDuringExecution:
+      #           nodeSelectorTerms:
+      #           - matchExpressions:
+      #             - key: feature.node.kubernetes.io/cpu-cpuid.AVX
+      #               operator: In
+      #               values:
+      #               - "true"
+      #     securityContext:
+      #       runAsUser: 1
+      #       runAsGroup: 1
+      #       fsGroup: 1
+      #       fsGroupChangePolicy: "Always"
+      #       supplementalGroups: [ 568, 911, 999, 1000, 1001, 3001 ]
+      #     tolerations:
+      #     - key: "arm"
+      #       operator: "Exists"
+      #   containers:
+      #     mongo:
+      #       image:
+      #         # renovate: repository=mongo
+      #         repository: mongo
+      #         tag: 8.2.2
+      #       securityContext:
+      #         allowPrivilegeEscalation: false
+      #       envFrom:
+      #       - secretRef:
+      #           name: mangayomi-server-mongo-config
+      #           optional: false
     service:
       main:
         controller: main
@@ -117,13 +117,13 @@ spec:
           http:
             port: 8080
             targetPort: 8080
-      mongo:
-        controller: mongo
-        type: ClusterIP
-        ports:
-          mongo:
-            port: 27017
-            targetPort: 27017
+      # mongo:
+      #   controller: mongo
+      #   type: ClusterIP
+      #   ports:
+      #     mongo:
+      #       port: 27017
+      #       targetPort: 27017
     ingress:
       main:
         className: 'traefik'
@@ -144,11 +144,11 @@ spec:
           - *host
           secretName: mangayomi-server-homelab-heyser-xyz-tls
 
-    persistence:
-      mongo-data:
-        existingClaim: mangayomi-server-mongo-data
-        advancedMounts:
-          mongo:
-            mongo:
-            - path: "/data"
-              readOnly: false
+    # persistence:
+    #   mongo-data:
+    #     existingClaim: mangayomi-server-mongo-data
+    #     advancedMounts:
+    #       mongo:
+    #         mongo:
+    #         - path: "/data"
+    #           readOnly: false
