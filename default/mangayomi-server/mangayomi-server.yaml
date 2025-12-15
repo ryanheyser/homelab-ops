@@ -103,7 +103,8 @@ spec:
               tag: 8.2.2
             securityContext:
               runAsUser: 1000
-              runAsGroup: 3001
+              # runAsGroup: 3001
+              runAsGroup: 1000
             envFrom:
             - secretRef:
                 name: mangayomi-server-mongo-config
