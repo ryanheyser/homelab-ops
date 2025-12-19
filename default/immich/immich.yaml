@@ -45,7 +45,7 @@ spec:
             image:
               # renovate: repository=ghcr.io/immich-app/immich-server
               repository: ghcr.io/immich-app/immich-server
-              tag: v2.3.1
+              tag: v2.4.0
             env:
               TZ: America/New_York
               IMMICH_LOG_LEVEL: "debug"
@@ -120,7 +120,7 @@ spec:
               image:
                 # renovate: repository=ghcr.io/immich-app/immich-server
                 repository: ghcr.io/immich-app/immich-server
-                tag: v2.3.1
+                tag: v2.4.0
       ingress:
         main:
           enabled: true
@@ -180,7 +180,7 @@ spec:
               image:
                 # renovate: repository=ghcr.io/immich-app/immich-machine-learning
                 repository: ghcr.io/immich-app/immich-machine-learning
-                tag: v2.3.1
+                tag: v2.4.0
               env:
                 TZ: America/New_York
                 TRANSFORMERS_CACHE: /cache
