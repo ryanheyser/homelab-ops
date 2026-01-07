@@ -127,3 +127,10 @@ spec:
             main:
             - path: "/etc/nginx"
               readOnly: false
+      booklore-logs:
+        type: emptyDir
+        advancedMounts:
+          main:
+            main:
+            - path: "/var/lib/nginx/logs"
+              readOnly: false
