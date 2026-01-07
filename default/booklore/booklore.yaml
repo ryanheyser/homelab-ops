@@ -120,13 +120,13 @@ spec:
             main:
             - path: "/bookdrop"
               readOnly: false
-      booklore-nginx:
-        type: emptyDir
-        advancedMounts:
-          main:
-            main:
-            - path: "/etc/nginx"
-              readOnly: false
+      # booklore-nginx:
+      #   type: emptyDir
+      #   advancedMounts:
+      #     main:
+      #       main:
+      #       - path: "/etc/nginx"
+      #         readOnly: false
       booklore-logs:
         type: emptyDir
         advancedMounts:
