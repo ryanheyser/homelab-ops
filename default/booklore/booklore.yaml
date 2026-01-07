@@ -41,7 +41,7 @@ spec:
           reloader.stakater.com/auto: "true"
         pod:
           securityContext:
-            fsGroup: 3001
+            fsGroup: 0
             fsGroupChangePolicy: "OnRootMismatch"
             supplementalGroups: [568, 911, 1000, 1001]
           tolerations:
@@ -54,18 +54,14 @@ spec:
               repository: booklore/booklore
               tag: v1.16.5
             securityContext:
-              runAsUser: 1000
-              runAsGroup: 3001
+              runAsUser: 0
+              runAsGroup: 0
               allowPrivilegeEscalation: true
               capabilities:
                 add: ["CAP_SETGID", "CAP_SETUID"]
             env:
               TZ: America/New_York
-              PUID: 1000
-              PGID: 3001
               SWAGGER_ENABLED: "false"
-              USER_ID: 1000
-              GROUP_ID: 3001
             envFrom:
             - secretRef:
                 name: booklore-config
