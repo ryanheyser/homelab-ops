@@ -57,6 +57,8 @@ spec:
               runAsUser: 1000
               runAsGroup: 3001
               allowPrivilegeEscalation: true
+              capabilities:
+                add: ["CAP_SETGID", "CAP_SETUID"]
             env:
               TZ: America/New_York
               PUID: 1000
