@@ -43,7 +43,7 @@ spec:
           securityContext:
             fsGroup: 3001
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [ 568, 911, 1000, 1001 ]
+            supplementalGroups: [568, 911, 1000, 1001]
           tolerations:
           - key: "arm"
             operator: "Exists"
@@ -68,38 +68,6 @@ spec:
             - secretRef:
                 name: booklore-config
                 optional: false
-      mariadb:
-        defaultContainerOptions:
-          resources:
-            requests:
-              cpu: 10m
-              memory: 250Mi
-            limits:
-              memory: 2Gi
-        annotations:
-          reloader.stakater.com/auto: "true"
-        pod:
-          securityContext:
-            fsGroup: 3001
-            fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [ 568, 911, 1000, 1001 ]
-          tolerations:
-          - key: "arm"
-            operator: "Exists"
-        containers:
-          mariadb:
-            image:
-              # renovate: repository=mariadb
-              repository: mariadb
-              tag: 11.8.5
-            env:
-              TZ: America/New_York
-              PUID: 1000
-              PGID: 3001
-            envFrom:
-            - secretRef:
-                name: booklore-database-config
-                optional: false
     service:
       main:
         controller: main
@@ -108,13 +76,6 @@ spec:
           http:
             port: 6060
             targetPort: 6060
-      mariadb:
-        controller: mariadb
-        type: ClusterIP
-        ports:
-          mariadb:
-            port: 3306
-            targetPort: 3306
     ingress:
       main:
         className: 'traefik'
@@ -156,11 +117,4 @@ spec:
           main:
             main:
             - path: "/bookdrop"
-              readOnly: false
-      mariadb-config:
-        existingClaim: booklore-mariadb-config
-        advancedMounts:
-          mariadb:
-            mariadb:
-            - path: "/config"
               readOnly: false
