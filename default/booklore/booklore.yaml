@@ -43,7 +43,7 @@ spec:
           securityContext:
             fsGroup: 0
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [568, 911, 1000, 1001]
+            supplementalGroups: [568, 911, 1000, 1001, 3001]
           tolerations:
           - key: "arm"
             operator: "Exists"
@@ -62,6 +62,8 @@ spec:
             env:
               TZ: America/New_York
               SWAGGER_ENABLED: "false"
+              USER_ID: "1000"
+              GROUP_ID: "3001"
             envFrom:
             - secretRef:
                 name: booklore-config
