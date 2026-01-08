@@ -47,7 +47,7 @@ spec:
       agentImage:
         # renovate: repository=hashicorp/vault
         repository: "hashicorp/vault"
-        tag: "1.21.1"
+        tag: "1.21.2"
       strategy:
         rollingUpdate:
           maxSurge: "25%"
@@ -64,7 +64,7 @@ spec:
       image:
         # renovate: repository=hashicorp/vault
         repository: "hashicorp/vault"
-        tag: "1.21.1"
+        tag: "1.21.2"
         # Overrides the default Image Pull Policy
         pullPolicy: IfNotPresent
       updateStrategyType: "RollingUpdate"
@@ -213,5 +213,5 @@ spec:
         image:
           # renovate: repository=hashicorp/vault
           repository: "hashicorp/vault"
-          tag: "1.21.1"
+          tag: "1.21.2"
           pullPolicy: IfNotPresent
