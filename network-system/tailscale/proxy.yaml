@@ -11,14 +11,6 @@ spec:
     pod:
       affinity:
         podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
-              - key: tailscale.com/parent-resource
-                operator: In
-                values:
-                - ts-k8s-home-cidrs
-            topologyKey: "kubernetes.io/hostname"
           preferredDuringSchedulingIgnoredDuringExecution:
           - weight: 100
             podAffinityTerm:
@@ -27,7 +19,7 @@ spec:
                 - key: tailscale.com/parent-resource
                   operator: In
                   values:
-                  - ts-proxygroup
+                  - ts-k8s-home-cidrs
               topologyKey: "kubernetes.io/hostname"
           - weight: 99
             podAffinityTerm:
@@ -36,7 +28,34 @@ spec:
                 - key: tailscale.com/parent-resource
                   operator: In
                   values:
+                  - ts-proxygroup
+              topologyKey: "kubernetes.io/hostname"
+          - weight: 98
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: tailscale.com/parent-resource
+                  operator: In
+                  values:
                   - ts-k8s-pod-cidrs
+              topologyKey: "kubernetes.io/hostname"
+          - weight: 97
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: tailscale.com/parent-resource
+                  operator: In
+                  values:
+                  - ts-k8s-exit-node
+              topologyKey: "kubernetes.io/hostname"
+          - weight: 80
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: tailscale.com/parent-resource
+                  operator: In
+                  values:
+                  - ts-k8s-homelab
               topologyKey: "kubernetes.io/hostname"
           - weight: 1
             podAffinityTerm:
