@@ -91,6 +91,6 @@ metadata:
   name: ts-proxygroup
 spec:
   type: egress
-  replicas: 3
+  replicas: 2
   hostnamePrefix: ts-proxygroup
   proxyClass: ts-proxyclass
