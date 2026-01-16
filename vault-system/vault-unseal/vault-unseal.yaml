@@ -58,7 +58,7 @@ spec:
             image:
                # renovate: repository=ghcr.io/omegion/vault-unseal
               repository: ghcr.io/omegion/vault-unseal
-              tag: v0.26.0
+              tag: v0.26.1
             securityContext:
               runAsUser: 1000
               runAsGroup: 3001
@@ -79,7 +79,7 @@ spec:
             image:
                # renovate: repository=ghcr.io/omegion/vault-unseal
               repository: ghcr.io/omegion/vault-unseal
-              tag: v0.26.0
+              tag: v0.26.1
             securityContext:
               runAsUser: 1000
               runAsGroup: 3001
@@ -100,7 +100,7 @@ spec:
             image:
                # renovate: repository=ghcr.io/omegion/vault-unseal
               repository: ghcr.io/omegion/vault-unseal
-              tag: v0.26.0
+              tag: v0.26.1
             securityContext:
               runAsUser: 1000
               runAsGroup: 3001
@@ -121,7 +121,7 @@ spec:
             image:
                # renovate: repository=ghcr.io/omegion/vault-unseal
               repository: ghcr.io/omegion/vault-unseal
-              tag: v0.26.0
+              tag: v0.26.1
             securityContext:
               runAsUser: 1000
               runAsGroup: 3001
@@ -142,7 +142,7 @@ spec:
             image:
                # renovate: repository=ghcr.io/omegion/vault-unseal
               repository: ghcr.io/omegion/vault-unseal
-              tag: v0.26.0
+              tag: v0.26.1
             securityContext:
               runAsUser: 1000
               runAsGroup: 3001
