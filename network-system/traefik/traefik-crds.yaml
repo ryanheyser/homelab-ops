@@ -11,7 +11,7 @@ spec:
     spec:
       # renovate: registryUrl=https://traefik.github.io/charts datasource=helm
       chart: traefik-crds
-      version: 39.0.0
+      version: 1.14.0
       sourceRef:
         kind: HelmRepository
         name: traefik
