@@ -30,6 +30,6 @@ spec:
   values:
     enabled: true
     traefik: true
-    gatewayAPI: true
+    # gatewayAPI: true
     gatewayAPIExperimental: true
     deleteOnUninstall: false
