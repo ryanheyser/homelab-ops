@@ -24,6 +24,7 @@ spec:
   proxyClass: ts-proxyclass
   tags:
   - tag:k8s
+  - tag:app-home-cidrs
   subnetRouter:
     advertiseRoutes:
     - "10.0.0.0/18"
