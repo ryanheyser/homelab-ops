@@ -24,7 +24,25 @@ spec:
   proxyClass: ts-proxyclass
   tags:
   - tag:k8s
+  subnetRouter:
+    advertiseRoutes:
+    - "10.0.0.0/18"
+    - "10.0.64.0/24"
+    - "10.98.0.0/18"
+    - "192.168.88.0/24"
+---
+apiVersion: tailscale.com/v1alpha1
+kind: Connector
+metadata:
+  name: ts-k8s-app-home-cidrs
+spec:
+  replicas: 2
+  hostnamePrefix: ts-k8s-home-cidrs
+  proxyClass: ts-proxyclass
+  tags:
+  - tag:k8s
   - tag:app-home-cidrs
+  appConnector: {}
   subnetRouter:
     advertiseRoutes:
     - "10.0.0.0/18"
