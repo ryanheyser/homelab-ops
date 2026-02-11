@@ -1,0 +1,107 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: prowlarr
+  namespace: default
+spec:
+  driftDetection:
+    mode: enabled
+  interval: 15m
+  chart:
+    spec:
+      # renovate: registryUrl=https://bjw-s-labs.github.io/helm-charts
+      chart: app-template
+      version: 4.4.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controllers:
+      main:
+        defaultContainerOptions:
+          resources:
+            requests:
+              cpu: 10m
+              memory: 250Mi
+            limits:
+              memory: 2Gi
+        annotations:
+          reloader.stakater.com/auto: "true"
+        pod:
+          securityContext:
+            fsGroup: 0
+            fsGroupChangePolicy: "OnRootMismatch"
+            supplementalGroups: [568, 911, 1000, 1001, 3001]
+          tolerations:
+          - key: "arm"
+            operator: "Exists"
+        containers:
+          main:
+            image:
+              # renovate: repository=ghcr.io/hotio/prowlarr
+              repository: ghcr.io/hotio/prowlarr
+              tag: release-2.3.0.5236
+            securityContext:
+              runAsUser: 0
+              runAsGroup: 0
+              allowPrivilegeEscalation: true
+              capabilities:
+                add: ["CAP_SETGID", "CAP_SETUID"]
+            env:
+              TZ: America/New_York
+              WEBUI_PORTS: "9696/tcp"
+              PUID: "1000"
+              PGID: "3001"
+              VPN_ENABLED: "true"
+              VPN_CONF: "vpnnet1"
+              VPN_PROVIDER: "generic"
+              VPN_LAN_NETWORK: "10.99.0.0/18"
+
+    service:
+      main:
+        controller: main
+        type: ClusterIP
+        ports:
+          http:
+            port: 9696
+            targetPort: 9696
+    ingress:
+      main:
+        className: 'traefik'
+        annotations:
+          kubernetes.io/ingress.class: traefik
+          traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+          # traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+        hosts:
+        - host: &host "prowlarr.homelab.heyser.xyz"
+          paths:
+          - path: /
+            pathType: Prefix
+            service:
+              identifier: main
+              port: http
+        tls:
+        - hosts:
+          - *host
+          secretName: prowlarr-homelab-heyser-xyz-tls
+
+    persistence:
+      prowlarr-config:
+        existingClaim: prowlarr-config
+        advancedMounts:
+          main:
+            main:
+            - path: "/config"
+              readOnly: false
