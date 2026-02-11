@@ -3,7 +3,6 @@ kind: Kustomization
 namespace: default
 resources:
 - ./pvc.yaml
-- ./vpn.yaml
 - ./certificate.yaml
 - ./shelfmark.yaml
 - ./tailscale.yaml
