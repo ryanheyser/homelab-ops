@@ -58,7 +58,7 @@ spec:
               runAsGroup: 0
               allowPrivilegeEscalation: true
               capabilities:
-                add: ["CAP_SETGID", "CAP_SETUID"]
+                add: ["CAP_SETGID", "CAP_SETUID", "CAP_NET_ADMIN"]
             env:
               TZ: America/New_York
               WEBUI_PORTS: "9696/tcp"
