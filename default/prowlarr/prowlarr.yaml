@@ -43,7 +43,7 @@ spec:
           securityContext:
             fsGroup: 0
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [568, 911, 1000, 1001, 3001]
+            supplementalGroups: [568, 911, 1000, 1001, 3000, 3001]
           tolerations:
           - key: "arm"
             operator: "Exists"
@@ -63,7 +63,7 @@ spec:
               TZ: America/New_York
               WEBUI_PORTS: "9696/tcp"
               PUID: "1000"
-              PGID: "3001"
+              PGID: "1000"
               VPN_ENABLED: "true"
               VPN_CONF: "vpnnet1"
               VPN_PROVIDER: "generic"
