@@ -37,7 +37,7 @@ metadata:
   name: ts-k8s-app-home-cidrs
 spec:
   replicas: 2
-  hostnamePrefix: ts-k8s-home-cidrs
+  hostnamePrefix: ts-k8s-app-home-cidrs
   proxyClass: ts-proxyclass
   tags:
   - tag:k8s
