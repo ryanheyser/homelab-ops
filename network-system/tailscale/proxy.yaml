@@ -84,6 +84,15 @@ spec:
                   values:
                   - ts-k8s-netflix
               topologyKey: "kubernetes.io/hostname"
+          - weight: 4
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: tailscale.com/parent-resource
+                  operator: In
+                  values:
+                  - ts-k8s-app-home-cidrs
+              topologyKey: "kubernetes.io/hostname"
 ---
 apiVersion: tailscale.com/v1alpha1
 kind: ProxyGroup
