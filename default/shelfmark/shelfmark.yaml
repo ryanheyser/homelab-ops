@@ -108,3 +108,10 @@ spec:
             main:
             - path: "/books"
               readOnly: false
+      shelfmark-audiobooks:
+        existingClaim: shelfmark-audiobooks
+        advancedMounts:
+          main:
+            main:
+            - path: "/audiobooks"
+              readOnly: false

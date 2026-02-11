@@ -27,3 +27,17 @@ spec:
     requests:
       storage: 100Gi
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: shelfmark-audiobooks
+  annotations:
+    nfs.io/storage-path: "media/Audiobooks"
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: "nfs-dynamic"
+  resources:
+    requests:
+      storage: 1Ti
+---
