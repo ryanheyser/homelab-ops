@@ -64,10 +64,10 @@ spec:
               WEBUI_PORTS: "9696/tcp"
               PUID: "1000"
               PGID: "1000"
-              VPN_ENABLED: "true"
-              VPN_CONF: "vpnnet1"
-              VPN_PROVIDER: "generic"
-              VPN_LAN_NETWORK: "10.99.0.0/18"
+              # VPN_ENABLED: "true"
+              # VPN_CONF: "vpnnet1"
+              # VPN_PROVIDER: "generic"
+              # VPN_LAN_NETWORK: "10.99.0.0/18"
 
     service:
       main:
