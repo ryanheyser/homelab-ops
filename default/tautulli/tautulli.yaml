@@ -52,7 +52,7 @@ spec:
             image:
               # renovate: repository=ghcr.io/tautulli/tautulli
               repository: ghcr.io/tautulli/tautulli
-              tag: v2.16.0
+              tag: v2.16.1
             securityContext:
               runAsUser: 0
               runAsGroup: 0
