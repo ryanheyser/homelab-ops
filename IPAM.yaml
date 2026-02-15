@@ -1,0 +1,28 @@
+ipam:
+  - ip: "10.0.101.2"
+    service: 
+      - calibre-main
+      - calibre-webserver
+      - calibre-connect
+    file: default/calibre/calibre.yaml
+  - ip: "10.0.101.6"
+    service: immich-loadbalancer
+    file: default/immich/loadbalancer.yaml
+  - ip: "10.0.100.3"
+    service:
+      - adguard-home-dns-udp
+      - adguard-home
+      - adguard-dns
+    file: network-system/adguard/service.yaml
+  - ip: "10.0.0.8"
+    service:
+      - truenas-storage-ip
+      - truenas-awoofy-ip
+      - truenas-kracko-ip
+    file: default/external-services/endpoints.yaml
+  - ip: "10.0.1.1"
+    service: plex-ip
+    file: default/external-services/endpoints.yaml
+  - ip: "10.0.101.5"
+    service: qbittorrent-bittorrent
+    file: default/qbittorrent/seedbox.yaml
