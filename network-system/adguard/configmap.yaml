@@ -33,10 +33,10 @@ data:
         ratelimit_whitelist: []
         refuse_any: true
         upstream_dns:
-          - tls://dns.quad9.net
-          - tls://dns11.quad9.net
-          - [/homelab.heyser.xyz/]10.0.0.1:53
-          - [/heyser.xyz/]10.0.0.1:53
+            - tls://dns.quad9.net
+            - tls://dns11.quad9.net
+            - [/homelab.heyser.xyz/]10.0.0.1:53
+            - [/heyser.xyz/]10.0.0.1:53
         bootstrap_prefer_ipv6: false
         upstream_dns_file: ""
         bootstrap_dns:
