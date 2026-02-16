@@ -35,8 +35,6 @@ data:
         enabled: true
       dns:
           bind_hosts:
-          - '127.0.0.1'
-          - '::1'
           - '0.0.0.0'
           - '::'
           port: 53
