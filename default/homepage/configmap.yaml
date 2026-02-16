@@ -21,7 +21,7 @@ data:
             - abbr: ryanheyser
               icon: github.svg
               href: https://github.com/ryanheyser
-              description: Homelab Ops
+              description: ryanheyser's Github Organization
   services.yaml: ""
   widgets.yaml: |
     - resources:
