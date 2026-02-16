@@ -61,6 +61,7 @@ data:
           - tls://dns11.quad9.net
           - [/homelab.heyser.xyz/]10.0.0.1:53
           - [/heyser.xyz/]10.0.0.1:53
+        upstream_dns_file: ""
         bootstrap_prefer_ipv6: false
         bootstrap_dns:
           - 9.9.9.11
