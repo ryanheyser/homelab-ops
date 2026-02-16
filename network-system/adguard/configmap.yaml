@@ -22,7 +22,7 @@ data:
       language: en
       theme: auto
       'dns':
-        bind_hosts:
+        'bind_hosts':
         - '0.0.0.0'
         - '::'
         port: 53
