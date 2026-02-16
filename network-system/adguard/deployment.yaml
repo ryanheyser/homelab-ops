@@ -71,7 +71,6 @@ spec:
         - --work-dir
         - /opt/adguardhome/work
         - --no-check-update
-        - --no-permcheck
         env:
         - name: TZ
           value: America/New York
