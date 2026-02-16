@@ -43,7 +43,7 @@ spec:
           securityContext:
             fsGroup: 0
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [568, 911, 1000, 1001, 3001]
+            supplementalGroups: [ 568, 911, 1000, 1001, 3001 ]
           tolerations:
           - key: "arm"
             operator: "Exists"
@@ -58,7 +58,7 @@ spec:
               runAsGroup: 0
               allowPrivilegeEscalation: true
               capabilities:
-                add: ["CAP_SETGID", "CAP_SETUID"]
+                add: [ "CAP_SETGID", "CAP_SETUID" ]
             env:
               TZ: America/New_York
               SWAGGER_ENABLED: "false"
@@ -80,6 +80,11 @@ spec:
           kubernetes.io/ingress.class: traefik
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
           # traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: media
+          gethomepage.dev/icon: shelfmark.svg
+          gethomepage.dev/name: Shelfmark
+          gethomepage.dev/description: Shelfmark is a self-hosted book management application that allows users to organize and manage their digital book collections.
         hosts:
         - host: &host "shelfmark.homelab.heyser.xyz"
           paths:

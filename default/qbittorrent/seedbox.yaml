@@ -100,6 +100,11 @@ spec:
           kubernetes.io/ingress.class: traefik
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
           # traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: media
+          gethomepage.dev/icon: qbittorrent.svg
+          gethomepage.dev/name: Seedbox
+          gethomepage.dev/description: qBittorrent is a free and open-source BitTorrent client that supports the BitTorrent protocol and is available for multiple platforms. It provides a user-friendly interface for managing torrents, with features like bandwidth management, scheduling, and advanced filtering options. qBittorrent also includes a built-in search engine, RSS feed support, and integration with various media players, making it a popular choice for downloading and managing torrent files.
         hosts:
         - host: &host "seedbox.homelab.heyser.xyz"
           paths:

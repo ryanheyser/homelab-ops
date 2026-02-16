@@ -43,7 +43,7 @@ spec:
           securityContext:
             fsGroup: 0
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [568, 911, 1000, 1001, 3001]
+            supplementalGroups: [ 568, 911, 1000, 1001, 3001 ]
           tolerations:
           - key: "arm"
             operator: "Exists"
@@ -58,7 +58,7 @@ spec:
               runAsGroup: 0
               allowPrivilegeEscalation: true
               capabilities:
-                add: ["CAP_SETGID", "CAP_SETUID"]
+                add: [ "CAP_SETGID", "CAP_SETUID" ]
             env:
               TZ: America/New_York
               SWAGGER_ENABLED: "false"
@@ -83,6 +83,11 @@ spec:
           kubernetes.io/ingress.class: traefik
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
           # traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: Media
+          gethomepage.dev/icon: booklore.svg
+          gethomepage.dev/name: Booklore
+          gethomepage.dev/description: Booklore is a self-hosted book management and reading application built with Node.js, Express, and React. It provides a user-friendly interface for organizing and reading your book collection, with features like multi-user support, reading progress tracking, and mobile device compatibility.
         hosts:
         - host: &host "booklore.homelab.heyser.xyz"
           paths:

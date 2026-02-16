@@ -6,9 +6,9 @@ metadata:
   labels:
     app.kubernetes.io/name: homepage
   annotations:
-    gethomepage.dev/description: Dynamically Detected Homepage
+    gethomepage.dev/description: Homepage is a self-hosted dashboard application built with Node.js, Express, and React. It provides a customizable interface for managing and accessing your self-hosted applications and services, with features like resource monitoring, search functionality, and support for multiple users.
     gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Cluster Management
+    gethomepage.dev/group: Core Services
     gethomepage.dev/icon: homepage.png
     gethomepage.dev/name: Homepage
 spec:

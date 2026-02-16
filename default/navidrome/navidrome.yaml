@@ -43,10 +43,10 @@ spec:
           securityContext:
             fsGroup: 3001
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [568,911,1000,1001]
+            supplementalGroups: [ 568, 911, 1000, 1001 ]
           tolerations:
-            - key: "arm"
-              operator: "Exists"
+          - key: "arm"
+            operator: "Exists"
         containers:
           main:
             image:
@@ -69,7 +69,7 @@ spec:
     service:
       main:
         # annotations:
-          # traefik.ingress.kubernetes.io/service.nativelb: "true"
+        # traefik.ingress.kubernetes.io/service.nativelb: "true"
         controller: main
         type: ClusterIP
         ports:
@@ -81,24 +81,29 @@ spec:
         className: "traefik"
         # ingressClassName: nginx
         annotations:
-        #   nginx.ingress.kubernetes.io/auth-url: "https://auth.homelab.heyser.xyz/oauth2/auth"
-        #   nginx.ingress.kubernetes.io/auth-signin: https://auth.homelab.heyser.xyz/oauth2/start
+          #   nginx.ingress.kubernetes.io/auth-url: "https://auth.homelab.heyser.xyz/oauth2/auth"
+          #   nginx.ingress.kubernetes.io/auth-signin: https://auth.homelab.heyser.xyz/oauth2/start
           kubernetes.io/ingress.class: traefik
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
           # traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: media
+          gethomepage.dev/icon: navidrome.svg
+          gethomepage.dev/name: Navidrome
+          gethomepage.dev/description: Navidrome is a self-hosted music streaming server that runs in a browser and allows you to access your music collection from anywhere. It provides a user-friendly interface for managing and streaming your music library, with features like playlist creation, album art display, and support for various audio formats. Navidrome is designed to be lightweight and efficient, making it a great choice for hosting your music collection on a home server or NAS device.
         hosts:
         - host: &host "navidrome.homelab.heyser.xyz"
           paths:
           - path: /
             pathType: Prefix
-            service: 
+            service:
               identifier: main
               port: http
         - host: &mhost "music.homelab.heyser.xyz"
           paths:
           - path: /
             pathType: Prefix
-            service: 
+            service:
               identifier: main
               port: http
         tls:
@@ -112,20 +117,19 @@ spec:
         advancedMounts:
           main:
             main:
-              - path: "/data"
-                readOnly: false
+            - path: "/data"
+              readOnly: false
       music:
         existingClaim: navidrome-music
         advancedMounts:
           main:
             main:
-              - path: "/music"
-                readOnly: false
+            - path: "/music"
+              readOnly: false
       cache:
         type: emptyDir
         advancedMounts:
           main:
             main:
-              - path: "/cache"
-                readOnly: false
-
+            - path: "/cache"
+              readOnly: false

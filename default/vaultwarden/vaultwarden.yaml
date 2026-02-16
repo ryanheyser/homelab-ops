@@ -56,20 +56,20 @@ spec:
               PGID: 3001
 
             envFrom:
-              - secretRef:
-                  name: vaultwarden-admin-token
-                  optional: false
+            - secretRef:
+                name: vaultwarden-admin-token
+                optional: false
         pod:
           securityContext:
             fsGroup: 3001
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [568,911,1000,1001]
-                
+            supplementalGroups: [ 568, 911, 1000, 1001 ]
+
     # -- Configures service settings for the chart.
     service:
       main:
         # annotations:
-          # traefik.ingress.kubernetes.io/service.nativelb: "true"
+        # traefik.ingress.kubernetes.io/service.nativelb: "true"
         controller: main
         ports:
           http:
@@ -86,88 +86,93 @@ spec:
           kubernetes.io/ingress.class: traefik
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
           # traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: Core Services
+          gethomepage.dev/icon: vaultwarden.svg
+          gethomepage.dev/name: Vaultwarden
+          gethomepage.dev/description: Vaultwarden is a self-hosted password manager that provides secure password storage and management for individuals and teams.
         hosts:
-          - host: &host "vaultwarden.homelab.heyser.xyz"
-            paths:
-              - path: /
-                pathType: Prefix
-                service:
-                  identifier: main
-                  port: http
-              - path: /admin
-                pathType: Prefix
-                service:
-                  identifier: main
-                  port: http
-              - path: /notifications/hub/negotiate
-                pathType: Prefix
-                service:
-                  identifier: main
-                  port: http
-              - path: /notifications/hub
-                pathType: Prefix
-                service:
-                  identifier: main
-                  port: websocket
+        - host: &host "vaultwarden.homelab.heyser.xyz"
+          paths:
+          - path: /
+            pathType: Prefix
+            service:
+              identifier: main
+              port: http
+          - path: /admin
+            pathType: Prefix
+            service:
+              identifier: main
+              port: http
+          - path: /notifications/hub/negotiate
+            pathType: Prefix
+            service:
+              identifier: main
+              port: http
+          - path: /notifications/hub
+            pathType: Prefix
+            service:
+              identifier: main
+              port: websocket
         tls:
-          - hosts:
-              - *host
-            secretName: vaultwarden-homelab-heyser-xyz-tls
+        - hosts:
+          - *host
+          secretName: vaultwarden-homelab-heyser-xyz-tls
 
     route:
       # -- Enable and configure route settings for the chart under this key.
       main:
         parentRefs:
-          - name: gateway
-            namespace: gateway-namespace
-            sectionName: gateway-section
+        - name: gateway
+          namespace: gateway-namespace
+          sectionName: gateway-section
         hostnames:
-          - *host
+        - *host
         rules:
-          - matches:
-              - path:
-                  type: PathPrefix
-                  value: /
-            backendRefs:
-              - kind: Service
-                port: 80
-                name: main
-                namespace: default
-                weight: 1
-          - matches:
-              - path:
-                  type: PathPrefix
-                  value: /admin
-            backendRefs:
-              - kind: Service
-                port: 80
-                name: main
-                namespace: default
-                weight: 1
-          - matches:
-              - path:
-                  type: PathPrefix
-                  value: /notifications/hub/negotiate
-            backendRefs:
-              - kind: Service
-                port: 80
-                name: main
-                namespace: default
-                weight: 1
-          - matches:
-              - path:
-                  type: PathPrefix
-                  value: /notifications/hub
-            backendRefs:
-              - kind: Service
-                port: 3012
-                name: main
-                namespace: default
-                weight: 1
+        - matches:
+          - path:
+              type: PathPrefix
+              value: /
+          backendRefs:
+          - kind: Service
+            port: 80
+            name: main
+            namespace: default
+            weight: 1
+        - matches:
+          - path:
+              type: PathPrefix
+              value: /admin
+          backendRefs:
+          - kind: Service
+            port: 80
+            name: main
+            namespace: default
+            weight: 1
+        - matches:
+          - path:
+              type: PathPrefix
+              value: /notifications/hub/negotiate
+          backendRefs:
+          - kind: Service
+            port: 80
+            name: main
+            namespace: default
+            weight: 1
+        - matches:
+          - path:
+              type: PathPrefix
+              value: /notifications/hub
+          backendRefs:
+          - kind: Service
+            port: 3012
+            name: main
+            namespace: default
+            weight: 1
 
     # -- Configure persistence settings for the chart under this key.
     persistence:
       config:
         existingClaim: vaultwarden-config
         globalMounts:
-          - path: /config
+        - path: /config

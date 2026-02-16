@@ -128,6 +128,11 @@ spec:
             kubernetes.io/ingress.class: traefik
             traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
             # traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+            gethomepage.dev/enabled: "true"
+            gethomepage.dev/group: media
+            gethomepage.dev/icon: immich.svg
+            gethomepage.dev/name: Immich
+            gethomepage.dev/description: Immich is a self-hosted photo and video management solution that allows you to store, organize, and share your media files. It provides features like automatic photo and video detection, facial recognition, geolocation tagging, and a user-friendly web interface for browsing and managing your media library.
           hosts:
           - host: &host immich.homelab.heyser.xyz
             paths:

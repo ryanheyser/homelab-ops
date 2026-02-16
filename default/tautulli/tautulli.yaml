@@ -74,6 +74,11 @@ spec:
           kubernetes.io/ingress.class: traefik
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
           traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: media
+          gethomepage.dev/icon: tautulli.svg
+          gethomepage.dev/name: Tautulli
+          gethomepage.dev/description: Tautulli is a Python-based web application that provides monitoring and analytics for Plex Media Server. It allows users to track their Plex server's activity, view detailed statistics about media consumption, and receive notifications about server events. Tautulli offers features such as real-time monitoring, historical data analysis, and customizable alerts, making it a valuable tool for Plex users who want to keep an eye on their media server's performance and usage.
         className: 'traefik'
         hosts:
         - host: &host "tautulli.homelab.heyser.xyz"

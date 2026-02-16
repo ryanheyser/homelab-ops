@@ -40,7 +40,7 @@ spec:
           securityContext:
             fsGroup: 3001
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [0,568,911,1000,1001]
+            supplementalGroups: [ 0, 568, 911, 1000, 1001 ]
         containers:
           main:
             image:
@@ -63,13 +63,13 @@ spec:
               DISABLE_IPV6: "true"
               START_DOCKER: "false"
             envFrom:
-              - secretRef:
-                  name: calibre-credentials
-                  optional: false
+            - secretRef:
+                name: calibre-credentials
+                optional: false
     service:
       main:
         # annotations:
-          # traefik.ingress.kubernetes.io/service.nativelb: "true"
+        # traefik.ingress.kubernetes.io/service.nativelb: "true"
         controller: main
         type: LoadBalancer
         externalIPs:
@@ -125,6 +125,11 @@ spec:
           kubernetes.io/ingress.class: traefik
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
           traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: Media
+          gethomepage.dev/icon: calibre.svg
+          gethomepage.dev/name: Calibre
+          gethomepage.dev/description: Calibre is a powerful and easy-to-use e-book manager that allows you to organize, convert, and read your e-book collection. With features like library management, format conversion, and e-book reader integration, Calibre is the perfect solution for managing your digital book collection.
         hosts:
         - host: &host "calibre.homelab.heyser.xyz"
           paths:
@@ -144,6 +149,11 @@ spec:
           kubernetes.io/ingress.class: traefik
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
           traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: Media
+          gethomepage.dev/icon: calibre.svg
+          gethomepage.dev/name: Calibre Web
+          gethomepage.dev/description: Calibre Web is a web interface for Calibre, allowing you to browse and manage your e-book collection through a web browser. It provides features like library management, e-book reader integration, and support for multiple users, making it a convenient way to access your e-books from anywhere.
         hosts:
         - host: &webhost "calibre-web.homelab.heyser.xyz"
           paths:
@@ -184,11 +194,11 @@ spec:
         advancedMounts:
           main:
             main:
-              - path: "/config"
-                readOnly: false
+            - path: "/config"
+              readOnly: false
       library:
         existingClaim: calibre-library
         advancedMounts:
           main:
             main:
-              - path: "/config/Calibre Library"
+            - path: "/config/Calibre Library"

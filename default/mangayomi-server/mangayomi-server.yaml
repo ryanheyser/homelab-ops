@@ -131,6 +131,11 @@ spec:
           kubernetes.io/ingress.class: traefik
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
           # traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: media
+          # gethomepage.dev/icon: mangayomi-server.svg
+          gethomepage.dev/name: Mangayomi Server
+          gethomepage.dev/description: Mangayomi Server is a self-hosted manga and webtoon index application that allows you to sync your manga and webtoon collections reading completion with your local devices.
         hosts:
         - host: &host "mangayomi-server.homelab.heyser.xyz"
           paths:
@@ -143,7 +148,6 @@ spec:
         - hosts:
           - *host
           secretName: mangayomi-server-homelab-heyser-xyz-tls
-
     # persistence:
     #   mongo-data:
     #     existingClaim: mangayomi-server-mongo-data

@@ -9,6 +9,11 @@ metadata:
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
     traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Core Services
+    gethomepage.dev/icon: truenas-scale.svg
+    gethomepage.dev/name: Truenas Scale
+    gethomepage.dev/description: TrueNAS Scale is a free and open-source network-attached storage (NAS) solution that provides a web-based interface for managing storage, virtualization, and other services. It is built on top of the Linux operating system and offers features like ZFS file system support, Docker containerization, and Kubernetes orchestration, making it a powerful and flexible storage solution for home and enterprise use.
 spec:
   ingressClassName: traefik
   rules:
@@ -59,6 +64,11 @@ metadata:
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
     # traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: media
+    gethomepage.dev/icon: plex.svg
+    gethomepage.dev/name: Plex
+    gethomepage.dev/description: Plex is a media server that organizes and streams your personal media content, including movies, TV shows, music, and photos, across multiple devices. With features like remote access, media transcoding, and a user-friendly interface, Plex allows you to enjoy your media library from anywhere, on any device. It also offers additional features like live TV and DVR capabilities, making it a comprehensive solution for managing and enjoying your media collection.
 spec:
   ingressClassName: traefik
   rules:

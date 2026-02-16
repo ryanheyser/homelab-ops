@@ -43,10 +43,10 @@ spec:
           securityContext:
             fsGroup: 3001
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [568,911,1000,1001]
+            supplementalGroups: [ 568, 911, 1000, 1001 ]
           tolerations:
-            - key: "arm"
-              operator: "Exists"
+          - key: "arm"
+            operator: "Exists"
         containers:
           main:
             image:
@@ -62,7 +62,7 @@ spec:
     service:
       main:
         # annotations:
-          # traefik.ingress.kubernetes.io/service.nativelb: "true"
+        # traefik.ingress.kubernetes.io/service.nativelb: "true"
         controller: main
         type: ClusterIP
         ports:
@@ -75,13 +75,18 @@ spec:
           kubernetes.io/ingress.class: traefik
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
           traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: Development
+          gethomepage.dev/icon: code.svg
+          gethomepage.dev/name: Code
+          gethomepage.dev/description: Code Server is a self-hosted version of Visual Studio Code that runs in the browser. It allows you to access your development environment from anywhere, providing a full-featured code editor with support for extensions, debugging, and Git integration, all accessible through a web interface.
         className: traefik
         hosts:
         - host: &host "code.homelab.heyser.xyz"
           paths:
           - path: /
             pathType: Prefix
-            service: 
+            service:
               identifier: main
               port: http
         tls:
@@ -93,18 +98,18 @@ spec:
       config:
         existingClaim: coder-config
         advancedMounts:
+          main:
             main:
-              main:
-                - path: "/config"
+            - path: "/config"
       development:
         existingClaim: coder-development
         advancedMounts:
+          main:
             main:
-              main:
-                - path: "/data"
+            - path: "/data"
       sshkey:
         existingClaim: coder-sshkey
         advancedMounts:
+          main:
             main:
-              main:
-                - path: "/home/coder/.ssh"
+            - path: "/home/coder/.ssh"
