@@ -1,15 +1,14 @@
----
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: youtubedl-tailscale
+  name: homepage-tailscale
 spec:
   defaultBackend:
     service:
-      name: youtubedl
+      name: homepage
       port:
-        number: 17442
+        number: 3000
   ingressClassName: tailscale
   tls:
-    - hosts:
-        - youtubedl
+  - hosts:
+    - homepage
