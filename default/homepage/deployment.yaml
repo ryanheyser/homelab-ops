@@ -59,6 +59,9 @@ spec:
         - mountPath: /app/config/widgets.yaml
           name: homepage-config
           subPath: widgets.yaml
+        - mountPath: /app/config/pve.yaml
+          name: homepage-pve-yaml
+          subPath: pve.yaml
         - mountPath: /app/config/logs
           name: logs
       volumes:
@@ -68,8 +71,5 @@ spec:
       - name: homepage-pve-yaml
         secret:
           secretName: homepage-pve-yaml
-          items:
-          - key: pve.yaml
-            path: /app/config/pve.yaml
       - name: logs
         emptyDir: {}
