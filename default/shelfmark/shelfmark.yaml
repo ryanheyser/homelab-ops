@@ -81,8 +81,8 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
           # traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: media
-          gethomepage.dev/icon: shelfmark.svg
+          gethomepage.dev/group: Downloaders
+          gethomepage.dev/icon: shelfmark.png
           gethomepage.dev/name: Shelfmark
           gethomepage.dev/description: Shelfmark is a self-hosted book management application that allows users to organize and manage their digital book collections.
         hosts:

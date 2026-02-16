@@ -87,7 +87,7 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
           # traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: media
+          gethomepage.dev/group: Media
           gethomepage.dev/icon: navidrome.svg
           gethomepage.dev/name: Navidrome
           gethomepage.dev/description: Navidrome is a self-hosted music streaming server that runs in a browser and allows you to access your music collection from anywhere. It provides a user-friendly interface for managing and streaming your music library, with features like playlist creation, album art display, and support for various audio formats. Navidrome is designed to be lightweight and efficient, making it a great choice for hosting your music collection on a home server or NAS device.

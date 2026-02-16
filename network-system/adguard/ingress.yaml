@@ -12,11 +12,6 @@ metadata:
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     #traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
-    gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Core Services
-    gethomepage.dev/icon: adguard.svg
-    gethomepage.dev/name: AdGuard Home
-    gethomepage.dev/description: AdGuard Home is a network-wide ad blocker and DNS server.
 spec:
   ingressClassName: traefik
   tls:
@@ -48,6 +43,11 @@ metadata:
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
     traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Core Services
+    gethomepage.dev/icon: adguard-home.svg
+    gethomepage.dev/name: AdGuard Home
+    gethomepage.dev/description: AdGuard Home is a network-wide ad blocker and DNS server.
 spec:
   ingressClassName: traefik
   tls:

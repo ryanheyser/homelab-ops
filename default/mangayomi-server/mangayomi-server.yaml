@@ -132,7 +132,7 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
           # traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: media
+          gethomepage.dev/group: Media
           # gethomepage.dev/icon: mangayomi-server.svg
           gethomepage.dev/name: Mangayomi Server
           gethomepage.dev/description: Mangayomi Server is a self-hosted manga and webtoon index application that allows you to sync your manga and webtoon collections reading completion with your local devices.

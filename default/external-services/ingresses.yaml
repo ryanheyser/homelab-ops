@@ -65,7 +65,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
     # traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
     gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: media
+    gethomepage.dev/group: Media
     gethomepage.dev/icon: plex.svg
     gethomepage.dev/name: Plex
     gethomepage.dev/description: Plex is a media server that organizes and streams your personal media content, including movies, TV shows, music, and photos, across multiple devices. With features like remote access, media transcoding, and a user-friendly interface, Plex allows you to enjoy your media library from anywhere, on any device. It also offers additional features like live TV and DVR capabilities, making it a comprehensive solution for managing and enjoying your media collection.

@@ -85,7 +85,7 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
           # traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: media
+          gethomepage.dev/group: Downloaders
           gethomepage.dev/icon: prowlarr.svg
           gethomepage.dev/name: Prowlarr
           gethomepage.dev/description: Prowlarr is a indexer manager/proxy built to integrate seamlessly with Sonarr and Radarr, providing a single interface for managing all your indexers. It supports both torrent and usenet indexers, allowing you to easily add, remove, and configure your indexers in one place. Prowlarr also offers features like automatic indexer updates, health checks, and integration with various notification services, making it a powerful tool for managing your media indexers.
