@@ -24,6 +24,7 @@ data:
     dns:
       bind_hosts:
       - 0.0.0.0
+      - ::
       port: 53
       anonymize_client_ip: true
       ratelimit: 0
@@ -36,6 +37,7 @@ data:
       - tls://dns11.quad9.net
       - [/homelab.heyser.xyz/]10.0.0.1:53
       - [/heyser.xyz/]10.0.0.1:53
+      bootstrap_prefer_ipv6: false
       upstream_dns_file: ""
       bootstrap_dns:
       - 9.9.9.11
@@ -44,6 +46,7 @@ data:
       - 2620:fe::fe:11
       fallback_dns: []
       upstream_mode: parallel
+      use_http3_upstreams: true
       fastest_timeout: 1s
       allowed_clients: []
       disallowed_clients: []
@@ -54,6 +57,7 @@ data:
       trusted_proxies:
       - 127.0.0.0/8
       - ::1/128
+      cache_enabled: true
       cache_size: 16777216
       cache_ttl_min: 0
       cache_ttl_max: 300
@@ -312,6 +316,7 @@ data:
         ra_slaac_only: false
         ra_allow_slaac: false
     filtering:
+      filtering_enabled: false
       blocking_ipv4: ""
       blocking_ipv6: ""
       blocked_services:
