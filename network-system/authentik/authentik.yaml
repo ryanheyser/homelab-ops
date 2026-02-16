@@ -67,6 +67,11 @@ spec:
         annotations:
           kubernetes.io/ingress.class: traefik
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: Core Services
+          gethomepage.dev/icon: authentik.svg
+          gethomepage.dev/name: Authentik
+          gethomepage.dev/description: Authentik is an identity and access management platform.
           # traefik.ingress.kubernetes.io/router.tls: "true"
           # traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt-prod"
           # traefik.ingress.kubernetes.io/router.middlewares: ""
