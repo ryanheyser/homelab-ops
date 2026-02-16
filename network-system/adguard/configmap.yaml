@@ -33,17 +33,17 @@ data:
         ratelimit_whitelist: []
         refuse_any: true
         upstream_dns:
-            - tls://dns.quad9.net
-            - tls://dns11.quad9.net
-            - [/homelab.heyser.xyz/]10.0.0.1:53
-            - [/heyser.xyz/]10.0.0.1:53
+          - tls://dns.quad9.net
+          - tls://dns11.quad9.net
+          - [/homelab.heyser.xyz/]10.0.0.1:53
+          - [/heyser.xyz/]10.0.0.1:53
         bootstrap_prefer_ipv6: false
         upstream_dns_file: ""
         bootstrap_dns:
-            - 9.9.9.11
-            - 149.112.112.11
-            - 2620:fe::11
-            - 2620:fe::fe:11
+          - 9.9.9.11
+          - 149.112.112.11
+          - 2620:fe::11
+          - 2620:fe::fe:11
         fallback_dns: []
         upstream_mode: parallel
         use_http3_upstreams: true
@@ -51,12 +51,12 @@ data:
         allowed_clients: []
         disallowed_clients: []
         blocked_hosts:
-            - version.bind
-            - id.server
-            - hostname.bind
+          - version.bind
+          - id.server
+          - hostname.bind
         trusted_proxies:
-            - 127.0.0.0/8
-            - ::1/128
+          - 127.0.0.0/8
+          - ::1/128
         cache_enabled: true
         cache_size: 16777216
         cache_ttl_min: 0
