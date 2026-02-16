@@ -21,6 +21,18 @@ data:
       http_proxy: ""
       language: en
       theme: auto
+      querylog:
+        dir_path: ""
+        ignored: []
+        interval: 720h
+        size_memory: 1000
+        enabled: false
+        file_enabled: false
+      statistics:
+        dir_path: ""
+        ignored: []
+        interval: 24h
+        enabled: true
       dns:
           bind_hosts:
           - '127.0.0.1'
@@ -102,18 +114,6 @@ data:
         certificate_path: /opt/adguardcertificate/tls.crt
         private_key_path: /opt/adguardcertificate/tls.key
         strict_sni_check: false
-      querylog:
-        dir_path: ""
-        ignored: []
-        interval: 720h
-        size_memory: 1000
-        enabled: false
-        file_enabled: false
-      statistics:
-        dir_path: ""
-        ignored: []
-        interval: 24h
-        enabled: true
       filters:
       - enabled: true
         url: https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
