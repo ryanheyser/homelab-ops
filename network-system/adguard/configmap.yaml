@@ -48,8 +48,8 @@ data:
         rlimit_nofile: 0
       dns:
         bind_hosts:
-          - 0.0.0.0
-          - ::
+        - 0.0.0.0
+        - ::
         port: 53
         anonymize_client_ip: true
         ratelimit: 0
