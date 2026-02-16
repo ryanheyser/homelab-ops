@@ -32,28 +32,28 @@ data:
       ratelimit_whitelist: []
       refuse_any: true
       upstream_dns:
-          - tls://dns.quad9.net
-          - tls://dns11.quad9.net
-          - [/homelab.heyser.xyz/]10.0.0.1:53
-          - [/heyser.xyz/]10.0.0.1:53
+      - tls://dns.quad9.net
+      - tls://dns11.quad9.net
+      - [/homelab.heyser.xyz/]10.0.0.1:53
+      - [/heyser.xyz/]10.0.0.1:53
       upstream_dns_file: ""
       bootstrap_dns:
-          - 9.9.9.11
-          - 149.112.112.11
-          - 2620:fe::11
-          - 2620:fe::fe:11
+      - 9.9.9.11
+      - 149.112.112.11
+      - 2620:fe::11
+      - 2620:fe::fe:11
       fallback_dns: []
       upstream_mode: parallel
       fastest_timeout: 1s
       allowed_clients: []
       disallowed_clients: []
       blocked_hosts:
-          - version.bind
-          - id.server
-          - hostname.bind
+      - version.bind
+      - id.server
+      - hostname.bind
       trusted_proxies:
-          - 127.0.0.0/8
-          - ::1/128
+      - 127.0.0.0/8
+      - ::1/128
       cache_size: 16777216
       cache_ttl_min: 0
       cache_ttl_max: 300
@@ -74,8 +74,8 @@ data:
       private_networks: []
       use_private_ptr_resolvers: true
       local_ptr_upstreams:
-        - 10.0.0.1
-        - 169.254.20.10
+      - 10.0.0.1
+      - 169.254.20.10
       use_dns64: false
       dns64_prefixes: []
       serve_http3: true
@@ -110,190 +110,190 @@ data:
       interval: 24h
       enabled: true
     filters:
-      - enabled: true
-        url: https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
-        name: AdGuard DNS filter
-        id: 1
-      - enabled: true
-        url: https://github.com/notracking/hosts-blocklists/raw/master/adblock/adblock.txt
-        name: Awesome Hosts Blocklist
-        id: 2
-      - enabled: true
-        url: https://blocklistproject.github.io/Lists/adguard/phishing-ags.txt
-        name: BLP - phishing
-        id: 3
-      - enabled: true
-        url: https://blocklistproject.github.io/Lists/adguard/scam-ags.txt
-        name: BLP - scam
-        id: 4
-      - enabled: true
-        url: https://blocklistproject.github.io/Lists/adguard/tracking-ags.txt
-        name: BLP - tracking
-        id: 5
-      - enabled: true
-        url: https://blocklistproject.github.io/Lists/adguard/abuse-ags.txt
-        name: BLP - abuse
-        id: 6
-      - enabled: true
-        url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_48.txt
-        name: HaGeZi's Pro Blocklist
-        id: 7
-      - enabled: true
-        url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_9.txt
-        name: The Big List of Hacked Malware Web Sites
-        id: 8
+    - enabled: true
+      url: https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
+      name: AdGuard DNS filter
+      id: 1
+    - enabled: true
+      url: https://github.com/notracking/hosts-blocklists/raw/master/adblock/adblock.txt
+      name: Awesome Hosts Blocklist
+      id: 2
+    - enabled: true
+      url: https://blocklistproject.github.io/Lists/adguard/phishing-ags.txt
+      name: BLP - phishing
+      id: 3
+    - enabled: true
+      url: https://blocklistproject.github.io/Lists/adguard/scam-ags.txt
+      name: BLP - scam
+      id: 4
+    - enabled: true
+      url: https://blocklistproject.github.io/Lists/adguard/tracking-ags.txt
+      name: BLP - tracking
+      id: 5
+    - enabled: true
+      url: https://blocklistproject.github.io/Lists/adguard/abuse-ags.txt
+      name: BLP - abuse
+      id: 6
+    - enabled: true
+      url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_48.txt
+      name: HaGeZi's Pro Blocklist
+      id: 7
+    - enabled: true
+      url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_9.txt
+      name: The Big List of Hacked Malware Web Sites
+      id: 8
     whitelist_filters: []
     user_rules:
-      - '||*.homelab.heyser.xyz^$dnsrewrite=NOERROR;A;10.0.100.1'
-      - '@@||vm.homelab.heyser.xyz^$dnsrewrite'
-      - '||vm.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.9'
-      - '||vm.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.12'
-      - '||vm.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.13'
-      - '||vm.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.14'
-      - '||vm.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.15'
-      - '@@||proxmox.homelab.heyser.xyz^$dnsrewrite'
-      - '||proxmox.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.9'
-      - '||proxmox.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.12'
-      - '||proxmox.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.13'
-      - '||proxmox.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.14'
-      - '||proxmox.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.15'
-      - '@@||kubernetes.homelab.heyser.xyz^$dnsrewrite'
-      - '||kubernetes.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.10'
-      - '@@||madoo.homelab.heyser.xyz^$dnsrewrite'
-      - '||madoo.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.11'
-      - '@@||magoo.homelab.heyser.xyz^$dnsrewrite'
-      - '||magoo.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.12'
-      - '@@||moggy.homelab.heyser.xyz^$dnsrewrite'
-      - '||moggy.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.13'
-      - '@@||minny.homelab.heyser.xyz^$dnsrewrite'
-      - '||minny.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.14'
-      - '@@||mirra.homelab.heyser.xyz^$dnsrewrite'
-      - '||mirra.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.15'
-      - '@@||peezer.homelab.heyser.xyz^$dnsrewrite'
-      - '||peezer.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.21'
-      - '@@||peloo.homelab.heyser.xyz^$dnsrewrite'
-      - '||peloo.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.22'
-      - '@@||peran.homelab.heyser.xyz^$dnsrewrite'
-      - '||peran.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.23'
-      - '@@||perara.homelab.heyser.xyz^$dnsrewrite'
-      - '||perara.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.24'
-      - '@@||phanta.homelab.heyser.xyz^$dnsrewrite'
-      - '||phanta.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.25'
-      - '@@||posura.homelab.heyser.xyz^$dnsrewrite'
-      - '||posura.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.26'
-      - '@@||pteran.homelab.heyser.xyz^$dnsrewrite'
-      - '||pteran.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.27'
-      - '@@||void.homelab.heyser.xyz^$dnsrewrite'
-      - '||void.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.70'
-      - '@@||storage.homelab.heyser.xyz^$dnsrewrite'
-      - '||storage.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.8'
-      - '@@||kracko.homelab.heyser.xyz^$dnsrewrite'
-      - '||kracko.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.8'
-      - '@@||awoofy.homelab.heyser.xyz^$dnsrewrite'
-      - '||awoofy.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.8'
-      - '@@||dns.homelab.heyser.xyz^$dnsrewrite'
-      - '||dns.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.100.3'
-      - '@@||calibreconnect.homelab.heyser.xyz^$dnsrewrite'
-      - '||calibreconnect.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.101.2'
-      - '@@||aa.paramountplus.com^'
-      - '@@||cbsinteractive.hb.omtrdc.net^'
-      - '@@||ads.play.cbsi.video^'
-      - '@@||pubads.g.doubleclick.net^'
-      - '@@||go.redirectingat.com^'
-      - '@@||ping.ui.com^'
-      - '@@||trace.svc.ui.com^'
-      - '@@||albert.apple.com^'
-      - '@@||captive.apple.com^'
-      - '@@||gs.apple.com^'
-      - '@@||humb.apple.com^'
-      - '@@||static.ips.apple.com^'
-      - '@@||sq-device.apple.com^'
-      - '@@||tbsc.apple.com^'
-      - '@@||time-ios.apple.com^'
-      - '@@||time.apple.com^'
-      - '@@||time-macos.apple.com^'
-      - '@@||push.apple.com^'
-      - '@@||deviceenrollment.apple.com^'
-      - '@@||deviceservices-external.apple.com^'
-      - '@@||gdmf.apple.com^'
-      - '@@||identity.apple.com^'
-      - '@@||iprofiles.apple.com^'
-      - '@@||mdmenrollment.apple.com^'
-      - '@@||setup.icloud.com^'
-      - '@@||vpp.itunes.apple.com^'
-      - '@@||appldnld.apple.com^'
-      - '@@||configuration.apple.com^'
-      - '@@||gdmf.apple.com^'
-      - '@@||gg.apple.com^'
-      - '@@||gnf-mdn.apple.com^'
-      - '@@||gnf-mr.apple.com^'
-      - '@@||gs.apple.com^'
-      - '@@||ig.apple.com^'
-      - '@@||mesu.apple.com^'
-      - '@@||ns.itunes.apple.com^'
-      - '@@||oscdn.apple.com^'
-      - '@@||osrecovery.apple.com^'
-      - '@@||skl.apple.com^'
-      - '@@||swcdn.apple.com^'
-      - '@@||swdist.apple.com^'
-      - '@@||swdownload.apple.com^'
-      - '@@||swscan.apple.com^'
-      - '@@||updates-http.cdn-apple.com^'
-      - '@@||updates.cdn-apple.com^'
-      - '@@||xp.apple.com^'
-      - '@@||itunes.apple.com^'
-      - '@@||apps.apple.com^'
-      - '@@||mzstatic.com^'
-      - '@@||ppq.apple.com^'
-      - '@@||appldnld.apple.com.edgesuite.net^'
-      - '@@||itunes.com^'
-      - '@@||lcdn-registration.apple.com^'
-      - '@@||suconfig.apple.com^'
-      - '@@||xp-cdn.apple.com^'
-      - '@@||lcdn-locator.apple.com^'
-      - '@@||serverstatus.apple.com^'
-      - '@@||appattest.apple.com^'
-      - '@@||certs.apple.com^'
-      - '@@||crl.apple.com^'
-      - '@@||crl.entrust.net^'
-      - '@@||crl3.digicert.com'
-      - '@@||crl4.digicert.com^'
-      - '@@||ocsp.apple.com^'
-      - '@@||ocsp.digicert.cn^'
-      - '@@||ocsp.digicert.com^'
-      - '@@||ocsp.entrust.net^'
-      - '@@||ocsp2.apple.com^'
-      - '@@||valid.apple.com^'
-      - '@@||appleid.apple.com^'
-      - '@@||appleid.cdn-apple.com^'
-      - '@@||idmsa.apple.com^'
-      - '@@||gsa.apple.com^'
-      - '@@||apple-cloudkit.com^'
-      - '@@||apple-livephotoskit.com^'
-      - '@@||apzones.com^'
-      - '@@||cdn-apple.com^'
-      - '@@||gc.apple.com^'
-      - '@@||icloud.com^'
-      - '@@||icloud.com.cn^'
-      - '@@||icloud.apple.com^'
-      - '@@||icloud-content.com^'
-      - '@@||iwork.apple.com^'
-      - '@@||mask.icloud.com^'
-      - '@@||mask-h2.icloud.com^'
-      - '@@||mask-api.icloud.com^'
-      - '@@||audiocontentdownload.apple.com^'
-      - '@@||devimages-cdn.apple.com^'
-      - '@@||download.developer.apple.com^'
-      - '@@||playgrounds-assets-cdn.apple.com^'
-      - '@@||playgrounds-cdn.apple.com^'
-      - '@@||sylvan.apple.com^'
-      - '@@||bnc.lt^'
-      - '@@||click.pstmrk.it^'
-      - '@@||gleam.io^'
-      - '@@||click.linksynergy.com^'
-      - '@@||v.ringcentral.com^'
-      - '@@||pixeldrain.com^'
-      - '@@||emjcd.com^'
+    - '||*.homelab.heyser.xyz^$dnsrewrite=NOERROR;A;10.0.100.1'
+    - '@@||vm.homelab.heyser.xyz^$dnsrewrite'
+    - '||vm.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.9'
+    - '||vm.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.12'
+    - '||vm.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.13'
+    - '||vm.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.14'
+    - '||vm.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.15'
+    - '@@||proxmox.homelab.heyser.xyz^$dnsrewrite'
+    - '||proxmox.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.9'
+    - '||proxmox.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.12'
+    - '||proxmox.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.13'
+    - '||proxmox.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.14'
+    - '||proxmox.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.15'
+    - '@@||kubernetes.homelab.heyser.xyz^$dnsrewrite'
+    - '||kubernetes.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.10'
+    - '@@||madoo.homelab.heyser.xyz^$dnsrewrite'
+    - '||madoo.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.11'
+    - '@@||magoo.homelab.heyser.xyz^$dnsrewrite'
+    - '||magoo.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.12'
+    - '@@||moggy.homelab.heyser.xyz^$dnsrewrite'
+    - '||moggy.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.13'
+    - '@@||minny.homelab.heyser.xyz^$dnsrewrite'
+    - '||minny.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.14'
+    - '@@||mirra.homelab.heyser.xyz^$dnsrewrite'
+    - '||mirra.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.15'
+    - '@@||peezer.homelab.heyser.xyz^$dnsrewrite'
+    - '||peezer.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.21'
+    - '@@||peloo.homelab.heyser.xyz^$dnsrewrite'
+    - '||peloo.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.22'
+    - '@@||peran.homelab.heyser.xyz^$dnsrewrite'
+    - '||peran.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.23'
+    - '@@||perara.homelab.heyser.xyz^$dnsrewrite'
+    - '||perara.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.24'
+    - '@@||phanta.homelab.heyser.xyz^$dnsrewrite'
+    - '||phanta.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.25'
+    - '@@||posura.homelab.heyser.xyz^$dnsrewrite'
+    - '||posura.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.26'
+    - '@@||pteran.homelab.heyser.xyz^$dnsrewrite'
+    - '||pteran.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.27'
+    - '@@||void.homelab.heyser.xyz^$dnsrewrite'
+    - '||void.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.70'
+    - '@@||storage.homelab.heyser.xyz^$dnsrewrite'
+    - '||storage.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.8'
+    - '@@||kracko.homelab.heyser.xyz^$dnsrewrite'
+    - '||kracko.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.8'
+    - '@@||awoofy.homelab.heyser.xyz^$dnsrewrite'
+    - '||awoofy.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.8'
+    - '@@||dns.homelab.heyser.xyz^$dnsrewrite'
+    - '||dns.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.100.3'
+    - '@@||calibreconnect.homelab.heyser.xyz^$dnsrewrite'
+    - '||calibreconnect.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.101.2'
+    - '@@||aa.paramountplus.com^'
+    - '@@||cbsinteractive.hb.omtrdc.net^'
+    - '@@||ads.play.cbsi.video^'
+    - '@@||pubads.g.doubleclick.net^'
+    - '@@||go.redirectingat.com^'
+    - '@@||ping.ui.com^'
+    - '@@||trace.svc.ui.com^'
+    - '@@||albert.apple.com^'
+    - '@@||captive.apple.com^'
+    - '@@||gs.apple.com^'
+    - '@@||humb.apple.com^'
+    - '@@||static.ips.apple.com^'
+    - '@@||sq-device.apple.com^'
+    - '@@||tbsc.apple.com^'
+    - '@@||time-ios.apple.com^'
+    - '@@||time.apple.com^'
+    - '@@||time-macos.apple.com^'
+    - '@@||push.apple.com^'
+    - '@@||deviceenrollment.apple.com^'
+    - '@@||deviceservices-external.apple.com^'
+    - '@@||gdmf.apple.com^'
+    - '@@||identity.apple.com^'
+    - '@@||iprofiles.apple.com^'
+    - '@@||mdmenrollment.apple.com^'
+    - '@@||setup.icloud.com^'
+    - '@@||vpp.itunes.apple.com^'
+    - '@@||appldnld.apple.com^'
+    - '@@||configuration.apple.com^'
+    - '@@||gdmf.apple.com^'
+    - '@@||gg.apple.com^'
+    - '@@||gnf-mdn.apple.com^'
+    - '@@||gnf-mr.apple.com^'
+    - '@@||gs.apple.com^'
+    - '@@||ig.apple.com^'
+    - '@@||mesu.apple.com^'
+    - '@@||ns.itunes.apple.com^'
+    - '@@||oscdn.apple.com^'
+    - '@@||osrecovery.apple.com^'
+    - '@@||skl.apple.com^'
+    - '@@||swcdn.apple.com^'
+    - '@@||swdist.apple.com^'
+    - '@@||swdownload.apple.com^'
+    - '@@||swscan.apple.com^'
+    - '@@||updates-http.cdn-apple.com^'
+    - '@@||updates.cdn-apple.com^'
+    - '@@||xp.apple.com^'
+    - '@@||itunes.apple.com^'
+    - '@@||apps.apple.com^'
+    - '@@||mzstatic.com^'
+    - '@@||ppq.apple.com^'
+    - '@@||appldnld.apple.com.edgesuite.net^'
+    - '@@||itunes.com^'
+    - '@@||lcdn-registration.apple.com^'
+    - '@@||suconfig.apple.com^'
+    - '@@||xp-cdn.apple.com^'
+    - '@@||lcdn-locator.apple.com^'
+    - '@@||serverstatus.apple.com^'
+    - '@@||appattest.apple.com^'
+    - '@@||certs.apple.com^'
+    - '@@||crl.apple.com^'
+    - '@@||crl.entrust.net^'
+    - '@@||crl3.digicert.com'
+    - '@@||crl4.digicert.com^'
+    - '@@||ocsp.apple.com^'
+    - '@@||ocsp.digicert.cn^'
+    - '@@||ocsp.digicert.com^'
+    - '@@||ocsp.entrust.net^'
+    - '@@||ocsp2.apple.com^'
+    - '@@||valid.apple.com^'
+    - '@@||appleid.apple.com^'
+    - '@@||appleid.cdn-apple.com^'
+    - '@@||idmsa.apple.com^'
+    - '@@||gsa.apple.com^'
+    - '@@||apple-cloudkit.com^'
+    - '@@||apple-livephotoskit.com^'
+    - '@@||apzones.com^'
+    - '@@||cdn-apple.com^'
+    - '@@||gc.apple.com^'
+    - '@@||icloud.com^'
+    - '@@||icloud.com.cn^'
+    - '@@||icloud.apple.com^'
+    - '@@||icloud-content.com^'
+    - '@@||iwork.apple.com^'
+    - '@@||mask.icloud.com^'
+    - '@@||mask-h2.icloud.com^'
+    - '@@||mask-api.icloud.com^'
+    - '@@||audiocontentdownload.apple.com^'
+    - '@@||devimages-cdn.apple.com^'
+    - '@@||download.developer.apple.com^'
+    - '@@||playgrounds-assets-cdn.apple.com^'
+    - '@@||playgrounds-cdn.apple.com^'
+    - '@@||sylvan.apple.com^'
+    - '@@||bnc.lt^'
+    - '@@||click.pstmrk.it^'
+    - '@@||gleam.io^'
+    - '@@||click.linksynergy.com^'
+    - '@@||v.ringcentral.com^'
+    - '@@||pixeldrain.com^'
+    - '@@||emjcd.com^'
     dhcp:
       enabled: false
       interface_name: ""
