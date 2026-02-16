@@ -18,12 +18,10 @@ data:
   bookmarks.yaml: |
     - Developer:
         - Github:
-            - abbr: homelab-ops
-              href: https://github.com/ryanheyser/homelab-ops
+            - abbr: ryanheyser
+              icon: github
+              href: https://github.com/ryanheyser
               description: Homelab Ops
-            - abbr: homelab-infrastructure
-              href: https://github.com/ryanheyser/homelab-infrastructure
-              description: Homelab Infrastructure
   services.yaml: ""
   widgets.yaml: |
     - resources:

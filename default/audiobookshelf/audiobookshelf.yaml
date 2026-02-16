@@ -77,6 +77,11 @@ spec:
           kubernetes.io/ingress.class: traefik
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
           # traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: Media
+          gethomepage.dev/icon: audiobookshelf.svg
+          gethomepage.dev/name: Audiobookshelf
+          gethomepage.dev/description: Audiobookshelf is a self-hosted audiobook server and streaming application built with Node.js, Express, and React. It provides a user-friendly interface for managing and streaming your audiobook collection, with features like multi-user support, playlists, and mobile device compatibility.
         hosts:
         - host: &host "audiobookshelf.homelab.heyser.xyz"
           paths:
