@@ -33,6 +33,19 @@ data:
         ignored: []
         interval: 24h
         enabled: true
+      log:
+        enabled: false
+        file: ""
+        compress: true
+        local_time: true
+        max_backups: 1
+        max_size: 100
+        max_age: 3
+        verbose: false
+      os:
+        group: ""
+        user: ""
+        rlimit_nofile: 0
       dns:
           bind_hosts:
           - '0.0.0.0'
@@ -356,17 +369,3 @@ data:
           dhcp: true
           hosts: true
         persistent: []
-      log:
-        enabled: true
-        file: ""
-        max_backups: 0
-        max_size: 100
-        max_age: 3
-        compress: false
-        local_time: false
-        verbose: false
-      os:
-        group: ""
-        user: ""
-        rlimit_nofile: 0
-      schema_version: 29
