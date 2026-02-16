@@ -19,7 +19,7 @@ data:
     - Developer:
         - Github:
             - abbr: ryanheyser
-              icon: github
+              icon: github.svg
               href: https://github.com/ryanheyser
               description: Homelab Ops
   services.yaml: ""
