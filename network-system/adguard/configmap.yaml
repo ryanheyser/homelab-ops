@@ -68,7 +68,6 @@ data:
           - 2620:fe::fe:11
         fallback_dns: []
         upstream_mode: parallel
-        use_http3_upstreams: true
         fastest_timeout: 1s
         allowed_clients: []
         disallowed_clients: []
@@ -357,7 +356,6 @@ data:
         cache_time: 30
         filters_update_interval: 12
         blocked_response_ttl: 10
-        filtering_enabled: true
         parental_enabled: false
         safebrowsing_enabled: false
         protection_enabled: true
