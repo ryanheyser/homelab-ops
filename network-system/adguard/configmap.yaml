@@ -38,7 +38,6 @@ data:
           - [/homelab.heyser.xyz/]10.0.0.1:53
           - [/heyser.xyz/]10.0.0.1:53
         bootstrap_prefer_ipv6: false
-        upstream_dns_file: ""
         bootstrap_dns:
           - 9.9.9.11
           - 149.112.112.11
