@@ -22,70 +22,70 @@ data:
       language: en
       theme: auto
       dns:
-          bind_hosts:
-            - 0.0.0.0
-            - ::
-          port: 53
-          anonymize_client_ip: true
-          ratelimit: 0
-          ratelimit_subnet_len_ipv4: 24
-          ratelimit_subnet_len_ipv6: 56
-          ratelimit_whitelist: []
-          refuse_any: true
-          upstream_dns:
-            - tls://dns.quad9.net
-            - tls://dns11.quad9.net
-            - [/homelab.heyser.xyz/]10.0.0.1:53
-            - [/heyser.xyz/]10.0.0.1:53
-          bootstrap_prefer_ipv6: false
-          upstream_dns_file: ""
-          bootstrap_dns:
-            - 9.9.9.11
-            - 149.112.112.11
-            - 2620:fe::11
-            - 2620:fe::fe:11
-          fallback_dns: []
-          upstream_mode: parallel
-          use_http3_upstreams: true
-          fastest_timeout: 1s
-          allowed_clients: []
-          disallowed_clients: []
-          blocked_hosts:
-            - version.bind
-            - id.server
-            - hostname.bind
-          trusted_proxies:
-            - 127.0.0.0/8
-            - ::1/128
-          cache_enabled: true
-          cache_size: 16777216
-          cache_ttl_min: 0
-          cache_ttl_max: 300
-          cache_optimistic: false
-          bogus_nxdomain: []
-          aaaa_disabled: false
-          enable_dnssec: true
-          edns_client_subnet:
-            custom_ip: ""
-            enabled: false
-            use_custom: false
-          max_goroutines: 300
-          handle_ddr: true
-          ipset: []
-          ipset_file: ""
-          bootstrap_prefer_ipv6: false
-          upstream_timeout: 10s
-          private_networks: []
-          use_private_ptr_resolvers: true
-          local_ptr_upstreams:
-          - 10.0.0.1
-          - 169.254.20.10
-          use_dns64: false
-          dns64_prefixes: []
-          serve_http3: true
-          use_http3_upstreams: true
-          serve_plain_dns: true
-          hostsfile_enabled: true
+        bind_hosts:
+          - 0.0.0.0
+          - ::
+        port: 53
+        anonymize_client_ip: true
+        ratelimit: 0
+        ratelimit_subnet_len_ipv4: 24
+        ratelimit_subnet_len_ipv6: 56
+        ratelimit_whitelist: []
+        refuse_any: true
+        upstream_dns:
+          - tls://dns.quad9.net
+          - tls://dns11.quad9.net
+          - [/homelab.heyser.xyz/]10.0.0.1:53
+          - [/heyser.xyz/]10.0.0.1:53
+        bootstrap_prefer_ipv6: false
+        upstream_dns_file: ""
+        bootstrap_dns:
+          - 9.9.9.11
+          - 149.112.112.11
+          - 2620:fe::11
+          - 2620:fe::fe:11
+        fallback_dns: []
+        upstream_mode: parallel
+        use_http3_upstreams: true
+        fastest_timeout: 1s
+        allowed_clients: []
+        disallowed_clients: []
+        blocked_hosts:
+          - version.bind
+          - id.server
+          - hostname.bind
+        trusted_proxies:
+          - 127.0.0.0/8
+          - ::1/128
+        cache_enabled: true
+        cache_size: 16777216
+        cache_ttl_min: 0
+        cache_ttl_max: 300
+        cache_optimistic: false
+        bogus_nxdomain: []
+        aaaa_disabled: false
+        enable_dnssec: true
+        edns_client_subnet:
+          custom_ip: ""
+          enabled: false
+          use_custom: false
+        max_goroutines: 300
+        handle_ddr: true
+        ipset: []
+        ipset_file: ""
+        bootstrap_prefer_ipv6: false
+        upstream_timeout: 10s
+        private_networks: []
+        use_private_ptr_resolvers: true
+        local_ptr_upstreams:
+        - 10.0.0.1
+        - 169.254.20.10
+        use_dns64: false
+        dns64_prefixes: []
+        serve_http3: true
+        use_http3_upstreams: true
+        serve_plain_dns: true
+        hostsfile_enabled: true
       tls:
         enabled: true
         server_name: dns.homelab.heyser.xyz
