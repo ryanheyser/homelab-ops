@@ -23,24 +23,3 @@ spec:
             name: homepage
             port:
               number: 3000
----
-apiVersion: traefik.io/v1alpha1
-kind: IngressRoute
-metadata:
-  name: homepage
-spec:
-  entryPoints:
-  - web
-  - websecure
-  routes:
-  - kind: Rule
-    match: Host(`homepage.homelab.heyser.xyz`)
-    services:
-    - kind: Service
-      name: homepage
-      port: 3000
-      sticky:
-        cookie:
-          httpOnly: true
-          secure: true
-          sameSite: none
