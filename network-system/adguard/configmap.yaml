@@ -34,14 +34,14 @@ data:
       interval: 24h
       enabled: true
     log:
-      enabled: false
+      enabled: true
       file: ""
       compress: true
       local_time: true
       max_backups: 1
       max_size: 100
       max_age: 3
-      verbose: false
+      verbose: true
     os:
       group: "root"
       user: "root"
