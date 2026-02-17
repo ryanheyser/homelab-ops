@@ -128,11 +128,10 @@ metadata:
     traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
     traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
 spec:
-  # type: LoadBalancer
-  type: ClusterIP
-  # externalTrafficPolicy: Local
-  # externalIPs:
-  #   - 10.0.100.3
+  type: LoadBalancer
+  externalTrafficPolicy: Cluster
+  externalIPs:
+  - 10.0.100.3
   ports:
   - port: 3000
     targetPort: 3000
@@ -156,16 +155,11 @@ metadata:
     # traefik.ingress.kubernetes.io/service.nativelb: "true"
     metallb.universe.tf/loadBalancerIPs: 10.0.100.3
     metallb.universe.tf/allow-shared-ip: "adguard-share"
-    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
-    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
-    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
-    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
 spec:
-  # type: LoadBalancer
-  type: ClusterIP
-  # externalTrafficPolicy: Local
-  # externalIPs:
-  #   - 10.0.100.3
+  type: LoadBalancer
+  externalTrafficPolicy: Cluster
+  externalIPs:
+  - 10.0.100.3
   ports:
   - port: 443
     targetPort: 443
