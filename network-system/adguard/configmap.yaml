@@ -9,6 +9,7 @@ metadata:
     app.kubernetes.io/instance: adguard
 data:
   AdGuardHome.yaml: |
+    schema_version: 33
     http:
       pprof:
         port: 6060
