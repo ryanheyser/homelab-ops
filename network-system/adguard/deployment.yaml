@@ -60,6 +60,24 @@ spec:
             subPath: AdGuardHome.yaml
           - mountPath: /opt/adguardhome/conf
             name: config
+        - args:
+          - --config
+          - /opt/adguardhome/conf/AdGuardHome.yaml
+          - --work-dir
+          - /opt/adguardhome/work
+          - --no-check-update
+          - --check-config
+          image: "adguard/adguardhome:v0.107.71"
+          imagePullPolicy: IfNotPresent
+          name: copy-configmap
+          securityContext:
+            runAsUser: 0
+          volumeMounts:
+          - mountPath: /tmp/AdGuardHome.yaml
+            name: adguard-home-config
+            subPath: AdGuardHome.yaml
+          - mountPath: /opt/adguardhome/conf
+            name: config
       containers:
       - name: adguard-home
         # renovate: repository=adguard/adguardhome
