@@ -43,8 +43,8 @@ data:
       max_age: 3
       verbose: false
     os:
-      group: ""
-      user: ""
+      group: "root"
+      user: "root"
       rlimit_nofile: 0
     dns:
       bind_hosts:
