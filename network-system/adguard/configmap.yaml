@@ -173,7 +173,7 @@ data:
       blocked_response_ttl: 10
       parental_enabled: false
       safebrowsing_enabled: false
-      protection_enabled: false
+      protection_enabled: true
     clients:
       runtime_sources:
         whois: true
