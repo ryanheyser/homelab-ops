@@ -123,6 +123,64 @@ data:
       certificate_path: /opt/adguardcertificate/tls.crt
       private_key_path: /opt/adguardcertificate/tls.key
       strict_sni_check: false
+    dhcp:
+      enabled: false
+      interface_name: ""
+      local_domain_name: homelab.heyser.xyz
+      dhcpv4:
+        gateway_ip: ""
+        subnet_mask: ""
+        range_start: ""
+        range_end: ""
+        lease_duration: 86400
+        icmp_timeout_msec: 1000
+        options: []
+      dhcpv6:
+        range_start: ""
+        lease_duration: 86400
+        ra_slaac_only: false
+        ra_allow_slaac: false
+    filtering:
+      filtering_enabled: false
+      blocking_ipv4: ""
+      blocking_ipv6: ""
+      blocked_services:
+        schedule:
+          time_zone: EST
+        ids: []
+      protection_disabled_until: null
+      safe_search:
+        enabled: false
+        bing: true
+        duckduckgo: true
+        ecosia: true
+        google: true
+        pixabay: true
+        yandex: true
+        youtube: true
+      blocking_mode: default
+      parental_block_host: family-block.dns.adguard.com
+      safebrowsing_block_host: standard-block.dns.adguard.com
+      rewrites: []
+      safe_fs_patterns:
+        - /opt/adguardhome/work/data/userfilters/*
+      safebrowsing_cache_size: 1048576
+      safesearch_cache_size: 1048576
+      parental_cache_size: 1048576
+      cache_time: 30
+      filters_update_interval: 12
+      blocked_response_ttl: 10
+      parental_enabled: false
+      safebrowsing_enabled: false
+      protection_enabled: false
+    clients:
+      runtime_sources:
+        whois: true
+        arp: true
+        rdns: true
+        dhcp: true
+        hosts: true
+      persistent: []
     filters:
       - enabled: true
         url: https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
@@ -198,7 +256,9 @@ data:
       - '@@||pteran.homelab.heyser.xyz^$dnsrewrite'
       - '||pteran.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.27'
       - '@@||void.homelab.heyser.xyz^$dnsrewrite'
-      - '||void.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.70'
+      - '||void.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.0'
+      - '@@||vividria.homelab.heyser.xyz^$dnsrewrite'
+      - '||vividria.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.1.1'
       - '@@||storage.homelab.heyser.xyz^$dnsrewrite'
       - '||storage.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.8'
       - '@@||kracko.homelab.heyser.xyz^$dnsrewrite'
@@ -308,61 +368,3 @@ data:
       - '@@||v.ringcentral.com^'
       - '@@||pixeldrain.com^'
       - '@@||emjcd.com^'
-    dhcp:
-      enabled: false
-      interface_name: ""
-      local_domain_name: homelab.heyser.xyz
-      dhcpv4:
-        gateway_ip: ""
-        subnet_mask: ""
-        range_start: ""
-        range_end: ""
-        lease_duration: 86400
-        icmp_timeout_msec: 1000
-        options: []
-      dhcpv6:
-        range_start: ""
-        lease_duration: 86400
-        ra_slaac_only: false
-        ra_allow_slaac: false
-    filtering:
-      filtering_enabled: false
-      blocking_ipv4: ""
-      blocking_ipv6: ""
-      blocked_services:
-        schedule:
-          time_zone: EST
-        ids: []
-      protection_disabled_until: null
-      safe_search:
-        enabled: false
-        bing: true
-        duckduckgo: true
-        ecosia: true
-        google: true
-        pixabay: true
-        yandex: true
-        youtube: true
-      blocking_mode: default
-      parental_block_host: family-block.dns.adguard.com
-      safebrowsing_block_host: standard-block.dns.adguard.com
-      rewrites: []
-      safe_fs_patterns:
-        - /opt/adguardhome/work/data/userfilters/*
-      safebrowsing_cache_size: 1048576
-      safesearch_cache_size: 1048576
-      parental_cache_size: 1048576
-      cache_time: 30
-      filters_update_interval: 12
-      blocked_response_ttl: 10
-      parental_enabled: false
-      safebrowsing_enabled: false
-      protection_enabled: true
-    clients:
-      runtime_sources:
-        whois: true
-        arp: true
-        rdns: true
-        dhcp: true
-        hosts: true
-      persistent: []
