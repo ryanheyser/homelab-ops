@@ -11,7 +11,7 @@ spec:
   concurrency: 1
   channel: https://update.rke2.io/v1-release/channels/stable
   # renovate: depName=rancher/rke2
-  version: v1.35.0+rke2r3
+  version: v1.35.1+rke2r1
   nodeSelector:
     matchExpressions:
     - { key: beta.kubernetes.io/os, operator: In, values: [ "linux" ] }
