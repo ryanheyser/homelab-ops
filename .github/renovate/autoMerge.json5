@@ -26,7 +26,8 @@
         "deluan/navidrome",
         "booklore/booklore",
         "ghcr.io/immich-app/immich-server",
-        "ghcr.io/immich-app/immich-machine-learning"
+        "ghcr.io/immich-app/immich-machine-learning",
+        "ghcr.io/omegion/vault-unseal"
       ]
     },
     // auto-updates - weekly
