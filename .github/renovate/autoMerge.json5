@@ -27,8 +27,7 @@
         "booklore/booklore",
         "ghcr.io/immich-app/immich-server",
         "ghcr.io/immich-app/immich-machine-learning",
-        "ghcr.io/omegion/vault-unseal",
-        "booklore/booklore"
+        "ghcr.io/omegion/vault-unseal"
       ]
     },
     // auto-updates - weekly
