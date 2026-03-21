@@ -52,7 +52,7 @@ spec:
             image:
               # renovate: repository=ghcr.io/calibrain/shelfmark
               repository: ghcr.io/calibrain/shelfmark
-              tag: v1.2.0
+              tag: v1.2.1
             securityContext:
               runAsUser: 0
               runAsGroup: 0
