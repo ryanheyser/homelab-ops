@@ -28,7 +28,9 @@
         "ghcr.io/immich-app/immich-server",
         "ghcr.io/immich-app/immich-machine-learning",
         "ghcr.io/omegion/vault-unseal",
-        "ghcr.io/calibrain/shelfmark"
+        "ghcr.io/calibrain/shelfmark",
+        "ghcr.io/gethomepage/homepage",
+        "ghcr.io/tautulli/tautulli"
       ]
     },
     // auto-updates - weekly
