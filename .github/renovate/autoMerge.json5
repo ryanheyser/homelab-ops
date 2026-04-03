@@ -21,7 +21,6 @@
         "ghcr.io/alexellis/registry-creds",
         "vaultwarden/server",
         "emberstack/kubernetes-reflector",
-        "ghcr.io/ryanheyser/docker-calibre",
         "docker.io/deluan/navidrome",
         "deluan/navidrome",
         "booklore/booklore",
@@ -31,6 +30,16 @@
         "ghcr.io/calibrain/shelfmark",
         "ghcr.io/gethomepage/homepage",
         "ghcr.io/tautulli/tautulli"
+      ]
+    },
+    {
+      "datasources": ["docker"],
+      "automerge": true,
+      "automergeType": "branch",
+      "requiredStatusChecks": null,
+      "schedule": "after 1am and before 5am",
+      "packageNames": [
+        "ghcr.io/ryanheyser/docker-calibre"
       ]
     },
     // auto-updates - weekly
