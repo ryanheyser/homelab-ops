@@ -48,7 +48,7 @@ metadata:
     metallb.universe.tf/loadBalancerIPs: 10.0.100.3
     metallb.universe.tf/allow-shared-ip: "adguard-share"
     traefik.ingress.kubernetes.io/service.serversscheme: https
-    traefik.ingress.kubernetes.io/service.serverstransport: skipverify@kubernetescrd
+    # traefik.ingress.kubernetes.io/service.serverstransport: skipverify@kubernetescrd
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Cluster
@@ -138,7 +138,7 @@ metadata:
     traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
     traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
     traefik.ingress.kubernetes.io/service.serversscheme: https
-    traefik.ingress.kubernetes.io/service.serverstransport: skipverify@kubernetescrd
+    # traefik.ingress.kubernetes.io/service.serverstransport: skipverify@kubernetescrd
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Cluster
@@ -168,7 +168,7 @@ metadata:
     metallb.universe.tf/loadBalancerIPs: 10.0.100.3
     metallb.universe.tf/allow-shared-ip: "adguard-share"
     traefik.ingress.kubernetes.io/service.serversscheme: https
-    traefik.ingress.kubernetes.io/service.serverstransport: skipverify@kubernetescrd
+    # traefik.ingress.kubernetes.io/service.serverstransport: skipverify@kubernetescrd
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Cluster
