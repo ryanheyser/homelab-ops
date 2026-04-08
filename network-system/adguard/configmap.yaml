@@ -58,6 +58,8 @@ data:
       ratelimit_whitelist: []
       refuse_any: true
       upstream_dns:
+        - '[/homelab.heyser.xyz/]10.0.0.1:53'
+        - '[/heyser.xyz/]10.0.0.1:53'
         - tls://dns.quad9.net
         - tls://dns11.quad9.net
       upstream_dns_file: ""
