@@ -11,6 +11,8 @@ metadata:
     gethomepage.dev/group: Core Services
     gethomepage.dev/icon: homepage.png
     gethomepage.dev/name: Homepage
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
 spec:
   rules:
   - host: "homepage.homelab.heyser.xyz"
