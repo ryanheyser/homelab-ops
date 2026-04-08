@@ -14,6 +14,11 @@ metadata:
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
 spec:
+  ingressClassName: traefik
+  tls:
+  - hosts:
+    - "homepage.homelab.heyser.xyz"
+    secretName: homepage-homelab-heyser-xyz-tls
   rules:
   - host: "homepage.homelab.heyser.xyz"
     http:
