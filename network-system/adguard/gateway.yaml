@@ -1,7 +1,7 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
-  name: adguard-home-dns-tls-tcp
+  name: adguard-home-dns
   namespace: network-system
 spec:
   gatewayClassName: traefik-gateway
@@ -12,6 +12,12 @@ spec:
     allowedRoutes:
       kinds:
       - kind: TCPRoute
+  - name: adguard-home-dns-quic-udp
+    protocol: UDP
+    port: 784
+    allowedRoutes:
+      kinds:
+      - kind: UDPRoute
 ---
 apiVersion: gateway.networking.k8s.io/v1alpha2
 kind: TCPRoute
@@ -19,16 +25,22 @@ metadata:
   name: adguard-home-dns-tls-tcp
   namespace: network-system
 spec:
-  parentRefs:
-    - name: traefik-gateway
-      sectionName: tls
-      kind: Gateway
-  hostnames:
-    - "dns.homelab.heyser.xyz"
-    - "adguard.homelab.heyser.xyz"
   rules:
-    - backendRefs:
+    - name: adguard-home-dns-tls-tcp
+      backendRefs:
       - name: adguard-home-dns-tls-tcp
         namespace: network-system
         port: 853
 ---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: UDPRoute
+metadata:
+  name: adguard-home-dns-quic-udp
+  namespace: network-system
+spec:
+  rules:
+    - name: adguard-home-dns-quic-udp
+      backendRefs:
+      - name: adguard-home-dns-quic-udp
+        namespace: network-system
+        port: 784
