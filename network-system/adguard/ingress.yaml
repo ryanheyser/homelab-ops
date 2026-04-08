@@ -17,10 +17,11 @@ spec:
   ingressClassName: traefik
   tls:
   - hosts:
-    - &exthost "dns.homelab.heyser.xyz"
+    - "dns.homelab.heyser.xyz"
+    - "adguard.homelab.heyser.xyz"
     secretName: "adguard-homelab-heyser-xyz-tls"
   rules:
-  - host: *exthost
+  - host: "adguard.homelab.heyser.xyz"
     http:
       paths:
       - path: "/dns-query"
@@ -54,10 +55,11 @@ spec:
   ingressClassName: traefik
   tls:
   - hosts:
-    - &host "adguard.homelab.heyser.xyz"
+    - "dns.homelab.heyser.xyz"
+    - "adguard.homelab.heyser.xyz"
     secretName: "adguard-homelab-heyser-xyz-tls"
   rules:
-  - host: *host
+  - host: "adguard.homelab.heyser.xyz"
     http:
       paths:
       - path: /
