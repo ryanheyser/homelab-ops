@@ -162,7 +162,9 @@ data:
       blocking_mode: default
       parental_block_host: family-block.dns.adguard.com
       safebrowsing_block_host: standard-block.dns.adguard.com
-      rewrites: []
+      rewrites:
+        - domain: plex.direct
+          answer: 10.0.1.1
       safe_fs_patterns:
         - /opt/adguardhome/work/data/userfilters/*
       safebrowsing_cache_size: 1048576
