@@ -12,7 +12,7 @@ metadata:
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     #traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
-    traefik.ingress.kubernetes.io/router.tls: "true"
+    # traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
   ingressClassName: traefik
   tls:
@@ -21,7 +21,7 @@ spec:
     - "adguard.homelab.heyser.xyz"
     secretName: "adguard-homelab-heyser-xyz-tls"
   rules:
-  - host: "adguard.homelab.heyser.xyz"
+  - host: "dns.homelab.heyser.xyz"
     http:
       paths:
       - path: "/dns-query"
@@ -45,7 +45,7 @@ metadata:
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
     traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
-    traefik.ingress.kubernetes.io/router.tls: "true"
+    # traefik.ingress.kubernetes.io/router.tls: "true"
     gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Core Services
     gethomepage.dev/icon: adguard-home.svg
