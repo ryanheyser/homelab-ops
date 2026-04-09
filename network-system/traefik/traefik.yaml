@@ -33,8 +33,9 @@ spec:
     global:
       checkNewVersion: true
       sendAnonymousUsage: false
+      notAppendXForwardedFor: false
     deployment:
-      replicas: null
+      kind: DeamonSet
     logs:
       general:
         level: INFO
@@ -78,6 +79,8 @@ spec:
         # ingressClass: traefik 
       kubernetesGateway:
         enabled: true
+        nativeLBByDefault: true
+        experimentalChannel: true
     # nodeSelector:
     #   ingress-ready: 'true'
     ingressClass:
@@ -112,7 +115,7 @@ spec:
         # loadBalancerIP: 10.0.100.1
         externalIPs:
         - 10.0.100.1
-        externalTrafficPolicy: Cluster
+        externalTrafficPolicy: Local
     ports:
       websecure:
         port: 443
@@ -121,12 +124,13 @@ spec:
         allowACMEByPass: true
         forwardedHeaders:
           insecure: true
-          trustedIPs:
+          trustedIPs: &trustedIPs
           - 10.0.0.0/18
+          - 10.254.0.0/16
+          - 10.255.0.0/16
         proxyProtocol:
           insecure: true
-          trustedIPs:
-          - 10.0.0.0/18
+          trustedIPs: *trustedIPs
         http3:
           enabled: true
           advertisedPort: 443
@@ -135,29 +139,27 @@ spec:
         containerPort: 80
         forwardedHeaders:
           insecure: true
-          trustedIPs:
-          - 10.0.0.0/18
+          trustedIPs: *trustedIPs
         proxyProtocol:
           insecure: true
-          trustedIPs:
-          - 10.0.0.0/18
+          trustedIPs: *trustedIPs
         http:
           redirections:
             entryPoint:
               to: websecure
               scheme: https
               permanent: true
-    podDisruptionBudget:
-      enabled: true
-      maxUnavailable: 1
-    autoscaling:
-      enabled: true
-      minReplicas: 3
-      maxReplicas: 5
-      metrics:
-      - type: Resource
-        resource:
-          name: cpu
-          target:
-            type: Utilization
-            averageUtilization: 80
+    # podDisruptionBudget:
+    #   enabled: true
+    #   maxUnavailable: 1
+    # autoscaling:
+    #   enabled: true
+    #   minReplicas: 3
+    #   maxReplicas: 5
+    #   metrics:
+    #   - type: Resource
+    #     resource:
+    #       name: cpu
+    #       target:
+    #         type: Utilization
+    #         averageUtilization: 80
