@@ -35,7 +35,7 @@ spec:
       sendAnonymousUsage: false
       notAppendXForwardedFor: false
     deployment:
-      kind: DeamonSet
+      replicas: null
     logs:
       general:
         level: INFO
@@ -115,8 +115,7 @@ spec:
         # loadBalancerIP: 10.0.100.1
         externalIPs:
         - 10.0.100.1
-        externalTrafficPolicy: Local
-        internalTrafficPolicy: Local
+        externalTrafficPolicy: Cluster
     ports:
       websecure:
         port: 443
@@ -150,17 +149,17 @@ spec:
               to: websecure
               scheme: https
               permanent: true
-    # podDisruptionBudget:
-    #   enabled: true
-    #   maxUnavailable: 1
-    # autoscaling:
-    #   enabled: true
-    #   minReplicas: 3
-    #   maxReplicas: 5
-    #   metrics:
-    #   - type: Resource
-    #     resource:
-    #       name: cpu
-    #       target:
-    #         type: Utilization
-    #         averageUtilization: 80
+    podDisruptionBudget:
+      enabled: true
+      maxUnavailable: 1
+    autoscaling:
+      enabled: true
+      minReplicas: 3
+      maxReplicas: 5
+      metrics:
+      - type: Resource
+        resource:
+          name: cpu
+          target:
+            type: Utilization
+            averageUtilization: 80
