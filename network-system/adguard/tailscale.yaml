@@ -7,9 +7,9 @@ metadata:
 spec:
   defaultBackend:
     service:
-      name: adguard-home
+      name: adguard-dns
       port:
-        number: 3000
+        number: 443
   ingressClassName: tailscale
   tls:
     - hosts:

@@ -4,7 +4,7 @@ namespace: network-system
 resources:
 - ./certificate.yaml
 - ./configmap.yaml
-- ./deployment.yaml
+- ./daemonset.yaml
 - ./service.yaml
 - ./ingress.yaml
 - ./gateway.yaml

@@ -1,7 +1,7 @@
 ---
 # Source: adguard-home/templates/common.yaml
 apiVersion: apps/v1
-kind: Deployment
+kind: DaemonSet
 metadata:
   name: adguard-home
   namespace: network-system
@@ -10,11 +10,9 @@ metadata:
     app.kubernetes.io/name: adguard-home
 spec:
   revisionHistoryLimit: 3
-  replicas: 3
-  strategy:
+  updateStrategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 1
       maxUnavailable: 1
   selector:
     matchLabels:
@@ -26,16 +24,6 @@ spec:
         app.kubernetes.io/name: adguard-home
         app.kubernetes.io/instance: adguard
     spec:
-      affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
-              - key: app.kubernetes.io/name
-                operator: In
-                values:
-                - adguard-home
-            topologyKey: "kubernetes.io/hostname"
       serviceAccountName: default
       automountServiceAccountToken: true
       dnsPolicy: ClusterFirst
@@ -130,21 +118,21 @@ spec:
             memory: "256Mi"
         livenessProbe:
           tcpSocket:
-            port: 3000
+            port: 443
           initialDelaySeconds: 30
           failureThreshold: 3
           timeoutSeconds: 1
           periodSeconds: 10
         readinessProbe:
           tcpSocket:
-            port: 3000
+            port: 443
           initialDelaySeconds: 30
           failureThreshold: 3
           timeoutSeconds: 1
           periodSeconds: 10
         startupProbe:
           tcpSocket:
-            port: 3000
+            port: 443
           initialDelaySeconds: 30
           failureThreshold: 30
           timeoutSeconds: 1
@@ -161,9 +149,7 @@ spec:
           secretName: adguard-homelab-heyser-xyz-tls
           optional: false
       tolerations:
-      - effect: PreferNoSchedule
-        key: node-role.kubernetes.io
-        value: master
+      - key: node-role.kubernetes.io/master
+        operator: Exists
       - key: node-role.kubernetes.io/control-plane
-        operator: Equal
-        effect: NoSchedule
+        operator: Exists
