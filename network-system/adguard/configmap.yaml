@@ -219,7 +219,6 @@ data:
         id: 8
     whitelist_filters: []
     user_rules:
-      - '||plex.direct^$dnsrewrite'
       - '@@||plex.direct^$important,dnsrewrite=NOERROR;A;10.0.1.1'
       - '@@||*.homelab.heyser.xyz^$dnsrewrite=NOERROR;A;10.0.100.1'
       - '||vm.homelab.heyser.xyz^$dnsrewrite'
