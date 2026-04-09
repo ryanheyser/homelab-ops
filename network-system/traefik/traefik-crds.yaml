@@ -23,10 +23,12 @@ spec:
       retries: 3
     crds: CreateReplace
   upgrade:
-    cleanupOnFail: true
+    cleanupOnFail: false
     remediation:
       retries: 3
+      strategy: uninstall
     crds: CreateReplace
+    force: true
   uninstall:
     keepHistory: false
   values:
