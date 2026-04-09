@@ -118,12 +118,13 @@ spec:
       annotations:
         cni.projectcalico.org/ipAddrs: '["10.0.100.1"]'
         metallb.universe.tf/address-pool: "system"
-        metallb.universe.tf/loadBalancerIPs: 10.0.100.1
+        metallb.universe.tf/allow-shared-ip: "traefik-share"
+        metallb.universe.tf/loadBalancerIPs: &lbip 10.0.100.1
         traefik.ingress.kubernetes.io/service.nativelb: "true"
       spec:
         # loadBalancerIP: 10.0.100.1
         externalIPs:
-        - 10.0.100.1
+        - *lbip
         externalTrafficPolicy: Local
     ports:
       websecure:
