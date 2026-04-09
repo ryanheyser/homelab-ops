@@ -26,8 +26,8 @@ spec:
     cleanupOnFail: true
     remediation:
       retries: 3
+      strategy: uninstall
     crds: Skip
-    serverSideApply: enabled
     force: true
   uninstall:
     keepHistory: false
