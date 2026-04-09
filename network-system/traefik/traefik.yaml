@@ -125,7 +125,7 @@ spec:
         # loadBalancerIP: 10.0.100.1
         externalIPs:
         - *lbip
-        externalTrafficPolicy: Local
+        externalTrafficPolicy: Cluster
     ports:
       websecure:
         port: 443
