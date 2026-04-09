@@ -21,10 +21,12 @@ spec:
     createNamespace: true
     remediation:
       retries: 3
+    crds: Skip
   upgrade:
     cleanupOnFail: true
     remediation:
       retries: 3
+    crds: Skip
   uninstall:
     keepHistory: false
   values:
