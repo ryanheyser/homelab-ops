@@ -35,7 +35,14 @@ spec:
       sendAnonymousUsage: false
       notAppendXForwardedFor: false
     deployment:
+      kind: DaemonSet
       replicas: null
+    upgradeStrategy:
+      type: RollingUpdate
+      rollingUpdate:
+        maxUnavailable: 1
+        maxSurge: 0
+    hostNetwork: true
     logs:
       general:
         level: INFO
@@ -115,7 +122,7 @@ spec:
         # loadBalancerIP: 10.0.100.1
         externalIPs:
         - 10.0.100.1
-        externalTrafficPolicy: Cluster
+        externalTrafficPolicy: Local
     ports:
       websecure:
         port: 443
@@ -149,17 +156,3 @@ spec:
               to: websecure
               scheme: https
               permanent: true
-    podDisruptionBudget:
-      enabled: true
-      maxUnavailable: 1
-    autoscaling:
-      enabled: true
-      minReplicas: 3
-      maxReplicas: 5
-      metrics:
-      - type: Resource
-        resource:
-          name: cpu
-          target:
-            type: Utilization
-            averageUtilization: 80
