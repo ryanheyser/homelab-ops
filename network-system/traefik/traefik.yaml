@@ -56,6 +56,9 @@ spec:
           moduleName: github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin
           # renovate: depName=maxlerebourg/crowdsec-bouncer-traefik-plugin datasource=github-releases
           version: 1.5.1
+        real-ip:
+          moduleName: github.com/Paxxs/traefik-get-real-ip
+          version: v1.0.4
       kubernetesGateway:
         enabled: true
     providers:
@@ -118,8 +121,12 @@ spec:
         allowACMEByPass: true
         forwardedHeaders:
           insecure: true
+          trustedIPs:
+          - 10.0.0.0/18
         proxyProtocol:
           insecure: true
+          trustedIPs:
+          - 10.0.0.0/18
         http3:
           enabled: true
           advertisedPort: 443
@@ -128,8 +135,12 @@ spec:
         containerPort: 80
         forwardedHeaders:
           insecure: true
+          trustedIPs:
+          - 10.0.0.0/18
         proxyProtocol:
           insecure: true
+          trustedIPs:
+          - 10.0.0.0/18
         http:
           redirections:
             entryPoint:
