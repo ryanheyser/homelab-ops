@@ -27,6 +27,8 @@ spec:
     remediation:
       retries: 3
     crds: Skip
+    serverSideApply: true
+    force: true
   uninstall:
     keepHistory: false
   values:
