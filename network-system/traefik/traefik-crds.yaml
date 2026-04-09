@@ -39,3 +39,4 @@ spec:
     knative: false
     hub: false
     deleteOnUninstall: false
+
