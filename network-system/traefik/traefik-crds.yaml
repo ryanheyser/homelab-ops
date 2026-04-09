@@ -34,4 +34,6 @@ spec:
     traefik: true
     gatewayAPI: false
     gatewayAPIExperimental: false
+    knative: false
+    hub: false
     deleteOnUninstall: false
