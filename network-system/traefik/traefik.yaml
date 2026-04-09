@@ -122,9 +122,6 @@ spec:
         metallb.universe.tf/loadBalancerIPs: &lbip 10.0.100.1
         traefik.ingress.kubernetes.io/service.nativelb: "true"
       spec:
-        type: LoadBalancer
-        selector:
-          app.kubernetes.io/name: traefik
         # loadBalancerIP: 10.0.100.1
         externalIPs:
         - *lbip
