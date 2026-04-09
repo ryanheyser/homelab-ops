@@ -24,7 +24,7 @@ spec:
   - host: "dns.homelab.heyser.xyz"
     http:
       paths:
-      - path: /
+      - path: /dns-query
         pathType: Prefix
         backend:
           service:
