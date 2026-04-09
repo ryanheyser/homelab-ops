@@ -144,7 +144,7 @@ data:
         ra_slaac_only: false
         ra_allow_slaac: false
     filtering:
-      filtering_enabled: false
+      filtering_enabled: true
       blocking_ipv4: ""
       blocking_ipv6: ""
       blocked_services:
@@ -219,6 +219,7 @@ data:
         id: 8
     whitelist_filters: []
     user_rules:
+      - '||plex.direct^$dnsrewrite'
       - '@@||plex.direct^$important,dnsrewrite=NOERROR;A;10.0.1.1'
       - '@@||*.homelab.heyser.xyz^$dnsrewrite=NOERROR;A;10.0.100.1'
       - '||vm.homelab.heyser.xyz^$dnsrewrite'
