@@ -116,6 +116,7 @@ spec:
         externalIPs:
         - 10.0.100.1
         externalTrafficPolicy: Local
+        internalTrafficPolicy: Local
     ports:
       websecure:
         port: 443
