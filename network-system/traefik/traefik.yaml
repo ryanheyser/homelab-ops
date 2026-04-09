@@ -127,6 +127,10 @@ spec:
         - *lbip
         externalTrafficPolicy: Local
     ports:
+      traefik:
+        port: 9090
+        containerPort: 9090
+        hostPort: 9090
       websecure:
         port: 443
         containerPort: 443
