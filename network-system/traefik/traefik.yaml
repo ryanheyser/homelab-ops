@@ -37,7 +37,7 @@ spec:
     deployment:
       kind: DaemonSet
       replicas: null
-    upgradeStrategy:
+    updateStrategy:
       type: RollingUpdate
       rollingUpdate:
         maxUnavailable: 1
