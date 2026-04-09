@@ -130,11 +130,12 @@ spec:
           insecure: true
         proxyProtocol:
           insecure: true
-        redirections:
-          entryPoint:
-            to: websecure
-            scheme: https
-            permanent: true
+        http:
+          redirections:
+            entryPoint:
+              to: websecure
+              scheme: https
+              permanent: true
     podDisruptionBudget:
       enabled: true
       maxUnavailable: 1
