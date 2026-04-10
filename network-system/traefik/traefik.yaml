@@ -37,8 +37,8 @@ spec:
       sendAnonymousUsage: false
       notAppendXForwardedFor: false
     deployment:
-      kind: DaemonSet
-      replicas: null
+      # kind: DaemonSet
+      replicas: 5
     updateStrategy:
       type: RollingUpdate
       rollingUpdate:
