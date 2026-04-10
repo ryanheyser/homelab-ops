@@ -208,13 +208,29 @@ data:
         name: BLP - abuse
         id: 6
       - enabled: true
+        url: https://blocklistproject.github.io/Lists/adguard/ads-ags.txt
+        name: BLP - Ads
+        id: 7
+      - enabled: true
+        url: https://blocklistproject.github.io/Lists/adguard/malware-ags.txt
+        name: BLP - Malware
+        id: 8
+      - enabled: true
+        url: https://blocklistproject.github.io/Lists/adguard/fraud-ags.txt
+        name: BLP - fraud
+        id: 9
+      - enabled: true
+        url: https://blocklistproject.github.io/Lists/adguard/crypto-ags.txt
+        name: BLP - crypto
+        id: 10
+      - enabled: true
         url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_48.txt
         name: HaGeZi's Pro Blocklist
-        id: 7
+        id: 11
       - enabled: true
         url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_9.txt
         name: The Big List of Hacked Malware Web Sites
-        id: 8
+        id: 12
     whitelist_filters: []
     user_rules:
       - '@@||*.homelab.heyser.xyz^$client=10.255.0.0/16|10.0.0.0/18,dnsrewrite=NOERROR;A;10.0.100.1'
