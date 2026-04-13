@@ -54,6 +54,9 @@ spec:
           value: "0"
       privileged: true
       allowPrivilegeEscalation: true
+      runAsUser: 0
+      runAsGroup: 0
+      fsGroup: 0
     logs:
       general:
         level: INFO
