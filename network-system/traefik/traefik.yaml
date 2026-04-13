@@ -57,6 +57,7 @@ spec:
       runAsUser: 0
       runAsGroup: 0
       fsGroup: 0
+      runAsNonRoot: false
     logs:
       general:
         level: INFO
