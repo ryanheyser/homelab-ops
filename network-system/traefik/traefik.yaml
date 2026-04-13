@@ -173,4 +173,3 @@ spec:
               to: websecure
               scheme: https
               permanent: true
-
