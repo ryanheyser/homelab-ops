@@ -29,6 +29,8 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    crds:
+      enabled: true
     prometheus:
       rbacProxy:
         repository: registry.k8s.io/kubebuilder/kube-rbac-proxy
