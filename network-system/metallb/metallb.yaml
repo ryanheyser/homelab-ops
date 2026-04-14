@@ -37,6 +37,8 @@ spec:
         operator: "Exists"
     speaker:
       priorityClassName: system-node-critical
+      frr:
+        enabled: false
       tolerations:
       - key: "node-role.kubernetes.io/control-plane"
         operator: "Exists"
