@@ -28,6 +28,8 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    frrk8s:
+      enabled: true
     controller:
       priorityClassName: system-cluster-critical
       tolerations:
