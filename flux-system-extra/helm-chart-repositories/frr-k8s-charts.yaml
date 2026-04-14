@@ -1,0 +1,10 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: frr-k8s-charts
+  namespace: flux-system
+spec:
+  interval: 10m
+  url: https://metallb.github.io/frr-k8s
+  timeout: 3m
