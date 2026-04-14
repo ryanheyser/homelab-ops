@@ -93,6 +93,7 @@
         "audiobookshelf",
         "reflector",
         "app-template",
+        "plugin-barman-cloud",
         "immich"
       ]
     },
