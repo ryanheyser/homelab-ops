@@ -3,5 +3,5 @@ kind: Kustomization
 namespace: network-system
 resources:
 # renovate: registryUrl=https://metallb.github.io/metallb
-- ./frr.yaml
+# - ./frr.yaml
 - ./metallb.yaml

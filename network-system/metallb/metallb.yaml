@@ -31,11 +31,6 @@ spec:
   values:
     crds:
       enabled: true
-    prometheus:
-      rbacProxy:
-        repository: registry.k8s.io/kubebuilder/kube-rbac-proxy
-    frrk8s:
-      enabled: false
     controller:
       priorityClassName: system-cluster-critical
       tolerations:
@@ -43,8 +38,6 @@ spec:
         operator: "Exists"
     speaker:
       priorityClassName: system-node-critical
-      frr:
-        enabled: false
       tolerations:
       - key: "node-role.kubernetes.io/control-plane"
         operator: "Exists"
