@@ -35,7 +35,7 @@ spec:
       rbacProxy:
         repository: registry.k8s.io/kubebuilder/kube-rbac-proxy
     frrk8s:
-      enabled: true
+      enabled: false
     controller:
       priorityClassName: system-cluster-critical
       tolerations:
