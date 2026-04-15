@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: booklore
+  name: grimmory
   namespace: default
 spec:
   driftDetection:
@@ -50,8 +50,8 @@ spec:
         containers:
           main:
             image:
-              # renovate: repository=booklore/booklore
-              repository: booklore/booklore
+              # renovate: repository=grimmory/grimmory
+              repository: grimmory/grimmory
               tag: v2.2.1
             securityContext:
               runAsUser: 0
@@ -66,7 +66,7 @@ spec:
               GROUP_ID: "3001"
             envFrom:
             - secretRef:
-                name: booklore-config
+                name: grimmory-config
                 optional: false
     service:
       main:
@@ -85,11 +85,11 @@ spec:
           # traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: Media
-          gethomepage.dev/icon: booklore.svg
-          gethomepage.dev/name: Booklore
-          gethomepage.dev/description: Booklore is a self-hosted book management and reading application built with Node.js, Express, and React. It provides a user-friendly interface for organizing and reading your book collection, with features like multi-user support, reading progress tracking, and mobile device compatibility.
+          gethomepage.dev/icon: grimmory.svg
+          gethomepage.dev/name: grimmory
+          gethomepage.dev/description: grimmory is a self-hosted book management and reading application built with Node.js, Express, and React. It provides a user-friendly interface for organizing and reading your book collection, with features like multi-user support, reading progress tracking, and mobile device compatibility.
         hosts:
-        - host: &host "booklore.homelab.heyser.xyz"
+        - host: &host "grimmory.homelab.heyser.xyz"
           paths:
           - path: /
             pathType: Prefix
@@ -99,38 +99,38 @@ spec:
         tls:
         - hosts:
           - *host
-          secretName: booklore-homelab-heyser-xyz-tls
+          secretName: grimmory-homelab-heyser-xyz-tls
 
     persistence:
-      booklore-data:
-        existingClaim: booklore-data
+      grimmory-data:
+        existingClaim: grimmory-data
         advancedMounts:
           main:
             main:
             - path: "/app/data"
               readOnly: false
-      booklore-books:
-        existingClaim: booklore-books
+      grimmory-books:
+        existingClaim: grimmory-books
         advancedMounts:
           main:
             main:
             - path: "/books"
               readOnly: false
-      booklore-bookdrop:
-        existingClaim: booklore-bookdrop
+      grimmory-bookdrop:
+        existingClaim: grimmory-bookdrop
         advancedMounts:
           main:
             main:
             - path: "/bookdrop"
               readOnly: false
-      # booklore-nginx:
+      # grimmory-nginx:
       #   type: emptyDir
       #   advancedMounts:
       #     main:
       #       main:
       #       - path: "/etc/nginx"
       #         readOnly: false
-      booklore-logs:
+      grimmory-logs:
         type: emptyDir
         advancedMounts:
           main:
