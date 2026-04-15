@@ -52,7 +52,7 @@ spec:
             image:
               # renovate: repository=grimmory/grimmory
               repository: grimmory/grimmory
-              tag: v2.2.1
+              tag: v2.3.0
             securityContext:
               runAsUser: 0
               runAsGroup: 0
