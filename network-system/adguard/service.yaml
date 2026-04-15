@@ -71,7 +71,7 @@ metadata:
     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
 spec:
   type: LoadBalancer
-  externalTrafficPolicy: Local
+  externalTrafficPolicy: Cluster
   externalIPs:
   - 10.0.100.3
   ports:
@@ -100,7 +100,7 @@ metadata:
     metallb.io/address-pool: system
 spec:
   type: LoadBalancer
-  externalTrafficPolicy: Local
+  externalTrafficPolicy: Cluster
   externalIPs:
   - 10.0.100.3
   ports:
@@ -129,7 +129,7 @@ metadata:
     metallb.io/address-pool: system
 spec:
   type: LoadBalancer
-  externalTrafficPolicy: Local
+  externalTrafficPolicy: Cluster
   externalIPs:
   - 10.0.100.3
   ports:
@@ -164,7 +164,7 @@ metadata:
     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
 spec:
   type: LoadBalancer
-  externalTrafficPolicy: Local
+  externalTrafficPolicy: Cluster
   externalIPs:
   - 10.0.100.3
   ports:
@@ -195,7 +195,7 @@ metadata:
     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
 spec:
   type: LoadBalancer
-  externalTrafficPolicy: Local
+  externalTrafficPolicy: Cluster
   externalIPs:
   - 10.0.100.3
   ports:
