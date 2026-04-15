@@ -75,9 +75,9 @@ spec:
         externalIPs:
         - 10.0.101.2
         annotations:
-          metallb.universe.tf/allow-shared-ip: "calibre-share"
-          metallb.universe.tf/address-pool: "default"
-          metallb.universe.tf/loadBalancerIPs: 10.0.101.2
+          metallb.io/allow-shared-ip: "calibre-share"
+          metallb.io/address-pool: "default"
+          metallb.io/loadBalancerIPs: 10.0.101.2
           cni.projectcalico.org/ipAddrs: '["10.0.101.2"]'
           # traefik.ingress.kubernetes.io/service.nativelb: "true"
         externalTrafficPolicy: Cluster
@@ -90,9 +90,9 @@ spec:
         externalIPs:
         - 10.0.101.2
         annotations:
-          metallb.universe.tf/allow-shared-ip: "calibre-share"
-          metallb.universe.tf/address-pool: "default"
-          metallb.universe.tf/loadBalancerIPs: 10.0.101.2
+          metallb.io/allow-shared-ip: "calibre-share"
+          metallb.io/address-pool: "default"
+          metallb.io/loadBalancerIPs: 10.0.101.2
           cni.projectcalico.org/ipAddrs: '["10.0.101.2"]'
           # traefik.ingress.kubernetes.io/service.nativelb: "true"
         externalTrafficPolicy: Cluster
@@ -105,9 +105,9 @@ spec:
         externalIPs:
         - 10.0.101.2
         annotations:
-          metallb.universe.tf/allow-shared-ip: "calibre-share"
-          metallb.universe.tf/address-pool: "default"
-          metallb.universe.tf/loadBalancerIPs: 10.0.101.2
+          metallb.io/allow-shared-ip: "calibre-share"
+          metallb.io/address-pool: "default"
+          metallb.io/loadBalancerIPs: 10.0.101.2
           cni.projectcalico.org/ipAddrs: '["10.0.101.2"]'
           # traefik.ingress.kubernetes.io/service.nativelb: "true"
           traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"

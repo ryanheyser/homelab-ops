@@ -8,4 +8,4 @@ metadata:
     pod-security.kubernetes.io/enforce: privileged
     pod-security.kubernetes.io/warn: privileged
   annotations:
-    metallb.universe.tf/address-pool: system
+    metallb.io/address-pool: system

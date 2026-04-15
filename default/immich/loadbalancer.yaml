@@ -5,9 +5,9 @@ metadata:
   namespace: default
   annotations:
     metallb.io/ip-allocated-from-pool: default
-    metallb.universe.tf/address-pool: default
-    metallb.universe.tf/allow-shared-ip: "immich"
-    metallb.universe.tf/loadBalancerIPs: 10.0.101.6
+    metallb.io/address-pool: default
+    metallb.io/allow-shared-ip: "immich"
+    metallb.io/loadBalancerIPs: 10.0.101.6
 spec:
   type: LoadBalancer
   selector:

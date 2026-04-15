@@ -79,9 +79,9 @@ spec:
         externalIPs:
         - 10.0.101.5
         annotations:
-          metallb.universe.tf/allow-shared-ip: "qbittorrent-share"
-          metallb.universe.tf/address-pool: "default"
-          metallb.universe.tf/loadBalancerIPs: 10.0.101.5
+          metallb.io/allow-shared-ip: "qbittorrent-share"
+          metallb.io/address-pool: "default"
+          metallb.io/loadBalancerIPs: 10.0.101.5
           cni.projectcalico.org/ipAddrs: '["10.0.101.5"]'
         ports:
           bittorrent:
