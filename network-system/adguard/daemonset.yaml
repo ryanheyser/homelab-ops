@@ -56,7 +56,7 @@ spec:
           - --no-check-update
           - --check-config
           # renovate: repository=adguard/adguardhome
-          image: "adguard/adguardhome:v0.107.73"
+          image: "adguard/adguardhome:v0.107.74"
           imagePullPolicy: IfNotPresent
           name: check-config
           securityContext:
@@ -70,7 +70,7 @@ spec:
       containers:
       - name: adguard-home
         # renovate: repository=adguard/adguardhome
-        image: "adguard/adguardhome:v0.107.73"
+        image: "adguard/adguardhome:v0.107.74"
         imagePullPolicy: IfNotPresent
         args:
         - --config
