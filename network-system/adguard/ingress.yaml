@@ -102,7 +102,7 @@ spec:
       proxyProtocol:
         version: 2
   tls:
-    passthrough: true
+    # passthrough: true
     secretName: adguard-homelab-heyser-xyz-tls
     domains:
       - main: "dns.homelab.heyser.xyz"
