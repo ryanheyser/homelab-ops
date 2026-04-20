@@ -117,6 +117,18 @@ spec:
 #           - "adguard.homelab.heyser.xyz"  
 ---
 apiVersion: traefik.io/v1alpha1
+kind: ServersTransportTCP
+metadata:
+  name: skipverify
+  namespace: network-system
+spec:
+  proxyProtocol:
+    version: 2
+  terminationDelay: 1ms
+  tls:
+    insecureSkipVerify: true
+---
+apiVersion: traefik.io/v1alpha1
 kind: IngressRouteTCP
 metadata:
   name: adguard-home-query
