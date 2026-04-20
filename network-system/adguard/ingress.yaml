@@ -71,6 +71,16 @@ spec:
               number: 443
 ---
 apiVersion: traefik.io/v1alpha1
+kind: TLSOption
+metadata:
+  name: skipverify
+  namespace: network-system
+spec:
+  minVersion: VersionTLS12
+  clientAuth:
+    clientAuthType: NoClientCert
+---
+apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: adguard-home-query
@@ -98,6 +108,9 @@ spec:
           httpOnly: true
   tls:
     secretName: adguard-homelab-heyser-xyz-tls
+    options:
+      name: skipverify
+      namespace: network-system
     domains:
       - main: "dns.homelab.heyser.xyz"
         sans:
