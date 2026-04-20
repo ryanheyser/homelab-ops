@@ -127,26 +127,28 @@ spec:
             name: wildcard-homelab-heyser-xyz-tls
             namespace: network-system
           mode: Terminate
-        dns-tcp:
-          port: 53
-          protocol: TCP
-          namespacePolicy:
-            from: All
-        dns-udp:
-          port: 53
-          protocol: UDP
-          namespacePolicy:
-            from: All
-        dns-tls-tcp:
-          port: 853
-          protocol: TLS
-          namespacePolicy:
-            from: All
-        dns-quic-udp:
-          port: 784
-          protocol: UDP
-          namespacePolicy:
-            from: All
+        # dns-tcp:
+        #   port: 53
+        #   protocol: TCP
+        #   namespacePolicy:
+        #     from: All
+        # dns-udp:
+        #   port: 53
+        #   protocol: UDP
+        #   namespacePolicy:
+        #     from: All
+        # dns-tls-tcp:
+        #   port: 853
+        #   protocol: TLS
+        #   namespacePolicy:
+        #     from: All
+        #   tls:
+        #     mode: Passthrough
+        # dns-quic-udp:
+        #   port: 784
+        #   protocol: UDP
+        #   namespacePolicy:
+        #     from: All
     service:
       annotations:
         cni.projectcalico.org/ipAddrs: '["10.0.100.1"]'
