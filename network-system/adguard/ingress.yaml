@@ -71,7 +71,7 @@
 #               number: 443
 ---
 apiVersion: traefik.io/v1alpha1
-kind: IngressRouteTCP
+kind: IngressRoute
 metadata:
   name: adguard-home-query
   namespace: network-system
@@ -96,6 +96,7 @@ spec:
           name: adguard-home
           secure: true
           httpOnly: true
+      strategy: leasttime
   tls:
     secretName: adguard-homelab-heyser-xyz-tls
     domains:
