@@ -71,7 +71,7 @@
 #               number: 443
 ---
 apiVersion: traefik.io/v1alpha1
-kind: IngressRoute
+kind: IngressRouteTCP
 metadata:
   name: adguard-home-query
   namespace: network-system
