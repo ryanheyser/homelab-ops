@@ -12,9 +12,11 @@ spec:
     allowedRoutes:
       namespaces:
         from: All
+    tls:
+      mode: Passthrough
   - name: adguard-home-dns-http
     protocol: HTTP
-    port: 3000
+    port: 80
     allowedRoutes:
       namespaces:
         from: All
@@ -33,13 +35,15 @@ spec:
       kinds:
       - kind: UDPRoute
   - name: adguard-home-dns-tls-tcp
-    protocol: TCP
+    protocol: TLS
     port: 853
     allowedRoutes:
       kinds:
       - kind: TCPRoute
       namespaces:
         from: All
+    tls:
+      mode: Passthrough
   - name: adguard-home-dns-quic-udp
     protocol: UDP
     port: 784
@@ -55,10 +59,6 @@ metadata:
   name: adguard-home-dns-http
   namespace: network-system
 spec:
-  parentRefs:
-  - name: adguard-home-http
-    sectionName: http
-    kind: Gateway
   hostnames:
     - dns.homelab.heyser.xyz
   rules:
@@ -67,7 +67,7 @@ spec:
           type: PathPrefix
           value: /dns-query
     backendRefs:
-      - name: adguard-home-https
+      - name: adguard-dns
         namespace: network-system
         port: 443
 ---
@@ -77,10 +77,6 @@ metadata:
   name: adguard-home-adguard-http
   namespace: network-system
 spec:
-  parentRefs:
-  - name: adguard-home-http
-    sectionName: http
-    kind: Gateway
   hostnames:
     - adguard.homelab.heyser.xyz
   rules:
@@ -89,7 +85,7 @@ spec:
          type: PathPrefix
          value: /
     backendRefs:
-      - name: adguard-home-https
+      - name: adguard-dns
         namespace: network-system
         port: 443
     filters:
