@@ -12,13 +12,6 @@ spec:
     allowedRoutes:
       namespaces:
         from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: adguard-homelab-heyser-xyz-tls
-        kind: Secret
-        group: core
-        namespace: network-system
   - name: adguard-home-dns-http
     protocol: HTTP
     port: 3000
@@ -64,10 +57,6 @@ spec:
     - adguard.homelab.heyser.xyz
     - dns.homelab.heyser.xyz
   rules:
-  - filters:
-      - type: RequestRedirect
-        requestRedirect:
-          scheme: https
   - matches:
       - path:
           type: PathPrefix
