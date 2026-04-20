@@ -108,9 +108,6 @@ spec:
           httpOnly: true
   tls:
     secretName: adguard-homelab-heyser-xyz-tls
-    options:
-      name: skipverify
-      namespace: network-system
     domains:
       - main: "dns.homelab.heyser.xyz"
         sans:
