@@ -1,10 +1,13 @@
 apiVersion: gateway.networking.k8s.io/v1
-kind: Gateway
+kind: ListenerSet
 metadata:
   name: adguard-home-dns
   namespace: network-system
 spec:
-  gatewayClassName: traefik
+  parentRef:
+    group: gateway.networking.k8s.io
+    kind: Gateway
+    name: traefik-gateway
   listeners:
   # - name: adguard-home-https
   #   protocol: HTTPS
@@ -28,7 +31,6 @@ spec:
         - kind: TLSRoute
     tls:
       mode: Passthrough
-    
   - name: adguard-home-dns-http
     protocol: HTTP
     port: 80
@@ -69,24 +71,6 @@ spec:
         from: All
 ---
 apiVersion: gateway.networking.k8s.io/v1
-kind: BackendTLSPolicy
-metadata:
-  name: adguard-home-dns-tls-policy
-  namespace: network-system
-spec:
-  targetRefs:
-    - group: ""
-      kind: Service
-      name: adguard-dns
-  validation:
-    hostname: dns.homelab.heyser.xyz
-    subjectAltNames:
-      - type: Hostname
-        hostname: dns.homelab.heyser.xyz
-      - type: Hostname
-        hostname: adguard.homelab.heyser.xyz
----
-apiVersion: gateway.networking.k8s.io/v1
 kind: TLSRoute
 metadata:
   name: adguard-home-dns-http
@@ -95,7 +79,7 @@ spec:
   parentRefs:
     - group: gateway.networking.k8s.io
       kind: Gateway
-      name: adguard-home-dns
+      name: traefik-gateway
       sectionName: adguard-home-https
   hostnames:
     - dns.homelab.heyser.xyz
@@ -115,7 +99,7 @@ spec:
   parentRefs:
     - group: gateway.networking.k8s.io
       kind: Gateway
-      name: adguard-home-dns
+      name: traefik-gateway
       sectionName: adguard-home-https
   hostnames:
     - adguard.homelab.heyser.xyz
@@ -145,7 +129,7 @@ spec:
   parentRefs:
     - group: gateway.networking.k8s.io
       kind: Gateway
-      name: adguard-home-dns
+      name: traefik-gateway
       sectionName: adguard-home-dns-http
   hostnames:
     - adguard.homelab.heyser.xyz
@@ -170,7 +154,7 @@ spec:
   parentRefs:
     - group: gateway.networking.k8s.io
       kind: Gateway
-      name: adguard-home-dns
+      name: traefik-gateway
       sectionName: adguard-home-dns-tcp
   rules:
     - name: adguard-home-dns-tcp
@@ -188,7 +172,7 @@ spec:
   parentRefs:
     - group: gateway.networking.k8s.io
       kind: Gateway
-      name: adguard-home-dns
+      name: traefik-gateway
       sectionName: adguard-home-dns-udp
   rules:
     - name: adguard-home-dns-udp
@@ -206,7 +190,7 @@ spec:
   parentRefs:
     - group: gateway.networking.k8s.io
       kind: Gateway
-      name: adguard-home-dns
+      name: traefik-gateway
       sectionName: adguard-home-dns-tls-tcp
   rules:
     - name: adguard-home-dns-tls-tcp
@@ -224,7 +208,7 @@ spec:
   parentRefs:
     - group: gateway.networking.k8s.io
       kind: Gateway
-      name: adguard-home-dns
+      name: traefik-gateway
       sectionName: adguard-home-dns-quic-udp
   rules:
     - name: adguard-home-dns-quic-udp
