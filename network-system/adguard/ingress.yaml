@@ -88,8 +88,6 @@ spec:
       nativeLB: true
       proxyProtocol:
         version: 2
-        trustedIPs: 10.0.0.0/8
-        insecure: true
   tls:
     passthrough: true
     secretName: adguard-homelab-heyser-xyz-tls
