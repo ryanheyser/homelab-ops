@@ -79,7 +79,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-  - match: (Host(`dns.homelab.heyser.xyz`) || Host(`adguard.homelab.heyser.xyz`)) && PathPrefix(`/dns-query`)
+  - match: Host(`dns.homelab.heyser.xyz`) && PathPrefix(`/dns-query`)
     kind: Rule
     services:
     - kind: TraefikService
@@ -113,7 +113,7 @@ spec:
     - web
     - websecure
   routes:
-  - match: (Host(`dns.homelab.heyser.xyz`) || Host(`adguard.homelab.heyser.xyz`)) && PathPrefix(`/`)
+  - match: Host(`adguard.homelab.heyser.xyz`) && PathPrefix(`/`)
     kind: Rule
     services:
     - kind: Service
