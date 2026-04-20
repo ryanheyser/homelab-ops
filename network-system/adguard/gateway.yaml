@@ -100,19 +100,21 @@ spec:
       - name: adguard-dns
         namespace: network-system
         port: 443
-      - name: adguard-home
-        namespace: network-system
-        port: 80
     filters:
-      - type: RequestRedirect
-        requestRedirect:
-          scheme: https
-          statusCode: 301
       - type: ExtensionRef
         extensionRef:
           group: traefik.io
           kind: Middleware
           name: network-system-authentik
+  - matches:
+      - path:
+          type: PathPrefix
+          value: /
+    filters:
+      - type: RequestRedirect
+        requestRedirect:
+          scheme: https
+          statusCode: 301
 ---
 apiVersion: gateway.networking.k8s.io/v1alpha2
 kind: TCPRoute
