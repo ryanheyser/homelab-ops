@@ -1,71 +1,142 @@
+# ---
+# # Source: adguard-home/templates/common.yaml
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: adguard-dns
+#   namespace: network-system
+#   labels:
+#     app.kubernetes.io/instance: adguard
+#     app.kubernetes.io/name: adguard-home
+#   annotations:
+#     kubernetes.io/ingress.class: traefik
+#     traefik.ingress.kubernetes.io/router.entrypoints: websecure
+#     #traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+#     # traefik.ingress.kubernetes.io/router.tls: "true"
+# spec:
+#   ingressClassName: traefik
+#   tls:
+#   - hosts:
+#     - "dns.homelab.heyser.xyz"
+#     - "adguard.homelab.heyser.xyz"
+#     secretName: "adguard-homelab-heyser-xyz-tls"
+#   rules:
+#   - host: "dns.homelab.heyser.xyz"
+#     http:
+#       paths:
+#       - path: /dns-query
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: adguard-dns
+#             port:
+#               number: 443
+# ---
+# # Source: adguard-home/templates/common.yaml
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: adguard-home
+#   namespace: network-system
+#   labels:
+#     app.kubernetes.io/instance: adguard
+#     app.kubernetes.io/name: adguard-home
+#   annotations:
+#     kubernetes.io/ingress.class: traefik
+#     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+#     traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+#     # traefik.ingress.kubernetes.io/router.tls: "true"
+#     gethomepage.dev/enabled: "true"
+#     gethomepage.dev/group: Core Services
+#     gethomepage.dev/icon: adguard-home.svg
+#     gethomepage.dev/name: AdGuard Home
+#     gethomepage.dev/description: AdGuard Home is a network-wide ad blocker and DNS server.
+# spec:
+#   ingressClassName: traefik
+#   tls:
+#   - hosts:
+#     - "dns.homelab.heyser.xyz"
+#     - "adguard.homelab.heyser.xyz"
+#     secretName: "adguard-homelab-heyser-xyz-tls"
+#   rules:
+#   - host: "adguard.homelab.heyser.xyz"
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: adguard-dns
+#             port:
+#               number: 443
 ---
-# Source: adguard-home/templates/common.yaml
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
 metadata:
-  name: adguard-dns
+  name: adguard-home-query
   namespace: network-system
-  labels:
-    app.kubernetes.io/instance: adguard
-    app.kubernetes.io/name: adguard-home
-  annotations:
-    kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    #traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
-    # traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
-  ingressClassName: traefik
+  entryPoints:
+    - websecure
+  routes:
+  - match: (Host(`dns.homelab.heyser.xyz`) || Host(`adguard.homelab.heyser.xyz`)) && PathPrefix(`/dns-query`)
+    kind: Rule
+    services:
+    - kind: TraefikService
+      name: adguard-dns
+      namespace: network-system
+      passHostHeader: true
+      port: 443
+      responseForwarding:
+        flushInterval: 100ms
+      scheme: https
+      serversTransport: skipverify
+      sticky:
+        cookie:
+          name: adguard-home
+          secure: true
+          httpOnly: true
   tls:
-  - hosts:
-    - "dns.homelab.heyser.xyz"
-    - "adguard.homelab.heyser.xyz"
-    secretName: "adguard-homelab-heyser-xyz-tls"
-  rules:
-  - host: "dns.homelab.heyser.xyz"
-    http:
-      paths:
-      - path: /dns-query
-        pathType: Prefix
-        backend:
-          service:
-            name: adguard-dns
-            port:
-              number: 443
+    secretName: adguard-homelab-heyser-xyz-tls
+    domains:
+      - main: "dns.homelab.heyser.xyz"
+        sans:
+          - "adguard.homelab.heyser.xyz"
 ---
-# Source: adguard-home/templates/common.yaml
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
 metadata:
-  name: adguard-home
+  name: adguard-home-root
   namespace: network-system
-  labels:
-    app.kubernetes.io/instance: adguard
-    app.kubernetes.io/name: adguard-home
-  annotations:
-    kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
-    traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
-    # traefik.ingress.kubernetes.io/router.tls: "true"
-    gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Core Services
-    gethomepage.dev/icon: adguard-home.svg
-    gethomepage.dev/name: AdGuard Home
-    gethomepage.dev/description: AdGuard Home is a network-wide ad blocker and DNS server.
 spec:
-  ingressClassName: traefik
+  entryPoints:
+    - web
+    - websecure
+  routes:
+  - match: (Host(`dns.homelab.heyser.xyz`) || Host(`adguard.homelab.heyser.xyz`)) && PathPrefix(`/`)
+    kind: Rule
+    services:
+    - kind: Service
+      name: adguard-dns
+      namespace: network-system
+      passHostHeader: true
+      port: 443
+      responseForwarding:
+        flushInterval: 100ms
+      scheme: https
+      serversTransport: skipverify
+      sticky:
+        cookie:
+          name: adguard-home
+          secure: true
+          httpOnly: true
+    middlewares:
+      - name: authentik
+        namespace: network-system 
   tls:
-  - hosts:
-    - "dns.homelab.heyser.xyz"
-    - "adguard.homelab.heyser.xyz"
-    secretName: "adguard-homelab-heyser-xyz-tls"
-  rules:
-  - host: "adguard.homelab.heyser.xyz"
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: adguard-dns
-            port:
-              number: 443
+    secretName: adguard-homelab-heyser-xyz-tls
+    domains:
+      - main: "dns.homelab.heyser.xyz"
+        sans:
+          - "adguard.homelab.heyser.xyz"  
+---

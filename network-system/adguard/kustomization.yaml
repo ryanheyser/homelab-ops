@@ -4,8 +4,9 @@ namespace: network-system
 resources:
 - ./certificate.yaml
 - ./configmap.yaml
-- ./daemonset.yaml
+- ./statefulset.yaml
 - ./service.yaml
+- ./traefikservice.yaml
 - ./ingress.yaml
 - ./gateway.yaml
 - ./tailscale.yaml

@@ -6,6 +6,37 @@ metadata:
 spec:
   gatewayClassName: traefik-gateway
   listeners:
+  - name: adguard-home-https
+    protocol: HTTPS
+    port: 443
+    allowedRoutes:
+      namespaces:
+        from: All
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: adguard-homelab-heyser-xyz-tls
+        kind: Secret
+        group: core
+        namespace: network-system
+  - name: adguard-home-dns-http
+    protocol: HTTP
+    port: 3000
+    allowedRoutes:
+      namespaces:
+        from: All
+  - name: adguard-home-dns-tcp
+    protocol: TCP
+    port: 53
+    allowedRoutes:
+      kinds:
+      - kind: TCPRoute
+  - name: adguard-home-dns-udp
+    protocol: UDP
+    port: 53
+    allowedRoutes:
+      kinds:
+      - kind: UDPRoute
   - name: adguard-home-dns-tls-tcp
     protocol: TCP
     port: 853
@@ -18,6 +49,73 @@ spec:
     allowedRoutes:
       kinds:
       - kind: UDPRoute
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: adguard-home-dns-http
+  namespace: network-system
+spec:
+  parentRefs:
+  - name: adguard-home-http
+    sectionName: http
+    kind: Gateway
+  hostnames:
+    - adguard.homelab.heyser.xyz
+    - dns.homelab.heyser.xyz
+  rules:
+  - filters:
+      - type: RequestRedirect
+        requestRedirect:
+          scheme: https
+  - matches:
+      - path:
+          type: PathPrefix
+          value: /dns-query
+    backendRefs:
+      - name: adguard-home-https
+        namespace: network-system
+        port: 443
+  - matches:
+     - path:
+         type: PathPrefix
+         value: /
+    backendRefs:
+      - name: adguard-home-https
+        namespace: network-system
+        port: 443
+    filters:
+      - type: ExtensionRef
+        extensionRef:
+          group: traefik.io
+          kind: Middleware
+          name: network-system-authentik
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: adguard-home-dns-tcp
+  namespace: network-system
+spec:
+  rules:
+    - name: adguard-home-dns-tcp
+      backendRefs:
+      - name: adguard-home-dns-tcp
+        namespace: network-system
+        port: 53
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: UDPRoute
+metadata:
+  name: adguard-home-dns-udp
+  namespace: network-system
+spec:
+  rules:
+    - name: adguard-home-dns-udp
+      backendRefs:
+      - name: adguard-home-dns-udp
+        namespace: network-system
+        port: 53
 ---
 apiVersion: gateway.networking.k8s.io/v1alpha2
 kind: TCPRoute
