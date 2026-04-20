@@ -64,20 +64,10 @@ spec:
       - name: adguard-home-https
         namespace: network-system
         port: 443
-  - matches:
-     - path:
-         type: PathPrefix
-         value: /
-    backendRefs:
-      - name: adguard-home-https
-        namespace: network-system
-        port: 443
     filters:
-      - type: ExtensionRef
-        extensionRef:
-          group: traefik.io
-          kind: Middleware
-          name: network-system-authentik
+      - type: RequestRedirect
+        requestRedirect:
+          scheme: https
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
@@ -93,14 +83,6 @@ spec:
     - adguard.homelab.heyser.xyz
   rules:
   - matches:
-      - path:
-          type: PathPrefix
-          value: /dns-query
-    backendRefs:
-      - name: adguard-home-https
-        namespace: network-system
-        port: 443
-  - matches:
      - path:
          type: PathPrefix
          value: /
@@ -109,6 +91,9 @@ spec:
         namespace: network-system
         port: 443
     filters:
+      - type: RequestRedirect
+        requestRedirect:
+          scheme: https
       - type: ExtensionRef
         extensionRef:
           group: traefik.io
