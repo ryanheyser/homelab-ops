@@ -4,7 +4,7 @@ metadata:
   name: adguard-home-dns
   namespace: network-system
 spec:
-  gatewayClassName: traefik-gateway
+  gatewayClassName: traefik
   listeners:
   - name: adguard-home-https
     protocol: HTTPS
@@ -24,6 +24,8 @@ spec:
     allowedRoutes:
       kinds:
       - kind: TCPRoute
+      namespaces:
+        from: All
   - name: adguard-home-dns-udp
     protocol: UDP
     port: 53
@@ -36,12 +38,16 @@ spec:
     allowedRoutes:
       kinds:
       - kind: TCPRoute
+      namespaces:
+        from: All
   - name: adguard-home-dns-quic-udp
     protocol: UDP
     port: 784
     allowedRoutes:
       kinds:
       - kind: UDPRoute
+      namespaces:
+        from: All
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
