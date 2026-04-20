@@ -191,8 +191,15 @@ metadata:
     metallb.io/loadBalancerIPs: 10.0.100.3
     metallb.io/allow-shared-ip: "adguard-share"
     metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
     traefik.ingress.kubernetes.io/service.serversscheme: https
     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Cluster
@@ -222,8 +229,15 @@ metadata:
     metallb.io/loadBalancerIPs: 10.0.100.3
     metallb.io/allow-shared-ip: "adguard-share"
     metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
     traefik.ingress.kubernetes.io/service.serversscheme: https
     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Cluster
@@ -254,8 +268,15 @@ metadata:
     metallb.io/loadBalancerIPs: 10.0.100.3
     metallb.io/allow-shared-ip: "adguard-share"
     metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
     traefik.ingress.kubernetes.io/service.serversscheme: https
     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Cluster
@@ -286,8 +307,15 @@ metadata:
     metallb.io/loadBalancerIPs: 10.0.100.3
     metallb.io/allow-shared-ip: "adguard-share"
     metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
     traefik.ingress.kubernetes.io/service.serversscheme: https
     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Cluster
@@ -318,8 +346,15 @@ metadata:
     metallb.io/loadBalancerIPs: 10.0.100.3
     metallb.io/allow-shared-ip: "adguard-share"
     metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
     traefik.ingress.kubernetes.io/service.serversscheme: https
     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Cluster
@@ -350,8 +385,15 @@ metadata:
     metallb.io/loadBalancerIPs: 10.0.100.3
     metallb.io/allow-shared-ip: "adguard-share"
     metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
     traefik.ingress.kubernetes.io/service.serversscheme: https
     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Cluster
@@ -382,8 +424,15 @@ metadata:
     metallb.io/loadBalancerIPs: 10.0.100.3
     metallb.io/allow-shared-ip: "adguard-share"
     metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
     traefik.ingress.kubernetes.io/service.serversscheme: https
     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Cluster
@@ -414,8 +463,15 @@ metadata:
     metallb.io/loadBalancerIPs: 10.0.100.3
     metallb.io/allow-shared-ip: "adguard-share"
     metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
     traefik.ingress.kubernetes.io/service.serversscheme: https
     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Cluster
@@ -478,8 +534,15 @@ metadata:
     metallb.io/loadBalancerIPs: 10.0.100.3
     metallb.io/allow-shared-ip: "adguard-share"
     metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
     traefik.ingress.kubernetes.io/service.serversscheme: https
     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Cluster
@@ -510,8 +573,15 @@ metadata:
     metallb.io/loadBalancerIPs: 10.0.100.3
     metallb.io/allow-shared-ip: "adguard-share"
     metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
     traefik.ingress.kubernetes.io/service.serversscheme: https
     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Cluster
@@ -542,8 +612,15 @@ metadata:
     metallb.io/loadBalancerIPs: 10.0.100.3
     metallb.io/allow-shared-ip: "adguard-share"
     metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
     traefik.ingress.kubernetes.io/service.serversscheme: https
     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Cluster
@@ -574,8 +651,15 @@ metadata:
     metallb.io/loadBalancerIPs: 10.0.100.3
     metallb.io/allow-shared-ip: "adguard-share"
     metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
     traefik.ingress.kubernetes.io/service.serversscheme: https
     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Cluster
@@ -606,8 +690,15 @@ metadata:
     metallb.io/loadBalancerIPs: 10.0.100.3
     metallb.io/allow-shared-ip: "adguard-share"
     metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
     traefik.ingress.kubernetes.io/service.serversscheme: https
     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Cluster
@@ -638,8 +729,15 @@ metadata:
     metallb.io/loadBalancerIPs: 10.0.100.3
     metallb.io/allow-shared-ip: "adguard-share"
     metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
     traefik.ingress.kubernetes.io/service.serversscheme: https
     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Cluster
