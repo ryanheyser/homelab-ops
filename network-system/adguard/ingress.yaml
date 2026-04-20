@@ -95,10 +95,10 @@ spec:
     - kind: Service
       name: adguard-dns
       namespace: network-system
-      passHostHeader: true
+      # passHostHeader: true
       port: 443
-      responseForwarding:
-        flushInterval: 100ms
+      # responseForwarding:
+      #   flushInterval: 100ms
       scheme: https
       serversTransport: skipverify
       sticky:
