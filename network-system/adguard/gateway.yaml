@@ -9,28 +9,28 @@ spec:
     kind: Gateway
     name: traefik-gateway
   listeners:
-  # - name: adguard-home-https
-  #   protocol: HTTPS
-  #   port: 443
-  #   allowedRoutes:
-  #     namespaces:
-  #       from: All
-  #   tls:
-  #     mode: Terminate
-  #     certificateRefs:
-  #     - kind: Secret
-  #       name: adguard-homelab-heyser-xyz-tls
-  #       namespace: network-system
   - name: adguard-home-https
-    protocol: TLS
+    protocol: HTTPS
     port: 443
     allowedRoutes:
       namespaces:
         from: All
-      kinds:
-        - kind: TLSRoute
     tls:
-      mode: Passthrough
+      mode: Terminate
+      certificateRefs:
+      - kind: Secret
+        name: adguard-homelab-heyser-xyz-tls
+        namespace: network-system
+  # - name: adguard-home-https
+  #   protocol: TLS
+  #   port: 443
+  #   allowedRoutes:
+  #     namespaces:
+  #       from: All
+  #     kinds:
+  #       - kind: TLSRoute
+  #   tls:
+  #     mode: Passthrough
   - name: adguard-home-dns-http
     protocol: HTTP
     port: 80
@@ -69,9 +69,29 @@ spec:
       - kind: UDPRoute
       namespaces:
         from: All
+# ---
+# apiVersion: gateway.networking.k8s.io/v1
+# kind: TLSRoute
+# metadata:
+#   name: adguard-home-dns-http
+#   namespace: network-system
+# spec:
+#   parentRefs:
+#     - group: gateway.networking.k8s.io
+#       kind: Gateway
+#       name: traefik-gateway
+#       sectionName: adguard-home-https
+#   hostnames:
+#     - dns.homelab.heyser.xyz
+#   rules:
+#   - name: adguard-home-dns
+#     backendRefs:
+#       - name: adguard-dns
+#         namespace: network-system
+#         port: 443
 ---
 apiVersion: gateway.networking.k8s.io/v1
-kind: TLSRoute
+kind: HTTPRoute
 metadata:
   name: adguard-home-dns-http
   namespace: network-system
@@ -85,6 +105,10 @@ spec:
     - dns.homelab.heyser.xyz
   rules:
   - name: adguard-home-dns
+    matches:
+      - path:
+          type: PathPrefix
+          value: /dns-query
     backendRefs:
       - name: adguard-dns
         namespace: network-system
