@@ -96,7 +96,7 @@ spec:
     services:
     - name: adguard-dns
       namespace: network-system
-      serversTransport: network-system-skipverify
+      serversTransport: skipverify
       port: 443
       nativeLB: true
       proxyProtocol:
