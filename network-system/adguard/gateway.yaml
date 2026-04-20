@@ -13,7 +13,11 @@ spec:
       namespaces:
         from: All
     tls:
-      mode: Passthrough
+      mode: Terminate
+      certificateRefs:
+      - kind: Secret
+        name: adguard-homelab-heyser-xyz-tls
+        namespace: network-system
   - name: adguard-home-dns-http
     protocol: HTTP
     port: 80
