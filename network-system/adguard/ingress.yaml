@@ -92,7 +92,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-  - match: HostSNI(`dns.homelab.heyser.xyz`) && PathPrefix(`/dns-query`)
+  - match: HostSNI(`dns.homelab.heyser.xyz`)
     services:
     - name: adguard-dns
       namespace: network-system
