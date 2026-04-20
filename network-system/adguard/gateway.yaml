@@ -71,7 +71,8 @@ spec:
   hostnames:
     - dns.homelab.heyser.xyz
   rules:
-  - matches:
+  - name: adguard-home-dns
+    matches:
       - path:
           type: PathPrefix
           value: /dns-query
@@ -94,7 +95,8 @@ spec:
   hostnames:
     - adguard.homelab.heyser.xyz
   rules:
-  - matches:
+  - name: adguard-home-adguard-https
+    matches:
      - path:
          type: PathPrefix
          value: /
@@ -123,7 +125,8 @@ spec:
   hostnames:
     - adguard.homelab.heyser.xyz
   rules:
-  - matches:
+  - name: adguard-home-adguard-http-to-https-redirect
+    matches:
       - path:
           type: PathPrefix
           value: /
