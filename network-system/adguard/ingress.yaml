@@ -73,7 +73,7 @@ spec:
 apiVersion: traefik.io/v1alpha1
 kind: TLSOption
 metadata:
-  name: skipverify
+  name: skipverifytcp
   namespace: network-system
 spec:
   minVersion: VersionTLS12
@@ -141,7 +141,7 @@ spec:
     services:
     - name: adguard-dns
       namespace: network-system
-      serversTransport: skipverify
+      serversTransport: skipverifytcp
       port: 443
       # nativeLB: true
   tls:
