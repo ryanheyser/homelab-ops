@@ -78,6 +78,9 @@ metadata:
 spec:
   entryPoints:
     - websecure
+  parentRefs:
+    - name: adguard-home-dns
+      namespace: network-system
   routes:
   - match: Host(`dns.homelab.heyser.xyz`) && PathPrefix(`/dns-query`)
     kind: Rule
@@ -112,6 +115,9 @@ spec:
   entryPoints:
     - web
     - websecure
+  parentRefs:
+    - name: adguard-home-dns
+      namespace: network-system
   routes:
   - match: Host(`adguard.homelab.heyser.xyz`) && PathPrefix(`/`)
     kind: Rule

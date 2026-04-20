@@ -8,6 +8,7 @@ spec:
   mirroring:
     name: adguard-home
     kind: TraefikService
+    port: 443
     mirrorBody: true
     maxBodySize: -1
     mirrors:
