@@ -106,6 +106,7 @@ spec:
       - main: "dns.homelab.heyser.xyz"
         sans:
           - "adguard.homelab.heyser.xyz"
+          - "10.0.0.0/8"
 # ---
 # apiVersion: traefik.io/v1alpha1
 # kind: IngressRoute
