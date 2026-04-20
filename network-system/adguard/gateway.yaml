@@ -54,8 +54,43 @@ spec:
     sectionName: http
     kind: Gateway
   hostnames:
-    - adguard.homelab.heyser.xyz
     - dns.homelab.heyser.xyz
+  rules:
+  - matches:
+      - path:
+          type: PathPrefix
+          value: /dns-query
+    backendRefs:
+      - name: adguard-home-https
+        namespace: network-system
+        port: 443
+  - matches:
+     - path:
+         type: PathPrefix
+         value: /
+    backendRefs:
+      - name: adguard-home-https
+        namespace: network-system
+        port: 443
+    filters:
+      - type: ExtensionRef
+        extensionRef:
+          group: traefik.io
+          kind: Middleware
+          name: network-system-authentik
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: adguard-home-adguard-http
+  namespace: network-system
+spec:
+  parentRefs:
+  - name: adguard-home-http
+    sectionName: http
+    kind: Gateway
+  hostnames:
+    - adguard.homelab.heyser.xyz
   rules:
   - matches:
       - path:
