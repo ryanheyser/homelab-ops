@@ -63,6 +63,10 @@ metadata:
   name: adguard-home-dns-http
   namespace: network-system
 spec:
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: adguard-home-dns
   hostnames:
     - dns.homelab.heyser.xyz
   rules:
@@ -81,6 +85,10 @@ metadata:
   name: adguard-home-adguard-http
   namespace: network-system
 spec:
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: adguard-home-dns
   hostnames:
     - adguard.homelab.heyser.xyz
   rules:
@@ -105,6 +113,10 @@ metadata:
   name: adguard-home-dns-tcp
   namespace: network-system
 spec:
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: adguard-home-dns
   rules:
     - name: adguard-home-dns-tcp
       backendRefs:
@@ -118,6 +130,10 @@ metadata:
   name: adguard-home-dns-udp
   namespace: network-system
 spec:
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: adguard-home-dns
   rules:
     - name: adguard-home-dns-udp
       backendRefs:
@@ -131,6 +147,10 @@ metadata:
   name: adguard-home-dns-tls-tcp
   namespace: network-system
 spec:
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: adguard-home-dns
   rules:
     - name: adguard-home-dns-tls-tcp
       backendRefs:
@@ -144,6 +164,10 @@ metadata:
   name: adguard-home-dns-quic-udp
   namespace: network-system
 spec:
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: adguard-home-dns
   rules:
     - name: adguard-home-dns-quic-udp
       backendRefs:
