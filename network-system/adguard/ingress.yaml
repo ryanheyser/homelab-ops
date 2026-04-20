@@ -99,8 +99,6 @@ spec:
       serversTransport: skipverify
       port: 443
       # nativeLB: true
-      proxyProtocol:
-        version: 2
   tls:
     # passthrough: true
     secretName: adguard-homelab-heyser-xyz-tls
