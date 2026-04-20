@@ -127,6 +127,8 @@ spec:
   terminationDelay: 1ms
   tls:
     insecureSkipVerify: true
+    serverName: dns.homelab.heyser.xyz
+    peerCertURI: dns.homelab.heyser.xyz
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRouteTCP
