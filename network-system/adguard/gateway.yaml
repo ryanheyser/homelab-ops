@@ -67,6 +67,7 @@ spec:
     - group: gateway.networking.k8s.io
       kind: Gateway
       name: adguard-home-dns
+      sectionName: adguard-home-https
   hostnames:
     - dns.homelab.heyser.xyz
   rules:
