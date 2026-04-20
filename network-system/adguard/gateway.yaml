@@ -82,9 +82,9 @@ spec:
     hostname: dns.homelab.heyser.xyz
     subjectAltNames:
       - type: Hostname
-        uri: https://dns.homelab.heyser.xyz
+        hostname: dns.homelab.heyser.xyz
       - type: Hostname
-        uri: https://adguard.homelab.heyser.xyz
+        hostname: adguard.homelab.heyser.xyz
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: TLSRoute
