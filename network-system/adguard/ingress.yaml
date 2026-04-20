@@ -98,7 +98,7 @@ spec:
       namespace: network-system
       serversTransport: skipverify
       port: 443
-      nativeLB: true
+      # nativeLB: true
       proxyProtocol:
         version: 2
   tls:
