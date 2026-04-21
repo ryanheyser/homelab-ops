@@ -16,6 +16,13 @@ data:
         enabled: false
       address: 0.0.0.0:3000
       session_ttl: 720h
+      doh:
+        insecure_enabled: true
+        routes:
+          - 'GET /dns-query'
+          - 'POST /dns-query'
+          - 'GET /dns-query/{ClientID}'
+          - 'POST /dns-query/{ClientID}'
     users: []
     auth_attempts: 5
     block_auth_min: 15
