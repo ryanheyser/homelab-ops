@@ -68,7 +68,7 @@ spec:
         type: ClusterIP
         ports:
           http:
-            port: 80
+            port: &port 80
 
     ingress:
       main:
@@ -95,29 +95,29 @@ spec:
           - *host
           secretName: audiobookshelf-homelab-heyser-xyz-tls
 
-    route:
-      main:
-        enabled: true
-        kind: HTTPRoute
-        parentRefs:
-        - group: gateway.networking.k8s.io
-          kind: Gateway
-          name: traefik-gateway
-          namespace: network-system
-        hostnames:
-        - *host
-        rules:
-        - matches:
-          - path:
-              type: PathPrefix
-              value: /
-          backendRefs:
-          - kind: Service
-            name: audiobookshelf
-            port: 80
-          timeouts:
-            backendRequest: 10s
-            request: 30s
+    # route:
+    #   main:
+    #     enabled: true
+    #     kind: HTTPRoute
+    #     parentRefs:
+    #     - group: gateway.networking.k8s.io
+    #       kind: Gateway
+    #       name: traefik-gateway
+    #       namespace: network-system
+    #     hostnames:
+    #     - *host
+    #     rules:
+    #     - matches:
+    #       - path:
+    #           type: PathPrefix
+    #           value: /
+    #       backendRefs:
+    #       - kind: Service
+    #         name: audiobookshelf
+    #         port: *port
+    #       timeouts:
+    #         backendRequest: 10s
+    #         request: 30s
 
     persistence:
       config:
