@@ -94,7 +94,8 @@
         "reflector",
         "app-template",
         "plugin-barman-cloud",
-        "immich"
+        "immich",
+        "csi-driver-nfs"
       ]
     },
     {
