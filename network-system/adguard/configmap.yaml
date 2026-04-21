@@ -96,8 +96,8 @@ data:
       cache_ttl_min: 0
       cache_ttl_max: 14400
       cache_optimistic: true
-      cache_optimistic_answer_ttl: 1d
-      cache_optimistic_max_age: 7d
+      cache_optimistic_answer_ttl: 86400s
+      cache_optimistic_max_age: 604800s
       bogus_nxdomain: []
       aaaa_disabled: true
       enable_dnssec: true
