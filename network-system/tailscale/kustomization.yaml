@@ -6,8 +6,10 @@ resources:
 - https://raw.githubusercontent.com/tailscale/tailscale/refs/tags/v1.96.4/cmd/k8s-operator/deploy/crds/tailscale.com_connectors.yaml
 - https://raw.githubusercontent.com/tailscale/tailscale/refs/tags/v1.96.4/cmd/k8s-operator/deploy/crds/tailscale.com_dnsconfigs.yaml
 - https://raw.githubusercontent.com/tailscale/tailscale/refs/tags/v1.96.4/cmd/k8s-operator/deploy/crds/tailscale.com_proxyclasses.yaml
+- https://raw.githubusercontent.com/tailscale/tailscale/refs/tags/v1.96.4/cmd/k8s-operator/deploy/crds/tailscale.com_proxygrouppolicies.yaml
 - https://raw.githubusercontent.com/tailscale/tailscale/refs/tags/v1.96.4/cmd/k8s-operator/deploy/crds/tailscale.com_proxygroups.yaml
 - https://raw.githubusercontent.com/tailscale/tailscale/refs/tags/v1.96.4/cmd/k8s-operator/deploy/crds/tailscale.com_recorders.yaml
+- https://raw.githubusercontent.com/tailscale/tailscale/refs/tags/v1.96.4/cmd/k8s-operator/deploy/crds/tailscale.com_tailnets.yaml
 - ./secret.yaml
 - ./tailscale-operator.yaml
 - ./connector.yaml
