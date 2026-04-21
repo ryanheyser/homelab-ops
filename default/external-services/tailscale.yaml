@@ -1,73 +1,73 @@
-# ---
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: truenas-storage-tailscale
-#   annotations:
-#     tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
-#     tailscale.com/hostnanme: storage
-# spec:
-#   defaultBackend:
-#     service:
-#       name: truenas-storage-ip
-#       port:
-#         number: 443
-#   ingressClassName: tailscale
-#   tls:
-#     - hosts:
-#         - storage
-# ---
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: truenas-awoofy-tailscale
-#   annotations:
-#     tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
-#     tailscale.com/hostname: awoofy
-# spec:
-#   defaultBackend:
-#     service:
-#       name: truenas-awoofy-ip
-#       port:
-#         number: 443
-#   ingressClassName: tailscale
-#   tls:
-#     - hosts:
-#         - awoofy
-# ---
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: truenas-kracko-tailscale
-#   annotations:
-#     tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
-#     tailscale.com/hostname: kracko
-# spec:
-#   defaultBackend:
-#     service:
-#       name: truenas-kracko-ip
-#       port:
-#         number: 443
-#   ingressClassName: tailscale
-#   tls:
-#     - hosts:
-#         - kracko
-# ---
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: plex-tailscale
-#   annotations:
-#     tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
-#     tailscale.com/hostname: plex
-# spec:
-#   defaultBackend:
-#     service:
-#       name: plex-ip
-#       port:
-#         number: 32400
-#   ingressClassName: tailscale
-#   tls:
-#     - hosts:
-#         - plex
-# ---
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: truenas-storage-tailscale
+  annotations:
+    tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
+    tailscale.com/hostnanme: storage
+spec:
+  defaultBackend:
+    service:
+      name: truenas-storage-ip
+      port:
+        number: 443
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - storage
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: truenas-awoofy-tailscale
+  annotations:
+    tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
+    tailscale.com/hostname: awoofy
+spec:
+  defaultBackend:
+    service:
+      name: truenas-awoofy-ip
+      port:
+        number: 443
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - awoofy
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: truenas-kracko-tailscale
+  annotations:
+    tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
+    tailscale.com/hostname: kracko
+spec:
+  defaultBackend:
+    service:
+      name: truenas-kracko-ip
+      port:
+        number: 443
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - kracko
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: plex-tailscale
+  annotations:
+    tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
+    tailscale.com/hostname: plex
+spec:
+  defaultBackend:
+    service:
+      name: plex-ip
+      port:
+        number: 32400
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - plex
+---
