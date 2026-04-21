@@ -34,7 +34,7 @@ metadata:
     traefik.ingress.kubernetes.io/service.serverstransport: default-storagetransport@kubernetescrd
     tailscale.com/expose: "true"
     tailscale.com/hostname: "storage"
-    tailscale.com/proxy-group: ts-proxygroup-network-system
+    tailscale.com/proxy-group: ts-proxygroup
 spec:
   ports:
   - name: truenas
@@ -61,7 +61,7 @@ metadata:
     traefik.ingress.kubernetes.io/service.serverstransport: default-krackotransport@kubernetescrd
     tailscale.com/expose: "true"
     tailscale.com/hostname: "truenas"
-    tailscale.com/proxy-group: ts-proxygroup-network-system
+    tailscale.com/proxy-group: ts-proxygroup
 spec:
   ports:
   - name: truenas
@@ -88,7 +88,7 @@ metadata:
     traefik.ingress.kubernetes.io/service.serverstransport: default-plextransport@kubernetescrd
     tailscale.com/expose: "true"
     tailscale.com/hostname: "plex"
-    tailscale.com/proxy-group: ts-proxygroup-network-system
+    tailscale.com/proxy-group: ts-proxygroup
 spec:
   ports:
   - name: plex
