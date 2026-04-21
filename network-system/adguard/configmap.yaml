@@ -65,8 +65,12 @@ data:
       ratelimit_whitelist: []
       refuse_any: true
       upstream_dns:
-        - '[/homelab.heyser.xyz/]10.0.0.1:53'
-        - '[/heyser.xyz/]10.0.0.1:53'
+        - '[/homelab.heyser.xyz/]169.254.20.10:53'
+        - '[/homelab.heyser.lan/]169.254.20.10:53'
+        - '[/heyser.xyz/]169.254.20.10:53'
+        - '[/heyser.lan/]169.254.20.10:53'
+        - '[/svc.cluster.local/]169.254.20.10:53'
+        - '[/cluster.local/]169.254.20.10:53'
         - tls://dns.quad9.net
         - quic://dns.quad9.net
         - h3://dns.quad9.net
