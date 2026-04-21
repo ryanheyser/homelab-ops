@@ -5,10 +5,7 @@
 #   name: truenas-storage-tailscale
 #   annotations:
 #     tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
-#     tailscale.com/tailnet-fqdn: storage.tail1170fc.ts.net
-#     tailscale.com/proxy-group: ts-proxygroup
-#   labels:
-#     tailscale.com/proxy-class: ts-proxyclass
+#     tailscale.com/hostnanme: storage
 # spec:
 #   defaultBackend:
 #     service:
@@ -26,10 +23,7 @@
 #   name: truenas-awoofy-tailscale
 #   annotations:
 #     tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
-#     tailscale.com/tailnet-fqdn: awoofy.tail1170fc.ts.net
-#     tailscale.com/proxy-group: ts-proxygroup
-#   labels:
-#     tailscale.com/proxy-class: ts-proxyclass
+#     tailscale.com/hostname: awoofy
 # spec:
 #   defaultBackend:
 #     service:
@@ -47,10 +41,7 @@
 #   name: truenas-kracko-tailscale
 #   annotations:
 #     tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
-#     tailscale.com/tailnet-fqdn: kracko.tail1170fc.ts.net
-#     tailscale.com/proxy-group: ts-proxygroup
-#   labels:
-#     tailscale.com/proxy-class: ts-proxyclass
+#     tailscale.com/hostname: kracko
 # spec:
 #   defaultBackend:
 #     service:
@@ -68,10 +59,7 @@
 #   name: plex-tailscale
 #   annotations:
 #     tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
-#     tailscale.com/tailnet-fqdn: plex.tail1170fc.ts.net
-#     tailscale.com/proxy-group: ts-proxygroup
-#   labels:
-#     tailscale.com/proxy-class: ts-proxyclass
+#     tailscale.com/hostname: plex
 # spec:
 #   defaultBackend:
 #     service:
