@@ -213,542 +213,549 @@ spec:
   selector:
     app.kubernetes.io/name: adguard-home
     app.kubernetes.io/instance: adguard
-# ---
-# # Source: adguard-home/templates/common.yaml
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: adguard-home-index-0
-#   namespace: network-system
-#   labels:
-#     app.kubernetes.io/instance: adguard
-#     app.kubernetes.io/name: adguard-home
-#   annotations:
-#     cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
-#     # traefik.ingress.kubernetes.io/service.nativelb: "true"
-#     metallb.io/loadBalancerIPs: 10.0.100.3
-#     metallb.io/allow-shared-ip: "adguard-share"
-#     metallb.io/address-pool: system
-#     traefik.ingress.kubernetes.io/service.passhostheader: "true"
-#     traefik.ingress.kubernetes.io/service.serversscheme: https
-#     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
-# spec:
-#   type: LoadBalancer
-#   externalTrafficPolicy: Cluster
-#   externalIPs:
-#   - 10.0.100.3
-#   ports:
-#   - port: 443
-#     targetPort: 443
-#     protocol: TCP
-#     name: dns-http
-#   selector:
-#     app.kubernetes.io/name: adguard-home
-#     app.kubernetes.io/instance: adguard
-#     apps.kubernetes.io/pod-index: '0'
-# ---
-# # Source: adguard-home/templates/common.yaml
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: adguard-home-index-1
-#   namespace: network-system
-#   labels:
-#     app.kubernetes.io/instance: adguard
-#     app.kubernetes.io/name: adguard-home
-#   annotations:
-#     cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
-#     # traefik.ingress.kubernetes.io/service.nativelb: "true"
-#     metallb.io/loadBalancerIPs: 10.0.100.3
-#     metallb.io/allow-shared-ip: "adguard-share"
-#     metallb.io/address-pool: system
-#     traefik.ingress.kubernetes.io/service.passhostheader: "true"
-#     traefik.ingress.kubernetes.io/service.serversscheme: https
-#     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
-# spec:
-#   type: LoadBalancer
-#   externalTrafficPolicy: Cluster
-#   externalIPs:
-#   - 10.0.100.3
-#   ports:
-#   - port: 443
-#     targetPort: 443
-#     protocol: TCP
-#     name: dns-http
-#   selector:
-#     app.kubernetes.io/name: adguard-home
-#     app.kubernetes.io/instance: adguard
-#     apps.kubernetes.io/pod-index: '1'
-# ---
-# # Source: adguard-home/templates/common.yaml
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: adguard-home-index-2
-#   namespace: network-system
-#   labels:
-#     app.kubernetes.io/instance: adguard
-#     app.kubernetes.io/name: adguard-home
-#   annotations:
-#     cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
-#     # traefik.ingress.kubernetes.io/service.nativelb: "true"
-#     metallb.io/loadBalancerIPs: 10.0.100.3
-#     metallb.io/allow-shared-ip: "adguard-share"
-#     metallb.io/address-pool: system
-#     traefik.ingress.kubernetes.io/service.passhostheader: "true"
-#     traefik.ingress.kubernetes.io/service.serversscheme: https
-#     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
-# spec:
-#   type: LoadBalancer
-#   externalTrafficPolicy: Cluster
-#   externalIPs:
-#   - 10.0.100.3
-#   ports:
-#   - port: 443
-#     targetPort: 443
-#     protocol: TCP
-#     name: dns-http
-#   selector:
-#     app.kubernetes.io/name: adguard-home
-#     app.kubernetes.io/instance: adguard
-#     apps.kubernetes.io/pod-index: '2'
-# ---
-# # Source: adguard-home/templates/common.yaml
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: adguard-home-index-3
-#   namespace: network-system
-#   labels:
-#     app.kubernetes.io/instance: adguard
-#     app.kubernetes.io/name: adguard-home
-#   annotations:
-#     cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
-#     # traefik.ingress.kubernetes.io/service.nativelb: "true"
-#     metallb.io/loadBalancerIPs: 10.0.100.3
-#     metallb.io/allow-shared-ip: "adguard-share"
-#     metallb.io/address-pool: system
-#     traefik.ingress.kubernetes.io/service.passhostheader: "true"
-#     traefik.ingress.kubernetes.io/service.serversscheme: https
-#     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
-# spec:
-#   type: LoadBalancer
-#   externalTrafficPolicy: Cluster
-#   externalIPs:
-#   - 10.0.100.3
-#   ports:
-#   - port: 443
-#     targetPort: 443
-#     protocol: TCP
-#     name: dns-http
-#   selector:
-#     app.kubernetes.io/name: adguard-home
-#     app.kubernetes.io/instance: adguard
-#     apps.kubernetes.io/pod-index: '3'
-# ---
-# # Source: adguard-home/templates/common.yaml
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: adguard-home-index-4
-#   namespace: network-system
-#   labels:
-#     app.kubernetes.io/instance: adguard
-#     app.kubernetes.io/name: adguard-home
-#   annotations:
-#     cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
-#     # traefik.ingress.kubernetes.io/service.nativelb: "true"
-#     metallb.io/loadBalancerIPs: 10.0.100.3
-#     metallb.io/allow-shared-ip: "adguard-share"
-#     metallb.io/address-pool: system
-#     traefik.ingress.kubernetes.io/service.passhostheader: "true"
-#     traefik.ingress.kubernetes.io/service.serversscheme: https
-#     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
-# spec:
-#   type: LoadBalancer
-#   externalTrafficPolicy: Cluster
-#   externalIPs:
-#   - 10.0.100.3
-#   ports:
-#   - port: 443
-#     targetPort: 443
-#     protocol: TCP
-#     name: dns-http
-#   selector:
-#     app.kubernetes.io/name: adguard-home
-#     app.kubernetes.io/instance: adguard
-#     apps.kubernetes.io/pod-index: '4'
-# ---
-# # Source: adguard-home/templates/common.yaml
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: adguard-home-index-5
-#   namespace: network-system
-#   labels:
-#     app.kubernetes.io/instance: adguard
-#     app.kubernetes.io/name: adguard-home
-#   annotations:
-#     cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
-#     # traefik.ingress.kubernetes.io/service.nativelb: "true"
-#     metallb.io/loadBalancerIPs: 10.0.100.3
-#     metallb.io/allow-shared-ip: "adguard-share"
-#     metallb.io/address-pool: system
-#     traefik.ingress.kubernetes.io/service.passhostheader: "true"
-#     traefik.ingress.kubernetes.io/service.serversscheme: https
-#     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
-# spec:
-#   type: LoadBalancer
-#   externalTrafficPolicy: Cluster
-#   externalIPs:
-#   - 10.0.100.3
-#   ports:
-#   - port: 443
-#     targetPort: 443
-#     protocol: TCP
-#     name: dns-http
-#   selector:
-#     app.kubernetes.io/name: adguard-home
-#     app.kubernetes.io/instance: adguard
-#     apps.kubernetes.io/pod-index: '5'
-# ---
-# # Source: adguard-home/templates/common.yaml
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: adguard-home-index-6
-#   namespace: network-system
-#   labels:
-#     app.kubernetes.io/instance: adguard
-#     app.kubernetes.io/name: adguard-home
-#   annotations:
-#     cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
-#     # traefik.ingress.kubernetes.io/service.nativelb: "true"
-#     metallb.io/loadBalancerIPs: 10.0.100.3
-#     metallb.io/allow-shared-ip: "adguard-share"
-#     metallb.io/address-pool: system
-#     traefik.ingress.kubernetes.io/service.passhostheader: "true"
-#     traefik.ingress.kubernetes.io/service.serversscheme: https
-#     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
-# spec:
-#   type: LoadBalancer
-#   externalTrafficPolicy: Cluster
-#   externalIPs:
-#   - 10.0.100.3
-#   ports:
-#   - port: 443
-#     targetPort: 443
-#     protocol: TCP
-#     name: dns-http
-#   selector:
-#     app.kubernetes.io/name: adguard-home
-#     app.kubernetes.io/instance: adguard
-#     apps.kubernetes.io/pod-index: '6'
-# ---
-# # Source: adguard-home/templates/common.yaml
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: adguard-home-index-7
-#   namespace: network-system
-#   labels:
-#     app.kubernetes.io/instance: adguard
-#     app.kubernetes.io/name: adguard-home
-#   annotations:
-#     cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
-#     # traefik.ingress.kubernetes.io/service.nativelb: "true"
-#     metallb.io/loadBalancerIPs: 10.0.100.3
-#     metallb.io/allow-shared-ip: "adguard-share"
-#     metallb.io/address-pool: system
-#     traefik.ingress.kubernetes.io/service.serversscheme: https
-#     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
-# spec:
-#   type: LoadBalancer
-#   externalTrafficPolicy: Cluster
-#   externalIPs:
-#   - 10.0.100.3
-#   ports:
-#   - port: 443
-#     targetPort: 443
-#     protocol: TCP
-#     name: dns-http
-#   selector:
-#     app.kubernetes.io/name: adguard-home
-#     app.kubernetes.io/instance: adguard
-#     apps.kubernetes.io/pod-index: '7'
-# ---
-# # Source: adguard-home/templates/common.yaml
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: adguard-home-index-8
-#   namespace: network-system
-#   labels:
-#     app.kubernetes.io/instance: adguard
-#     app.kubernetes.io/name: adguard-home
-#   annotations:
-#     cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
-#     # traefik.ingress.kubernetes.io/service.nativelb: "true"
-#     metallb.io/loadBalancerIPs: 10.0.100.3
-#     metallb.io/allow-shared-ip: "adguard-share"
-#     metallb.io/address-pool: system
-#     traefik.ingress.kubernetes.io/service.passhostheader: "true"
-#     traefik.ingress.kubernetes.io/service.serversscheme: https
-#     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
-# spec:
-#   type: LoadBalancer
-#   externalTrafficPolicy: Cluster
-#   externalIPs:
-#   - 10.0.100.3
-#   ports:
-#   - port: 443
-#     targetPort: 443
-#     protocol: TCP
-#     name: dns-http
-#   selector:
-#     app.kubernetes.io/name: adguard-home
-#     app.kubernetes.io/instance: adguard
-#     apps.kubernetes.io/pod-index: '8'
-# ---
-# # Source: adguard-home/templates/common.yaml
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: adguard-home-index-9
-#   namespace: network-system
-#   labels:
-#     app.kubernetes.io/instance: adguard
-#     app.kubernetes.io/name: adguard-home
-#   annotations:
-#     cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
-#     # traefik.ingress.kubernetes.io/service.nativelb: "true"
-#     metallb.io/loadBalancerIPs: 10.0.100.3
-#     metallb.io/allow-shared-ip: "adguard-share"
-#     metallb.io/address-pool: system
-#     traefik.ingress.kubernetes.io/service.passhostheader: "true"
-#     traefik.ingress.kubernetes.io/service.serversscheme: https
-#     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
-# spec:
-#   type: LoadBalancer
-#   externalTrafficPolicy: Cluster
-#   externalIPs:
-#   - 10.0.100.3
-#   ports:
-#   - port: 443
-#     targetPort: 443
-#     protocol: TCP
-#     name: dns-http
-#   selector:
-#     app.kubernetes.io/name: adguard-home
-#     app.kubernetes.io/instance: adguard
-#     apps.kubernetes.io/pod-index: '9'
-# ---
-# # Source: adguard-home/templates/common.yaml
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: adguard-home-index-10
-#   namespace: network-system
-#   labels:
-#     app.kubernetes.io/instance: adguard
-#     app.kubernetes.io/name: adguard-home
-#   annotations:
-#     cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
-#     # traefik.ingress.kubernetes.io/service.nativelb: "true"
-#     metallb.io/loadBalancerIPs: 10.0.100.3
-#     metallb.io/allow-shared-ip: "adguard-share"
-#     metallb.io/address-pool: system
-#     traefik.ingress.kubernetes.io/service.passhostheader: "true"
-#     traefik.ingress.kubernetes.io/service.serversscheme: https
-#     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
-# spec:
-#   type: LoadBalancer
-#   externalTrafficPolicy: Cluster
-#   externalIPs:
-#   - 10.0.100.3
-#   ports:
-#   - port: 443
-#     targetPort: 443
-#     protocol: TCP
-#     name: dns-http
-#   selector:
-#     app.kubernetes.io/name: adguard-home
-#     app.kubernetes.io/instance: adguard
-#     apps.kubernetes.io/pod-index: '10'
-# ---
-# # Source: adguard-home/templates/common.yaml
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: adguard-home-index-11
-#   namespace: network-system
-#   labels:
-#     app.kubernetes.io/instance: adguard
-#     app.kubernetes.io/name: adguard-home
-#   annotations:
-#     cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
-#     # traefik.ingress.kubernetes.io/service.nativelb: "true"
-#     metallb.io/loadBalancerIPs: 10.0.100.3
-#     metallb.io/allow-shared-ip: "adguard-share"
-#     metallb.io/address-pool: system
-#     traefik.ingress.kubernetes.io/service.passhostheader: "true"
-#     traefik.ingress.kubernetes.io/service.serversscheme: https
-#     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
-# spec:
-#   type: LoadBalancer
-#   externalTrafficPolicy: Cluster
-#   externalIPs:
-#   - 10.0.100.3
-#   ports:
-#   - port: 443
-#     targetPort: 443
-#     protocol: TCP
-#     name: dns-http
-#   selector:
-#     app.kubernetes.io/name: adguard-home
-#     app.kubernetes.io/instance: adguard
-#     apps.kubernetes.io/pod-index: '11'
-# ---
-# # Source: adguard-home/templates/common.yaml
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: adguard-home-index-12
-#   namespace: network-system
-#   labels:
-#     app.kubernetes.io/instance: adguard
-#     app.kubernetes.io/name: adguard-home
-#   annotations:
-#     cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
-#     # traefik.ingress.kubernetes.io/service.nativelb: "true"
-#     metallb.io/loadBalancerIPs: 10.0.100.3
-#     metallb.io/allow-shared-ip: "adguard-share"
-#     metallb.io/address-pool: system
-#     traefik.ingress.kubernetes.io/service.passhostheader: "true"
-#     traefik.ingress.kubernetes.io/service.serversscheme: https
-#     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
-# spec:
-#   type: LoadBalancer
-#   externalTrafficPolicy: Cluster
-#   externalIPs:
-#   - 10.0.100.3
-#   ports:
-#   - port: 443
-#     targetPort: 443
-#     protocol: TCP
-#     name: dns-http
-#   selector:
-#     app.kubernetes.io/name: adguard-home
-#     app.kubernetes.io/instance: adguard
-#     apps.kubernetes.io/pod-index: '12'
-# ---
-# # Source: adguard-home/templates/common.yaml
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: adguard-home-index-13
-#   namespace: network-system
-#   labels:
-#     app.kubernetes.io/instance: adguard
-#     app.kubernetes.io/name: adguard-home
-#   annotations:
-#     cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
-#     # traefik.ingress.kubernetes.io/service.nativelb: "true"
-#     metallb.io/loadBalancerIPs: 10.0.100.3
-#     metallb.io/allow-shared-ip: "adguard-share"
-#     metallb.io/address-pool: system
-#     traefik.ingress.kubernetes.io/service.passhostheader: "true"
-#     traefik.ingress.kubernetes.io/service.serversscheme: https
-#     traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
-#     traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
-# spec:
-#   type: LoadBalancer
-#   externalTrafficPolicy: Cluster
-#   externalIPs:
-#   - 10.0.100.3
-#   ports:
-#   - port: 443
-#     targetPort: 443
-#     protocol: TCP
-#     name: dns-http
-#   selector:
-#     app.kubernetes.io/name: adguard-home
-#     app.kubernetes.io/instance: adguard
-#     apps.kubernetes.io/pod-index: '13'
+---
+# Source: adguard-home/templates/common.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: adguard-home-index-0
+  namespace: network-system
+  labels:
+    app.kubernetes.io/instance: adguard
+    app.kubernetes.io/name: adguard-home
+  annotations:
+    cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
+    # traefik.ingress.kubernetes.io/service.nativelb: "true"
+    metallb.io/loadBalancerIPs: 10.0.100.3
+    metallb.io/allow-shared-ip: "adguard-share"
+    metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
+    # traefik.ingress.kubernetes.io/service.serversscheme: https
+    # traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Cluster
+  externalIPs:
+  - 10.0.100.3
+  ports:
+  - port: 3000
+    targetPort: 3000
+    protocol: TCP
+    name: http
+  selector:
+    app.kubernetes.io/name: adguard-home
+    app.kubernetes.io/instance: adguard
+    apps.kubernetes.io/pod-index: '0'
+---
+# Source: adguard-home/templates/common.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: adguard-home-index-1
+  namespace: network-system
+  labels:
+    app.kubernetes.io/instance: adguard
+    app.kubernetes.io/name: adguard-home
+  annotations:
+    cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
+    # traefik.ingress.kubernetes.io/service.nativelb: "true"
+    metallb.io/loadBalancerIPs: 10.0.100.3
+    metallb.io/allow-shared-ip: "adguard-share"
+    metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
+    # traefik.ingress.kubernetes.io/service.serversscheme: https
+    # traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Cluster
+  externalIPs:
+  - 10.0.100.3
+  ports:
+  - port: 3000
+    targetPort: 3000
+    protocol: TCP
+    name: http
+  selector:
+    app.kubernetes.io/name: adguard-home
+    app.kubernetes.io/instance: adguard
+    apps.kubernetes.io/pod-index: '1'
+---
+# Source: adguard-home/templates/common.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: adguard-home-index-2
+  namespace: network-system
+  labels:
+    app.kubernetes.io/instance: adguard
+    app.kubernetes.io/name: adguard-home
+  annotations:
+    cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
+    # traefik.ingress.kubernetes.io/service.nativelb: "true"
+    metallb.io/loadBalancerIPs: 10.0.100.3
+    metallb.io/allow-shared-ip: "adguard-share"
+    metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
+    # traefik.ingress.kubernetes.io/service.serversscheme: https
+    # traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Cluster
+  externalIPs:
+  - 10.0.100.3
+  ports:
+  - port: 3000
+    targetPort: 3000
+    protocol: TCP
+    name: http
+  selector:
+    app.kubernetes.io/name: adguard-home
+    app.kubernetes.io/instance: adguard
+    apps.kubernetes.io/pod-index: '2'
+---
+# Source: adguard-home/templates/common.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: adguard-home-index-3
+  namespace: network-system
+  labels:
+    app.kubernetes.io/instance: adguard
+    app.kubernetes.io/name: adguard-home
+  annotations:
+    cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
+    # traefik.ingress.kubernetes.io/service.nativelb: "true"
+    metallb.io/loadBalancerIPs: 10.0.100.3
+    metallb.io/allow-shared-ip: "adguard-share"
+    metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
+    # traefik.ingress.kubernetes.io/service.serversscheme: https
+    # traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Cluster
+  externalIPs:
+  - 10.0.100.3
+  ports:
+  - port: 3000
+    targetPort: 3000
+    protocol: TCP
+    name: http
+  selector:
+    app.kubernetes.io/name: adguard-home
+    app.kubernetes.io/instance: adguard
+    apps.kubernetes.io/pod-index: '3'
+---
+# Source: adguard-home/templates/common.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: adguard-home-index-4
+  namespace: network-system
+  labels:
+    app.kubernetes.io/instance: adguard
+    app.kubernetes.io/name: adguard-home
+  annotations:
+    cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
+    # traefik.ingress.kubernetes.io/service.nativelb: "true"
+    metallb.io/loadBalancerIPs: 10.0.100.3
+    metallb.io/allow-shared-ip: "adguard-share"
+    metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
+    # traefik.ingress.kubernetes.io/service.serversscheme: https
+    # traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Cluster
+  externalIPs:
+  - 10.0.100.3
+  ports:
+  - port: 3000
+    targetPort: 3000
+    protocol: TCP
+    name: http
+  selector:
+    app.kubernetes.io/name: adguard-home
+    app.kubernetes.io/instance: adguard
+    apps.kubernetes.io/pod-index: '4'
+---
+# Source: adguard-home/templates/common.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: adguard-home-index-5
+  namespace: network-system
+  labels:
+    app.kubernetes.io/instance: adguard
+    app.kubernetes.io/name: adguard-home
+  annotations:
+    cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
+    # traefik.ingress.kubernetes.io/service.nativelb: "true"
+    metallb.io/loadBalancerIPs: 10.0.100.3
+    metallb.io/allow-shared-ip: "adguard-share"
+    metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
+    # traefik.ingress.kubernetes.io/service.serversscheme: https
+    # traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Cluster
+  externalIPs:
+  - 10.0.100.3
+  ports:
+  - port: 3000
+    targetPort: 3000
+    protocol: TCP
+    name: http
+  selector:
+    app.kubernetes.io/name: adguard-home
+    app.kubernetes.io/instance: adguard
+    apps.kubernetes.io/pod-index: '5'
+---
+# Source: adguard-home/templates/common.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: adguard-home-index-6
+  namespace: network-system
+  labels:
+    app.kubernetes.io/instance: adguard
+    app.kubernetes.io/name: adguard-home
+  annotations:
+    cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
+    # traefik.ingress.kubernetes.io/service.nativelb: "true"
+    metallb.io/loadBalancerIPs: 10.0.100.3
+    metallb.io/allow-shared-ip: "adguard-share"
+    metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
+    # traefik.ingress.kubernetes.io/service.serversscheme: https
+    # traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Cluster
+  externalIPs:
+  - 10.0.100.3
+  ports:
+  - port: 3000
+    targetPort: 3000
+    protocol: TCP
+    name: http
+  selector:
+    app.kubernetes.io/name: adguard-home
+    app.kubernetes.io/instance: adguard
+    apps.kubernetes.io/pod-index: '6'
+---
+# Source: adguard-home/templates/common.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: adguard-home-index-7
+  namespace: network-system
+  labels:
+    app.kubernetes.io/instance: adguard
+    app.kubernetes.io/name: adguard-home
+  annotations:
+    cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
+    # traefik.ingress.kubernetes.io/service.nativelb: "true"
+    metallb.io/loadBalancerIPs: 10.0.100.3
+    metallb.io/allow-shared-ip: "adguard-share"
+    metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
+    # traefik.ingress.kubernetes.io/service.serversscheme: https
+    # traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Cluster
+  externalIPs:
+  - 10.0.100.3
+  ports:
+  - port: 3000
+    targetPort: 3000
+    protocol: TCP
+    name: http
+  selector:
+    app.kubernetes.io/name: adguard-home
+    app.kubernetes.io/instance: adguard
+    apps.kubernetes.io/pod-index: '7'
+---
+# Source: adguard-home/templates/common.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: adguard-home-index-8
+  namespace: network-system
+  labels:
+    app.kubernetes.io/instance: adguard
+    app.kubernetes.io/name: adguard-home
+  annotations:
+    cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
+    # traefik.ingress.kubernetes.io/service.nativelb: "true"
+    metallb.io/loadBalancerIPs: 10.0.100.3
+    metallb.io/allow-shared-ip: "adguard-share"
+    metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
+    # traefik.ingress.kubernetes.io/service.serversscheme: https
+    # traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Cluster
+  externalIPs:
+  - 10.0.100.3
+  ports:
+  - port: 3000
+    targetPort: 3000
+    protocol: TCP
+    name: http
+  selector:
+    app.kubernetes.io/name: adguard-home
+    app.kubernetes.io/instance: adguard
+    apps.kubernetes.io/pod-index: '8'
+---
+# Source: adguard-home/templates/common.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: adguard-home-index-9
+  namespace: network-system
+  labels:
+    app.kubernetes.io/instance: adguard
+    app.kubernetes.io/name: adguard-home
+  annotations:
+    cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
+    # traefik.ingress.kubernetes.io/service.nativelb: "true"
+    metallb.io/loadBalancerIPs: 10.0.100.3
+    metallb.io/allow-shared-ip: "adguard-share"
+    metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
+    # traefik.ingress.kubernetes.io/service.serversscheme: https
+    # traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Cluster
+  externalIPs:
+  - 10.0.100.3
+  ports:
+  - port: 3000
+    targetPort: 3000
+    protocol: TCP
+    name: http
+  selector:
+    app.kubernetes.io/name: adguard-home
+    app.kubernetes.io/instance: adguard
+    apps.kubernetes.io/pod-index: '9'
+---
+# Source: adguard-home/templates/common.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: adguard-home-index-10
+  namespace: network-system
+  labels:
+    app.kubernetes.io/instance: adguard
+    app.kubernetes.io/name: adguard-home
+  annotations:
+    cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
+    # traefik.ingress.kubernetes.io/service.nativelb: "true"
+    metallb.io/loadBalancerIPs: 10.0.100.3
+    metallb.io/allow-shared-ip: "adguard-share"
+    metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
+    # traefik.ingress.kubernetes.io/service.serversscheme: https
+    # traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Cluster
+  externalIPs:
+  - 10.0.100.3
+  ports:
+  - port: 3000
+    targetPort: 3000
+    protocol: TCP
+    name: http
+  selector:
+    app.kubernetes.io/name: adguard-home
+    app.kubernetes.io/instance: adguard
+    apps.kubernetes.io/pod-index: '10'
+---
+# Source: adguard-home/templates/common.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: adguard-home-index-11
+  namespace: network-system
+  labels:
+    app.kubernetes.io/instance: adguard
+    app.kubernetes.io/name: adguard-home
+  annotations:
+    cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
+    # traefik.ingress.kubernetes.io/service.nativelb: "true"
+    metallb.io/loadBalancerIPs: 10.0.100.3
+    metallb.io/allow-shared-ip: "adguard-share"
+    metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
+    # traefik.ingress.kubernetes.io/service.serversscheme: https
+    # traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Cluster
+  externalIPs:
+  - 10.0.100.3
+  ports:
+  - port: 3000
+    targetPort: 3000
+    protocol: TCP
+    name: http
+  selector:
+    app.kubernetes.io/name: adguard-home
+    app.kubernetes.io/instance: adguard
+    apps.kubernetes.io/pod-index: '11'
+---
+# Source: adguard-home/templates/common.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: adguard-home-index-12
+  namespace: network-system
+  labels:
+    app.kubernetes.io/instance: adguard
+    app.kubernetes.io/name: adguard-home
+  annotations:
+    cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
+    # traefik.ingress.kubernetes.io/service.nativelb: "true"
+    metallb.io/loadBalancerIPs: 10.0.100.3
+    metallb.io/allow-shared-ip: "adguard-share"
+    metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
+    # traefik.ingress.kubernetes.io/service.serversscheme: https
+    # traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Cluster
+  externalIPs:
+  - 10.0.100.3
+  ports:
+  - port: 3000
+    targetPort: 3000
+    protocol: TCP
+    name: http
+  selector:
+    app.kubernetes.io/name: adguard-home
+    app.kubernetes.io/instance: adguard
+    apps.kubernetes.io/pod-index: '12'
+---
+# Source: adguard-home/templates/common.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: adguard-home-index-13
+  namespace: network-system
+  labels:
+    app.kubernetes.io/instance: adguard
+    app.kubernetes.io/name: adguard-home
+  annotations:
+    cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
+    # traefik.ingress.kubernetes.io/service.nativelb: "true"
+    metallb.io/loadBalancerIPs: 10.0.100.3
+    metallb.io/allow-shared-ip: "adguard-share"
+    metallb.io/address-pool: system
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
+    # traefik.ingress.kubernetes.io/service.serversscheme: https
+    # traefik.ingress.kubernetes.io/service.serverstransport: network-system-skipverify@kubernetescrd
+    traefik.ingress.kubernetes.io/service.sticky.cookie.name: adguard-home
+    traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+    traefik.ingress.kubernetes.io/service.sticky.cookie.path: /dns-query
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Cluster
+  externalIPs:
+  - 10.0.100.3
+  ports:
+  - port: 3000
+    targetPort: 3000
+    protocol: TCP
+    name: http
+  selector:
+    app.kubernetes.io/name: adguard-home
+    app.kubernetes.io/instance: adguard
+    apps.kubernetes.io/pod-index: '13'
