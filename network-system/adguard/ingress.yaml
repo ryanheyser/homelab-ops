@@ -1,43 +1,43 @@
 ---
-# Source: adguard-home/templates/common.yaml
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: adguard-dns
-  namespace: network-system
-  labels:
-    app.kubernetes.io/instance: adguard
-    app.kubernetes.io/name: adguard-home
-  annotations:
-    kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    #traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
-    # traefik.ingress.kubernetes.io/router.tls: "true"
-spec:
-  ingressClassName: traefik
-  tls:
-  - hosts:
-    - "dns.homelab.heyser.xyz"
-    - "adguard.homelab.heyser.xyz"
-    secretName: "adguard-homelab-heyser-xyz-tls"
-  rules:
-  - host: "dns.homelab.heyser.xyz"
-    http:
-      paths:
-      - path: /dns-query
-        pathType: Prefix
-        backend:
-          service:
-            name: adguard-home
-            port:
-              number: 3000
-      # - path: /dns-query
-      #   pathType: Prefix
-      #   backend:
-      #     service:
-      #       name: adguard-dns
-      #       port:
-      #         number: 443
+# # Source: adguard-home/templates/common.yaml
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: adguard-dns
+#   namespace: network-system
+#   labels:
+#     app.kubernetes.io/instance: adguard
+#     app.kubernetes.io/name: adguard-home
+#   annotations:
+#     kubernetes.io/ingress.class: traefik
+#     traefik.ingress.kubernetes.io/router.entrypoints: websecure
+#     #traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+#     # traefik.ingress.kubernetes.io/router.tls: "true"
+# spec:
+#   ingressClassName: traefik
+#   tls:
+#   - hosts:
+#     - "dns.homelab.heyser.xyz"
+#     - "adguard.homelab.heyser.xyz"
+#     secretName: "adguard-homelab-heyser-xyz-tls"
+#   rules:
+#   - host: "dns.homelab.heyser.xyz"
+#     http:
+#       paths:
+#       - path: /dns-query
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: adguard-home
+#             port:
+#               number: 3000
+#       # - path: /dns-query
+#       #   pathType: Prefix
+#       #   backend:
+#       #     service:
+#       #       name: adguard-dns
+#       #       port:
+#       #         number: 443
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
