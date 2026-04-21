@@ -65,7 +65,7 @@ data:
       ratelimit_whitelist: []
       refuse_any: true
       upstream_dns:
-        - '[/homelab.heyser.xyz/10.0.0.1:53'
+        - '[/homelab.heyser.xyz/]10.0.0.1:53'
         - '[/homelab.heyser.lan/]10.0.0.1:53'
         - '[/heyser.xyz/]10.0.0.1:53'
         - '[/heyser.lan/]10.0.0.1:53'
