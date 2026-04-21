@@ -68,7 +68,13 @@ data:
         - '[/homelab.heyser.xyz/]10.0.0.1:53'
         - '[/heyser.xyz/]10.0.0.1:53'
         - tls://dns.quad9.net
+        - quic://dns.quad9.net
+        - h3://dns.quad9.net
         - tls://dns11.quad9.net
+        - quic://dns11.quad9.net
+        - h3://dns11.quad9.net
+        - tls://9f9fac.dns.nextdns.io
+        - quic://9f9fac.dns.nextdns.io
       upstream_dns_file: ""
       bootstrap_dns:
         - 9.9.9.11
