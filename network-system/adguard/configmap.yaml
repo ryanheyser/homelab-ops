@@ -250,7 +250,6 @@ data:
         id: 12
     whitelist_filters: []
     user_rules:
-      - '@@||_dns.resolver.arpa^$important,dnsrewrite=NOERROR,ipv4hint=10.0.100.1,alpn=h2,h3;HTTPS'
       - '@@||*.homelab.heyser.xyz^$client=10.255.0.0/16|10.0.0.0/18,dnsrewrite=NOERROR;A;10.0.100.1'
       - '||vm.homelab.heyser.xyz^$dnsrewrite,client=10.255.0.0/16|10.0.0.0/18'
       - '@@||vm.homelab.heyser.xyz^$important,client=10.255.0.0/16|10.0.0.0/18,dnsrewrite=NOERROR;A;10.0.0.9'
