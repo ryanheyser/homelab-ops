@@ -110,7 +110,7 @@ data:
       pending_requests:
         enabled: true
     tls:
-      enabled: true
+      enabled: false
       server_name: dns.homelab.heyser.xyz
       force_https: false
       port_https: 443
