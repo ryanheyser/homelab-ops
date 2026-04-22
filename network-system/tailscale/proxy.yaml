@@ -97,9 +97,19 @@ spec:
 apiVersion: tailscale.com/v1alpha1
 kind: ProxyGroup
 metadata:
-  name: ts-proxygroup
+  name: ts-egress-proxygroup
 spec:
   type: egress
+  replicas: 2
+  hostnamePrefix: ts-proxygroup
+  proxyClass: ts-proxyclass
+---
+apiVersion: tailscale.com/v1alpha1
+kind: ProxyGroup
+metadata:
+  name: ts-ingress-proxygroup
+spec:
+  type: ingress
   replicas: 2
   hostnamePrefix: ts-proxygroup
   proxyClass: ts-proxyclass
