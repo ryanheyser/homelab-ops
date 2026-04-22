@@ -8,8 +8,9 @@ metadata:
     traefik.ingress.kubernetes.io/service.passhostheader: "true"
     # traefik.ingress.kubernetes.io/service.nativelb: "true"
     traefik.ingress.kubernetes.io/service.serverstransport: default-awoofytransport@kubernetescrd
-    # tailscale.com/expose: "true"
-    # tailscale.com/hostname: "awoofy"
+    tailscale.com/expose: "true"
+    tailscale.com/hostname: "awoofy"
+    tailscale.com/proxy-group: ts-ingress-proxygroup
 spec:
   ports:
   - name: truenas
