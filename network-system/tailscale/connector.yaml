@@ -108,12 +108,12 @@ spec:
   replicas: 2
   hostnamePrefix: ts-k8s-homelab
   proxyClass: ts-proxyclass
-  appConnector: 
-    routes:
-    - "plex.homelab.heyser.xyz"
-    - "storage.homelab.heyser.xyz"
-    - "awoofy.homelab.heyser.xyz"
-    - "kracko.homelab.heyser.xyz"
+  appConnector: {}
+    # routes:
+    # - "plex.homelab.heyser.xyz"
+    # - "storage.homelab.heyser.xyz"
+    # - "awoofy.homelab.heyser.xyz"
+    # - "kracko.homelab.heyser.xyz"
   tags:
   - tag:k8s
   - tag:app-homelab
