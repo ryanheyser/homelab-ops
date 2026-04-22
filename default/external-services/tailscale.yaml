@@ -6,13 +6,18 @@ metadata:
   annotations:
     tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
     tailscale.com/hostname: storage
-    tailscale.com/proxy-group: ts-ingress-proxygroup-network-system
+    tailscale.com/proxy-group: ts-ingress-proxygroup
 spec:
-  defaultBackend:
-    service:
-      name: truenas-storage-ip
-      port:
-        number: 443
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: truenas-storage-ip
+            port:
+              number: 443
   ingressClassName: tailscale
   tls:
     - hosts:
@@ -25,13 +30,18 @@ metadata:
   annotations:
     tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
     tailscale.com/hostname: awoofy
-    tailscale.com/proxy-group: ts-ingress-proxygroup-network-system
+    tailscale.com/proxy-group: ts-ingress-proxygroup
 spec:
-  defaultBackend:
-    service:
-      name: truenas-awoofy-ip
-      port:
-        number: 443
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: truenas-awoofy-ip
+            port:
+              number: 443
   ingressClassName: tailscale
   tls:
     - hosts:
@@ -44,13 +54,18 @@ metadata:
   annotations:
     tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
     tailscale.com/hostname: kracko
-    tailscale.com/proxy-group: ts-ingress-proxygroup-network-system
+    tailscale.com/proxy-group: ts-ingress-proxygroup
 spec:
-  defaultBackend:
-    service:
-      name: truenas-kracko-ip
-      port:
-        number: 443
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: truenas-kracko-ip
+            port:
+              number: 443
   ingressClassName: tailscale
   tls:
     - hosts:
@@ -63,13 +78,18 @@ metadata:
   annotations:
     tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
     tailscale.com/hostname: plex
-    tailscale.com/proxy-group: ts-ingress-proxygroup-network-system
+    tailscale.com/proxy-group: ts-ingress-proxygroup
 spec:
-  defaultBackend:
-    service:
-      name: plex-ip
-      port:
-        number: 32400
+  rules:
+  - http:
+      paths:
+      - path: /web
+        pathType: Prefix
+        backend:
+          service:
+            name: plex-ip
+            port:
+              number: 32400
   ingressClassName: tailscale
   tls:
     - hosts:
