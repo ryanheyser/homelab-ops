@@ -59,7 +59,6 @@ spec:
   hostnamePrefix: ts-k8s-exit-node
   tags:
   - tag:k8s
-  appConnector: {}
   exitNode: true
 ---
 apiVersion: tailscale.com/v1alpha1
