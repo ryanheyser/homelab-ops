@@ -6,7 +6,7 @@ metadata:
   annotations:
     tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
     tailscale.com/hostname: storage
-    tailscale.com/proxy-group: ts-ingress-proxygroup
+    tailscale.com/proxy-group: ts-ingress-proxygroup-network-system
 spec:
   defaultBackend:
     service:
@@ -25,7 +25,7 @@ metadata:
   annotations:
     tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
     tailscale.com/hostname: awoofy
-    tailscale.com/proxy-group: ts-ingress-proxygroup
+    tailscale.com/proxy-group: ts-ingress-proxygroup-network-system
 spec:
   defaultBackend:
     service:
@@ -44,7 +44,7 @@ metadata:
   annotations:
     tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
     tailscale.com/hostname: kracko
-    tailscale.com/proxy-group: ts-ingress-proxygroup
+    tailscale.com/proxy-group: ts-ingress-proxygroup-network-system
 spec:
   defaultBackend:
     service:
@@ -63,7 +63,7 @@ metadata:
   annotations:
     tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
     tailscale.com/hostname: plex
-    tailscale.com/proxy-group: ts-ingress-proxygroup
+    tailscale.com/proxy-group: ts-ingress-proxygroup-network-system
 spec:
   defaultBackend:
     service:
