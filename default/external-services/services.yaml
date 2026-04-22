@@ -11,6 +11,7 @@ metadata:
     tailscale.com/expose: "true"
     tailscale.com/hostname: "awoofy"
     tailscale.com/proxy-group: ts-ingress-proxygroup
+    tailscale.com/tags: "services"
 spec:
   ports:
   - name: truenas
@@ -38,6 +39,7 @@ metadata:
     tailscale.com/expose: "true"
     tailscale.com/hostname: "storage"
     tailscale.com/proxy-group: ts-ingress-proxygroup
+    tailscale.com/tags: "services"
 spec:
   ports:
   - name: truenas
@@ -65,6 +67,7 @@ metadata:
     tailscale.com/expose: "true"
     tailscale.com/hostname: "kracko"
     tailscale.com/proxy-group: ts-ingress-proxygroup
+    tailscale.com/tags: "services"
 spec:
   ports:
   - name: truenas
@@ -92,6 +95,7 @@ metadata:
     tailscale.com/expose: "true"
     tailscale.com/hostname: "plex"
     tailscale.com/proxy-group: ts-ingress-proxygroup
+    tailscale.com/tags: "services"
 spec:
   ports:
   - name: plex
