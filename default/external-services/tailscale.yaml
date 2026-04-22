@@ -17,7 +17,7 @@ spec:
           service:
             name: truenas-storage-ip
             port:
-              number: 443
+              name: truenas
   ingressClassName: tailscale
   tls:
     - hosts:
@@ -41,7 +41,7 @@ spec:
           service:
             name: truenas-awoofy-ip
             port:
-              number: 443
+              name: truenas
   ingressClassName: tailscale
   tls:
     - hosts:
@@ -65,7 +65,7 @@ spec:
           service:
             name: truenas-kracko-ip
             port:
-              number: 443
+              name: truenas
   ingressClassName: tailscale
   tls:
     - hosts:
@@ -89,7 +89,7 @@ spec:
           service:
             name: plex-ip
             port:
-              number: 32400
+              name: plex
   ingressClassName: tailscale
   tls:
     - hosts:
