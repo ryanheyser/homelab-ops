@@ -35,9 +35,9 @@ metadata:
     traefik.ingress.kubernetes.io/service.passhostheader: "true"
     # traefik.ingress.kubernetes.io/service.nativelb: "true"
     traefik.ingress.kubernetes.io/service.serverstransport: default-storagetransport@kubernetescrd
-    # tailscale.com/expose: "true"
-    # tailscale.com/hostname: "storage"
-    # tailscale.com/proxy-group: ts-proxygroup
+    tailscale.com/expose: "true"
+    tailscale.com/hostname: "storage"
+    tailscale.com/proxy-group: ts-ingress-proxygroup
 spec:
   ports:
   - name: truenas
@@ -62,9 +62,9 @@ metadata:
     traefik.ingress.kubernetes.io/service.passhostheader: "true"
     # traefik.ingress.kubernetes.io/service.nativelb: "true"
     traefik.ingress.kubernetes.io/service.serverstransport: default-krackotransport@kubernetescrd
-    # tailscale.com/expose: "true"
-    # tailscale.com/hostname: "kracko"
-    # tailscale.com/proxy-group: ts-proxygroup
+    tailscale.com/expose: "true"
+    tailscale.com/hostname: "kracko"
+    tailscale.com/proxy-group: ts-ingress-proxygroup
 spec:
   ports:
   - name: truenas
@@ -89,9 +89,9 @@ metadata:
     traefik.ingress.kubernetes.io/service.passhostheader: "true"
     # traefik.ingress.kubernetes.io/service.nativelb: "true"
     traefik.ingress.kubernetes.io/service.serverstransport: default-plextransport@kubernetescrd
-    # tailscale.com/expose: "true"
-    # tailscale.com/hostname: "plex"
-    # tailscale.com/proxy-group: ts-proxygroup
+    tailscale.com/expose: "true"
+    tailscale.com/hostname: "plex"
+    tailscale.com/proxy-group: ts-ingress-proxygroup
 spec:
   ports:
   - name: plex
