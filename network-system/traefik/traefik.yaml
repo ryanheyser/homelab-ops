@@ -161,8 +161,8 @@ spec:
         # loadBalancerIP: 10.0.100.1
         # externalIPs:
         # - *lbip
-        # externalTrafficPolicy: Cluster
-        externalTrafficPolicy: Local
+        externalTrafficPolicy: Cluster
+        # externalTrafficPolicy: Local
         # ipFamilyPolicy: PreferDualStack
         # ipFamilies:
         # - IPv6
