@@ -161,12 +161,12 @@ spec:
         # loadBalancerIP: 10.0.100.1
         # externalIPs:
         # - *lbip
-        externalTrafficPolicy: Cluster
-        # externalTrafficPolicy: Local
-        ipFamilyPolicy: PreferDualStack
-        ipFamilies:
+        # externalTrafficPolicy: Cluster
+        externalTrafficPolicy: Local
+        # ipFamilyPolicy: PreferDualStack
+        # ipFamilies:
         # - IPv6
-        - IPv4
+        # - IPv4
     ports:
       traefik:
         port: 9090
