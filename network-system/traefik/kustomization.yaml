@@ -6,4 +6,4 @@ resources:
 - https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.5.1/experimental-install.yaml
 - ./certificates.yaml
 - ./traefik-crds.yaml
-# - ./traefik.yaml
+- ./traefik.yaml
