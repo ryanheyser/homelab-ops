@@ -165,7 +165,7 @@ spec:
         externalTrafficPolicy: Local
         ipFamilyPolicy: PreferDualStack
         ipFamilies:
-        - IPv6
+        # - IPv6
         - IPv4
     ports:
       traefik:
