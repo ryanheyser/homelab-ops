@@ -1,4 +1,4 @@
-apiVersion: helm.toolkit.fluxcd.io/v2
+on apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: traefik
@@ -158,10 +158,14 @@ spec:
         # traefik.ingress.kubernetes.io/service.nativelb: "true"
       spec:
         # loadBalancerIP: 10.0.100.1
-        externalIPs:
-        - *lbip
+        # externalIPs:
+        # - *lbip
         # externalTrafficPolicy: Cluster
         externalTrafficPolicy: Local
+        ipFamilyPolicy: PreferDualStack
+        ipFamilies:
+        - ipv6
+        - ipv4
     ports:
       traefik:
         port: 9090
