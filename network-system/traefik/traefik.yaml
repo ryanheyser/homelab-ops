@@ -154,7 +154,8 @@ spec:
         cni.projectcalico.org/ipAddrs: '["10.0.100.1"]'
         metallb.io/address-pool: "system"
         metallb.io/allow-shared-ip: "traefik-share"
-        metallb.io/loadBalancerIPs: &lbip 10.0.100.1
+        # metallb.io/loadBalancerIPs: &lbip 10.0.100.1
+        metallb.io/loadBalancerIPs: 10.0.100.1
         # traefik.ingress.kubernetes.io/service.nativelb: "true"
       spec:
         # loadBalancerIP: 10.0.100.1
