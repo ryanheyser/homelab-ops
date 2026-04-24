@@ -75,8 +75,6 @@ data:
         - quic://dns.quad9.net
         - h3://dns.quad9.net
         - tls://dns11.quad9.net
-        - tls://9f9fac.dns.nextdns.io
-        - quic://9f9fac.dns.nextdns.io
       upstream_dns_file: ""
       bootstrap_dns:
         - 9.9.9.11
