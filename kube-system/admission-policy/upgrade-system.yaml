@@ -24,3 +24,14 @@ spec:
         initContainers:
         - name: "*"
           imagePullPolicy: Always
+---
+apiVersion: admissionregistration.k8s.io/v1alpha1
+kind: MutatingAdmissionPolicyBinding
+metadata:
+  name: set-image-pull-policy-always-binding
+spec:
+  policyName: set-image-pull-policy-always
+  matchResources:
+    namespaceSelector:
+      matchLabels:
+        kubernetes.io/metadata.name: "upgrade-system"
