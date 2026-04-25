@@ -1,0 +1,26 @@
+apiVersion: admissionregistration.k8s.io/v1alpha1
+kind: MutatingAdmissionPolicy
+metadata:
+  name: set-image-pull-policy-always
+spec:
+  reinvocationPolicy: Never
+  matchConstraints:
+    matchPolicy: Equivalent
+    namespaces:
+      matchLabels:
+        # Target specific namespace
+        kubernetes.io/metadata.name: "upgrade-system" 
+    resourceRules:
+    - apiGroups: [""]
+      apiVersions: ["v1"]
+      operations: ["CREATE", "UPDATE"]
+      resources: ["pods"]
+  mutations:
+  - patchStrategicMerge:
+      spec:
+        containers:
+        - name: "*"
+          imagePullPolicy: Always
+        initContainers:
+        - name: "*"
+          imagePullPolicy: Always
