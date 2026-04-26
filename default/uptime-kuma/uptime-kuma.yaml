@@ -73,7 +73,7 @@ spec:
         annotations:
           kubernetes.io/ingress.class: traefik
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
-          # traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+          traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: Media
           gethomepage.dev/icon: uptime-kuma.svg
