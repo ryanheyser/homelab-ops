@@ -34,5 +34,21 @@ spec:
     # The defaultt value is Issuer (i.e. a locally namespaced Issuer)
     kind: ClusterIssuer
     group: cert-manager.io
-
 ---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: seedbox2-homelab-heyser-xyz
+spec:
+  subject:
+    organizations:
+    - Heyser
+  secretName: seedbox2-homelab-heyser-xyz-tls
+  dnsNames:
+  - seedbox2.homelab.heyser.xyz
+  issuerRef:
+    name: letsencrypt-prod
+    # We can reference ClusterIssuers by changing the kind here.
+    # The defaultt value is Issuer (i.e. a locally namespaced Issuer)
+    kind: ClusterIssuer
+    group: cert-manager.io
