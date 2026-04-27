@@ -78,7 +78,7 @@ spec:
         bouncer:
           moduleName: github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin
           # renovate: depName=maxlerebourg/crowdsec-bouncer-traefik-plugin datasource=github-releases
-          version: 1.5.1
+          version: 1.6.0
         real-ip:
           moduleName: github.com/Paxxs/traefik-get-real-ip
           version: v1.0.4
