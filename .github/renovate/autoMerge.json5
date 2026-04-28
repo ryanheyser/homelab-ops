@@ -29,7 +29,8 @@
         "ghcr.io/omegion/vault-unseal",
         "ghcr.io/calibrain/shelfmark",
         "ghcr.io/gethomepage/homepage",
-        "ghcr.io/tautulli/tautulli"
+        "ghcr.io/tautulli/tautulli",
+        "ollama/ollama"
       ]
     },
     {
