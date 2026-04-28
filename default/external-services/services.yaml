@@ -114,3 +114,65 @@ spec:
   type: ExternalName
   externalName: 10.0.1.1
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vividria-ip
+  annotations:
+    traefik.ingress.kubernetes.io/service.serversscheme: "https"
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
+    # traefik.ingress.kubernetes.io/service.nativelb: "true"
+    traefik.ingress.kubernetes.io/service.serverstransport: default-vividriatransport@kubernetescrd
+    tailscale.com/expose: "true"
+    tailscale.com/hostname: "vividria"
+    tailscale.com/proxy-group: ts-ingress-proxygroup
+    tailscale.com/tags: "services"
+spec:
+  ports:
+  - name: plex
+    port: 32400
+    protocol: TCP
+    targetPort: 32400
+  # clusterIP: None
+  # clusterIPs:
+  # - None
+  # internalTrafficPolicy: Cluster
+  # ipFamilies:
+  # - IPv4
+  # ipFamilyPolicy: SingleStack
+  # type: ClusterIP
+  # sessionAffinity: None
+  type: ExternalName
+  externalName: 10.0.1.1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: walky-ip
+  annotations:
+    traefik.ingress.kubernetes.io/service.serversscheme: "https"
+    traefik.ingress.kubernetes.io/service.passhostheader: "true"
+    # traefik.ingress.kubernetes.io/service.nativelb: "true"
+    traefik.ingress.kubernetes.io/service.serverstransport: default-walkytransport@kubernetescrd
+    tailscale.com/expose: "true"
+    tailscale.com/hostname: "walky"
+    tailscale.com/proxy-group: ts-ingress-proxygroup
+    tailscale.com/tags: "services"
+spec:
+  ports:
+  - name: plex
+    port: 32400
+    protocol: TCP
+    targetPort: 32400
+  # clusterIP: None
+  # clusterIPs:
+  # - None
+  # internalTrafficPolicy: Cluster
+  # ipFamilies:
+  # - IPv4
+  # ipFamilyPolicy: SingleStack
+  # type: ClusterIP
+  # sessionAffinity: None
+  type: ExternalName
+  externalName: 10.0.1.3
+---

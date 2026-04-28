@@ -82,12 +82,22 @@ spec:
               number: 32400
         path: /
         pathType: Prefix
-  - host: plex.heyser.xyz
+  - host: vividria.homelab.heyser.xyz
     http:
       paths:
       - backend:
           service:
-            name: plex-ip
+            name: vividria-ip
+            port:
+              number: 32400
+        path: /
+        pathType: Prefix
+  - host: walky.homelab.heyser.xyz
+    http:
+      paths:
+      - backend:
+          service:
+            name: walky-ip
             port:
               number: 32400
         path: /
@@ -95,5 +105,6 @@ spec:
   tls:
   - hosts:
     - plex.homelab.heyser.xyz
-    - plex.heyser.xyz
+    - vividria.homelab.heyser.xyz
+    - walky.homelab.heyser.xyz
     secretName: plex-homelab-heyser-xyz-tls
