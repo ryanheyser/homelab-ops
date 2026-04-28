@@ -69,6 +69,7 @@ data:
         - '[/homelab.heyser.lan/]10.0.0.1:53'
         - '[/heyser.xyz/]10.0.0.1:53'
         - '[/heyser.lan/]10.0.0.1:53'
+        - '[/plex.direct/]10.0.0.1:53'
         - '[/svc.cluster.local/]169.254.20.10:53'
         - '[/cluster.local/]169.254.20.10:53'
         - tls://dns.quad9.net
