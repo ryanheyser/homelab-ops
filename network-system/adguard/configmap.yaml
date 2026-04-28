@@ -314,6 +314,7 @@ data:
       - '@@||kracko.homelab.heyser.xyz^$important,client=10.255.0.0/16|10.0.0.0/18,dnsrewrite=NOERROR;A;10.0.0.8'
       - '||awoofy.homelab.heyser.xyz^$dnsrewrite,client=10.255.0.0/16|10.0.0.0/18'
       - '@@||awoofy.homelab.heyser.xyz^$important,client=10.255.0.0/16|10.0.0.0/18,dnsrewrite=NOERROR;A;10.0.0.8'
+      - '@@||plex.direct^$important'
       - '@@||aa.paramountplus.com^$important'
       - '@@||cbsinteractive.hb.omtrdc.net^$important'
       - '@@||ads.play.cbsi.video^$important'
