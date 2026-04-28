@@ -58,11 +58,11 @@ spec:
       port: 3000
       # responseForwarding:
       #   flushInterval: 100ms
-      sticky:
-        cookie:
-          name: adguard-home
-          secure: true
-          httpOnly: true
+      # sticky:
+      #   cookie:
+      #     name: adguard-home
+      #     secure: true
+      #     httpOnly: true
   tls:
     secretName: adguard-homelab-heyser-xyz-tls
     domains:
