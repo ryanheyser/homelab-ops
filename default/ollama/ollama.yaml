@@ -33,10 +33,10 @@ spec:
         defaultContainerOptions:
           resources:
             requests:
-              cpu: 4
+              cpu: 1
               memory: 2Gi
             limits:
-              cpu: 8
+              cpu: 3
               memory: 8Gi
         annotations:
           reloader.stakater.com/auto: "true"
