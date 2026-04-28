@@ -2,14 +2,14 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: uptime-kuma-homelab-heyser-xyz
+  name: ollama-homelab-heyser-xyz
 spec:
   subject:
     organizations:
     - Heyser
-  secretName: uptime-kuma-homelab-heyser-xyz-tls
+  secretName: ollama-homelab-heyser-xyz-tls
   dnsNames:
-  - uptime-kuma.homelab.heyser.xyz
+  - ollama.homelab.heyser.xyz
   issuerRef:
     name: letsencrypt-prod
     # We can reference ClusterIssuers by changing the kind here.
