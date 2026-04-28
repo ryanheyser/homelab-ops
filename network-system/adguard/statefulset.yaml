@@ -8,6 +8,8 @@ metadata:
   labels:
     app.kubernetes.io/instance: adguard
     app.kubernetes.io/name: adguard-home
+  annotations:
+    configmap.reloader.stakater.com/reload: adguard-home-config
 spec:
   revisionHistoryLimit: 3
   replicas: 14
