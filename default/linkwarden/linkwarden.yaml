@@ -47,16 +47,6 @@ spec:
           tolerations:
           - key: "arm"
             operator: "Exists"
-        initContainers:
-          init-chromium:
-            image:
-              # renovate: repository=ghcr.io/linkwarden/linkwarden
-              repository: ghcr.io/linkwarden/linkwarden
-              tag: v2.14.1
-            securityContext:
-              runAsUser: 1000
-              runAsGroup: 3001
-            command: ["bash", "-c", "npx playwright install chromium"]
         containers:
           main:
             image:
@@ -80,6 +70,7 @@ spec:
               - secretRef:
                   name: linkwarden-database
                   optional: false
+            command: ["bash", "-c", "npx playwright install chromium && yarn prisma:deploy && yarn concurrently:start"]
           meili:
             image:
               # renovate: repository=getmeili/meilisearch
