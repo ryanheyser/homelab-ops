@@ -154,7 +154,7 @@ spec:
           main:
             main:
             - path: "/data/data"
-      meiliData:
+      meili-data:
         existingClaim: linkwarden-meili-data
         advancedMounts:
           main:
