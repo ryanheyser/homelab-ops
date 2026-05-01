@@ -47,6 +47,16 @@ spec:
           tolerations:
           - key: "arm"
             operator: "Exists"
+        initContainers:
+        - name: init-chromium
+          image:
+            # renovate: repository=ghcr.io/linkwarden/linkwarden
+            repository: ghcr.io/linkwarden/linkwarden
+            tag: v2.14.1
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 3001
+          command: ["bash", "-c", "npx playwright install chromium"]
         containers:
           main:
             image:
