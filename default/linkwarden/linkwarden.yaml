@@ -92,7 +92,7 @@ spec:
           http:
             port: *port
       meili:
-        controller: meili
+        controller: main
         type: ClusterIP
         ports:
           http:
