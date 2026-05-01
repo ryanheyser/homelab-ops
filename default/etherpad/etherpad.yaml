@@ -59,48 +59,13 @@ spec:
             env:
               TZ: "America/New_York"
               NODE_ENV: production
-              ADMIN_PASSWORD:
-                valueFrom:
-                  secretKeyRef:
-                    name: etherpad-config
-                    key: adminPassword
-                    optional: false
-              DB_HOST:
-                valueFrom:
-                  secretKeyRef:
-                    name: etherpad-database
-                    key: databaseHost
-                    optional: false
-              DB_PORT:
-                valueFrom:
-                  secretKeyRef:
-                    name: etherpad-database
-                    key: databasePort
-                    optional: false
-              DB_NAME:
-                valueFrom:
-                  secretKeyRef:
-                    name: etherpad-database
-                    key: databaseName
-                    optional: false
-              DB_USER:
-                valueFrom:
-                  secretKeyRef:
-                    name: etherpad-database
-                    key: databaseUser
-                    optional: false
-              DB_PASS:
-                valueFrom:
-                  secretKeyRef:
-                    name: etherpad-database
-                    key: databasePass
-                    optional: false
-              DB_TYPE:
-                valueFrom:
-                  secretKeyRef:
-                    name: etherpad-database
-                    key: databaseType
-                    optional: false
+            envFrom:
+              - secretRef:
+                  name: etherpad-config
+                  optional: false
+              - secretRef:
+                  name: etherpad-database
+                  optional: false
     service:
       main:
         controller: main
