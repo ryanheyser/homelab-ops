@@ -5,5 +5,5 @@ resources:
 - ./pvc.yaml
 - ./certificate.yaml
 - ./secret.yaml
-- ./etherpad.yaml
-- ./tailscale.yaml
+# - ./etherpad.yaml
+# - ./tailscale.yaml
