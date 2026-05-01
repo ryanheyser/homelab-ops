@@ -50,66 +50,64 @@ spec:
         containers:
           main:
             image:
-              # renovate: repository=ghcr.io/linkwarden/linkwarden
-              repository: ghcr.io/linkwarden/linkwarden
-              tag: v2.14.1
+              # renovate: repository=etherpad/etherpad
+              repository: etherpad/etherpad
+              tag: 2.7.2
             securityContext:
               runAsUser: 1000
               runAsGroup: 3001
             env:
               TZ: "America/New_York"
-              LINKWARDEN_PORT: &port "3000"
-              NEXTAUTH_URL:
+              NODE_ENV: production
+              ADMIN_PASSWORD:
                 valueFrom:
                   secretKeyRef:
-                    name: linkwarden-config
-                    key: nextAuthURL
+                    name: etherpad-config
+                    key: adminPassword
                     optional: false
-              NEXTAUTH_SECRET:
+              DB_HOST:
                 valueFrom:
                   secretKeyRef:
-                    name: linkwarden-config
-                    key: nextAuthSecret
+                    name: etherpad-database
+                    key: databaseHost
                     optional: false
-              MEILI_MASTER_KEY:
+              DB_PORT:
                 valueFrom:
                   secretKeyRef:
-                    name: linkwarden-config
-                    key: meiliMasterKey
+                    name: etherpad-database
+                    key: databasePort
                     optional: false
-              POSTGRES_PASSWORD:
+              DB_NAME:
                 valueFrom:
                   secretKeyRef:
-                    name: linkwarden-database
-                    key: password
+                    name: etherpad-database
+                    key: databaseName
                     optional: false
-              DATABASE_URL:
+              DB_USER:
                 valueFrom:
                   secretKeyRef:
-                    name: linkwarden-database
-                    key: databaseURL
+                    name: etherpad-database
+                    key: databaseUser
                     optional: false
-              NEXT_PUBLIC_OLLAMA_ENDPOINT_URL:
+              DB_PASS:
                 valueFrom:
                   secretKeyRef:
-                    name: ollama-config
-                    key: ollamaEndpointURL
+                    name: etherpad-database
+                    key: databasePass
                     optional: false
-              OLLAMA_MODEL:
+              DB_TYPE:
                 valueFrom:
                   secretKeyRef:
-                    name: ollama-config
-                    key: ollamaModel
+                    name: etherpad-database
+                    key: databaseType
                     optional: false
-
     service:
       main:
         controller: main
         type: ClusterIP
         ports:
           http:
-            port: *port
-
+            port: 9001
     ingress:
       main:
         className: 'traefik'
@@ -119,11 +117,11 @@ spec:
           traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: Media
-          gethomepage.dev/icon: linkwarden.svg
-          gethomepage.dev/name: Linkwarden
-          gethomepage.dev/description: Linkwarden is a self-hosted bookmarking tool that allows you to manage and organize your links.
+          gethomepage.dev/icon: etherpad.svg
+          gethomepage.dev/name: Etherpad
+          gethomepage.dev/description: Etherpad is a real-time collaborative editor.
         hosts:
-        - host: &host "linkwarden.homelab.heyser.xyz"
+        - host: &host "etherpad.homelab.heyser.xyz"
           paths:
           - path: /
             pathType: Prefix
@@ -133,7 +131,7 @@ spec:
         tls:
         - hosts:
           - *host
-          secretName: linkwarden-homelab-heyser-xyz-tls
+          secretName: etherpad-homelab-heyser-xyz-tls
 
     # route:
     #   main:
@@ -160,9 +158,15 @@ spec:
     #         request: 30s
 
     persistence:
-      config:
-        existingClaim: linkwarden-data
+      plugins:
+        existingClaim: etherpad-plugins
         advancedMounts:
           main:
             main:
-            - path: "/data/data"
+            - path: "/opt/etherpad-lite/src/plugin_packages"
+      etherpad-var:
+        existingClaim: etherpad-var
+        advancedMounts:
+          main:
+            main:
+            - path: "/opt/etherpad-lite/var"
