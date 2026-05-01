@@ -1,0 +1,186 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: linkwarden
+  namespace: default
+spec:
+  driftDetection:
+    mode: enabled
+  interval: 15m
+  chart:
+    spec:
+      # renovate: registryUrl=https://bjw-s-labs.github.io/helm-charts
+      chart: app-template
+      version: 4.6.2
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controllers:
+      main:
+        defaultContainerOptions:
+          resources:
+            requests:
+              cpu: 10m
+              memory: 250Mi
+            limits:
+              memory: 2Gi
+        annotations:
+          reloader.stakater.com/auto: "true"
+        pod:
+          securityContext:
+            fsGroup: 3001
+            fsGroupChangePolicy: "OnRootMismatch"
+            supplementalGroups: [ 568, 911, 1000, 1001 ]
+          tolerations:
+          - key: "arm"
+            operator: "Exists"
+        containers:
+          main:
+            image:
+              # renovate: repository=ghcr.io/linkwarden/linkwarden
+              repository: ghcr.io/linkwarden/linkwarden
+              tag: v2.14.1
+            securityContext:
+              runAsUser: 1000
+              runAsGroup: 3001
+            env:
+              TZ: "America/New_York"
+              LINKWARDEN_PORT: &port "3000"
+              MEILI_HOST: http://meili.default.svc.cluster.local:7700
+              NEXT_PUBLIC_OLLAMA_ENDPOINT_URL: http://ollama.default.svc.cluster.local:11434
+              OLLAMA_MODEL: qwen3.5:0.8b
+              NEXTAUTH_URL:
+                valueFrom:
+                  secretKeyRef:
+                    name: linkwarden-config
+                    key: nextAuthURL
+                    optional: false
+              NEXTAUTH_SECRET:
+                valueFrom:
+                  secretKeyRef:
+                    name: linkwarden-config
+                    key: nextAuthSecret
+                    optional: false
+              POSTGRES_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: linkwarden-database
+                    key: password
+                    optional: false
+              DATABASE_URL:
+                valueFrom:
+                  secretKeyRef:
+                    name: linkwarden-database
+                    key: databaseURL
+                    optional: false
+              MEILI_MASTER_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: linkwarden-config
+                    key: meiliMasterKey
+                    optional: false
+          meili:
+            image:
+              # renovate: repository=getmeili/meilisearch
+              repository: getmeili/meilisearch
+              tag: v1.12.8
+            securityContext:
+              runAsUser: 1000
+              runAsGroup: 3001
+            env:
+              TZ: "America/New_York"
+              MEILI_MASTER_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: linkwarden-config
+                    key: meiliMasterKey
+                    optional: false
+    service:
+      main:
+        controller: main
+        type: ClusterIP
+        ports:
+          http:
+            port: *port
+      meili:
+        controller: meili
+        type: ClusterIP
+        ports:
+          http:
+            port: 7700
+
+    ingress:
+      main:
+        className: 'traefik'
+        annotations:
+          kubernetes.io/ingress.class: traefik
+          traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+          traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: Media
+          gethomepage.dev/icon: linkwarden.svg
+          gethomepage.dev/name: Linkwarden
+          gethomepage.dev/description: Linkwarden is a self-hosted bookmarking tool that allows you to manage and organize your links.
+        hosts:
+        - host: &host "linkwarden.homelab.heyser.xyz"
+          paths:
+          - path: /
+            pathType: Prefix
+            service:
+              identifier: main
+              port: http
+        tls:
+        - hosts:
+          - *host
+          secretName: linkwarden-homelab-heyser-xyz-tls
+
+    # route:
+    #   main:
+    #     enabled: true
+    #     kind: HTTPRoute
+    #     parentRefs:
+    #     - group: gateway.networking.k8s.io
+    #       kind: Gateway
+    #       name: traefik-gateway
+    #       namespace: network-system
+    #     hostnames:
+    #     - *host
+    #     rules:
+    #     - matches:
+    #       - path:
+    #           type: PathPrefix
+    #           value: /
+    #       backendRefs:
+    #       - kind: Service
+    #         name: audiobookshelf
+    #         port: *port
+    #       timeouts:
+    #         backendRequest: 10s
+    #         request: 30s
+
+    persistence:
+      config:
+        existingClaim: linkwarden-data
+        advancedMounts:
+          main:
+            main:
+            - path: "/data/data"
+      meili_data:
+        existingClaim: linkwarden-meili-data
+        advancedMounts:
+          main:
+            meili:
+            - path: "/meili_data"

@@ -1,0 +1,15 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: linkwarden-tailscale
+spec:
+  defaultBackend:
+    service:
+      name: linkwarden
+      port:
+        number: 3000
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - linkwarden

@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: linkwarden-data
+  namespace: default
+  annotations:
+    nfs.io/storage-path: "containers/kubernetes/linkwarden/data"
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: "nfs-dynamic"
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: linkwarden-meili-data
+  namespace: default
+  annotations:
+    nfs.io/storage-path: "containers/kubernetes/linkwarden/meili"
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: "nfs-dynamic"
+  resources:
+    requests:
+      storage: 10Gi
