@@ -59,7 +59,7 @@ spec:
             env:
               TZ: "America/New_York"
               LINKWARDEN_PORT: &port "3000"
-              MEILI_HOST: http://meili.default.svc.cluster.local:7700
+              MEILI_HOST: http://linkwarden-meili.default.svc.cluster.local:7700
               NEXT_PUBLIC_OLLAMA_ENDPOINT_URL: http://ollama.default.svc.cluster.local:11434
               OLLAMA_MODEL: qwen3.5:0.8b
               NEXTAUTH_URL: http://linkwarden.default.svc.cluster.local:3000
