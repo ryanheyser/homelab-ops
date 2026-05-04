@@ -33,6 +33,7 @@
         "ghcr.io/grimmory-tools/grimmory",
         "ghcr.io/louislam/uptime-kuma",
         "hashicorp/vault-k8s",
+        "ghcr.io/home-operations/qbittorrent",
         "ollama/ollama",
         "getmeili/meilisearch"
       ]
