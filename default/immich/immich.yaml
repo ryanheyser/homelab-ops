@@ -54,41 +54,12 @@ spec:
               UPLOAD_LOCATION: "/library"
               REDIS_HOSTNAME: "immich-valkey"
               DB_STORAGE_TYPE: "HDD"
-              DB_HOSTNAME:
-                valueFrom:
-                  secretKeyRef:
-                    name: immich-database-app
-                    key: host
-                    optional: false
-              DB_PASSWORD:
-                valueFrom:
-                  secretKeyRef:
-                    name: immich-database-app
-                    key: pgpass
-                    optional: false
-              DB_USERNAME:
-                valueFrom:
-                  secretKeyRef:
-                    name: immich-database-app
-                    key: user
-                    optional: false
+              DB_VECTOR_EXTENSION: "pgvector"
               DB_URL:
                 valueFrom:
                   secretKeyRef:
-                    name: immich-database-app
-                    key: fqdn-uri
-                    optional: false
-              DB_PORT:
-                valueFrom:
-                  secretKeyRef:
-                    name: immich-database-app
-                    key: port
-                    optional: false
-              DB_DATABASE_NAME:
-                valueFrom:
-                  secretKeyRef:
-                    name: immich-database-app
-                    key: dbname
+                    name: immich-database-credentials
+                    key: dbUrl
                     optional: false
 
     immich:
