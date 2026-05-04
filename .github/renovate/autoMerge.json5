@@ -30,7 +30,11 @@
         "ghcr.io/calibrain/shelfmark",
         "ghcr.io/gethomepage/homepage",
         "ghcr.io/tautulli/tautulli",
-        "ollama/ollama"
+        "ghcr.io/grimmory-tools/grimmory",
+        "ghcr.io/louislam/uptime-kuma",
+        "hashicorp/vault-k8s",
+        "ollama/ollama",
+        "getmeili/meilisearch"
       ]
     },
     {
