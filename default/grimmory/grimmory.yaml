@@ -52,7 +52,7 @@ spec:
             image:
               # renovate: repository=ghcr.io/grimmory-tools/grimmory
               repository: ghcr.io/grimmory-tools/grimmory
-              tag: v3.0.2
+              tag: v3.0.3
             securityContext:
               runAsUser: 0
               runAsGroup: 0
