@@ -53,3 +53,224 @@ spec:
       - name: adguard-home-index-13
         port: 3000
         percent: 100
+---
+apiVersion: traefik.io/v1alpha1
+kind: TraefikService
+metadata:
+  name: adguard-home-dns-tcp
+  namespace: network-system
+spec:
+  mirroring:
+    name: adguard-home-dns-tcp
+    port: 53
+    mirrorBody: true
+    maxBodySize: -1
+    mirrors:
+      - name: adguard-home-index-0
+        port: 53
+        percent: 100
+      - name: adguard-home-index-1
+        port: 53
+        percent: 100
+      - name: adguard-home-index-2
+        port: 53
+        percent: 100
+      - name: adguard-home-index-3
+        port: 53
+        percent: 100
+      - name: adguard-home-index-4
+        port: 53
+        percent: 100
+      - name: adguard-home-index-5
+        port: 53
+        percent: 100
+      - name: adguard-home-index-6
+        port: 53
+        percent: 100
+      - name: adguard-home-index-7
+        port: 53
+        percent: 100
+      - name: adguard-home-index-8
+        port: 53
+        percent: 100
+      - name: adguard-home-index-9
+        port: 53
+        percent: 100
+      - name: adguard-home-index-10
+        port: 53
+        percent: 100
+      - name: adguard-home-index-11
+        port: 53
+        percent: 100
+      - name: adguard-home-index-12
+        port: 53
+        percent: 100
+      - name: adguard-home-index-13
+        port: 53
+        percent: 100
+---
+apiVersion: traefik.io/v1alpha1
+kind: TraefikService
+metadata:
+  name: adguard-home-dns-udp
+  namespace: network-system
+spec:
+  mirroring:
+    name: adguard-home-dns-udp
+    port: 53
+    mirrorBody: true
+    maxBodySize: -1
+    mirrors:
+      - name: adguard-home-index-0
+        port: 53
+        percent: 100
+      - name: adguard-home-index-1
+        port: 53
+        percent: 100
+      - name: adguard-home-index-2
+        port: 53
+        percent: 100
+      - name: adguard-home-index-3
+        port: 53
+        percent: 100
+      - name: adguard-home-index-4
+        port: 53
+        percent: 100
+      - name: adguard-home-index-5
+        port: 53
+        percent: 100
+      - name: adguard-home-index-6
+        port: 53
+        percent: 100
+      - name: adguard-home-index-7
+        port: 53
+        percent: 100
+      - name: adguard-home-index-8
+        port: 53
+        percent: 100
+      - name: adguard-home-index-9
+        port: 53
+        percent: 100
+      - name: adguard-home-index-10
+        port: 53
+        percent: 100
+      - name: adguard-home-index-11
+        port: 53
+        percent: 100
+      - name: adguard-home-index-12
+        port: 53
+        percent: 100
+      - name: adguard-home-index-13
+        port: 53
+        percent: 100
+---
+apiVersion: traefik.io/v1alpha1
+kind: TraefikService
+metadata:
+  name: adguard-home-dns-tls-tcp
+  namespace: network-system
+spec:
+  mirroring:
+    name: adguard-home-dns-tls-tcp
+    port: 853
+    mirrorBody: true
+    maxBodySize: -1
+    mirrors:
+      - name: adguard-home-index-0
+        port: 853
+        percent: 100
+      - name: adguard-home-index-1
+        port: 853
+        percent: 100
+      - name: adguard-home-index-2
+        port: 853
+        percent: 100
+      - name: adguard-home-index-3
+        port: 853
+        percent: 100
+      - name: adguard-home-index-4
+        port: 853
+        percent: 100
+      - name: adguard-home-index-5
+        port: 853
+        percent: 100
+      - name: adguard-home-index-6
+        port: 853
+        percent: 100
+      - name: adguard-home-index-7
+        port: 853
+        percent: 100
+      - name: adguard-home-index-8
+        port: 853
+        percent: 100
+      - name: adguard-home-index-9
+        port: 853
+        percent: 100
+      - name: adguard-home-index-10
+        port: 853
+        percent: 100
+      - name: adguard-home-index-11
+        port: 853
+        percent: 100
+      - name: adguard-home-index-12
+        port: 853
+        percent: 100
+      - name: adguard-home-index-13
+        port: 853
+        percent: 100
+---
+apiVersion: traefik.io/v1alpha1
+kind: TraefikService
+metadata:
+  name: adguard-home-dns-quic-udp
+  namespace: network-system
+spec:
+  mirroring:
+    name: adguard-home-dns-quic-udp
+    port: 784
+    mirrorBody: true
+    maxBodySize: -1
+    mirrors:
+      - name: adguard-home-index-0
+        port: 784
+        percent: 100
+      - name: adguard-home-index-1
+        port: 784
+        percent: 100
+      - name: adguard-home-index-2
+        port: 784
+        percent: 100
+      - name: adguard-home-index-3
+        port: 784
+        percent: 100
+      - name: adguard-home-index-4
+        port: 784
+        percent: 100
+      - name: adguard-home-index-5
+        port: 784
+        percent: 100
+      - name: adguard-home-index-6
+        port: 784
+        percent: 100
+      - name: adguard-home-index-7
+        port: 784
+        percent: 100
+      - name: adguard-home-index-8
+        port: 784
+        percent: 100
+      - name: adguard-home-index-9
+        port: 784
+        percent: 100
+      - name: adguard-home-index-10
+        port: 784
+        percent: 100
+      - name: adguard-home-index-11
+        port: 784
+        percent: 100
+      - name: adguard-home-index-12
+        port: 784
+        percent: 100
+      - name: adguard-home-index-13
+        port: 784
+        percent: 100
+---

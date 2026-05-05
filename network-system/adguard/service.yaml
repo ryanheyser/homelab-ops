@@ -248,6 +248,22 @@ spec:
     targetPort: 3000
     protocol: TCP
     name: http
+  - port: 53
+    targetPort: 53
+    protocol: TCP
+    name: dns-tcp
+  - port: 53
+    targetPort: 53
+    protocol: UDP
+    name: dns-udp
+  - port: 853
+    targetPort: 853
+    protocol: TCP
+    name: dns-tls-tcp
+  - port: 784
+    targetPort: 784
+    protocol: UDP
+    name: dns-quic-udp
   selector:
     app.kubernetes.io/name: adguard-home
     app.kubernetes.io/instance: adguard
@@ -287,6 +303,22 @@ spec:
     targetPort: 3000
     protocol: TCP
     name: http
+  - port: 53
+    targetPort: 53
+    protocol: TCP
+    name: dns-tcp
+  - port: 53
+    targetPort: 53
+    protocol: UDP
+    name: dns-udp
+  - port: 853
+    targetPort: 853
+    protocol: TCP
+    name: dns-tls-tcp
+  - port: 784
+    targetPort: 784
+    protocol: UDP
+    name: dns-quic-udp
   selector:
     app.kubernetes.io/name: adguard-home
     app.kubernetes.io/instance: adguard
@@ -326,6 +358,22 @@ spec:
     targetPort: 3000
     protocol: TCP
     name: http
+  - port: 53
+    targetPort: 53
+    protocol: TCP
+    name: dns-tcp
+  - port: 53
+    targetPort: 53
+    protocol: UDP
+    name: dns-udp
+  - port: 853
+    targetPort: 853
+    protocol: TCP
+    name: dns-tls-tcp
+  - port: 784
+    targetPort: 784
+    protocol: UDP
+    name: dns-quic-udp
   selector:
     app.kubernetes.io/name: adguard-home
     app.kubernetes.io/instance: adguard
@@ -365,6 +413,22 @@ spec:
     targetPort: 3000
     protocol: TCP
     name: http
+  - port: 53
+    targetPort: 53
+    protocol: TCP
+    name: dns-tcp
+  - port: 53
+    targetPort: 53
+    protocol: UDP
+    name: dns-udp
+  - port: 853
+    targetPort: 853
+    protocol: TCP
+    name: dns-tls-tcp
+  - port: 784
+    targetPort: 784
+    protocol: UDP
+    name: dns-quic-udp
   selector:
     app.kubernetes.io/name: adguard-home
     app.kubernetes.io/instance: adguard
@@ -404,6 +468,22 @@ spec:
     targetPort: 3000
     protocol: TCP
     name: http
+  - port: 53
+    targetPort: 53
+    protocol: TCP
+    name: dns-tcp
+  - port: 53
+    targetPort: 53
+    protocol: UDP
+    name: dns-udp
+  - port: 853
+    targetPort: 853
+    protocol: TCP
+    name: dns-tls-tcp
+  - port: 784
+    targetPort: 784
+    protocol: UDP
+    name: dns-quic-udp
   selector:
     app.kubernetes.io/name: adguard-home
     app.kubernetes.io/instance: adguard
@@ -443,6 +523,22 @@ spec:
     targetPort: 3000
     protocol: TCP
     name: http
+  - port: 53
+    targetPort: 53
+    protocol: TCP
+    name: dns-tcp
+  - port: 53
+    targetPort: 53
+    protocol: UDP
+    name: dns-udp
+  - port: 853
+    targetPort: 853
+    protocol: TCP
+    name: dns-tls-tcp
+  - port: 784
+    targetPort: 784
+    protocol: UDP
+    name: dns-quic-udp
   selector:
     app.kubernetes.io/name: adguard-home
     app.kubernetes.io/instance: adguard
@@ -482,6 +578,22 @@ spec:
     targetPort: 3000
     protocol: TCP
     name: http
+  - port: 53
+    targetPort: 53
+    protocol: TCP
+    name: dns-tcp
+  - port: 53
+    targetPort: 53
+    protocol: UDP
+    name: dns-udp
+  - port: 853
+    targetPort: 853
+    protocol: TCP
+    name: dns-tls-tcp
+  - port: 784
+    targetPort: 784
+    protocol: UDP
+    name: dns-quic-udp
   selector:
     app.kubernetes.io/name: adguard-home
     app.kubernetes.io/instance: adguard
@@ -521,6 +633,22 @@ spec:
     targetPort: 3000
     protocol: TCP
     name: http
+  - port: 53
+    targetPort: 53
+    protocol: TCP
+    name: dns-tcp
+  - port: 53
+    targetPort: 53
+    protocol: UDP
+    name: dns-udp
+  - port: 853
+    targetPort: 853
+    protocol: TCP
+    name: dns-tls-tcp
+  - port: 784
+    targetPort: 784
+    protocol: UDP
+    name: dns-quic-udp
   selector:
     app.kubernetes.io/name: adguard-home
     app.kubernetes.io/instance: adguard
@@ -560,6 +688,22 @@ spec:
     targetPort: 3000
     protocol: TCP
     name: http
+  - port: 53
+    targetPort: 53
+    protocol: TCP
+    name: dns-tcp
+  - port: 53
+    targetPort: 53
+    protocol: UDP
+    name: dns-udp
+  - port: 853
+    targetPort: 853
+    protocol: TCP
+    name: dns-tls-tcp
+  - port: 784
+    targetPort: 784
+    protocol: UDP
+    name: dns-quic-udp
   selector:
     app.kubernetes.io/name: adguard-home
     app.kubernetes.io/instance: adguard
@@ -599,6 +743,22 @@ spec:
     targetPort: 3000
     protocol: TCP
     name: http
+  - port: 53
+    targetPort: 53
+    protocol: TCP
+    name: dns-tcp
+  - port: 53
+    targetPort: 53
+    protocol: UDP
+    name: dns-udp
+  - port: 853
+    targetPort: 853
+    protocol: TCP
+    name: dns-tls-tcp
+  - port: 784
+    targetPort: 784
+    protocol: UDP
+    name: dns-quic-udp
   selector:
     app.kubernetes.io/name: adguard-home
     app.kubernetes.io/instance: adguard
@@ -638,6 +798,22 @@ spec:
     targetPort: 3000
     protocol: TCP
     name: http
+  - port: 53
+    targetPort: 53
+    protocol: TCP
+    name: dns-tcp
+  - port: 53
+    targetPort: 53
+    protocol: UDP
+    name: dns-udp
+  - port: 853
+    targetPort: 853
+    protocol: TCP
+    name: dns-tls-tcp
+  - port: 784
+    targetPort: 784
+    protocol: UDP
+    name: dns-quic-udp
   selector:
     app.kubernetes.io/name: adguard-home
     app.kubernetes.io/instance: adguard
@@ -677,6 +853,22 @@ spec:
     targetPort: 3000
     protocol: TCP
     name: http
+  - port: 53
+    targetPort: 53
+    protocol: TCP
+    name: dns-tcp
+  - port: 53
+    targetPort: 53
+    protocol: UDP
+    name: dns-udp
+  - port: 853
+    targetPort: 853
+    protocol: TCP
+    name: dns-tls-tcp
+  - port: 784
+    targetPort: 784
+    protocol: UDP
+    name: dns-quic-udp
   selector:
     app.kubernetes.io/name: adguard-home
     app.kubernetes.io/instance: adguard
@@ -716,6 +908,22 @@ spec:
     targetPort: 3000
     protocol: TCP
     name: http
+  - port: 53
+    targetPort: 53
+    protocol: TCP
+    name: dns-tcp
+  - port: 53
+    targetPort: 53
+    protocol: UDP
+    name: dns-udp
+  - port: 853
+    targetPort: 853
+    protocol: TCP
+    name: dns-tls-tcp
+  - port: 784
+    targetPort: 784
+    protocol: UDP
+    name: dns-quic-udp
   selector:
     app.kubernetes.io/name: adguard-home
     app.kubernetes.io/instance: adguard
@@ -755,6 +963,22 @@ spec:
     targetPort: 3000
     protocol: TCP
     name: http
+  - port: 53
+    targetPort: 53
+    protocol: TCP
+    name: dns-tcp
+  - port: 53
+    targetPort: 53
+    protocol: UDP
+    name: dns-udp
+  - port: 853
+    targetPort: 853
+    protocol: TCP
+    name: dns-tls-tcp
+  - port: 784
+    targetPort: 784
+    protocol: UDP
+    name: dns-quic-udp
   selector:
     app.kubernetes.io/name: adguard-home
     app.kubernetes.io/instance: adguard
