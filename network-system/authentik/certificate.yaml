@@ -18,3 +18,23 @@ spec:
     # The defaultt value is Issuer (i.e. a locally namespaced Issuer)
     kind: ClusterIssuer
     group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: ak-outpost-authentik-embedded-outpost
+  namespace: network-system
+spec:
+  subject:
+    organizations:
+    - Heyser
+  secretName: authentik-outpost-tls
+  dnsNames:
+  - auth.homelab.heyser.xyz
+  issuerRef:
+    name: letsencrypt-prod
+    # We can reference ClusterIssuers by changing the kind here.
+    # The defaultt value is Issuer (i.e. a locally namespaced Issuer)
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
