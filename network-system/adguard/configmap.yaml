@@ -248,6 +248,7 @@ data:
     whitelist_filters: []
     user_rules:
       - '@@||*.homelab.heyser.xyz^$dnsrewrite=NOERROR;A;10.0.100.1'
+      - '||vm.homelab.heyser.xyz^$'
       - '@@||vm.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.9'
       - '@@||vm.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.12'
       - '@@||vm.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.13'
