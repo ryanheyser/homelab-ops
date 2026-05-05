@@ -110,7 +110,7 @@ spec:
       isDefaultClass: true
       name: traefik
     gateway:
-      enabled: false
+      enabled: true
       listeners:
         web:
           port: 80
