@@ -243,12 +243,13 @@ data:
         id: 12
     whitelist_filters: []
     user_rules:
+      - '@@||*.homelab.heyser.xyz^$dnsrewrite=NOERROR;A;10.0.100.1'
       - '||homelab.heyser.xyz^$dnstype=AAAA'
       - '||homelab.heyser.lan^$dnstype=AAAA'
       - '||heyser.xyz^$dnstype=AAAA'
       - '||heyser.lan^$dnstype=AAAA'
       - '||plex.direct^$dnstype=AAAA'
-      - '||vm.homelab.heyser.xyz^$dnsrewrite=NODATA;;'
+      - '||vm.homelab.heyser.xyz^$'
       - '@@||vm.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.9'
       - '@@||vm.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.12'
       - '@@||vm.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.13'
@@ -257,7 +258,7 @@ data:
       - '@@||vm.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.16'
       - '@@||vm.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.17'
       - '@@||vm.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.18'
-      - '||proxmox.homelab.heyser.xyz^$dnsrewrite=NODATA;;'
+      - '||proxmox.homelab.heyser.xyz^$'
       - '@@||proxmox.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.9'
       - '@@||proxmox.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.12'
       - '@@||proxmox.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.13'
@@ -290,7 +291,6 @@ data:
       - '@@||storage.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.8'
       - '@@||kracko.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.8'
       - '@@||awoofy.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.8'
-      - '@@||*.homelab.heyser.xyz^$dnsrewrite=NOERROR;A;10.0.100.1'
       - '@@||plex.direct^$important'
       - '@@||aa.paramountplus.com^$important'
       - '@@||cbsinteractive.hb.omtrdc.net^$important'
