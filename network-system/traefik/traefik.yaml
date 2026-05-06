@@ -169,6 +169,22 @@ spec:
         # - IPv6
         # - IPv4
     ports:
+      dns-tcp:
+        port: 53
+        containerPort: 53
+        hostPort: 53
+      dns-udp:
+        port: 53
+        containerPort: 53
+        hostPort: 53
+      dns-tls-tcp:
+        port: 853
+        containerPort: 853
+        hostPort: 853
+      dns-quic-udp:
+        port: 784
+        containerPort: 784
+        hostPort: 784
       traefik:
         port: 9090
         containerPort: 9090
