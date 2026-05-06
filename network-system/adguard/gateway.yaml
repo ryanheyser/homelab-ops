@@ -9,18 +9,18 @@ spec:
     kind: Gateway
     name: traefik-gateway
   listeners:
-  - name: adguard-home-https
-    protocol: HTTPS
-    port: 443
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - kind: Secret
-        name: adguard-homelab-heyser-xyz-tls
-        namespace: network-system
+  # - name: adguard-home-https
+  #   protocol: HTTPS
+  #   port: 443
+  #   allowedRoutes:
+  #     namespaces:
+  #       from: All
+  #   tls:
+  #     mode: Terminate
+  #     certificateRefs:
+  #     - kind: Secret
+  #       name: adguard-homelab-heyser-xyz-tls
+  #       namespace: network-system
   # - name: adguard-home-https
   #   protocol: TLS
   #   port: 443
@@ -31,12 +31,12 @@ spec:
   #       - kind: TLSRoute
   #   tls:
   #     mode: Passthrough
-  - name: adguard-home-dns-http
-    protocol: HTTP
-    port: 80
-    allowedRoutes:
-      namespaces:
-        from: All
+  # - name: adguard-home-dns-http
+  #   protocol: HTTP
+  #   port: 80
+  #   allowedRoutes:
+  #     namespaces:
+  #       from: All
   - name: adguard-home-dns-tcp
     protocol: TCP
     port: 53
