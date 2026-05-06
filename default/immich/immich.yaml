@@ -70,7 +70,7 @@ spec:
     server:
       controllers:
         main:
-          replicas: 2
+          replicas: 5
           strategy: RollingUpdate
           rollingUpdate:
             unavailable: 1
@@ -78,7 +78,7 @@ spec:
           defaultContainerOptions:
             resources:
               requests:
-                memory: 2Gi
+                memory: 1Gi
               limits:
                 memory: 4Gi
           pod:
