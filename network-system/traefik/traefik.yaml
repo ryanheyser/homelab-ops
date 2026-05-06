@@ -28,7 +28,6 @@ spec:
       retries: 3
       strategy: uninstall
     crds: Skip
-    force: true
   uninstall:
     keepHistory: false
   values:
