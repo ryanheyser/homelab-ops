@@ -170,11 +170,11 @@ spec:
       dns-tcp:
         port: 53
         containerPort: 53
-        hostPort: 53
+        hostPort: 5353
       dns-udp:
         port: 53
         containerPort: 53
-        hostPort: 53
+        hostPort: 5353
         protocol: UDP
       dns-tls-tcp:
         port: 853
