@@ -142,8 +142,7 @@ spec:
           protocol: TLS
           namespacePolicy:
             from: All
-          tls:
-            mode: Passthrough
+          mode: Passthrough
         dns-quic-udp:
           port: 784
           protocol: UDP
