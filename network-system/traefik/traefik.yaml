@@ -111,6 +111,7 @@ spec:
       name: traefik
     gateway:
       enabled: true
+      defaultScope: All
       listeners:
         web:
           port: 80
