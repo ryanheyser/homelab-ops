@@ -1,74 +1,75 @@
-apiVersion: gateway.networking.k8s.io/v1
-kind: ListenerSet
-metadata:
-  name: adguard-home-dns
-  namespace: network-system
-spec:
-  parentRef:
-    group: gateway.networking.k8s.io
-    kind: Gateway
-    name: traefik-gateway
-  listeners:
-  # - name: adguard-home-https
-  #   protocol: HTTPS
-  #   port: 443
-  #   allowedRoutes:
-  #     namespaces:
-  #       from: All
-  #   tls:
-  #     mode: Terminate
-  #     certificateRefs:
-  #     - kind: Secret
-  #       name: adguard-homelab-heyser-xyz-tls
-  #       namespace: network-system
-  # - name: adguard-home-https
-  #   protocol: TLS
-  #   port: 443
-  #   allowedRoutes:
-  #     namespaces:
-  #       from: All
-  #     kinds:
-  #       - kind: TLSRoute
-  #   tls:
-  #     mode: Passthrough
-  # - name: adguard-home-dns-http
-  #   protocol: HTTP
-  #   port: 80
-  #   allowedRoutes:
-  #     namespaces:
-  #       from: All
-  - name: adguard-home-dns-tcp
-    protocol: TCP
-    port: 53
-    allowedRoutes:
-      kinds:
-      - kind: TCPRoute
-      namespaces:
-        from: All
-  - name: adguard-home-dns-udp
-    protocol: UDP
-    port: 53
-    allowedRoutes:
-      kinds:
-      - kind: UDPRoute
-  - name: adguard-home-dns-tls-tcp
-    protocol: TLS
-    port: 853
-    allowedRoutes:
-      kinds:
-      - kind: TCPRoute
-      namespaces:
-        from: All
-    tls:
-      mode: Passthrough
-  - name: adguard-home-dns-quic-udp
-    protocol: UDP
-    port: 784
-    allowedRoutes:
-      kinds:
-      - kind: UDPRoute
-      namespaces:
-        from: All
+---
+# apiVersion: gateway.networking.k8s.io/v1
+# kind: ListenerSet
+# metadata:
+#   name: adguard-home-dns
+#   namespace: network-system
+# spec:
+#   parentRef:
+#     group: gateway.networking.k8s.io
+#     kind: Gateway
+#     name: traefik-gateway
+#   listeners:
+#   # - name: adguard-home-https
+#   #   protocol: HTTPS
+#   #   port: 443
+#   #   allowedRoutes:
+#   #     namespaces:
+#   #       from: All
+#   #   tls:
+#   #     mode: Terminate
+#   #     certificateRefs:
+#   #     - kind: Secret
+#   #       name: adguard-homelab-heyser-xyz-tls
+#   #       namespace: network-system
+#   # - name: adguard-home-https
+#   #   protocol: TLS
+#   #   port: 443
+#   #   allowedRoutes:
+#   #     namespaces:
+#   #       from: All
+#   #     kinds:
+#   #       - kind: TLSRoute
+#   #   tls:
+#   #     mode: Passthrough
+#   # - name: adguard-home-dns-http
+#   #   protocol: HTTP
+#   #   port: 80
+#   #   allowedRoutes:
+#   #     namespaces:
+#   #       from: All
+#   - name: adguard-home-dns-tcp
+#     protocol: TCP
+#     port: 53
+#     allowedRoutes:
+#       kinds:
+#       - kind: TCPRoute
+#       namespaces:
+#         from: All
+#   - name: adguard-home-dns-udp
+#     protocol: UDP
+#     port: 53
+#     allowedRoutes:
+#       kinds:
+#       - kind: UDPRoute
+#   - name: adguard-home-dns-tls-tcp
+#     protocol: TLS
+#     port: 853
+#     allowedRoutes:
+#       kinds:
+#       - kind: TCPRoute
+#       namespaces:
+#         from: All
+#     tls:
+#       mode: Passthrough
+#   - name: adguard-home-dns-quic-udp
+#     protocol: UDP
+#     port: 784
+#     allowedRoutes:
+#       kinds:
+#       - kind: UDPRoute
+#       namespaces:
+#         from: All
 # ---
 # apiVersion: gateway.networking.k8s.io/v1
 # kind: TLSRoute
