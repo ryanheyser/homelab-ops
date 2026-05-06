@@ -108,7 +108,7 @@ data:
       bootstrap_prefer_ipv6: false
       upstream_timeout: 10s
       private_networks: []
-      use_private_ptr_resolvers: true
+      use_private_ptr_resolvers: false
       local_ptr_upstreams:
         - '10.0.0.1:53'
       use_dns64: false
