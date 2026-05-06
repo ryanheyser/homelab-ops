@@ -175,6 +175,7 @@ spec:
         port: 53
         containerPort: 53
         hostPort: 53
+        protocol: UDP
       dns-tls-tcp:
         port: 853
         containerPort: 853
@@ -183,6 +184,7 @@ spec:
         port: 784
         containerPort: 784
         hostPort: 784
+        protocol: UDP
       traefik:
         port: 9090
         containerPort: 9090
