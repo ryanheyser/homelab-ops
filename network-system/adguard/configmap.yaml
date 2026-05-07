@@ -372,8 +372,6 @@ data:
       - '@@||storage.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.8'
       - '@@||kracko.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.8'
       - '@@||awoofy.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.8'
-      - '@@||*.homelab.heyser.xyz^$dnsrewrite=NOERROR;A;10.0.100.1'
-      - '@@||homelab.heyser.xyz^$important'
       - '@@||plex.direct^$important'
       - '@@||*.homelab.heyser.xyz^$dnsrewrite=NOERROR;A;10.0.100.1'
       - '||homelab.heyser.xyz^$dnstype=AAAA'
