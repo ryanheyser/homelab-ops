@@ -177,89 +177,89 @@ data:
       parental_block_host: family-block.dns.adguard.com
       safebrowsing_block_host: standard-block.dns.adguard.com
       rewrites:
-      - domain: dns.homelab.heyser.xyz
+      - domain: 'dns.homelab.heyser.xyz'
         answer: 10.0.100.3
-      - domain: vm.homelab.heyser.xyz
+      - domain: 'vm.homelab.heyser.xyz'
         answer: 10.0.0.9
-      - domain: vm.homelab.heyser.xyz
+      - domain: 'vm.homelab.heyser.xyz'
         answer: 10.0.0.12
-      - domain: vm.homelab.heyser.xyz
+      - domain: 'vm.homelab.heyser.xyz'
         answer: 10.0.0.13
-      - domain: vm.homelab.heyser.xyz
+      - domain: 'vm.homelab.heyser.xyz'
         answer: 10.0.0.14
-      - domain: vm.homelab.heyser.xyz
+      - domain: 'vm.homelab.heyser.xyz'
         answer: 10.0.0.15
-      - domain: vm.homelab.heyser.xyz
+      - domain: 'vm.homelab.heyser.xyz'
         answer: 10.0.0.16
-      - domain: vm.homelab.heyser.xyz
+      - domain: 'vm.homelab.heyser.xyz'
         answer: 10.0.0.17
-      - domain: vm.homelab.heyser.xyz
+      - domain: 'vm.homelab.heyser.xyz'
         answer: 10.0.0.18
-      - domain: proxmox.homelab.heyser.xyz
+      - domain: 'proxmox.homelab.heyser.xyz'
         answer: 10.0.0.9
-      - domain: proxmox.homelab.heyser.xyz
+      - domain: 'proxmox.homelab.heyser.xyz'
         answer: 10.0.0.12
-      - domain: proxmox.homelab.heyser.xyz
+      - domain: 'proxmox.homelab.heyser.xyz'
         answer: 10.0.0.13
-      - domain: proxmox.homelab.heyser.xyz
+      - domain: 'proxmox.homelab.heyser.xyz'
         answer: 10.0.0.14
-      - domain: proxmox.homelab.heyser.xyz
+      - domain: 'proxmox.homelab.heyser.xyz'
         answer: 10.0.0.15
-      - domain: proxmox.homelab.heyser.xyz
+      - domain: 'proxmox.homelab.heyser.xyz'
         answer: 10.0.0.16
-      - domain: proxmox.homelab.heyser.xyz
+      - domain: 'proxmox.homelab.heyser.xyz'
         answer: 10.0.0.17
-      - domain: proxmox.homelab.heyser.xyz
+      - domain: 'proxmox.homelab.heyser.xyz'
         answer: 10.0.0.18
-      - domain: kubernetes.homelab.heyser.xyz
+      - domain: 'kubernetes.homelab.heyser.xyz'
         answer: 10.0.1.10
-      - domain: madoo.homelab.heyser.xyz
+      - domain: 'madoo.homelab.heyser.xyz'
         answer: 10.0.1.11
-      - domain: magoo.homelab.heyser.xyz
+      - domain: 'magoo.homelab.heyser.xyz'
         answer: 10.0.1.12
-      - domain: moggy.homelab.heyser.xyz
+      - domain: 'moggy.homelab.heyser.xyz'
         answer: 10.0.1.13
-      - domain: minny.homelab.heyser.xyz
+      - domain: 'minny.homelab.heyser.xyz'
         answer: 10.0.1.14
-      - domain: mirra.homelab.heyser.xyz
+      - domain: 'mirra.homelab.heyser.xyz'
         answer: 10.0.1.15
-      - domain: peezer.homelab.heyser.xyz
+      - domain: 'peezer.homelab.heyser.xyz'
         answer: 10.0.1.21
-      - domain: peloo.homelab.heyser.xyz
+      - domain: 'peloo.homelab.heyser.xyz'
         answer: 10.0.1.22
-      - domain: peran.homelab.heyser.xyz
+      - domain: 'peran.homelab.heyser.xyz'
         answer: 10.0.1.23
-      - domain: perara.homelab.heyser.xyz
+      - domain: 'perara.homelab.heyser.xyz'
         answer: 10.0.1.24
-      - domain: phanta.homelab.heyser.xyz
+      - domain: 'phanta.homelab.heyser.xyz'
         answer: 10.0.1.25
-      - domain: posura.homelab.heyser.xyz
+      - domain: 'posura.homelab.heyser.xyz'
         answer: 10.0.1.26
-      - domain: pteran.homelab.heyser.xyz
+      - domain: 'ptewan.homelab.heyser.xyz'
         answer: 10.0.1.27
-      - domain: pacto.homelab.heyser.xyz
+      - domain: 'pacto.homelab.heyser.xyz'
         answer: 10.0.1.28
-      - domain: pasara.homelab.heyser.xyz
+      - domain: 'pasara.homelab.heyser.xyz'
         answer: 10.0.1.29
-      - domain: pengy.homelab.heyser.xyz
+      - domain: 'pengy.homelab.heyser.xyz'
         answer: 10.0.1.30
-      - domain: perot.homelab.heyser.xyz
+      - domain: 'perot.homelab.heyser.xyz'
         answer: 10.0.1.31
-      - domain: void.homelab.heyser.xyz
+      - domain: 'void.homelab.heyser.xyz'
         answer: 10.0.1.0
-      - domain: vividria.homelab.heyser.xyz
+      - domain: 'vividria.homelab.heyser.xyz'
         answer: 10.0.1.1
-      - domain: volttzo.homelab.heyser.xyz
+      - domain: 'volttzo.homelab.heyser.xyz'
         answer: 10.0.1.2
-      - domain: walky.homelab.heyser.xyz
+      - domain: 'walky.homelab.heyser.xyz'
         answer: 10.0.1.3
-      - domain: storage.homelab.heyser.xyz
+      - domain: 'storage.homelab.heyser.xyz'
         answer: 10.0.0.8
-      - domain: kracko.homelab.heyser.xyz
+      - domain: 'kracko.homelab.heyser.xyz'
         answer: 10.0.0.8
-      - domain: awoofy.homelab.heyser.xyz
+      - domain: 'awoofy.homelab.heyser.xyz'
         answer: 10.0.0.8
-      - domain: *.homelab.heyser.xyz
+      - domain: '*.homelab.heyser.xyz'
         answer: A
       safe_fs_patterns:
         - /opt/adguardhome/work/data/userfilters/*
