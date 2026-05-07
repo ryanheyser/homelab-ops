@@ -249,6 +249,8 @@ data:
     user_rules:
       - '||*.homelab.heyser.xyz^$badfilter'
       - '@@||*.homelab.heyser.xyz^$important,dnsrewrite=10.0.100.1'
+      - '||dns.homelab.heyser.xyz^$badfilter'
+      - '@@||dns.homelab.heyser.xyz^$important,dnsrewrite=10.0.100.3'
       - '||homelab.heyser.xyz^$dnstype=AAAA'
       - '||homelab.heyser.lan^$dnstype=AAAA'
       - '||heyser.xyz^$dnstype=AAAA'
