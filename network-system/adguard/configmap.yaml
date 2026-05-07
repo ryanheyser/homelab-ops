@@ -177,6 +177,8 @@ data:
       parental_block_host: family-block.dns.adguard.com
       safebrowsing_block_host: standard-block.dns.adguard.com
       rewrites:
+      - domain: 'router.homelab.heyser.xyz'
+        answer: 192.168.88.1
       - domain: 'dns.homelab.heyser.xyz'
         answer: 10.0.100.3
       - domain: 'vm.homelab.heyser.xyz'
@@ -331,6 +333,7 @@ data:
         id: 12
     whitelist_filters: []
     user_rules:
+      - '@@||router.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;192.168.88.1'
       - '@@||dns.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.100.3'
       - '@@||vm.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.9'
       - '@@||vm.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.12'
@@ -373,6 +376,7 @@ data:
       - '@@||kracko.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.8'
       - '@@||awoofy.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.8'
       - '@@||plex.direct^$important'
+      - '# @@||*.homelab.heyser.xyz^$dnsrewrite=NOERROR;A;10.0.100.1'
       - '||homelab.heyser.xyz^$dnstype=AAAA'
       - '||homelab.heyser.lan^$dnstype=AAAA'
       - '||heyser.xyz^$dnstype=AAAA'
