@@ -35,6 +35,8 @@
         "hashicorp/vault-k8s",
         "ghcr.io/home-operations/qbittorrent",
         "ollama/ollama",
+        "etherpad/etherpad",
+        "valkey/valkey",
         "getmeili/meilisearch"
       ]
     },
@@ -101,6 +103,7 @@
         "app-template",
         "plugin-barman-cloud",
         "immich",
+        "frr-k8s",
         "csi-driver-nfs"
       ]
     },
