@@ -377,6 +377,7 @@ data:
       - '# @@||awoofy.homelab.heyser.xyz^$important,dnsrewrite=NOERROR;A;10.0.0.8'
       - '# @@||*.homelab.heyser.xyz^$dnsrewrite=NOERROR;A;10.0.100.1'
       - '@@||plex.direct^$important'
+      - '@@||*.homelab.heyser.xyz^$important'
       - '||homelab.heyser.xyz^$dnstype=AAAA'
       - '||homelab.heyser.lan^$dnstype=AAAA'
       - '||heyser.xyz^$dnstype=AAAA'
