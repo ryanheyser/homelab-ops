@@ -91,11 +91,11 @@ data:
       trusted_proxies:
         - 127.0.0.0/8
         - ::1/128
-      cache_enabled: false
+      cache_enabled: true
       cache_size: 16777216
       cache_ttl_min: 0
       cache_ttl_max: 14400
-      cache_optimistic: false
+      cache_optimistic: true
       cache_optimistic_answer_ttl: 86400s
       cache_optimistic_max_age: 604800s
       bogus_nxdomain: []
