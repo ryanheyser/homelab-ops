@@ -56,6 +56,8 @@ spec:
             securityContext:
               runAsUser: 1000
               runAsGroup: 3001
+              fsGroup: 3001
+              fsGroupChangePolicy: "OnRootMismatch"
             env:
               TZ: "America/New_York"
               NODE_ENV: production
@@ -138,6 +140,7 @@ spec:
       etherpad-opt:
         opt-data:
           type: emptyDir
+          medium: Memory
           advancedMounts:
             main:
               main:
