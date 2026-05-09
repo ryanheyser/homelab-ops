@@ -144,4 +144,4 @@ spec:
           advancedMounts:
             main:
               main:
-              - path: "/opt"
+              - path: "/opt/etherpad-lite"
