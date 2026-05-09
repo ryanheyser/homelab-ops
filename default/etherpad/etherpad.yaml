@@ -135,3 +135,10 @@ spec:
           main:
             main:
             - path: "/opt/etherpad-lite/var"
+      etherpad-opt:
+        opt-data:
+          type: emptyDir
+          advancedMounts:
+            main:
+              main:
+              - path: "/opt"
