@@ -12,6 +12,7 @@ spec:
   dnsNames:
   - adguard.homelab.heyser.xyz
   - dns.homelab.heyser.xyz
+  - dns.oci.heyser.xyz
   issuerRef:
     name: letsencrypt-prod
     # We can reference ClusterIssuers by changing the kind here.
