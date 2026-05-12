@@ -96,7 +96,7 @@ spec:
           containerPort: 53
           protocol: UDP
         - name: dns-quic-udp
-          containerPort: 784
+          containerPort: 853
           protocol: UDP
         - name: http
           containerPort: &dns_http_port 3000

@@ -240,4 +240,4 @@ spec:
       backendRefs:
       - name: adguard-home-dns-quic-udp
         namespace: network-system
-        port: 784
+        port: 853

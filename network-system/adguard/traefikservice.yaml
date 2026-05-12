@@ -227,50 +227,50 @@ metadata:
 spec:
   mirroring:
     name: adguard-home-dns-quic-udp
-    port: 784
+    port: 853
     mirrorBody: true
     maxBodySize: -1
     mirrors:
       - name: adguard-home-index-0
-        port: 784
+        port: 853
         percent: 100
       - name: adguard-home-index-1
-        port: 784
+        port: 853
         percent: 100
       - name: adguard-home-index-2
-        port: 784
+        port: 853
         percent: 100
       - name: adguard-home-index-3
-        port: 784
+        port: 853
         percent: 100
       - name: adguard-home-index-4
-        port: 784
+        port: 853
         percent: 100
       - name: adguard-home-index-5
-        port: 784
+        port: 853
         percent: 100
       - name: adguard-home-index-6
-        port: 784
+        port: 853
         percent: 100
       - name: adguard-home-index-7
-        port: 784
+        port: 853
         percent: 100
       - name: adguard-home-index-8
-        port: 784
+        port: 853
         percent: 100
       - name: adguard-home-index-9
-        port: 784
+        port: 853
         percent: 100
       - name: adguard-home-index-10
-        port: 784
+        port: 853
         percent: 100
       - name: adguard-home-index-11
-        port: 784
+        port: 853
         percent: 100
       - name: adguard-home-index-12
-        port: 784
+        port: 853
         percent: 100
       - name: adguard-home-index-13
-        port: 784
+        port: 853
         percent: 100
 ---

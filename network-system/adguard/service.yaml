@@ -104,8 +104,8 @@ spec:
   externalIPs:
   - 10.0.100.3
   ports:
-  - port: 784
-    targetPort: 784
+  - port: 853
+    targetPort: 853
     protocol: UDP
     name: dns-quic-udp
   selector:
@@ -260,8 +260,8 @@ spec:
     targetPort: 853
     protocol: TCP
     name: dns-tls-tcp
-  - port: 784
-    targetPort: 784
+  - port: 853
+    targetPort: 853
     protocol: UDP
     name: dns-quic-udp
   selector:
@@ -315,8 +315,8 @@ spec:
     targetPort: 853
     protocol: TCP
     name: dns-tls-tcp
-  - port: 784
-    targetPort: 784
+  - port: 853
+    targetPort: 853
     protocol: UDP
     name: dns-quic-udp
   selector:
@@ -370,8 +370,8 @@ spec:
     targetPort: 853
     protocol: TCP
     name: dns-tls-tcp
-  - port: 784
-    targetPort: 784
+  - port: 853
+    targetPort: 853
     protocol: UDP
     name: dns-quic-udp
   selector:
@@ -425,8 +425,8 @@ spec:
     targetPort: 853
     protocol: TCP
     name: dns-tls-tcp
-  - port: 784
-    targetPort: 784
+  - port: 853
+    targetPort: 853
     protocol: UDP
     name: dns-quic-udp
   selector:
@@ -480,8 +480,8 @@ spec:
     targetPort: 853
     protocol: TCP
     name: dns-tls-tcp
-  - port: 784
-    targetPort: 784
+  - port: 853
+    targetPort: 853
     protocol: UDP
     name: dns-quic-udp
   selector:
@@ -535,8 +535,8 @@ spec:
     targetPort: 853
     protocol: TCP
     name: dns-tls-tcp
-  - port: 784
-    targetPort: 784
+  - port: 853
+    targetPort: 853
     protocol: UDP
     name: dns-quic-udp
   selector:
@@ -590,8 +590,8 @@ spec:
     targetPort: 853
     protocol: TCP
     name: dns-tls-tcp
-  - port: 784
-    targetPort: 784
+  - port: 853
+    targetPort: 853
     protocol: UDP
     name: dns-quic-udp
   selector:
@@ -645,8 +645,8 @@ spec:
     targetPort: 853
     protocol: TCP
     name: dns-tls-tcp
-  - port: 784
-    targetPort: 784
+  - port: 853
+    targetPort: 853
     protocol: UDP
     name: dns-quic-udp
   selector:
@@ -700,8 +700,8 @@ spec:
     targetPort: 853
     protocol: TCP
     name: dns-tls-tcp
-  - port: 784
-    targetPort: 784
+  - port: 853
+    targetPort: 853
     protocol: UDP
     name: dns-quic-udp
   selector:
@@ -755,8 +755,8 @@ spec:
     targetPort: 853
     protocol: TCP
     name: dns-tls-tcp
-  - port: 784
-    targetPort: 784
+  - port: 853
+    targetPort: 853
     protocol: UDP
     name: dns-quic-udp
   selector:
@@ -810,8 +810,8 @@ spec:
     targetPort: 853
     protocol: TCP
     name: dns-tls-tcp
-  - port: 784
-    targetPort: 784
+  - port: 853
+    targetPort: 853
     protocol: UDP
     name: dns-quic-udp
   selector:
@@ -865,8 +865,8 @@ spec:
     targetPort: 853
     protocol: TCP
     name: dns-tls-tcp
-  - port: 784
-    targetPort: 784
+  - port: 853
+    targetPort: 853
     protocol: UDP
     name: dns-quic-udp
   selector:
@@ -920,8 +920,8 @@ spec:
     targetPort: 853
     protocol: TCP
     name: dns-tls-tcp
-  - port: 784
-    targetPort: 784
+  - port: 853
+    targetPort: 853
     protocol: UDP
     name: dns-quic-udp
   selector:
@@ -975,8 +975,8 @@ spec:
     targetPort: 853
     protocol: TCP
     name: dns-tls-tcp
-  - port: 784
-    targetPort: 784
+  - port: 853
+    targetPort: 853
     protocol: UDP
     name: dns-quic-udp
   selector:
