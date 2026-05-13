@@ -56,8 +56,8 @@ spec:
             securityContext:
               runAsUser: 1000
               runAsGroup: 3001
-            command: 
-              - meilisearch --experimental-dumpless-upgrade
+            args:
+              - --experimental-dumpless-upgrade
             env:
               TZ: "America/New_York"
             envFrom:
