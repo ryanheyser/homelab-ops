@@ -47,19 +47,6 @@ spec:
           tolerations:
           - key: "arm"
             operator: "Exists"
-        initContainers:
-          fix-permissions:
-            command:
-              - sh
-              - -c
-              - |
-                chown 1000:0 -R /opt && chmod a+rwx -R /opt
-            image: 
-              repository: busybox
-              tag: latest
-            securityContext:
-              runAsUser: 0
-              runAsGroup: 0
         containers:
           main:
             image:
@@ -67,13 +54,11 @@ spec:
               repository: etherpad/etherpad
               tag: 2.7.3
             securityContext:
-              runAsUser: 1000
+              runAsUser: 0
               runAsGroup: 0
             env:
               TZ: "America/New_York"
               NODE_ENV: production
-              EP_UID: 1000
-              EP_GID: 0
             envFrom:
               - secretRef:
                   name: etherpad-config
@@ -156,6 +141,4 @@ spec:
         advancedMounts:
           main:
             main:
-            - path: "/opt"
-            fix-permissions:
             - path: "/opt"
