@@ -48,17 +48,17 @@ spec:
           - key: "arm"
             operator: "Exists"
         initContainers:
-          - command:
-            - sh
-            - -c
-            - |
-              chown 1000:3001 -R /opt/etherpad-lite && chmod a+rwx -R /opt/etherpad-lite
+          fix-permissions:
+            command:
+              - sh
+              - -c
+              - |
+                chown 1000:3001 -R /opt/etherpad-lite && chmod a+rwx -R /opt/etherpad-lite
             image: busybox
             imagePullPolicy: IfNotPresent
             securityContext:
               runAsUser: 0
               runAsGroup: 0
-            name: fix-permissions
         containers:
           main:
             image:
