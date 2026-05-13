@@ -62,6 +62,7 @@ spec:
               EP_UID: "0"
               EP_GID: "0"
               confirmModulesPurge: "false"
+              CI: "true"
             envFrom:
               - secretRef:
                   name: etherpad-config
