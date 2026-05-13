@@ -61,6 +61,7 @@ spec:
               NODE_ENV: production
               EP_UID: "0"
               EP_GID: "0"
+              confirmModulesPurge: "false"
             envFrom:
               - secretRef:
                   name: etherpad-config
