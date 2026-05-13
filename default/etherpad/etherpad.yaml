@@ -72,6 +72,8 @@ spec:
             env:
               TZ: "America/New_York"
               NODE_ENV: production
+              EP_UID: 1000
+              EP_GID: 3001
             envFrom:
               - secretRef:
                   name: etherpad-config
