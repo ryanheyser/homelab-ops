@@ -41,9 +41,9 @@ spec:
           reloader.stakater.com/auto: "true"
         pod:
           securityContext:
-            fsGroup: 3001
+            fsGroup: 0
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [ 568, 911, 1000, 1001 ]
+            supplementalGroups: [ 568, 911, 1000, 1001, 3001 ]
           tolerations:
           - key: "arm"
             operator: "Exists"
@@ -53,7 +53,7 @@ spec:
               - sh
               - -c
               - |
-                chown 1000:3001 -R /opt && chmod a+rwx -R /opt
+                chown 1000:0 -R /opt && chmod a+rwx -R /opt
             image: 
               repository: busybox
               tag: latest
@@ -68,12 +68,12 @@ spec:
               tag: 2.7.3
             securityContext:
               runAsUser: 1000
-              runAsGroup: 3001
+              runAsGroup: 0
             env:
               TZ: "America/New_York"
               NODE_ENV: production
               EP_UID: 1000
-              EP_GID: 3001
+              EP_GID: 0
             envFrom:
               - secretRef:
                   name: etherpad-config
