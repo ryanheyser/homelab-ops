@@ -54,7 +54,9 @@ spec:
               - -c
               - |
                 chown 1000:3001 -R /opt/etherpad-lite && chmod a+rwx -R /opt/etherpad-lite
-            image: busybox
+            image: 
+              repository: busybox
+              tag: latest
             imagePullPolicy: IfNotPresent
             securityContext:
               runAsUser: 0
