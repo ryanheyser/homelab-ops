@@ -53,7 +53,7 @@ spec:
               - sh
               - -c
               - |
-                chown 1000:3001 -R /opt/etherpad-lite && chmod a+rwx -R /opt/etherpad-lite
+                chown 1000:3001 -R /opt && chmod a+rwx -R /opt
             image: 
               repository: busybox
               tag: latest
@@ -154,6 +154,6 @@ spec:
         advancedMounts:
           main:
             main:
-            - path: "/opt/etherpad-lite"
+            - path: "/opt"
             fix-permissions:
-            - path: "/opt/etherpad-lite"
+            - path: "/opt"
