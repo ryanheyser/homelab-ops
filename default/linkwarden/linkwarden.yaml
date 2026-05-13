@@ -48,6 +48,22 @@ spec:
           - key: "arm"
             operator: "Exists"
         containers:
+          meili:
+            image:
+              # renovate: repository=getmeili/meilisearch
+              repository: getmeili/meilisearch
+              tag: v1.43.1
+            securityContext:
+              runAsUser: 1000
+              runAsGroup: 3001
+            command: 
+              - meilisearch --experimental-dumpless-upgrade
+            env:
+              TZ: "America/New_York"
+            envFrom:
+              - secretRef:
+                  name: linkwarden-config
+                  optional: false
           main:
             image:
               # renovate: repository=ghcr.io/linkwarden/linkwarden
@@ -71,22 +87,6 @@ spec:
                   name: linkwarden-database
                   optional: false
             command: ["bash", "-c", "npx playwright install chromium && yarn prisma:deploy && yarn concurrently:start"]
-          meili:
-            image:
-              # renovate: repository=getmeili/meilisearch
-              repository: getmeili/meilisearch
-              tag: v1.43.1
-            securityContext:
-              runAsUser: 1000
-              runAsGroup: 3001
-            command: 
-              - meilisearch --experimental-dumpless-upgrade
-            env:
-              TZ: "America/New_York"
-            envFrom:
-              - secretRef:
-                  name: linkwarden-config
-                  optional: false
     service:
       main:
         controller: main
