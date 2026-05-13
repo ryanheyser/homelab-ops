@@ -47,6 +47,18 @@ spec:
           tolerations:
           - key: "arm"
             operator: "Exists"
+        initContainers:
+          - command:
+            - sh
+            - -c
+            - |
+              chown 1000:3001 -R /opt/etherpad-lite && chmod a+rwx -R /opt/etherpad-lite
+            image: busybox
+            imagePullPolicy: IfNotPresent
+            securityContext:
+              runAsUser: 0
+              runAsGroup: 0
+            name: fix-permissions
         containers:
           main:
             image:
@@ -56,10 +68,6 @@ spec:
             securityContext:
               runAsUser: 1000
               runAsGroup: 3001
-            command: [
-              "/bin/sh", 
-              "-c", 
-              "chown 1000:3001 -R /opt/etherpad-lite && chmod a+rwx -R /opt/etherpad-lite && cd /opt/etherpad-lite/src && exec node --require tsx/cjs node/server.ts"]
             env:
               TZ: "America/New_York"
               NODE_ENV: production
@@ -145,4 +153,6 @@ spec:
         advancedMounts:
           main:
             main:
+            - path: "/opt/etherpad-lite"
+            fix-permissions:
             - path: "/opt/etherpad-lite"
