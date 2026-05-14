@@ -39,7 +39,7 @@ spec:
   entryPoints:
     - dns-tcp
   routes:
-  - match: HostSNI(`dns.homelab.heyser.xyz`)
+  - match: HostSNI(`*`)
     services:
     - name: adguard-home-index-0
       namespace: network-system
@@ -217,7 +217,7 @@ spec:
   entryPoints:
     - dns-tls-tcp
   routes:
-  - match: HostSNI(`dns.homelab.heyser.xyz`)
+  - match: HostSNI(`*`)
     services:
     - name: adguard-home-index-0
       namespace: network-system
