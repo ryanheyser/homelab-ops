@@ -166,25 +166,49 @@ spec:
         # ipFamilies:
         # - IPv6
         # - IPv4
+      additionalServices:
+        traefikDNS:
+          type: LoadBalancer
+          labels:
+            traefik-service-label: traefik-dns
+          annotations:
+            cni.projectcalico.org/ipAddrs: '["10.0.100.1"]'
+            metallb.io/address-pool: "system"
+            metallb.io/allow-shared-ip: "traefik-share"
+            # metallb.io/loadBalancerIPs: &lbip 10.0.100.1
+            metallb.io/loadBalancerIPs: 10.0.100.1
+            # traefik.ingress.kubernetes.io/service.nativelb: "true"
     ports:
       dns-tcp:
         port: 53
         containerPort: 53
         hostPort: 5353
+        expose:
+          default: true
+          traefik-dns: true
       dns-udp:
         port: 53
         containerPort: 53
         hostPort: 5353
         protocol: UDP
+        expose:
+          default: true
+          traefik-dns: true
       dns-tls-tcp:
         port: 853
         containerPort: 853
         hostPort: 853
+        expose:
+          default: true
+          traefik-dns: true
       dns-quic-udp:
         port: 853
         containerPort: 853
         hostPort: 853
         protocol: UDP
+        expose:
+          default: true
+          traefik-dns: true
       traefik:
         port: 9090
         containerPort: 9090
