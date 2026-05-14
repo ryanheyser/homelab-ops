@@ -166,39 +166,39 @@ spec:
         # ipFamilies:
         # - IPv6
         # - IPv4
-      additionalServices:
-        traefik-dns:
-          type: LoadBalancer
-          labels:
-            traefik-service-label: traefik-dns
-          annotations:
-            cni.projectcalico.org/ipAddrs: '["10.0.100.1"]'
-            metallb.io/address-pool: "system"
-            metallb.io/allow-shared-ip: "traefik-share"
-            # metallb.io/loadBalancerIPs: &lbip 10.0.100.1
-            metallb.io/loadBalancerIPs: 10.0.100.1
-            # traefik.ingress.kubernetes.io/service.nativelb: "true"
-          ports:
-            dns-tcp:
-              port: 53
-              targetPort: 53
-              hostPort: 53530
-              protocol: TCP
-            dns-udp:
-              port: 53
-              targetPort: 53
-              protocol: UDP
-              hostPort: 53530
-            dns-tls-tcp:
-              port: 853
-              targetPort: 853
-              protocol: TCP
-              hostPort: 8530
-            dns-quic-udp:
-              port: 853
-              targetPort: 853
-              protocol: UDP
-              hostPort: 8530
+      # additionalServices:
+      #   traefik-dns:
+      #     type: LoadBalancer
+      #     labels:
+      #       traefik-service-label: traefik-dns
+      #     annotations:
+      #       cni.projectcalico.org/ipAddrs: '["10.0.100.1"]'
+      #       metallb.io/address-pool: "system"
+      #       metallb.io/allow-shared-ip: "traefik-share"
+      #       # metallb.io/loadBalancerIPs: &lbip 10.0.100.1
+      #       metallb.io/loadBalancerIPs: 10.0.100.1
+      #       # traefik.ingress.kubernetes.io/service.nativelb: "true"
+      #     ports:
+      #       dns-tcp:
+      #         port: 53
+      #         targetPort: 53
+      #         hostPort: 53530
+      #         protocol: TCP
+      #       dns-udp:
+      #         port: 53
+      #         targetPort: 53
+      #         protocol: UDP
+      #         hostPort: 53530
+      #       dns-tls-tcp:
+      #         port: 853
+      #         targetPort: 853
+      #         protocol: TCP
+      #         hostPort: 8530
+      #       dns-quic-udp:
+      #         port: 853
+      #         targetPort: 853
+      #         protocol: UDP
+      #         hostPort: 8530
     ports:
       dns-tcp:
         port: 53
@@ -206,7 +206,7 @@ spec:
         hostPort: 5353
         expose:
           default: true
-          traefik-dns: true
+          # traefik-dns: true
       dns-udp:
         port: 53
         containerPort: 53
@@ -214,14 +214,14 @@ spec:
         protocol: UDP
         expose:
           default: true
-          traefik-dns: true
+          # traefik-dns: true
       dns-tls-tcp:
         port: 853
         containerPort: 853
         hostPort: 853
         expose:
           default: true
-          traefik-dns: true
+          # traefik-dns: true
       dns-quic-udp:
         port: 853
         containerPort: 853
@@ -229,7 +229,7 @@ spec:
         protocol: UDP
         expose:
           default: true
-          traefik-dns: true
+          # traefik-dns: true
       traefik:
         port: 9090
         containerPort: 9090
