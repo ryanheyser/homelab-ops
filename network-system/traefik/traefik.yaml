@@ -167,7 +167,7 @@ spec:
         # - IPv6
         # - IPv4
       additionalServices:
-        traefikDNS:
+        traefik-dns:
           type: LoadBalancer
           labels:
             traefik-service-label: traefik-dns
@@ -178,6 +178,25 @@ spec:
             # metallb.io/loadBalancerIPs: &lbip 10.0.100.1
             metallb.io/loadBalancerIPs: 10.0.100.1
             # traefik.ingress.kubernetes.io/service.nativelb: "true"
+          ports:
+            dns-tcp:
+              port: 53
+              targetPort: 53
+              hostPort: 5353
+              protocol: TCP
+            dns-udp:
+              port: 53
+              targetPort: 53
+              protocol: UDP
+              hostPort: 5353
+            dns-tls-tcp:
+              port: 853
+              targetPort: 853
+              protocol: TCP
+            dns-quic-udp:
+              port: 853
+              targetPort: 853
+              protocol: UDP
     ports:
       dns-tcp:
         port: 53
