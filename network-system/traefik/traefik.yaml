@@ -182,21 +182,23 @@ spec:
             dns-tcp:
               port: 53
               targetPort: 53
-              hostPort: 5353
+              hostPort: 53530
               protocol: TCP
             dns-udp:
               port: 53
               targetPort: 53
               protocol: UDP
-              hostPort: 5353
+              hostPort: 53530
             dns-tls-tcp:
               port: 853
               targetPort: 853
               protocol: TCP
+              hostPort: 8530
             dns-quic-udp:
               port: 853
               targetPort: 853
               protocol: UDP
+              hostPort: 8530
     ports:
       dns-tcp:
         port: 53
