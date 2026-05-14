@@ -169,75 +169,75 @@ spec:
 #         requestRedirect:
 #           scheme: https
 #           statusCode: 301
----
-apiVersion: gateway.networking.k8s.io/v1alpha2
-kind: TCPRoute
-metadata:
-  name: adguard-home-dns-tcp
-  namespace: network-system
-spec:
-  parentRefs:
-    - group: gateway.networking.k8s.io
-      kind: Gateway
-      name: traefik-gateway
-      sectionName: adguard-home-dns-tcp
-  rules:
-    - name: adguard-home-dns-tcp
-      backendRefs:
-      - name: adguard-home-dns-tcp
-        namespace: network-system
-        port: 53
----
-apiVersion: gateway.networking.k8s.io/v1alpha2
-kind: UDPRoute
-metadata:
-  name: adguard-home-dns-udp
-  namespace: network-system
-spec:
-  parentRefs:
-    - group: gateway.networking.k8s.io
-      kind: Gateway
-      name: traefik-gateway
-      sectionName: adguard-home-dns-udp
-  rules:
-    - name: adguard-home-dns-udp
-      backendRefs:
-      - name: adguard-home-dns-udp
-        namespace: network-system
-        port: 53
----
-apiVersion: gateway.networking.k8s.io/v1alpha2
-kind: TCPRoute
-metadata:
-  name: adguard-home-dns-tls-tcp
-  namespace: network-system
-spec:
-  parentRefs:
-    - group: gateway.networking.k8s.io
-      kind: Gateway
-      name: traefik-gateway
-      sectionName: adguard-home-dns-tls-tcp
-  rules:
-    - name: adguard-home-dns-tls-tcp
-      backendRefs:
-      - name: adguard-home-dns-tls-tcp
-        namespace: network-system
-        port: 853
----
-apiVersion: gateway.networking.k8s.io/v1alpha2
-kind: UDPRoute
-metadata:
-  name: adguard-home-dns-quic-udp
-  namespace: network-system
-spec:
-  parentRefs:
-    - group: gateway.networking.k8s.io
-      kind: Gateway
-      name: traefik-gateway
-      sectionName: adguard-home-dns-quic-udp
-  rules:
-    - name: adguard-home-dns-quic-udp
-      backendRefs:
-      - name: adguard-home-dns-quic-udp
-        namespace: network-system
-        port: 853
+# ---
+# apiVersion: gateway.networking.k8s.io/v1alpha2
+# kind: TCPRoute
+# metadata:
+#   name: adguard-home-dns-tcp
+#   namespace: network-system
+# spec:
+#   parentRefs:
+#     - group: gateway.networking.k8s.io
+#       kind: Gateway
+#       name: traefik-gateway
+#       sectionName: adguard-home-dns-tcp
+#   rules:
+#     - name: adguard-home-dns-tcp
+#       backendRefs:
+#       - name: adguard-home-dns-tcp
+#         namespace: network-system
+#         port: 53
+# ---
+# apiVersion: gateway.networking.k8s.io/v1alpha2
+# kind: UDPRoute
+# metadata:
+#   name: adguard-home-dns-udp
+#   namespace: network-system
+# spec:
+#   parentRefs:
+#     - group: gateway.networking.k8s.io
+#       kind: Gateway
+#       name: traefik-gateway
+#       sectionName: adguard-home-dns-udp
+#   rules:
+#     - name: adguard-home-dns-udp
+#       backendRefs:
+#       - name: adguard-home-dns-udp
+#         namespace: network-system
+#         port: 53
+# ---
+# apiVersion: gateway.networking.k8s.io/v1alpha2
+# kind: TCPRoute
+# metadata:
+#   name: adguard-home-dns-tls-tcp
+#   namespace: network-system
+# spec:
+#   parentRefs:
+#     - group: gateway.networking.k8s.io
+#       kind: Gateway
+#       name: traefik-gateway
+#       sectionName: adguard-home-dns-tls-tcp
+#   rules:
+#     - name: adguard-home-dns-tls-tcp
+#       backendRefs:
+#       - name: adguard-home-dns-tls-tcp
+#         namespace: network-system
+#         port: 853
+# ---
+# apiVersion: gateway.networking.k8s.io/v1alpha2
+# kind: UDPRoute
+# metadata:
+#   name: adguard-home-dns-quic-udp
+#   namespace: network-system
+# spec:
+#   parentRefs:
+#     - group: gateway.networking.k8s.io
+#       kind: Gateway
+#       name: traefik-gateway
+#       sectionName: adguard-home-dns-quic-udp
+#   rules:
+#     - name: adguard-home-dns-quic-udp
+#       backendRefs:
+#       - name: adguard-home-dns-quic-udp
+#         namespace: network-system
+#         port: 853
