@@ -1,0 +1,395 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: adguard-home-query
+  namespace: network-system
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`dns.homelab.heyser.xyz`) && PathPrefix(`/dns-query`)
+    kind: Rule
+    services:
+    - kind: TraefikService
+      name: adguard-home
+      namespace: network-system
+      # passHostHeader: true
+      port: 3000
+      # responseForwarding:
+      #   flushInterval: 100ms
+      # sticky:
+      #   cookie:
+      #     name: adguard-home
+      #     secure: true
+      #     httpOnly: true
+  tls:
+    secretName: adguard-homelab-heyser-xyz-tls
+    domains:
+      - main: "dns.homelab.heyser.xyz"
+        sans:
+          - "adguard.homelab.heyser.xyz"  
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: adguard-home-dns-tcp
+  namespace: network-system
+spec:
+  entryPoints:
+    - dns-tcp
+  routes:
+  - match: HostSNI(`dns.homelab.heyser.xyz`)
+    services:
+    - name: adguard-home-index-0
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 53
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-1
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 53
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-2
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 53
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-3
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 53
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-4
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 53
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-5
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 53
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-6
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 53
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-7
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 53
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-8
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 53
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-9
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 53
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-10
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 53
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-11
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 53
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-12
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 53
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-13
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 53
+      weight: 10
+      nativeLB: true
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRouteUDP
+metadata:
+  name: adguard-home-dns-udp
+  namespace: network-system
+spec:
+  entryPoints:
+    - dns-udp
+  routes:
+  - services:
+    - name: adguard-home-index-0
+      namespace: network-system
+      port: 53
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-1
+      namespace: network-system
+      port: 53
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-2
+      namespace: network-system
+      port: 53
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-3
+      namespace: network-system
+      port: 53
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-4
+      namespace: network-system
+      port: 53
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-5
+      namespace: network-system
+      port: 53
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-6
+      namespace: network-system
+      port: 53
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-7
+      namespace: network-system
+      port: 53
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-8
+      namespace: network-system
+      port: 53
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-9
+      namespace: network-system
+      port: 53
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-10
+      namespace: network-system
+      port: 53
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-11
+      namespace: network-system
+      port: 53
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-12
+      namespace: network-system
+      port: 53
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-13
+      namespace: network-system
+      port: 53
+      weight: 10
+      nativeLB: true
+---
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: adguard-home-dns-tls-tcp
+  namespace: network-system
+spec:
+  entryPoints:
+    - dns-tls-tcp
+  routes:
+  - match: HostSNI(`dns.homelab.heyser.xyz`)
+    services:
+    - name: adguard-home-index-0
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 853
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-1
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 853
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-2
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 853
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-3
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 853
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-4
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 853
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-5
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 853
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-6
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 853
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-7
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 853
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-8
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 853
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-9
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 853
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-10
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 853
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-11
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 853
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-12
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 853
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-13
+      namespace: network-system
+      serversTransport: skipverifytcp
+      port: 853
+      weight: 10
+      nativeLB: true
+  tls:
+    passthrough: true
+    secretName: adguard-homelab-heyser-xyz-tls
+    domains:
+    - main: "dns.homelab.heyser.xyz"
+      sans:
+        - "adguard.homelab.heyser.xyz"
+        - "dns.oci.heyser.xyz"
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRouteUDP
+metadata:
+  name: adguard-home-dns-quic-udp
+  namespace: network-system
+spec:
+  entryPoints:
+    - dns-quic-udp
+  routes:
+  - services:
+    - name: adguard-home-index-0
+      namespace: network-system
+      port: 853
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-1
+      namespace: network-system
+      port: 853
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-2
+      namespace: network-system
+      port: 853
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-3
+      namespace: network-system
+      port: 853
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-4
+      namespace: network-system
+      port: 853
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-5
+      namespace: network-system
+      port: 853
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-6
+      namespace: network-system
+      port: 853
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-7
+      namespace: network-system
+      port: 853
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-8
+      namespace: network-system
+      port: 853
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-9
+      namespace: network-system
+      port: 853
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-10
+      namespace: network-system
+      port: 853
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-11
+      namespace: network-system
+      port: 853
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-12
+      namespace: network-system
+      port: 853
+      weight: 10
+      nativeLB: true
+    - name: adguard-home-index-13
+      namespace: network-system
+      port: 853
+      weight: 10
+      nativeLB: true
+---

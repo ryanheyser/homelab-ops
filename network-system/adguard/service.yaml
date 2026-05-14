@@ -8,6 +8,20 @@ spec:
   insecureSkipVerify: true
 ---
 apiVersion: traefik.io/v1alpha1
+kind: ServersTransportTCP
+metadata:
+  name: skipverify
+  namespace: network-system
+spec:
+  proxyProtocol:
+    version: 2
+  dialKeepAlive: 5s
+  dialTimeout: 10s
+  terminationDelay: 100ms
+  tls:
+    insecureSkipVerify: true
+---
+apiVersion: traefik.io/v1alpha1
 kind: ServersTransport
 metadata:
   name: adguard-dns

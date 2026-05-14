@@ -144,7 +144,7 @@ spec:
             from: All
           mode: Passthrough
         dns-quic-udp:
-          port: 784
+          port: 853
           protocol: UDP
           namespacePolicy:
             from: All

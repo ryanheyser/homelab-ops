@@ -8,5 +8,6 @@ resources:
 - ./service.yaml
 - ./traefikservice.yaml
 - ./ingress.yaml
+- ./ingressroute.yaml
 - ./gateway.yaml
 - ./tailscale.yaml
