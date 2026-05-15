@@ -11,13 +11,118 @@ spec:
   - match: Host(`dns.homelab.heyser.xyz`) && PathPrefix(`/dns-query`)
     kind: Rule
     services:
-    - kind: TraefikService
-      name: adguard-home
+    - name: adguard-home-index-0
       namespace: network-system
-      # passHostHeader: true
+      # serversTransport: skipverifytcp
       port: 3000
-      # responseForwarding:
-      #   flushInterval: 100ms
+      weight: 10
+      passHostHeader: true
+      responseForwarding:
+        flushInterval: 100ms
+    - name: adguard-home-index-1
+      namespace: network-system
+      # serversTransport: skipverifytcp
+      port: 3000
+      weight: 10
+      passHostHeader: true
+      responseForwarding:
+        flushInterval: 100ms
+    - name: adguard-home-index-2
+      namespace: network-system
+      # serversTransport: skipverifytcp
+      port: 3000
+      weight: 10
+      passHostHeader: true
+      responseForwarding:
+        flushInterval: 100ms
+    - name: adguard-home-index-3
+      namespace: network-system
+      # serversTransport: skipverifytcp
+      port: 3000
+      weight: 10
+      passHostHeader: true
+      responseForwarding:
+        flushInterval: 100ms
+    - name: adguard-home-index-4
+      namespace: network-system
+      # serversTransport: skipverifytcp
+      port: 3000
+      weight: 10
+      passHostHeader: true
+      responseForwarding:
+        flushInterval: 100ms
+    - name: adguard-home-index-5
+      namespace: network-system
+      # serversTransport: skipverifytcp
+      port: 3000
+      weight: 10
+      passHostHeader: true
+      responseForwarding:
+        flushInterval: 100ms
+    - name: adguard-home-index-6
+      namespace: network-system
+      # serversTransport: skipverifytcp
+      port: 3000
+      weight: 10
+      passHostHeader: true
+      responseForwarding:
+        flushInterval: 100ms
+    - name: adguard-home-index-7
+      namespace: network-system
+      # serversTransport: skipverifytcp
+      port: 3000
+      weight: 10
+      passHostHeader: true
+      responseForwarding:
+        flushInterval: 100ms
+    - name: adguard-home-index-8
+      namespace: network-system
+      # serversTransport: skipverifytcp
+      port: 3000
+      weight: 10
+      passHostHeader: true
+      responseForwarding:
+        flushInterval: 100ms
+    - name: adguard-home-index-9
+      namespace: network-system
+      # serversTransport: skipverifytcp
+      port: 3000
+      weight: 10
+      passHostHeader: true
+      responseForwarding:
+        flushInterval: 100ms
+    - name: adguard-home-index-10
+      namespace: network-system
+      # serversTransport: skipverifytcp
+      port: 3000
+      weight: 10
+      passHostHeader: true
+      responseForwarding:
+        flushInterval: 100ms
+    - name: adguard-home-index-11
+      namespace: network-system
+      # serversTransport: skipverifytcp
+      port: 3000
+      weight: 10
+      passHostHeader: true
+      responseForwarding:
+        flushInterval: 100ms
+    - name: adguard-home-index-12
+      namespace: network-system
+      # serversTransport: skipverifytcp
+      port: 3000
+      weight: 10
+      passHostHeader: true
+      responseForwarding:
+        flushInterval: 100ms
+    - name: adguard-home-index-13
+      namespace: network-system
+      # serversTransport: skipverifytcp
+      port: 3000
+      weight: 10
+      passHostHeader: true
+      responseForwarding:
+        flushInterval: 100ms
       # sticky:
       #   cookie:
       #     name: adguard-home
