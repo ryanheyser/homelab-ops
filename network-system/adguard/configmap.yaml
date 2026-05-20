@@ -474,6 +474,8 @@ data:
       - '@@||v.ringcentral.com^$important'
       - '@@||pixeldrain.com^$important'
       - '@@||emjcd.com^$important'
+      - '@@||rings.solutions^$important'
+      - '@@||ring.com^$important'
       - '||ocsp.apple.com^$important'
       - '||ocsp2.apple.com^$important'
       - '||mesu.apple.com^$important'
