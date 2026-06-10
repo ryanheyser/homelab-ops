@@ -52,7 +52,7 @@ spec:
             image:
               # renovate: repository=getmeili/meilisearch
               repository: getmeili/meilisearch
-              tag: v1.45.2
+              tag: v1.46.1
             securityContext:
               runAsUser: 1000
               runAsGroup: 3001
