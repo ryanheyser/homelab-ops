@@ -110,10 +110,10 @@ spec:
           metallb.io/loadBalancerIPs: 10.0.101.2
           cni.projectcalico.org/ipAddrs: '["10.0.101.2"]'
           # traefik.ingress.kubernetes.io/service.nativelb: "true"
-          traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
-          traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
-          traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
-          traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+          # traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
+          # traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+          # traefik.ingress.kubernetes.io/service.sticky.cookie.sameSite: "none"
+          # traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
         externalTrafficPolicy: Cluster
         ports:
           connect:
