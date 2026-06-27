@@ -10,7 +10,13 @@ spec:
       "type": "bridge",
       "bridge": "vpnbr",
       "ipam": {
-        "type": "dhcp"
+        "type": "dhcp",
+        "request": [
+          {
+            "skipDefault": true,
+            "option": "subnet-mask"
+          }
+        ]
         }
       },{
         "type": "sbr"
