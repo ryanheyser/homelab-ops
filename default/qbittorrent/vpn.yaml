@@ -10,19 +10,18 @@ spec:
       "type": "bridge",
       "bridge": "vpnbr",
       "ipam": {
-          "type": "static",
-          "addresses": [
-            {
-              "address": "10.99.1.1/18",
-              "gateway": "19.99.0.1"
-            }
+          "type": "host-local",
+          "ranges": [
+            [{
+              "subnet": "10.99.0.0/18",
+              "rangeStart": "10.99.1.0",
+              "rangeEnd": "10.99.1.9",
+              "gateway": "10.99.0.1"
+            }]
           ],
           "routes": [
             { "dst": "0.0.0.0/0" }
           ],
-          "dns": {
-            "nameservers": ["10.99.0.1", "194.242.2.2"]
-          }
         }
       },{
         "type": "sbr"
