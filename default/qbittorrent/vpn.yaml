@@ -4,8 +4,7 @@ kind: NetworkAttachmentDefinition
 metadata:
   name: qbittorrent-vpn
 spec:
-  config: |-
-    '{
+  config: '{
       "plugins": [
         {
           "name": "vpnnet1",
