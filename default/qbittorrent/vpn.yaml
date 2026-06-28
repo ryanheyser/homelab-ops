@@ -5,23 +5,26 @@ metadata:
   name: qbittorrent-vpn
 spec:
   config: '{
-      "plugins": [{
-      "name": "vpnnet1",
-      "type": "bridge",
-      "bridge": "vpnbr",
-      "ipam": {
-          "type": "host-local",
-          "subnet": "10.99.0.0/18",
-          "rangeStart": "10.99.1.0",
-          "rangeEnd": "10.99.1.9",
-          "gateway": "10.99.0.1",
-          "routes": [
-            { "dst": "0.0.0.0/0" }
-          ],
+      "plugins": [
+        {
+          "name": "vpnnet1",
+          "type": "bridge",
+          "bridge": "vpnbr",
+          "ipam": {
+            "type": "host-local",
+            "subnet": "10.99.0.0/18",
+            "rangeStart": "10.99.1.0",
+            "rangeEnd": "10.99.1.9",
+            "gateway": "10.99.0.1",
+            "routes": [
+              { "dst": "0.0.0.0/0" }
+            ]
+          }
+        },
+        {
+          "type": "sbr"
         }
-      },{
-        "type": "sbr"
-      }]
+      ]
     }'
 ---
 apiVersion: k8s.cni.cncf.io/v1
