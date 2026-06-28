@@ -11,14 +11,10 @@ spec:
       "bridge": "vpnbr",
       "ipam": {
           "type": "host-local",
-          "ranges": [
-            [{
-              "subnet": "10.99.0.0/18",
-              "rangeStart": "10.99.1.0",
-              "rangeEnd": "10.99.1.9",
-              "gateway": "10.99.0.1"
-            }]
-          ],
+          "subnet": "10.99.0.0/18",
+          "rangeStart": "10.99.1.0",
+          "rangeEnd": "10.99.1.9",
+          "gateway": "10.99.0.1",
           "routes": [
             { "dst": "0.0.0.0/0" }
           ],
