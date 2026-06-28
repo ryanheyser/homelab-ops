@@ -3,5 +3,26 @@ kind: NetworkAttachmentDefinition
 metadata:
   name: prowlarr-vpn
 spec:
-  config: '{ "plugins": [{ "name": "vpnnet1", "type": "bridge", "bridge": "vpnbr", "ipam": { "type": "dhcp" } },{ "type": "sbr" }] }'
+  config: '{ 
+    "plugins": [
+        {
+          "name": "vpnnet1",
+          "type": "bridge",
+          "bridge": "vpnbr",
+          "ipam": {
+            "type": "host-local",
+            "subnet": "10.99.0.0/18",
+            "rangeStart": "10.99.1.4",
+            "rangeEnd": "10.99.1.5",
+            "gateway": "10.99.0.1",
+            "routes": [
+              { "dst": "0.0.0.0/0" }
+            ]
+          }
+        },
+        {
+          "type": "sbr"
+        }
+      ]
+    }'
 ---
