@@ -14,7 +14,7 @@ spec:
             "type": "host-local",
             "subnet": "10.99.0.0/18",
             "rangeStart": "10.99.1.0",
-            "rangeEnd": "10.99.1.9",
+            "rangeEnd": "10.99.1.1",
             "gateway": "10.99.0.1",
             "routes": [
               { "dst": "0.0.0.0/0" }
@@ -33,15 +33,25 @@ metadata:
   name: seedbox-vpn
 spec:
   config: '{
-    "plugins": [{
-      "name": "vpnnet1",
-      "type": "bridge",
-      "bridge": "vpnbr",
-      "ipam": {
-        "type": "dhcp"
+    "plugins": [
+        {
+          "name": "vpnnet1",
+          "type": "bridge",
+          "bridge": "vpnbr",
+          "ipam": {
+            "type": "host-local",
+            "subnet": "10.99.0.0/18",
+            "rangeStart": "10.99.1.2",
+            "rangeEnd": "10.99.1.3",
+            "gateway": "10.99.0.1",
+            "routes": [
+              { "dst": "0.0.0.0/0" }
+            ]
+          }
+        },
+        {
+          "type": "sbr"
         }
-      },{
-        "type": "sbr"
-      }]
+      ]
     }'
 ---
