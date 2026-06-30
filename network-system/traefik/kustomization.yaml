@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: network-system
 resources:
 # renovate: depName=kubernetes-sigs/gateway-api
-# - https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.5.1/experimental-install.yaml
+# - https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.6.0/experimental-install.yaml
 - ./certificates.yaml
 # renovate: depName=traefik/traefik-helm-chart
 - https://raw.githubusercontent.com/traefik/traefik-helm-chart/refs/tags/v41.0.1/traefik/crds/hub.traefik.io_accesscontrolpolicies.yaml
