@@ -14,7 +14,7 @@ spec:
             "type": "host-local",
             "subnet": "10.99.0.0/18",
             "rangeStart": "10.99.1.0",
-            "rangeEnd": "10.99.1.0",
+            "rangeEnd": "10.99.1.1",
             "gateway": "10.99.0.1",
             "routes": [
               { "dst": "0.0.0.0/0" }
@@ -41,8 +41,8 @@ spec:
           "ipam": {
             "type": "host-local",
             "subnet": "10.99.0.0/18",
-            "rangeStart": "10.99.1.1",
-            "rangeEnd": "10.99.1.1",
+            "rangeStart": "10.99.1.2",
+            "rangeEnd": "10.99.1.3",
             "gateway": "10.99.0.1",
             "routes": [
               { "dst": "0.0.0.0/0" }
