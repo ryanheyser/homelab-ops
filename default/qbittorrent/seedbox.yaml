@@ -60,11 +60,6 @@ spec:
               privileged: true
             env:
               TZ: America/New_York              
-            mounts:
-            - name: cni-dir
-              mountPath: /host/cni
-            - name: proc-dir
-              mountPath: /host/proc
             command:
             - /bin/sh
             - -c
@@ -182,6 +177,14 @@ spec:
       cni-dir:
         type: hostPath
         hostPath: /var/lib/cni/networks
+        advancedMounts:
+          main: # Maps to the 'main' controller
+            cleanup: # Target key explicitly maps to the 'cleanup' initContainer
+              - path: /host/cni
       proc-dir:
         type: hostPath
         hostPath: /
+        advancedMounts:
+          main: # Maps to the 'main' controller
+            cleanup: # Target key explicitly maps to the 'cleanup' initContainer
+              - path: /host/proc
