@@ -50,6 +50,30 @@ spec:
           tolerations:
           - key: "arm"
             operator: "Exists"
+        initContainers:
+          cleanup:
+            image:
+              repository: alpine
+              tag: latest
+            securityContext:
+              privileged: true
+            env:
+              TZ: America/New_York              
+            command:
+            - /bin/sh
+            - -c
+            args:
+            - >
+              cd /host/cni/vpnnet1/ && 
+              for ip in *; do 
+                if [ -f "$ip" ] && [ "$ip" != "lock" ]; then
+                  pod_uid=$(cat "$ip");
+                  if ! chroot /host/proc ls /var/log/pods/ | grep -q "$pod_uid"; then
+                    echo "Removing orphaned IP: $ip";
+                    rm "$ip";
+                  fi
+                fi
+              done
         containers:
           main:
             image:
@@ -113,3 +137,17 @@ spec:
             main:
             - path: "/config"
               readOnly: false
+      cni-dir:
+        type: hostPath
+        hostPath: /var/lib/cni/networks
+        advancedMounts:
+          main: # Maps to the 'main' controller
+            cleanup: # Target key explicitly maps to the 'cleanup' initContainer
+              - path: /host/cni
+      proc-dir:
+        type: hostPath
+        hostPath: /
+        advancedMounts:
+          main: # Maps to the 'main' controller
+            cleanup: # Target key explicitly maps to the 'cleanup' initContainer
+              - path: /host/proc
