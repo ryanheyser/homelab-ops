@@ -142,12 +142,14 @@ spec:
         hostPath: /var/lib/cni/networks
         advancedMounts:
           main: # Maps to the 'main' controller
-            cleanup: # Target key explicitly maps to the 'cleanup' initContainer
-              - path: /host/cni
+            initCont: # CRITICAL: This explicit block tells app-template the target is an init container
+              cleanup: # Target key explicitly maps to the 'cleanup' initContainer
+                - path: /host/cni
       proc-dir:
         type: hostPath
         hostPath: /
         advancedMounts:
           main: # Maps to the 'main' controller
-            cleanup: # Target key explicitly maps to the 'cleanup' initContainer
-              - path: /host/proc
+            initCont: # CRITICAL: This explicit block tells app-template the target is an init container
+              cleanup: # Target key explicitly maps to the 'cleanup' initContainer
+               - path: /host/proc
