@@ -65,7 +65,7 @@ spec:
             - -c
             args:
             - >
-              cd /host/cni/vpnnet1/ && 
+              cd /host/cni/seedbox-vpn/ && 
               for ip in *; do 
                 if [ -f "$ip" ] && [ "$ip" != "lock" ]; then
                   pod_uid=$(cat "$ip");
