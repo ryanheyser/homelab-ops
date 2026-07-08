@@ -60,13 +60,13 @@ spec:
               privileged: true
             env:
               TZ: America/New_York              
-            volumeMounts:
+            mounts:
             - name: cni-dir
               mountPath: /host/cni
             - name: proc-dir
               mountPath: /host/proc
             command:
-            - sh
+            - /bin/sh
             - -c
             args:
             - >
@@ -179,3 +179,9 @@ spec:
         existingClaim: seedbox-media
       incomplete:
         type: emptyDir
+      cni-dir:
+        type: hostPath
+        hostPath: /var/lib/cni/networks
+      proc-dir:
+        type: hostPath
+        hostPath: /
