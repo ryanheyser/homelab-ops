@@ -179,14 +179,16 @@ spec:
         hostPath: /var/lib/cni/networks
         advancedMounts:
           main: # Maps to the 'main' controller
-          - initCont: cleanup
-            mounts:
-            - path: /host/cni
+            initContainers:
+            - container: cleanup
+              mounts:
+              - path: /host/cni
       proc-dir:
         type: hostPath
         hostPath: /
         advancedMounts:
           main: # Maps to the 'main' controller
-          - initCont: cleanup
-            mounts:
-            - path: /host/proc
+            initContainers:
+            - container: cleanup
+              mounts:
+              - path: /host/proc
