@@ -71,7 +71,7 @@ spec:
             image:
               # renovate: repository=ghcr.io/linkwarden/linkwarden
               repository: ghcr.io/linkwarden/linkwarden
-              tag: v2.14.1
+              tag: v2.15.0
             securityContext:
               runAsUser: 1000
               runAsGroup: 3001
