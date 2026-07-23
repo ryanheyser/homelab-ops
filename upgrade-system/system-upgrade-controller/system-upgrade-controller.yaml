@@ -61,7 +61,7 @@ spec:
       containers:
         - name: system-upgrade-controller
           # renovate: repository=rancher/system-upgrade-controller
-          image: rancher/system-upgrade-controller:v0.19.2
+          image: rancher/system-upgrade-controller:v0.20.1
           imagePullPolicy: IfNotPresent
           securityContext:
             runAsNonRoot: true
