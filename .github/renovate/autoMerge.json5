@@ -37,7 +37,8 @@
         "ollama/ollama",
         "etherpad/etherpad",
         "valkey/valkey",
-        "getmeili/meilisearch"
+        "getmeili/meilisearch",
+        "ghcr.io/linkwarden/linkwarden"
       ]
     },
     {
