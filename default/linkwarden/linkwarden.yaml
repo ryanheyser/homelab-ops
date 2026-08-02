@@ -60,7 +60,7 @@ spec:
               - tini
               - --
               - /bin/meilisearch
-              - --experimental-dumpless-upgrade
+              - --upgrade-db
             env:
               TZ: "America/New_York"
             envFrom:
