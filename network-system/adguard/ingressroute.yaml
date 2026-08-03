@@ -296,72 +296,15 @@ spec:
   routes:
   - match: HostSNI(`*`)
     services:
+    # NOTE: pinned to a single replica. DoT holds a TLS session per client;
+    # round-robining across independently-stateful AdGuard Home pods causes
+    # intermittent handshake/session failures with no server-side evidence.
+    # See: https://doc.traefik.io/traefik/reference/routing-configuration/udp/service/
+    # (UDP services only support LoadBalancer/Weighted, no per-connection
+    # affinity across backends). Revisit if AdGuard Home ever supports shared
+    # QUIC/TLS session state across replicas, or move to a single dedicated
+    # edge instance forwarding to the caching pool.
     - name: adguard-home-index-0
-      namespace: network-system
-      # serversTransport: skipverifytcp
-      port: 853
-      weight: 10
-    - name: adguard-home-index-1
-      namespace: network-system
-      # serversTransport: skipverifytcp
-      port: 853
-      weight: 10
-    - name: adguard-home-index-2
-      namespace: network-system
-      # serversTransport: skipverifytcp
-      port: 853
-      weight: 10
-    - name: adguard-home-index-3
-      namespace: network-system
-      # serversTransport: skipverifytcp
-      port: 853
-      weight: 10
-    - name: adguard-home-index-4
-      namespace: network-system
-      # serversTransport: skipverifytcp
-      port: 853
-      weight: 10
-    - name: adguard-home-index-5
-      namespace: network-system
-      # serversTransport: skipverifytcp
-      port: 853
-      weight: 10
-    - name: adguard-home-index-6
-      namespace: network-system
-      # serversTransport: skipverifytcp
-      port: 853
-      weight: 10
-    - name: adguard-home-index-7
-      namespace: network-system
-      # serversTransport: skipverifytcp
-      port: 853
-      weight: 10
-    - name: adguard-home-index-8
-      namespace: network-system
-      # serversTransport: skipverifytcp
-      port: 853
-      weight: 10
-    - name: adguard-home-index-9
-      namespace: network-system
-      # serversTransport: skipverifytcp
-      port: 853
-      weight: 10
-    - name: adguard-home-index-10
-      namespace: network-system
-      # serversTransport: skipverifytcp
-      port: 853
-      weight: 10
-    - name: adguard-home-index-11
-      namespace: network-system
-      # serversTransport: skipverifytcp
-      port: 853
-      weight: 10
-    - name: adguard-home-index-12
-      namespace: network-system
-      # serversTransport: skipverifytcp
-      port: 853
-      weight: 10
-    - name: adguard-home-index-13
       namespace: network-system
       # serversTransport: skipverifytcp
       port: 853
@@ -379,59 +322,21 @@ spec:
     - dns-quic-udp
   routes:
   - services:
+    # NOTE: pinned to a single replica. DoQ is a stateful QUIC connection
+    # owned entirely by whichever pod's quic-go instance did the handshake.
+    # Round-robining across all 14 AdGuard Home replicas (previous config)
+    # meant any session re-balance (idle timeout, client NAT rebind, network
+    # change) had ~13/14 odds of landing on a pod with no knowledge of the
+    # connection, causing exactly the random client-side "could not be used"
+    # failures with zero evidence on the router or in AdGuard's logs.
+    # Traefik UDP services have no sticky/connection-ID-aware option (only
+    # LoadBalancer/Weighted): https://doc.traefik.io/traefik/reference/routing-configuration/udp/service/
+    # Trade-off: no HA on this listener specifically - if index-0 is down,
+    # DoQ is down until this weight is repointed to another index. Plain
+    # UDP/TCP:53 below is untouched and still spread across all 14 replicas,
+    # since that traffic is stateless per-query and the caching-layer intent
+    # is unaffected.
     - name: adguard-home-index-0
-      namespace: network-system
-      port: 853
-      weight: 10
-    - name: adguard-home-index-1
-      namespace: network-system
-      port: 853
-      weight: 10
-    - name: adguard-home-index-2
-      namespace: network-system
-      port: 853
-      weight: 10
-    - name: adguard-home-index-3
-      namespace: network-system
-      port: 853
-      weight: 10
-    - name: adguard-home-index-4
-      namespace: network-system
-      port: 853
-      weight: 10
-    - name: adguard-home-index-5
-      namespace: network-system
-      port: 853
-      weight: 10
-    - name: adguard-home-index-6
-      namespace: network-system
-      port: 853
-      weight: 10
-    - name: adguard-home-index-7
-      namespace: network-system
-      port: 853
-      weight: 10
-    - name: adguard-home-index-8
-      namespace: network-system
-      port: 853
-      weight: 10
-    - name: adguard-home-index-9
-      namespace: network-system
-      port: 853
-      weight: 10
-    - name: adguard-home-index-10
-      namespace: network-system
-      port: 853
-      weight: 10
-    - name: adguard-home-index-11
-      namespace: network-system
-      port: 853
-      weight: 10
-    - name: adguard-home-index-12
-      namespace: network-system
-      port: 853
-      weight: 10
-    - name: adguard-home-index-13
       namespace: network-system
       port: 853
       weight: 10
