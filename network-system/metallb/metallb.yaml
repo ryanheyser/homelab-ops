@@ -33,11 +33,23 @@ spec:
       enabled: true
     controller:
       priorityClassName: system-cluster-critical
+      livenessProbe:
+        enabled: false
+      readinessProbe:
+        enabled: false
       tolerations:
       - key: "node-role.kubernetes.io/control-plane"
         operator: "Exists"
+      - key: "node-role.kubernetes.io/master"
+        operator: "Exists"
+      - key: "node-role.kubernetes.io/etcd"
+        operator: "Exists"
     speaker:
       priorityClassName: system-node-critical
+      livenessProbe:
+        enabled: false
+      readinessProbe:
+        enabled: false
       tolerations:
       - key: "node-role.kubernetes.io/control-plane"
         operator: "Exists"
