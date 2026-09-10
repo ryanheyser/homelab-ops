@@ -103,6 +103,32 @@ spec:
 apiVersion: tailscale.com/v1alpha1
 kind: Connector
 metadata:
+  name: ts-k8s-paramountplus
+spec:
+  replicas: 2
+  hostnamePrefix: ts-k8s-paramountplus
+  proxyClass: ts-proxyclass
+  appConnector: {}
+  tags:
+  - tag:k8s
+  - tag:app-paramountplus
+---
+apiVersion: tailscale.com/v1alpha1
+kind: Connector
+metadata:
+  name: ts-k8s-peacock
+spec:
+  replicas: 2
+  hostnamePrefix: ts-k8s-peacock
+  proxyClass: ts-proxyclass
+  appConnector: {}
+  tags:
+  - tag:k8s
+  - tag:app-peacock
+---
+apiVersion: tailscale.com/v1alpha1
+kind: Connector
+metadata:
   name: ts-k8s-homelab
 spec:
   replicas: 2
