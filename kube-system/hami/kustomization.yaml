@@ -3,4 +3,4 @@ kind: Kustomization
 namespace: kube-system
 resources:
 # renovate: registryUrl=https://project-hami.github.io/HAMi
-- ./hami.yaml
+# - ./hami.yaml
