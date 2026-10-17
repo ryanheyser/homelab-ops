@@ -6,5 +6,5 @@ resources:
 - ./certificate.yaml
 - ./secret-key.yaml
 - ./secret-postgres-config.yaml
-- ./mangayomi-server.yaml
+- ./mangayomi-sync-server.yaml
 - ./tailscale.yaml
