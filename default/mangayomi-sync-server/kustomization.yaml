@@ -5,6 +5,6 @@ resources:
 - ./pvc.yaml
 - ./certificate.yaml
 - ./secret-key.yaml
-- ./secret-mongo-config.yaml
+- ./secret-postgres-config.yaml
 - ./mangayomi-server.yaml
 - ./tailscale.yaml
