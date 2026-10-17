@@ -1,0 +1,15 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mangayomi-sync-server-tailscale
+spec:
+  defaultBackend:
+    service:
+      name: mangayomi-sync-server
+      port:
+        number: 3000
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - mangayomi-sync-server
