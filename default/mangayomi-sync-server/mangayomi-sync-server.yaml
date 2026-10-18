@@ -83,7 +83,7 @@ spec:
               PORT: 3000
               AVATAR_STORAGE_DIR: /data/avatars
               TRUST_PROXY_HEADERS: "true"
-              NODE_OPTIONS: "--max-http-header-size=32768"
+              NODE_OPTIONS: "--max-http-header-size=65536"
             envFrom:
             - secretRef:
                 name: mangayomi-sync-server-secret-key
