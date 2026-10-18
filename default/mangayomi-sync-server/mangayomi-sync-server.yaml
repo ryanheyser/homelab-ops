@@ -138,7 +138,7 @@ spec:
         name: mangayomi-config-override
         advancedMounts:
           # Targets your main app container structure cleanly
-          mangayomi-sync-server: # Replace this if your app container identifier key is named differently
+          main: # Replace this if your app container identifier key is named differently
             main:
               - path: /app/next.config.ts
                 subPath: next.config.ts
