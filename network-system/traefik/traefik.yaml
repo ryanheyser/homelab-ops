@@ -62,6 +62,9 @@ spec:
       - "--accesslog=true"
       - "--accesslog.format=json"
       - "--accesslog.filepath=/dev/stdout"
+      # Set global entrypoint timeouts to give the cluster time to process 100MB
+      - "--entrypoints.websecure.transport.respondingTimeouts.readTimeout=300s"
+      - "--entrypoints.websecure.transport.respondingTimeouts.writeTimeout=300s"
     resources:
       requests:
         cpu: "500m"
