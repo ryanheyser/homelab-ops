@@ -1,0 +1,10 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: large-max-request-body
+  namespace: network-system
+spec:
+  buffering:
+    # 100 MB limit in bytes
+    maxRequestBodyBytes: 104857600
+    memRequestBodyBytes: 104857600
