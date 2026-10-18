@@ -16,3 +16,14 @@ metadata:
   namespace: network-system
 spec:
   compress: {}
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: octet-stream-force
+  namespace: network-system
+spec:
+  headers:
+    customRequestHeaders:
+      Content-Type: "application/octet-stream"
+---
