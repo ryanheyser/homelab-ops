@@ -74,27 +74,27 @@ spec:
             - "prisma"
             - "migrate"
             - "deploy"
-          containers:
-            main:
-              image:
-                # renovate: repository=notakari/mangayomi-sync-server
-                repository: notakari/mangayomi-sync-server
-                tag: 0.1.2
-              securityContext:
-                runAsUser: 568
-                runAsGroup: 568
-              env:
-                TZ: America/New_York
-                HOST: 0.0.0.0
-                PORT: 3000
-                AVATAR_STORAGE_DIR: /app/data/avatars
-              envFrom:
-              - secretRef:
-                  name: mangayomi-sync-server-secret-key
-                  optional: false
-              - secretRef:
-                  name: mangayomi-sync-server-postgres-config
-                  optional: false
+        containers:
+          main:
+            image:
+              # renovate: repository=notakari/mangayomi-sync-server
+              repository: notakari/mangayomi-sync-server
+              tag: 0.1.2
+            securityContext:
+              runAsUser: 568
+              runAsGroup: 568
+            env:
+              TZ: America/New_York
+              HOST: 0.0.0.0
+              PORT: 3000
+              AVATAR_STORAGE_DIR: /app/data/avatars
+            envFrom:
+            - secretRef:
+                name: mangayomi-sync-server-secret-key
+                optional: false
+            - secretRef:
+                name: mangayomi-sync-server-postgres-config
+                optional: false
     service:
       main:
         controller: main
