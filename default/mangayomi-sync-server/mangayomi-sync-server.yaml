@@ -83,7 +83,7 @@ spec:
               PORT: 3000
               AVATAR_STORAGE_DIR: /data/avatars
               TRUST_PROXY_HEADERS: "true"
-              NODE_OPTIONS: "--max-http-header-size=65536 --max-old-space-size=4096"
+              # NODE_OPTIONS: "--max-http-header-size=65536 --max-old-space-size=4096"
             envFrom:
             - secretRef:
                 name: mangayomi-sync-server-secret-key
@@ -106,7 +106,7 @@ spec:
         annotations:
           kubernetes.io/ingress.class: traefik
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
-          traefik.ingress.kubernetes.io/router.middlewares: network-system-large-max-request-body@kubernetescrd,network-system-compress@kubernetescrd,network-system-octet-stream-force@kubernetescrd
+          # traefik.ingress.kubernetes.io/router.middlewares: network-system-large-max-request-body@kubernetescrd,network-system-compress@kubernetescrd,network-system-octet-stream-force@kubernetescrd
           # traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: Media
