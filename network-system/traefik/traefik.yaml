@@ -61,6 +61,7 @@ spec:
       - "--log.level=ERROR"
       - "--accesslog=true"
       - "--accesslog.format=json"
+      - "--accesslog.filepath=/dev/stdout"
     resources:
       requests:
         cpu: "500m"
