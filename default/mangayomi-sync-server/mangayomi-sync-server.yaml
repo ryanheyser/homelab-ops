@@ -53,7 +53,7 @@ spec:
             image:
               # renovate: repository=notakari/mangayomi-sync-server
               repository: notakari/mangayomi-sync-server
-              tag: 0.1.2
+              tag: 0.1.4
             securityContext:
               runAsUser: 568
               runAsGroup: 568
@@ -73,7 +73,7 @@ spec:
             image:
               # renovate: repository=notakari/mangayomi-sync-server
               repository: notakari/mangayomi-sync-server
-              tag: 0.1.2
+              tag: 0.1.4
             securityContext:
               runAsUser: 568
               runAsGroup: 568
