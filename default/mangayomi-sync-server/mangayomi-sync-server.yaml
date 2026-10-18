@@ -134,5 +134,5 @@ spec:
         advancedMounts:
           main:
             main:
-            - path: "/app/data"
+            - path: "/app"
               readOnly: false
