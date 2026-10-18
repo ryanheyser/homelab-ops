@@ -7,3 +7,4 @@ spec:
   buffering:
     # 100 MB limit in bytes
     maxRequestBodyBytes: 104857600
+    memRequestBodyBytes: 104857600
