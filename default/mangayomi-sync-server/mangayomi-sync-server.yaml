@@ -141,6 +141,6 @@ spec:
         advancedMounts:
           main:
             main:
-            - path: "/app/.next"
+            - path: "/app/.next/cache"
               readOnly: false
 
