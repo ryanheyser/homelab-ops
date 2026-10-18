@@ -134,5 +134,13 @@ spec:
         advancedMounts:
           main:
             main:
-            - path: "/app"
+            - path: "/app/data"
               readOnly: false
+      app-cache:
+        existingClaim: mangayomi-sync-server-app-cache
+        advancedMounts:
+          main:
+            main:
+            - path: "/app/.next"
+              readOnly: false
+
