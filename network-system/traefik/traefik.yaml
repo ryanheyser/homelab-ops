@@ -58,9 +58,9 @@ spec:
     #   fsGroup: 0
     #   runAsNonRoot: false
     additionalArguments:
-      - "--logs.general.level=ERROR"
-      - "--logs.access=true"
-      - "--logs.access.format=json"
+      - "--log.level=ERROR"
+      - "--accesslog=true"
+      - "--accesslog.format=json"
     resources:
       requests:
         cpu: "500m"
