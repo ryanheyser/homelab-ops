@@ -61,9 +61,6 @@ spec:
               TZ: America/New_York
             envFrom:
             - secretRef:
-                name: mangayomi-sync-server-secret-key
-                optional: false
-            - secretRef:
                 name: mangayomi-sync-server-postgres-config
                 optional: false             
             command:
