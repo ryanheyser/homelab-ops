@@ -105,7 +105,7 @@ spec:
         annotations:
           kubernetes.io/ingress.class: traefik
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
-          traefik.ingress.kubernetes.io/router.middlewares: "network-system-large-max-request-body@kubernetescrd"
+          traefik.ingress.kubernetes.io/router.middlewares: network-system-large-max-request-body@kubernetescrd,network-system-compress@kubernetescrd
           # traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: Media
