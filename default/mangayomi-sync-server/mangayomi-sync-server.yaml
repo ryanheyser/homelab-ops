@@ -87,7 +87,7 @@ spec:
               TZ: America/New_York
               HOST: 0.0.0.0
               PORT: 3000
-              AVATAR_STORAGE_DIR: /app/data/avatars
+              AVATAR_STORAGE_DIR: /data/avatars
               TRUST_PROXY_HEADERS: "true"
             envFrom:
             - secretRef:
@@ -135,7 +135,7 @@ spec:
         advancedMounts:
           main:
             main:
-            - path: "/app/data"
+            - path: "/data"
               readOnly: false
       app-cache:
         existingClaim: mangayomi-sync-server-app-cache
