@@ -132,3 +132,13 @@ spec:
             main:
             - path: "/data"
               readOnly: false
+      config-override:
+        enabled: true
+        type: configMap
+        name: mangayomi-config-override
+        advancedMounts:
+          # Targets your main app container structure cleanly
+          mangayomi-sync-server: # Replace this if your app container identifier key is named differently
+            main:
+              - path: /app/next.config.ts
+                subPath: next.config.ts
