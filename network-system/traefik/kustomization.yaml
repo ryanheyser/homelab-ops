@@ -31,4 +31,5 @@ resources:
 - https://raw.githubusercontent.com/traefik/traefik-helm-chart/refs/tags/v42.0.0/traefik/crds/traefik.io_tlsoptions.yaml
 - https://raw.githubusercontent.com/traefik/traefik-helm-chart/refs/tags/v42.0.0/traefik/crds/traefik.io_tlsstores.yaml
 - https://raw.githubusercontent.com/traefik/traefik-helm-chart/refs/tags/v42.0.0/traefik/crds/traefik.io_traefikservices.yaml
+- ./middleware.yaml
 - ./traefik.yaml
