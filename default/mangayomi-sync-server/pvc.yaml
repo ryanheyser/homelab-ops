@@ -13,3 +13,18 @@ spec:
     requests:
       storage: 10Gi
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mangayomi-sync-server-app-cache
+  namespace: default
+  annotations:
+    nfs.io/storage-path: "containers/kubernetes/mangayomi-sync-server/cache"
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: "nfs-dynamic"
+  resources:
+    requests:
+      storage: 10Gi
+---
