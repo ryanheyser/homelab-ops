@@ -80,7 +80,7 @@ spec:
             env:
               TZ: America/New_York
               HOST: 0.0.0.0
-              PORT: 3000
+              PORT: &port 3000
               AVATAR_STORAGE_DIR: /data/avatars
               TRUST_PROXY_HEADERS: "true"
               # NODE_OPTIONS: "--max-http-header-size=65536 --max-old-space-size=4096"
@@ -97,8 +97,25 @@ spec:
         type: ClusterIP
         ports:
           http:
-            port: 3000
-            targetPort: 3000
+            port: *port
+            targetPort: *port
+      sync:
+        controller: main
+        type: LoadBalancer
+        externalIPs:
+        - 10.0.101.10
+        annotations:
+          metallb.io/allow-shared-ip: "mangayomi-sync-share"
+          metallb.io/address-pool: "default"
+          metallb.io/loadBalancerIPs: 10.0.101.10
+          cni.projectcalico.org/ipAddrs: '["10.0.101.10"]'
+        ports:
+          sync:
+            enabled: true
+            port: *port
+            protocol: TCP
+            targetPort: *port
+        externalTrafficPolicy: Cluster
 
     ingress:
       main:
