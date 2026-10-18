@@ -26,4 +26,6 @@ spec:
   headers:
     customRequestHeaders:
       Content-Type: "application/octet-stream"
+    customResponseHeaders:
+      X-Bypass-Status: "Active"
 ---
