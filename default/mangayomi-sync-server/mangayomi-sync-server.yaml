@@ -83,6 +83,7 @@ spec:
               PORT: &port 3000
               AVATAR_STORAGE_DIR: /data/avatars
               TRUST_PROXY_HEADERS: "true"
+              TRUSTED_DOMAIN: &ip 10.0.101.10
               # NODE_OPTIONS: "--max-http-header-size=65536 --max-old-space-size=4096"
             envFrom:
             - secretRef:
@@ -103,11 +104,11 @@ spec:
         controller: main
         type: LoadBalancer
         externalIPs:
-        - 10.0.101.10
+        - *ip
         annotations:
           metallb.io/allow-shared-ip: "mangayomi-sync-share"
           metallb.io/address-pool: "default"
-          metallb.io/loadBalancerIPs: 10.0.101.10
+          metallb.io/loadBalancerIPs: *ip
           cni.projectcalico.org/ipAddrs: '["10.0.101.10"]'
         ports:
           sync:
