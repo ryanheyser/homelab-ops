@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mangayomi-debug-route
+  namespace: default
+data:
+  route.ts: |
+    import { NextResponse } from "next/server";
+    import { syncRequestSchema } from "@/lib/validation/sync";
+    
+    export async function POST(request: Request): Promise<NextResponse> {
+      try {
+        const body: unknown = await request.json().catch(() => null);
+        
+        if (!body) {
+          return NextResponse.json({ error: "Empty or malformed JSON received" }, { status: 400 });
+        }
+
+        // Run validation against the official Mangayomi server sync logic rules
+        const parsed = syncRequestSchema.safeParse(body);
+
+        if (!parsed.success) {
+          console.error("========================================================");
+          console.error("!!! ZOD SYNC SCHEMA VALIDATION FAILED !!!");
+          console.error("Total Errors Caught:", parsed.error.issues.length);
+          
+          parsed.error.issues.forEach((issue) => {
+            console.error(`-> Broken Field Path: "${issue.path.join('.')}"`);
+            console.error(`   Validation Failure Code: ${issue.code}`);
+            console.error(`   Error Message details: ${issue.message}`);
+          });
+          console.error("========================================================");
+
+          return NextResponse.json({ 
+            error: "invalidRequest", 
+            debug: true,
+            issues: parsed.error.issues.map(i => ({ path: i.path.join('.'), message: i.message }))
+          }, { status: 400 });
+        }
+
+        return NextResponse.json({ message: "Payload schema parsed successfully. Your data shape is completely valid." }, { status: 200 });
+      } catch (err: any) {
+        console.error("Runtime exception inside debug interception endpoint:", err);
+        return NextResponse.json({ error: "Internal processing crash", details: err.message }, { status: 500 });
+      }
+    }
+---
