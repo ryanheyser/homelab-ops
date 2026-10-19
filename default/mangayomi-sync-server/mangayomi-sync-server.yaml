@@ -92,10 +92,7 @@ spec:
             - secretRef:
                 name: mangayomi-sync-server-postgres-config
                 optional: false
-            volumeMounts:
-            - name: debug-route
-              mountPath: /app/app/api/sync/debug/route.ts
-              subPath: route.ts
+
     service:
       main:
         controller: main
