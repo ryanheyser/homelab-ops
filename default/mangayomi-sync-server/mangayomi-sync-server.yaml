@@ -150,11 +150,11 @@ spec:
             main:
             - path: "/data"
               readOnly: false
-      cache:
-        existingClaim: mangayomi-sync-server-app-cache
-        advancedMounts:
-          main:
-            main:
-            - path: "/app/.next/cache/images"
-              readOnly: false
+      # cache:
+        # existingClaim: mangayomi-sync-server-app-cache
+        # advancedMounts:
+          # main:
+            # main:
+            # - path: "/app/.next/cache/images"
+              # readOnly: false
       
