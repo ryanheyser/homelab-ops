@@ -114,6 +114,9 @@ spec:
           metallb.io/address-pool: "default"
           metallb.io/loadBalancerIPs: *ip
           cni.projectcalico.org/ipAddrs: '["10.0.101.10"]'
+          traefik.ingress.kubernetes.io/buffering: |
+            maxRequestBodyBytes: 104857600
+            memRequestBodyBytes: 104857600
         ports:
           sync:
             enabled: true
