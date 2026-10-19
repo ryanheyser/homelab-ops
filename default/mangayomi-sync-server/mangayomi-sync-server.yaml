@@ -42,9 +42,9 @@ spec:
           reloader.stakater.com/auto: "true"
         pod:
           securityContext:
-            fsGroup: 1000
+            fsGroup: 0
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [ 568, 911, 1001, 3001 ]
+            supplementalGroups: [ 568, 911, 1000, 1001, 3001 ]
           tolerations:
           - key: "arm"
             operator: "Exists"
@@ -55,8 +55,8 @@ spec:
               repository: notakari/mangayomi-sync-server
               tag: 0.1.4
             securityContext:
-              runAsUser: 1000
-              runAsGroup: 1000
+              runAsUser: 0
+              runAsGroup: 0
             env:
               TZ: America/New_York
             envFrom:
@@ -75,8 +75,8 @@ spec:
               repository: notakari/mangayomi-sync-server
               tag: 0.1.4
             securityContext:
-              runAsUser: 1000
-              runAsGroup: 1000
+              runAsUser: 0
+              runAsGroup: 0
             env:
               TZ: America/New_York
               HOST: 0.0.0.0
@@ -150,11 +150,7 @@ spec:
             main:
             - path: "/data"
               readOnly: false
-      app-cache:
-        type: emptyDir
-        globalMounts:
-        - path: /app/.next/cache/images # Mount it exactly where mkdir is failing
-          readOnly: false
+
       # cache:
         # existingClaim: mangayomi-sync-server-app-cache
         # advancedMounts:
