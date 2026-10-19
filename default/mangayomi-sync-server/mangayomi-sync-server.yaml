@@ -170,13 +170,3 @@ spec:
             # main:
             # - path: "/app/.next/cache/images"
               # readOnly: false
-      
-      debug-route:
-        enabled: true
-        type: configMap
-        name: mangayomi-debug-route
-        advancedMounts:
-          main:
-            main:
-              - path: /app/app/api/sync/debug/route.ts
-                subPath: route.ts
