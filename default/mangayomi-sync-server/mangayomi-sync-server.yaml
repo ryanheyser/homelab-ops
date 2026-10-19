@@ -126,6 +126,8 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
           # traefik.ingress.kubernetes.io/router.middlewares: network-system-large-max-request-body@kubernetescrd,network-system-compress@kubernetescrd,network-system-octet-stream-force@kubernetescrd
           # traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
+          nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+          nginx.ingress.kubernetes.io/proxy-request-buffering: "on"
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: Media
           # gethomepage.dev/icon: mangayomi-server.svg
