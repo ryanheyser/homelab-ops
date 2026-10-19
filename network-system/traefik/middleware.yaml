@@ -17,3 +17,14 @@ metadata:
 spec:
   compress: {}
 ---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: force-api-json
+  namespace: network-system
+spec:
+  headers:
+    # This strips framework-specific intercept headers that trigger Next.js security alerts
+    customRequestHeaders:
+      Next-Action: ""
+---
