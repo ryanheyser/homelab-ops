@@ -132,7 +132,7 @@ spec:
           kubernetes.io/ingress.class: traefik
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
           traefik.ingress.kubernetes.io/router.tls: "true"
-          # traefik.ingress.kubernetes.io/router.middlewares: network-system-large-max-request-body@kubernetescrd,network-system-compress@kubernetescrd,network-system-octet-stream-force@kubernetescrd
+          traefik.ingress.kubernetes.io/router.middlewares: network-system-large-max-request-body@kubernetescrd,network-system-compress-request-body@kubernetescrd
           # traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
           nginx.ingress.kubernetes.io/proxy-body-size: "100m"
           nginx.ingress.kubernetes.io/proxy-request-buffering: "on"
