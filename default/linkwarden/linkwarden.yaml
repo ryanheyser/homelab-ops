@@ -166,3 +166,11 @@ spec:
           main:
             meili:
             - path: "/meili_data"
+      playwright:
+        type: emptyDir
+        existingClaim: linkwarden-playwright-data
+        advancedMounts:
+          main:
+            main:
+            - path: "/ms-playwright"
+              readOnly: false
