@@ -26,3 +26,7 @@ ipam:
   - ip: "10.0.101.6"
     service: immich-loadbalancer
     file: default/immich/loadbalancer.yaml
+  - ip: "10.0.101.10"
+    service: 
+    - mangayomi-sync-server
+    file: default/mangayomi-sync-server/mangayomi-sync-server.yaml
