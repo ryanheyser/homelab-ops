@@ -171,8 +171,11 @@ spec:
             meili:
             - path: "/meili_data"
       playwright:
-        type: emptyDir
-        existingClaim: linkwarden-playwright-data
+        enabled: true
+        type: emptyDir # <-- Tells the app-template to configure an emptyDir volume
+        medium: Memory # <-- Backs the emptyDir with the node's RAM (tmpfs) instead of disk
+        sizeLimit: 2Gi # <-- Recommended: Prevents the container from exhausting all host RAM
+
         advancedMounts:
           main:
             main:
