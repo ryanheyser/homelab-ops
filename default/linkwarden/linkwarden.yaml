@@ -41,9 +41,9 @@ spec:
           reloader.stakater.com/auto: "true"
         pod:
           securityContext:
-            fsGroup: 3001
+            fsGroup: 0
             fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups: [ 568, 911, 1000, 1001 ]
+            supplementalGroups: [ 568, 911, 1000, 1001, 3001 ]
           tolerations:
           - key: "arm"
             operator: "Exists"
@@ -75,8 +75,8 @@ spec:
               repository: ghcr.io/linkwarden/linkwarden
               tag: v2.16.3
             securityContext:
-              runAsUser: 1000
-              runAsGroup: 3001
+              runAsUser: 0
+              runAsGroup: 0
             env:
               TZ: "America/New_York"
               MEILI_HOST: http://linkwarden-meili.default.svc.cluster.local:7700
