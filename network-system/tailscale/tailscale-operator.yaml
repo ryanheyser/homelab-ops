@@ -34,3 +34,9 @@ spec:
     oauthSecretVolume:
       secret:
         secretName: tailscale-credentials
+    operatorConfig:
+      extraEnv:
+      - name: TS_DEST_IP_BYPASS
+        value: "10.254.0.1"
+      - name: TS_OUTBOUND_INTERFACE_MTU
+        value: "1280"
