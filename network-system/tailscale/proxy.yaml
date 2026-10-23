@@ -15,6 +15,8 @@ spec:
           value: "10.254.0.1"
         - name: TS_OUTBOUND_INTERFACE_MTU
           value: "1280"
+        - name: TS_KUBE_SECRET_REST_WINDOW
+          value: "30s"
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
