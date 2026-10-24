@@ -9,18 +9,6 @@ spec:
     enable: true
   statefulSet:
     pod:
-      containers:
-        - name: tailscale
-          startupProbe:
-            httpGet:
-              path: /healthz
-              port: 9002
-            failureThreshold: 30
-            periodSeconds: 2
-          livenessProbe:
-            initialDelaySeconds: 0
-            periodSeconds: 10
-            failureThreshold: 3
       tailscaleContainer:
         env:
         - name: TS_DEST_IP_BYPASS
