@@ -2,21 +2,6 @@
 apiVersion: tailscale.com/v1alpha1
 kind: Connector
 metadata:
-  name: ts-k8s-pod-cidrs
-spec:
-  replicas: 2
-  hostnamePrefix: ts-k8s-pod-cidrs
-  proxyClass: ts-proxyclass
-  tags:
-  - tag:k8s
-  subnetRouter:
-    advertiseRoutes:
-    - "10.254.0.0/16"
-    - "10.255.0.0/16"
----
-apiVersion: tailscale.com/v1alpha1
-kind: Connector
-metadata:
   name: ts-k8s-home-cidrs
 spec:
   replicas: 2
