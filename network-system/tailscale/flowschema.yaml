@@ -11,12 +11,15 @@ spec:
   rules:
     - subjects:
         - kind: ServiceAccount
-          name: operator
-          namespace: network-system
+          serviceAccount:
+            name: operator
+            namespace: network-system
         - kind: ServiceAccount
-          name: proxies
-          namespace: network-system
+          serviceAccount:
+            name: proxies
+            namespace: network-system
       resourceRules:
         - verbs: ["*"]
           apiGroups: ["*"]
           resources: ["*"]
+          namespaces: ["network-system"]
