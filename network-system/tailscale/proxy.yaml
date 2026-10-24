@@ -9,21 +9,18 @@ spec:
     enable: true
   statefulSet:
     pod:
-      spec:
-        containers:
-          - name: tailscale
-            # The startup probe gives the pod a 60-second runway to boot up
-            startupProbe:
-              httpGet:
-                path: /healthz
-                port: 9002
-              failureThreshold: 30
-              periodSeconds: 2
-            # Liveness only kicks in AFTER the startup probe succeeds
-            livenessProbe:
-              initialDelaySeconds: 0
-              periodSeconds: 10
-              failureThreshold: 3
+      containers:
+        - name: tailscale
+          startupProbe:
+            httpGet:
+              path: /healthz
+              port: 9002
+            failureThreshold: 30
+            periodSeconds: 2
+          livenessProbe:
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            failureThreshold: 3
       tailscaleContainer:
         env:
         - name: TS_DEST_IP_BYPASS
