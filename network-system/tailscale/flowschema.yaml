@@ -12,11 +12,7 @@ spec:
     - subjects:
         - kind: ServiceAccount
           serviceAccount:
-            name: operator
-            namespace: network-system
-        - kind: ServiceAccount
-          serviceAccount:
-            name: proxies
+            name: "*"
             namespace: network-system
       resourceRules:
         - verbs: ["*"]
