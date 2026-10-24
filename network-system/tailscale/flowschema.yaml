@@ -1,0 +1,22 @@
+apiVersion: flowcontrol.apiserver.k8s.io/v1
+kind: FlowSchema
+metadata:
+  name: tailscale-operator-priority
+spec:
+  matchingPrecedence: 500
+  priorityLevelConfiguration:
+    name: workload-high
+  distinguisherMethod:
+    type: ByNamespace
+  rules:
+    - subjects:
+        - kind: ServiceAccount
+          name: operator
+          namespace: network-system
+        - kind: ServiceAccount
+          name: proxies
+          namespace: network-system
+      resourceRules:
+        - verbs: ["*"]
+          apiGroups: ["*"]
+          resources: ["*"]
