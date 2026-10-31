@@ -104,6 +104,8 @@ spec:
           userPasswordKey: "userPassword"
           replicationPasswordKey: "replicationPassword"
       primary:
+        extendedConfiguration: |
+          max_connections = 500
         podSecurityContext:
           enabled: true
           fsGroup: 3001
@@ -132,6 +134,8 @@ spec:
           storageClass: nfs-dynamic
           size: 10Gi
       readReplicas:
+        extendedConfiguration: |
+          max_connections = 500
         podSecurityContext:
           enabled: true
           fsGroup: 3001
