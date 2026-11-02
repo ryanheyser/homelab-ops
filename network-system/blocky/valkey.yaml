@@ -1,0 +1,51 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: valkey
+  namespace: network-system
+spec:
+  interval: 15m
+  chart:
+    spec:
+      # renovate: registryUrl=https://repo.helmforge.dev datasource=helm
+      chart: valkey
+      version: 2.0.5
+      sourceRef:
+        kind: HelmRepository
+        name: helmforge
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    auth:
+      enabled: true
+      existingSecret: valkey-auth
+      existingSecretPasswordKey: valkey-password
+      sentinel: true
+    architecture: sentinel
+    node:
+      replicaCount: 3
+      persistence:
+        enabled: true
+        storageClass: nfs-dynamic
+        size: 10Gi
+    sentinel:
+      replicaCount: 3
+      masterSet: mymaster
+      quorum: 2
+    pdb:
+      enabled: true
+    affinity:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            topologyKey: kubernetes.io/hostname
+            labelSelector:
+              matchLabels:
+                app.kubernetes.io/instance: valkey

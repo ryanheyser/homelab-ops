@@ -14,6 +14,9 @@ ipam:
       - adguard-home
       - adguard-dns
     file: network-system/adguard/service.yaml
+  - ip: "10.0.100.4"
+    service: blocky-dns
+    file: network-system/blocky/service.yaml
   - ip: "10.0.101.2"
     service:
       - calibre-main

@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: blocky
+  namespace: network-system
+  labels:
+    app.kubernetes.io/name: blocky
+    app.kubernetes.io/instance: blocky
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+spec:
+  ingressClassName: traefik
+  tls:
+  - hosts:
+    - blocky.homelab.heyser.xyz
+    secretName: blocky-homelab-heyser-xyz-tls
+  rules:
+  - host: blocky.homelab.heyser.xyz
+    http:
+      paths:
+      - path: /dns-query
+        pathType: Prefix
+        backend:
+          service:
+            name: blocky-http
+            port:
+              number: 80

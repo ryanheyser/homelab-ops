@@ -1,0 +1,258 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: blocky-config
+  namespace: network-system
+  labels:
+    app.kubernetes.io/name: blocky
+    app.kubernetes.io/instance: blocky
+data:
+  config.yaml: |
+    # Blocky configuration file
+    # For more information, see: https://0xerr0r.github.io/blocky/latest/configuration/#multiple-configuration-files
+    ports:
+      dns: 53
+      tls: 
+      - 853 
+      - "[::1]:853"
+      http:
+      - 80
+      https:
+      - 443
+      dohPath: /dns-query
+      freeBind: true
+    connectIPVersion: dual
+    bootstrapDns:
+    - ips:
+      - 9.9.9.11
+      - 149.112.112.11
+    upstreams:
+      init:
+        strategy: fast
+      strategy: parallel_best
+      quic:
+        maxIdleTimeout: 30s
+        keepAlivePeriod: 15s
+      timeout: 3s
+      groups:
+        default:
+        - tcp-tls:dns.quad9.net
+        - quic:dns.quad9.net
+        - sdns://AgMAAAAAAAAABzkuOS45Ljmgj2gmo0sC4xnSdosccJTmAQxXC9BdHcAUWT6eFqOr5Wsg63Ul-I8NlFj4GplQGb_TTLiczclX57DvMV8Q-JdjgRgNZG5zLnF1YWQ5Lm5ldAovZG5zLXF1ZXJ5
+        - 10.0.0.1
+    certFile: /opt/blockycertificate/tls.crt
+    keyFile: /opt/blockycertificate/tls.key
+    minTlsServeVersion: 1.3
+    http3:
+      enable: true
+    ede:
+      enable: true
+    dnssec:
+      validate: true
+    dns64:
+      enable: false
+      # do not use true with filtering querytypes AAAA, as it will break DNS64 for AAAA queries.
+    filtering:
+      queryTypes:
+      - AAAA
+    rebindingProtection:
+      enable: true
+      allowedDomains:
+      - homelab.heyser.xyz
+    caching:
+      minTime: 5m
+      maxTime: 30m
+      prefetching: true
+      prefetchExpires: 1h
+      cacheTimeNegative: 10m
+      exclude:
+      - /.*\.homelab.heyser.xyz$/
+      - /.*\.homelab.heyser.lan$/
+    queryLog:
+      type: none
+    redis:
+      address: mymaster
+      username: default
+      password: file:/run/secrets/valkey/valkey-password
+      database: 0
+      required: true
+      connectionAttempts: 10
+      connectionCooldown: 3s
+      sentinelUsername: default
+      sentinelPassword: file:/run/secrets/valkey/valkey-password
+      sentinelAddresses:
+      - valkey-sentinel:26379
+    conditional:
+      fallbackUpstream: true
+      mapping:
+        homelab.heyser.xyz: 10.0.0.1
+        homelab.heyser.lan: 10.0.0.1
+        plex.direct: 10.0.0.1
+        svc.cluster.local: 169.254.20.10
+        cluster.local: 169.254.20.10
+        router.homelab.heyser.xyz: 10.0.0.1
+        dns.homelab.heyser.xyz: 10.0.100.3
+        vm.homelab.heyser.xyz: 10.0.0.9,10.0.0.12,10.0.0.13,10.0.0.14,10.0.0.15,10.0.0.16,10.0.0.17,10.0.0.18
+        proxmox.homelab.heyser.xyz: 10.0.0.9,10.0.0.12,10.0.0.13,10.0.0.14,10.0.0.15,10.0.0.16,10.0.0.17,10.0.0.18
+        kubernetes.homelab.heyser.xyz: 10.0.1.10
+        madoo.homelab.heyser.xyz: 10.0.1.11
+        magoo.homelab.heyser.xyz: 10.0.1.12
+        moggy.homelab.heyser.xyz: 10.0.1.13
+        minny.homelab.heyser.xyz: 10.0.1.14
+        mirra.homelab.heyser.xyz: 10.0.1.15
+        peezer.homelab.heyser.xyz: 10.0.1.21
+        peloo.homelab.heyser.xyz: 10.0.1.22
+        peran.homelab.heyser.xyz: 10.0.1.23
+        perara.homelab.heyser.xyz: 10.0.1.24
+        phanta.homelab.heyser.xyz: 10.0.1.25
+        posura.homelab.heyser.xyz: 10.0.1.26
+        ptewan.homelab.heyser.xyz: 10.0.1.27
+        pacto.homelab.heyser.xyz: 10.0.1.28
+        pasara.homelab.heyser.xyz: 10.0.1.29
+        pengy.homelab.heyser.xyz: 10.0.1.30
+        perot.homelab.heyser.xyz: 10.0.1.31
+        void.homelab.heyser.xyz: 10.0.1.0
+        vividria.homelab.heyser.xyz: 10.0.1.1
+        volttzo.homelab.heyser.xyz: 10.0.1.2
+        walky.homelab.heyser.xyz: 10.0.1.3
+        storage.homelab.heyser.xyz: 10.0.0.8
+        kracko.homelab.heyser.xyz: 10.0.0.8
+        awoofy.homelab.heyser.xyz: 10.0.0.8
+        .: 10.0.0.1
+    blocking:
+      denylists:
+        ads:
+        - https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/filter.txt
+        - https://raw.githubusercontent.com/notracking/hosts-blocklists/master/adblock/adblock.txt
+        - https://blocklistproject.github.io/Lists/adguard/ads-ags.txt
+        - https://adguardteam.github.io/HostlistsRegistry/assets/filter_48.txt
+        phishing:
+        - https://blocklistproject.github.io/Lists/adguard/phishing-ags.txt
+        scam:
+        - https://blocklistproject.github.io/Lists/adguard/scam-ags.txt
+        tracking:
+        - https://blocklistproject.github.io/Lists/adguard/tracking-ags.txt
+        abuse:
+        - https://blocklistproject.github.io/Lists/adguard/abuse-ags.txt
+        malware:
+        - https://blocklistproject.github.io/Lists/adguard/malware-ags.txt
+        - https://adguardteam.github.io/HostlistsRegistry/assets/filter_9.txt
+        fraud:
+        - https://blocklistproject.github.io/Lists/adguard/fraud-ags.txt
+        crypto:
+        - https://blocklistproject.github.io/Lists/adguard/crypto-ags.txt
+        manualblacklist:
+        - /ocsp.apple.com/
+        - /ocsp2.apple.com/
+        - /mesu.apple.com/
+        - /valid.apple.com/
+        - /crl.apple.com/
+        - /certs.apple.com/
+        - /appattest.apple.com/
+        - /vpp.itunes.apple.com/
+        - /guzzoni-apple-com.v.aaplimg.com/
+        - /gdmf.apple.com/
+        - /axm-app.apple.com/
+        - /comm-cohort.ess.apple.com/
+        - /comm-main.ess.apple.com/
+      allowlists:
+        lan:
+        - "*.heyser.xyz"
+        - "*.heyser.lan"
+        - "*.plex.direct"
+        manualwhitelist:
+        - /e.reddit.com/
+        - /w3-reporting.reddit.com/
+        - /alb.reddit.com/
+        - /aa.paramountplus.com/
+        - /cbsinteractive.hb.omtrdc.net/
+        - /ads.play.cbsi.video/
+        - /pubads.g.doubleclick.net/
+        - /go.redirectingat.com/
+        - /ping.ui.com/
+        - /trace.svc.ui.com/
+        - /albert.apple.com/
+        - /captive.apple.com/
+        - /gs.apple.com/
+        - /humb.apple.com/
+        - /static.ips.apple.com/
+        - /sq-device.apple.com/
+        - /tbsc.apple.com/
+        - /time-ios.apple.com/
+        - /time.apple.com/
+        - /time-macos.apple.com/
+        - /push.apple.com/
+        - /deviceenrollment.apple.com/
+        - /deviceservices-external.apple.com/
+        - /identity.apple.com/
+        - /iprofiles.apple.com/
+        - /mdmenrollment.apple.com/
+        - /setup.icloud.com/
+        - /appldnld.apple.com/
+        - /configuration.apple.com/
+        - /gg.apple.com/
+        - /gnf-mdn.apple.com/
+        - /gnf-mr.apple.com/
+        - /gs.apple.com/
+        - /ig.apple.com/
+        - /ns.itunes.apple.com/
+        - /oscdn.apple.com/
+        - /osrecovery.apple.com/
+        - /skl.apple.com/
+        - /swcdn.apple.com/
+        - /swdist.apple.com/
+        - /swdownload.apple.com/
+        - /swscan.apple.com/
+        - /updates-http.cdn-apple.com/
+        - /updates.cdn-apple.com/
+        - /xp.apple.com/
+        - /itunes.apple.com/
+        - /apps.apple.com/
+        - /mzstatic.com/
+        - /ppq.apple.com/
+        - /appldnld.apple.com.edgesuite.net/
+        - /itunes.com/
+        - /lcdn-registration.apple.com/
+        - /suconfig.apple.com/
+        - /xp-cdn.apple.com/
+        - /lcdn-locator.apple.com/
+        - /serverstatus.apple.com/
+        - /crl.entrust.net/
+        - /crl3.digicert.co/
+        - /crl4.digicert.com/
+        - /ocsp.digicert.cn/
+        - /ocsp.digicert.com/
+        - /ocsp.entrust.net/
+        - /appleid.apple.com/
+        - /appleid.cdn-apple.com/
+        - /idmsa.apple.com/
+        - /gsa.apple.com/
+        - /apple-cloudkit.com/
+        - /apple-livephotoskit.com/
+        - /apzones.com/
+        - /cdn-apple.com/
+        - /gc.apple.com/
+        - /icloud.com/
+        - /icloud.com.cn/
+        - /icloud.apple.com/
+        - /icloud-content.com/
+        - /iwork.apple.com/
+        - /mask.icloud.com/
+        - /mask-h2.icloud.com/
+        - /mask-api.icloud.com/
+        - /audiocontentdownload.apple.com/
+        - /devimages-cdn.apple.com/
+        - /download.developer.apple.com/
+        - /playgrounds-assets-cdn.apple.com/
+        - /playgrounds-cdn.apple.com/
+        - /sylvan.apple.com/
+        - /bnc.lt/
+        - /click.pstmrk.it/
+        - /gleam.io/
+        - /click.linksynergy.com/
+        - /v.ringcentral.com/
+        - /pixeldrain.com/
+        - /emjcd.com/
+        - /rings.solutions/
+        - /ring.com/

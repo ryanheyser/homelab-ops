@@ -1,0 +1,57 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: blocky-dns
+  namespace: network-system
+  labels:
+    app.kubernetes.io/name: blocky
+    app.kubernetes.io/instance: blocky
+  annotations:
+    metallb.io/loadBalancerIPs: 10.0.100.4
+    metallb.io/address-pool: system
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Cluster
+  ports:
+  - port: 53
+    targetPort: 53
+    protocol: TCP
+    name: dns-tcp
+  - port: 53
+    targetPort: 53
+    protocol: UDP
+    name: dns-udp
+  - port: 853
+    targetPort: 853
+    protocol: TCP
+    name: dot-tcp
+  - port: 443
+    targetPort: 443
+    protocol: TCP
+    name: doh-tcp
+  - port: 443
+    targetPort: 443
+    protocol: UDP
+    name: doh-http3
+  selector:
+    app.kubernetes.io/name: blocky
+    app.kubernetes.io/instance: blocky
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blocky-http
+  namespace: network-system
+  labels:
+    app.kubernetes.io/name: blocky
+    app.kubernetes.io/instance: blocky
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  selector:
+    app.kubernetes.io/name: blocky
+    app.kubernetes.io/instance: blocky
