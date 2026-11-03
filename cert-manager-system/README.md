@@ -1,7 +1,10 @@
-# cert-manager
+# cert-manager-system
 
-[cert-manager](https://github.com/jetstack/cert-manager) for natively automatically obtaining and renewing LetsEncrypt certificates
+This area contains the cluster certificate automation for issuing and renewing TLS certificates with cert-manager and Cloudflare.
 
-* [chart/cert-manager-chart.yaml](chart/cert-manager-chart.yaml)
-* [cloudflare/cert-manager-cloudflare-api-key.yaml](cloudflare/cert-manager-cloudflare-api-key.yaml)
-* [cloudflare/cert-manager-letsencrypt.txt](cloudflare/cert-manager-letsencrypt.txt)
+Key components:
+
+* [chart](chart/)
+* [cloudflare](cloudflare/)
+
+The chart directory installs the cert-manager controller, while the Cloudflare configuration includes the API token/secret material and the ACME challenge setup used for Let\'s Encrypt certificate issuance.

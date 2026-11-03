@@ -1,6 +1,9 @@
-# System Upgrade Controller
+# upgrade-system
 
-This handles the automatic upgrade of the k3s kubernetes cluster.  See [system-upgrade-controller](https://github.com/rancher/system-upgrade-controller) for more details on the operation of this component.
+This namespace manages the automated upgrade pipeline for the k3s cluster. The system-upgrade-controller watches for upgrade plans and applies them to nodes according to the configured schedule and version strategy.
 
-* [system-upgrade-controller.yaml](system-upgrade-controller.yaml) - This is the foundational YAML to deploy the controller and CRDs to make this capability work
-* [k3s-plan.yaml](k3s-plan.yaml) - This Plan will automatically upgrade to the latest k3s kubernetes version as they are released.
+Current resources:
+
+* [system-upgrade-controller](system-upgrade-controller/)
+
+The system-upgrade-controller manifests provide the controller and CRDs; the plan objects in this area are what drive upgrades to newer k3s releases as they become available.

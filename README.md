@@ -1,32 +1,32 @@
-*### GitOps Workflow for Kubernetes Cluster
+### GitOps workflow for a Kubernetes homelab
 ![Kubernetes](https://i.imgur.com/p1RzXjQ.png)
 
 ## :book:&nbsp; Overview
 ![](https://i.imgur.com/KHFP4uR.png)
 
-Leverage [Flux2](https://github.com/fluxcd/flux2) to automate cluster state using code residing in this repo
+This repo stores the declarative configuration for a Flux-managed Kubernetes cluster. The cluster is bootstrapped and provisioned using the companion [homelab-infrastructure repo](https://github.com/ryanheyser/homelab-infrastructure), while this repo contains the workloads and GitOps configuration that keep the cluster running.
 
 ## :computer:&nbsp; Infrastructure
 
-See [homelab-infrastructure repo](https://github.com/ryanheyser/homelab-infrastructure) for more detail about hardware and infrastructure. This also handles setup & bootstrapping of a cluster.
+See [homelab-infrastructure](https://github.com/ryanheyser/homelab-infrastructure) for the underlying hardware, bootstrapping, and cluster lifecycle setup. This repo assumes a Flux bootstrap has already been established and is used to manage the desired state of applications and platform services.
 
-## :wrench:&nbsp; Workloads (by namespace)
+## :wrench:&nbsp; Workloads (by namespace / area)
 
-* [cert-manager](cert-manager/)
+* [cert-manager-system](cert-manager-system/)
 * [default](default/)
+* [external-secrets](external-secrets/)
 * [flux-system-extra](flux-system-extra/)
 * [kube-system](kube-system/)
-* [monitoring](monitoring/)
-* [networking](networking/)
-* [system-upgrade](system-upgrade/)
+* [network-system](network-system/)
+* [storage-system](storage-system/)
+* [upgrade-system](upgrade-system/)
 * [vault-system](vault-system/)
+
+These directories contain the current Flux-managed workloads and supporting Kubernetes resources for the cluster.
 
 ## :robot:&nbsp; Automation
 
-* [Renovate](https://github.com/renovatebot/renovate) keeps workloads up-to-date by scanning the repo and opening pull requests when it detects a new container image update or a new helm chart
-- [Kured](https://github.com/weaveworks/kured) automatically drains & reboots nodes when OS patches are applied requiring a reboot
-- [System Upgrade Controller](https://github.com/rancher/system-upgrade-controller) automatically upgrades k3s to new versions as they are released
-
-## :handshake:&nbsp; Community
-
-There is a k8s@home [Discord](https://discord.gg/7PbmHRK) for this community.
+* [Flux](https://github.com/fluxcd/flux2) continuously reconciles the cluster to the state declared in this repository.
+* [Renovate](https://github.com/renovatebot/renovate) scans the repo for image and Helm chart updates and opens pull requests for review.
+* [System Upgrade Controller](https://github.com/rancher/system-upgrade-controller) handles k3s upgrades across the cluster.
+* [Kured](https://github.com/weaveworks/kured) reboots nodes when required after package or kernel updates.
