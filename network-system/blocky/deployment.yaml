@@ -39,7 +39,7 @@ spec:
       containers:
       - name: blocky
         # renovate: repository=ghcr.io/0xerr0r/blocky
-        image: ghcr.io/0xerr0r/blocky:v0.35.0
+        image: ghcr.io/0xerr0r/blocky:v0.36.0
         imagePullPolicy: IfNotPresent
         ports:
         - name: dns-tcp
