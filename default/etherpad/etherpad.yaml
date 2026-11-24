@@ -52,7 +52,7 @@ spec:
             image:
               # renovate: repository=etherpad/etherpad
               repository: etherpad/etherpad
-              tag: 3.3.21
+              tag: 3.3.22
             securityContext:
               runAsUser: 0
               runAsGroup: 0
