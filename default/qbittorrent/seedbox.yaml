@@ -155,7 +155,7 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
           traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
         hosts:
-        - host: &host "seedbox2.homelab.heyser.xyz"
+        - host: &host2 "seedbox2.homelab.heyser.xyz"
           paths:
           - path: /
             pathType: Prefix
@@ -164,7 +164,7 @@ spec:
               port: http
         tls:
         - hosts:
-          - *host
+          - *host2
           secretName: seedbox2-homelab-heyser-xyz-tls
 
     # Note: If downloading very large torrents it might be worth using NFS for your download directory.
