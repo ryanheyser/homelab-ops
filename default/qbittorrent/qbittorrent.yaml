@@ -99,12 +99,16 @@ spec:
       bittorrent:
         controller: main
         type: LoadBalancer
+        ipFamilyPolicy: PreferDualStack
+        ipFamilies:
+          - IPv4
+          - IPv6
         externalIPs:
         - 10.0.101.5
         annotations:
           metallb.io/allow-shared-ip: "qbittorrent-share"
           metallb.io/address-pool: "default"
-          metallb.io/loadBalancerIPs: 10.0.101.5
+          metallb.io/loadBalancerIPs: "10.0.101.5,${MLB_V6_PREFIX:=2601:c2:a00:74cf}::101:5"
           cni.projectcalico.org/ipAddrs: '["10.0.101.5"]'
         ports:
           bittorrent:

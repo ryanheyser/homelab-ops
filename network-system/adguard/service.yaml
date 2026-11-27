@@ -50,12 +50,16 @@ metadata:
   annotations:
     cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
     # traefik.ingress.kubernetes.io/service.nativelb: "true"
-    metallb.io/loadBalancerIPs: 10.0.100.3
+    metallb.io/loadBalancerIPs: "10.0.100.3,${MLB_V6_PREFIX:=2601:c2:a00:74cf}::100:3"
     metallb.io/allow-shared-ip: "adguard-share"
     metallb.io/address-pool: system
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Cluster
+  ipFamilyPolicy: PreferDualStack
+  ipFamilies:
+    - IPv4
+    - IPv6
   externalIPs:
   - 10.0.100.3
   ports:
@@ -78,7 +82,7 @@ metadata:
   annotations:
     cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
     # traefik.ingress.kubernetes.io/service.nativelb: "true"
-    metallb.io/loadBalancerIPs: 10.0.100.3
+    metallb.io/loadBalancerIPs: "10.0.100.3,${MLB_V6_PREFIX:=2601:c2:a00:74cf}::100:3"
     metallb.io/allow-shared-ip: "adguard-share"
     metallb.io/address-pool: system
     # traefik.ingress.kubernetes.io/service.serversscheme: https
@@ -86,6 +90,10 @@ metadata:
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Cluster
+  ipFamilyPolicy: PreferDualStack
+  ipFamilies:
+    - IPv4
+    - IPv6
   externalIPs:
   - 10.0.100.3
   ports:
@@ -109,12 +117,16 @@ metadata:
   annotations:
     cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
     # traefik.ingress.kubernetes.io/service.nativelb: "true"
-    metallb.io/loadBalancerIPs: 10.0.100.3
+    metallb.io/loadBalancerIPs: "10.0.100.3,${MLB_V6_PREFIX:=2601:c2:a00:74cf}::100:3"
     metallb.io/allow-shared-ip: "adguard-share"
     metallb.io/address-pool: system
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Cluster
+  ipFamilyPolicy: PreferDualStack
+  ipFamilies:
+    - IPv4
+    - IPv6
   externalIPs:
   - 10.0.100.3
   ports:
@@ -138,12 +150,16 @@ metadata:
   annotations:
     cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
     # traefik.ingress.kubernetes.io/service.nativelb: "true"
-    metallb.io/loadBalancerIPs: 10.0.100.3
+    metallb.io/loadBalancerIPs: "10.0.100.3,${MLB_V6_PREFIX:=2601:c2:a00:74cf}::100:3"
     metallb.io/allow-shared-ip: "adguard-share"
     metallb.io/address-pool: system
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Cluster
+  ipFamilyPolicy: PreferDualStack
+  ipFamilies:
+    - IPv4
+    - IPv6
   externalIPs:
   - 10.0.100.3
   ports:
@@ -167,7 +183,7 @@ metadata:
   annotations:
     cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
     # traefik.ingress.kubernetes.io/service.nativelb: "true"
-    metallb.io/loadBalancerIPs: 10.0.100.3
+    metallb.io/loadBalancerIPs: "10.0.100.3,${MLB_V6_PREFIX:=2601:c2:a00:74cf}::100:3"
     metallb.io/allow-shared-ip: "adguard-share"
     metallb.io/address-pool: system
     traefik.ingress.kubernetes.io/service.sticky.cookie.httpOnly: "true"
@@ -179,6 +195,10 @@ metadata:
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Cluster
+  ipFamilyPolicy: PreferDualStack
+  ipFamilies:
+    - IPv4
+    - IPv6
   externalIPs:
   - 10.0.100.3
   ports:
@@ -202,7 +222,7 @@ metadata:
   annotations:
     cni.projectcalico.org/ipAddrs: '["10.0.100.3"]'
     # traefik.ingress.kubernetes.io/service.nativelb: "true"
-    metallb.io/loadBalancerIPs: 10.0.100.3
+    metallb.io/loadBalancerIPs: "10.0.100.3,${MLB_V6_PREFIX:=2601:c2:a00:74cf}::100:3"
     metallb.io/allow-shared-ip: "adguard-share"
     metallb.io/address-pool: system
     traefik.ingress.kubernetes.io/service.passhostheader: "true"
@@ -217,6 +237,10 @@ metadata:
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Cluster
+  ipFamilyPolicy: PreferDualStack
+  ipFamilies:
+    - IPv4
+    - IPv6
   externalIPs:
   - 10.0.100.3
   ports:

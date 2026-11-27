@@ -155,7 +155,7 @@ spec:
         metallb.io/address-pool: "system"
         metallb.io/allow-shared-ip: "traefik-share"
         # metallb.io/loadBalancerIPs: &lbip 10.0.100.1
-        metallb.io/loadBalancerIPs: 10.0.100.1
+        metallb.io/loadBalancerIPs: "10.0.100.1,${MLB_V6_PREFIX:=2601:c2:a00:74cf}::100:1"
         # traefik.ingress.kubernetes.io/service.nativelb: "true"
       spec:
         # loadBalancerIP: 10.0.100.1
@@ -163,10 +163,11 @@ spec:
         # - *lbip
         externalTrafficPolicy: Cluster
         # externalTrafficPolicy: Local
-        # ipFamilyPolicy: PreferDualStack
-        # ipFamilies:
-        # - IPv6
-        # - IPv4
+        # IPv4 first: ipFamilies[0] is immutable on an existing Service.
+        ipFamilyPolicy: PreferDualStack
+        ipFamilies:
+          - IPv4
+          - IPv6
       # additionalServices:
       #   traefik-dns:
       #     type: LoadBalancer

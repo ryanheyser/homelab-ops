@@ -149,6 +149,13 @@ spec:
   interval: 10m0s
   path: "./network-system"
   prune: true
+  # IPv6 prefix for MetalLB pools / Service VIPs, kept current by the
+  # ipv6-prefix-sync CronJob. optional: manifests fall back to their defaults.
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-ipv6-prefix
+        optional: true
   sourceRef:
     kind: GitRepository
     name: flux-system
@@ -229,6 +236,13 @@ spec:
   interval: 10m0s
   path: "./default"
   prune: true
+  # IPv6 prefix for MetalLB pools / Service VIPs, kept current by the
+  # ipv6-prefix-sync CronJob. optional: manifests fall back to their defaults.
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-ipv6-prefix
+        optional: true
   sourceRef:
     kind: GitRepository
     name: flux-system
