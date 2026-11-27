@@ -20,6 +20,11 @@ const helm      = await which('helm')
 // const kustomize = await which('kustomize')
 
 async function helmRelease(releaseFile) {
+  // Files added by the PR are missing from the default-branch checkout (and
+  // deleted files from the PR checkout); there is no release to diff then.
+  if (!(await fs.pathExists(releaseFile))) {
+    return undefined
+  }
   const helmRelease = await fs.readFile(releaseFile, 'utf8')
   const doc = YAML.parseAllDocuments(helmRelease).map((item) => item.toJS())
   const release = doc.filter((item) =>
@@ -98,6 +103,9 @@ if(currentRelease)
 
   // Generate incoming template from Helm values
   const incomingRelease = await helmRelease(IncomingRelease)
+  if (!incomingRelease) {
+    process.exit(0)
+  }
   const incomingBuild = await helmBuild(IncomingRelease, incomingRelease.metadata.name)
   const incomingRepositoryUrl = await helmRepositoryUrl(KubernetesDir, incomingBuild.spec.chart.spec.sourceRef.name)
   await helmRepoAdd(incomingBuild.spec.chart.spec.sourceRef.name, incomingRepositoryUrl)
