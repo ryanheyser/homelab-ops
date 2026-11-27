@@ -1,3 +1,15 @@
+---
+# Dual-stack DDNS for heyser.xyz with favonia/cloudflare-ddns (one-shot per run).
+#
+# A    records: the WAN IPv4 as Cloudflare sees it (cloudflare.trace, IPv4 only).
+#               The router port-forwards to the MetalLB VIPs, as before.
+# AAAA records: the service's own public IPv6 (no NAT on IPv6). ${MLB_V6_PREFIX}
+#               is substituted by Flux from flux-system/cluster-ipv6-prefix, so a
+#               Comcast renumber reaches Cloudflare after the next reconcile.
+#
+# Each container owns a disjoint set of names, so they never touch the same record.
+# A name with its own record is not covered by a wildcard for any record type: give
+# it A and AAAA here (e.g. dns.homelab.heyser.xyz -> adguard ::100:3).
 apiVersion: batch/v1
 kind: CronJob
 metadata:
@@ -5,31 +17,79 @@ metadata:
   namespace: network-system
 spec:
   schedule: "*/5 * * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 3
   jobTemplate:
     spec:
+      backoffLimit: 1
+      activeDeadlineSeconds: 240
       ttlSecondsAfterFinished: 1800
       template:
         spec:
+          restartPolicy: Never
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            seccompProfile:
+              type: RuntimeDefault
           containers:
-          - name: cloudflare-ddns-star-root
-            # renovate: repository=mirioeggmann/cloudflare-ddns depName=mirioeggmann/cloudflare-ddns
-            image: mirioeggmann/cloudflare-ddns:661bb6f10ed69e910dad7f68654685610306586d
-            envFrom:
-            - secretRef:
-                name: cloudflare-ddns-star-root
-                optional: false
-          - name: cloudflare-ddns-root
-            # renovate: repository=mirioeggmann/cloudflare-ddns depName=mirioeggmann/cloudflare-ddns
-            image: mirioeggmann/cloudflare-ddns:661bb6f10ed69e910dad7f68654685610306586d
-            envFrom:
-            - secretRef:
-                name: cloudflare-ddns-root
-                optional: false
-          - name: cloudflare-ddns-star-homelab
-            # renovate: repository=mirioeggmann/cloudflare-ddns depName=mirioeggmann/cloudflare-ddns
-            image: mirioeggmann/cloudflare-ddns:661bb6f10ed69e910dad7f68654685610306586d
-            envFrom:
-            - secretRef:
-                name: cloudflare-ddns-star-homelab
-                optional: false
-          restartPolicy: OnFailure
+            # AdGuard DoT/DoQ: uncomment once dns.homelab.heyser.xyz has its own
+            # public record (otherwise the *.homelab wildcard sends it to Traefik).
+            # - name: dns
+            #   image: favonia/cloudflare-ddns:1.18.0@sha256:345b41895a8846d74c62d30bd27e61101a754f8ab8da10c68115823883803afb
+            #   envFrom:
+            #     - secretRef:
+            #         name: cloudflare-ddns
+            #   env:
+            #     - name: DOMAINS
+            #       value: "dns.homelab.heyser.xyz"
+            #     - name: IP4_PROVIDER
+            #       value: "cloudflare.trace"
+            #     - name: IP6_PROVIDER
+            #       value: "static:${MLB_V6_PREFIX:=2601:c2:a00:74cf}::100:3"
+            #     - name: UPDATE_CRON
+            #       value: "@once"
+            #     - name: UPDATE_ON_START
+            #       value: "true"
+            #     - name: PROXIED
+            #       value: "false"
+            #   securityContext:
+            #     allowPrivilegeEscalation: false
+            #     readOnlyRootFilesystem: true
+            #     capabilities:
+            #       drop: ["ALL"]
+            # Traefik ingress: 10.0.100.1 via WAN port-forward / ::100:1 directly.
+            - name: ingress
+              # renovate: datasource=docker depName=favonia/cloudflare-ddns
+              image: favonia/cloudflare-ddns:1.18.0@sha256:345b41895a8846d74c62d30bd27e61101a754f8ab8da10c68115823883803afb
+              envFrom:
+                - secretRef:
+                    name: cloudflare-ddns
+              env:
+                - name: DOMAINS
+                  value: "heyser.xyz,*.heyser.xyz,*.homelab.heyser.xyz"
+                - name: IP4_PROVIDER
+                  value: "cloudflare.trace"
+                - name: IP6_PROVIDER
+                  value: "static:${MLB_V6_PREFIX:=2601:c2:a00:74cf}::100:1"
+                - name: UPDATE_CRON
+                  value: "@once"
+                - name: UPDATE_ON_START
+                  value: "true"
+                - name: PROXIED
+                  value: "false"
+                - name: TZ
+                  value: "UTC"
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                capabilities:
+                  drop: ["ALL"]
+              resources:
+                requests:
+                  cpu: 5m
+                  memory: 16Mi
+                limits:
+                  memory: 64Mi
