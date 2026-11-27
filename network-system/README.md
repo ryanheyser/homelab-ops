@@ -9,6 +9,7 @@ Current components include:
 * [blocky](blocky/)
 * [calico](calico/)
 * [cloudflare-ddns](cloudflare-ddns/)
+* [external-dns](external-dns/)
 * [metallb](metallb/)
 * [tailscale](tailscale/)
 * [traefik](traefik/)
