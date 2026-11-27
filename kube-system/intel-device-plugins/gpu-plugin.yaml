@@ -33,6 +33,6 @@ spec:
     nodeFeatureRule: true
     initImage:
       enable: true
-    # gpu.intel.com/monitoring for the exporter (exporter.yaml).
-    enableMonitoring: true
-    monitoringMode: single
+    # Set to true (with monitoringMode: single) to enable the commented-out
+    # exporter in exporter.yaml.
+    enableMonitoring: false
