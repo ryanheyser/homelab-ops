@@ -94,8 +94,7 @@ spec:
               type: RuntimeDefault
           containers:
             - name: sync
-              # Pin the digest after the first image push: tag@sha256:...
-              image: ghcr.io/ryanheyser/ipv6-prefix-sync:1.0.0
+              image: ghcr.io/ryanheyser/ipv6-prefix-sync:1.0.0@sha256:d6ab988658dda9249988e110dd070944b8032ad8dbbbfbeca91d1f124e530d0a
               imagePullPolicy: IfNotPresent
               env:
                 - name: DRY_RUN
