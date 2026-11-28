@@ -1,9 +1,12 @@
 # upgrade-system
 
-This namespace manages the automated upgrade pipeline for the k3s cluster. The system-upgrade-controller watches for upgrade plans and applies them to nodes according to the configured schedule and version strategy.
+This namespace manages automated RKE2 upgrades. The system-upgrade-controller watches the upgrade plans and
+applies them to nodes one at a time.
 
 Current resources:
 
 * [system-upgrade-controller](system-upgrade-controller/)
 
-The system-upgrade-controller manifests provide the controller and CRDs; the plan objects in this area are what drive upgrades to newer k3s releases as they become available.
+The directory holds the controller, its RBAC, and two plans: `rke2-server` for control-plane nodes and
+`rke2-agent` for workers. Both pin an explicit RKE2 version (for example `v1.37.2+rke2r1`) that Renovate keeps
+current; agents upgrade after the servers.
