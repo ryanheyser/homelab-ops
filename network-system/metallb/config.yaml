@@ -1,0 +1,76 @@
+# MetalLB address pools and BGP config (moved here from the Ansible
+# provisioning task so Flux can substitute the IPv6 prefix).
+#
+# ${MLB_V6_PREFIX} = the last /64 of the Comcast-delegated /60, without "::".
+# It comes from ConfigMap flux-system/cluster-ipv6-prefix, which the
+# ipv6-prefix-sync CronJob keeps current. The default after ":=" is only
+# used until that ConfigMap exists.
+#
+# The router (RouterOS script v6-metallb-list) computes the same /64 and keeps
+# a blackhole route plus firewall address lists for:
+#   ${MLB_V6_PREFIX}::100:1  traefik   (mirrors 10.0.100.1)
+#   ${MLB_V6_PREFIX}::100:3  adguard   (mirrors 10.0.100.3)
+#   ${MLB_V6_PREFIX}::101:5  seedbox   (mirrors 10.0.101.5)
+---
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: system
+  namespace: network-system
+spec:
+  addresses:
+    - 10.0.100.0/24
+    - ${MLB_V6_PREFIX:=2601:c2:a00:74cf}::100:0/112
+---
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: default
+  namespace: network-system
+spec:
+  addresses:
+    - 10.0.101.0/24
+    - ${MLB_V6_PREFIX:=2601:c2:a00:74cf}::101:0/112
+---
+apiVersion: metallb.io/v1beta1
+kind: BFDProfile
+metadata:
+  name: bfd-profile
+  namespace: network-system
+spec:
+  receiveInterval: 300
+  transmitInterval: 300
+  detectMultiplier: 3
+  echoMode: true
+  passiveMode: true
+  minimumTtl: 200
+---
+apiVersion: metallb.io/v1beta2
+kind: BGPPeer
+metadata:
+  name: default-ipv4
+  namespace: network-system
+spec:
+  myASN: 65001
+  peerASN: 65000
+  peerAddress: 10.0.0.2
+  ebgpMultiHop: true
+  # Carry IPv6 routes over the existing IPv4 session (FRR mode only).
+  # Requires the router connection "kubernetes-metallb" to have afi=ip,ipv6.
+  dualStackAddressFamily: true
+  routerID: 1.1.3.1
+  enableGracefulRestart: true
+  # bfdProfile: bfd-profile
+---
+apiVersion: metallb.io/v1beta1
+kind: BGPAdvertisement
+metadata:
+  name: default
+  namespace: network-system
+spec:
+  ipAddressPools:
+    - default
+    - system
+  aggregationLength: 24
+  # Advertise each IPv6 pool as its /112, like the IPv4 /24s.
+  aggregationLengthV6: 112

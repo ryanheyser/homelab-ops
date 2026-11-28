@@ -1,0 +1,114 @@
+# ipv6-prefix-sync
+#
+# Keeps ConfigMap flux-system/cluster-ipv6-prefix (MLB_V6_PREFIX) set to the
+# last /64 of the Comcast-delegated /60, then asks Flux to reconcile the
+# network-system and default Kustomizations so every ${MLB_V6_PREFIX} in Git
+# (MetalLB pools, Service loadBalancerIPs) follows a renumber.
+#
+# How it finds the prefix: runs with hostNetwork and reads the node's own
+# SLAAC addresses from /proc/net/if_inet6 (global, non-ULA, /64). Nodes get
+# those from the router's RAs on vlan11. No router credentials needed.
+#
+# Code: github.com/ryanheyser/ipv6-prefix-sync (static Go binary, FROM scratch).
+#
+# Same rule as the router script v6-metallb-list: keep the first 60 bits,
+# set the last nibble of the 4th hextet to f. 2601:c2:a00:74c4::/64 -> 2601:c2:a00:74cf.
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ipv6-prefix-sync
+  namespace: network-system
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: ipv6-prefix-sync
+rules:
+  # The prefix ConfigMap lives in flux-system. "create" cannot be limited by name.
+  - apiGroups: [""]
+    resources: ["configmaps"]
+    verbs: ["create"]
+  - apiGroups: [""]
+    resources: ["configmaps"]
+    resourceNames: ["cluster-ipv6-prefix"]
+    verbs: ["get", "patch"]
+  # Trigger an immediate Flux reconcile after a change (same as `flux reconcile ks`).
+  - apiGroups: ["kustomize.toolkit.fluxcd.io"]
+    resources: ["kustomizations"]
+    resourceNames: ["network-system", "default"]
+    verbs: ["get", "patch"]
+  # Read-only check that MetalLB picked up the new ranges (logged, not changed).
+  - apiGroups: ["metallb.io"]
+    resources: ["ipaddresspools"]
+    verbs: ["get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: ipv6-prefix-sync
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: ipv6-prefix-sync
+subjects:
+  - kind: ServiceAccount
+    name: ipv6-prefix-sync
+    namespace: network-system
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: ipv6-prefix-sync
+  namespace: network-system
+spec:
+  schedule: "*/5 * * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      backoffLimit: 1
+      activeDeadlineSeconds: 120
+      ttlSecondsAfterFinished: 3600
+      template:
+        spec:
+          serviceAccountName: ipv6-prefix-sync
+          restartPolicy: Never
+          # Needed to see the node's SLAAC addresses. network-system is PSA "privileged".
+          hostNetwork: true
+          dnsPolicy: ClusterFirstWithHostNet
+          priorityClassName: system-cluster-critical
+          tolerations:
+            - key: "node-role.kubernetes.io/control-plane"
+              operator: "Exists"
+            - key: "node-role.kubernetes.io/master"
+              operator: "Exists"
+            - key: "node-role.kubernetes.io/etcd"
+              operator: "Exists"
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            seccompProfile:
+              type: RuntimeDefault
+          containers:
+            - name: sync
+              image: ghcr.io/ryanheyser/ipv6-prefix-sync:1.0.0@sha256:d6ab988658dda9249988e110dd070944b8032ad8dbbbfbeca91d1f124e530d0a
+              imagePullPolicy: IfNotPresent
+              env:
+                - name: DRY_RUN
+                  value: "false"
+                - name: FLUX_KUSTOMIZATIONS
+                  value: "network-system,default"
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                capabilities:
+                  drop: ["ALL"]
+              resources:
+                requests:
+                  cpu: 5m
+                  memory: 8Mi
+                limits:
+                  memory: 32Mi

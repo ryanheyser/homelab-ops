@@ -1,0 +1,94 @@
+---
+# external-dns: publishes AAAA records for heyser.xyz in Cloudflare.
+#
+# Source: LoadBalancer Services with an external-dns.kubernetes.io/hostname
+# annotation (today only traefik). Targets come from the Service's MetalLB
+# status, so a Comcast prefix change (ipv6-prefix-sync -> new VIP) updates the
+# AAAA records within one event-triggered loop.
+#
+# A records stay with favonia/cloudflare-ddns (cloudflare-ddns/cronjob.yaml):
+# the public IPv4 is NAT'd on the router and is not visible in the cluster.
+# --managed-record-types=AAAA keeps external-dns away from them.
+#
+# Ownership: TXT registry. Record names, for owner "homelab":
+#   heyser.xyz              -> extdns-aaaa.heyser.xyz
+#   *.heyser.xyz            -> extdns-aaaa.wildcard.heyser.xyz
+#   *.homelab.heyser.xyz    -> extdns-aaaa.wildcard.homelab.heyser.xyz
+# The prefix must end in "." or the apex TXT would be "extdns-aaaa-heyser.xyz",
+# which is outside the zone. policy=sync only deletes records it owns.
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: external-dns
+  namespace: network-system
+spec:
+  driftDetection:
+    mode: enabled
+  interval: 15m
+  chart:
+    spec:
+      # renovate: registryUrl=https://kubernetes-sigs.github.io/external-dns/
+      chart: external-dns
+      version: 1.24.0
+      sourceRef:
+        kind: HelmRepository
+        name: external-dns-charts
+        namespace: flux-system
+  maxHistory: 3
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    image:
+      # v0.24.0
+      tag: v0.24.0@sha256:a80a146d2540fa138565e404f0625157271071a06093021f27ae19d8316d10f9
+    provider:
+      name: cloudflare
+    env:
+      - name: CF_API_TOKEN
+        valueFrom:
+          secretKeyRef:
+            name: external-dns
+            key: CF_API_TOKEN
+      - name: CF_ZONE_ID
+        valueFrom:
+          secretKeyRef:
+            name: external-dns
+            key: CF_ZONE_ID
+    sources:
+      - service
+    policy: sync
+    registry: txt
+    txtOwnerId: homelab
+    txtPrefix: "extdns-%{record_type}."
+    domainFilters:
+      - heyser.xyz
+    managedRecordTypes:
+      - AAAA
+    interval: 5m
+    triggerLoopOnEvent: true
+    extraArgs:
+      # Kubernetes expands $(CF_ZONE_ID) from the env above.
+      zone-id-filter: "$(CF_ZONE_ID)"
+      service-type-filter: LoadBalancer
+      txt-wildcard-replacement: wildcard
+      # Never publish private, ULA or link-local targets.
+      exclude-target-net:
+        - 10.0.0.0/8
+        - 172.16.0.0/12
+        - 192.168.0.0/16
+        - fc00::/7
+        - fe80::/10
+      cloudflare-proxied: false
+    resources:
+      requests:
+        cpu: 10m
+        memory: 48Mi
+      limits:
+        memory: 128Mi

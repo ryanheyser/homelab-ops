@@ -1,7 +1,12 @@
+---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: network-system
 resources:
-# renovate: registryUrl=https://metallb.github.io/metallb
-# - ./frr.yaml
-- ./metallb.yaml
+  # renovate: registryUrl=https://metallb.github.io/metallb
+  # - ./frr.yaml
+  - ./metallb.yaml
+  # Pools/peer/advertisement use ${MLB_V6_PREFIX} (Flux postBuild substitution).
+  - ./config.yaml
+  # CronJob that keeps flux-system/cluster-ipv6-prefix current.
+  - ./ipv6-prefix-sync.yaml

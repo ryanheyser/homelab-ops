@@ -1,3 +1,16 @@
+---
+# IPv4 DDNS for heyser.xyz with favonia/cloudflare-ddns (one-shot per run).
+#
+# Only A records: the WAN IPv4 as Cloudflare sees it, detected over IPv4 only
+# (cloudflare.trace), so pod IPv6 egress can never leak into an A record.
+# The router port-forwards that address to the MetalLB VIPs.
+#
+# AAAA records are not managed here (IP6_PROVIDER=none leaves them untouched).
+# They belong to external-dns, which reads the public IPv6 from each Service's
+# MetalLB status. Until that exists, no AAAA is published and IPv6 clients use IPv4.
+#
+# A name with its own record is not covered by a wildcard for any record type.
+# If one is added for IPv6 (e.g. dns.homelab.heyser.xyz), add it to IP4_DOMAINS too.
 apiVersion: batch/v1
 kind: CronJob
 metadata:
@@ -5,31 +18,53 @@ metadata:
   namespace: network-system
 spec:
   schedule: "*/5 * * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 3
   jobTemplate:
     spec:
+      backoffLimit: 1
+      activeDeadlineSeconds: 240
       ttlSecondsAfterFinished: 1800
       template:
         spec:
+          restartPolicy: Never
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            seccompProfile:
+              type: RuntimeDefault
           containers:
-          - name: cloudflare-ddns-star-root
-            # renovate: repository=mirioeggmann/cloudflare-ddns depName=mirioeggmann/cloudflare-ddns
-            image: mirioeggmann/cloudflare-ddns:661bb6f10ed69e910dad7f68654685610306586d
-            envFrom:
-            - secretRef:
-                name: cloudflare-ddns-star-root
-                optional: false
-          - name: cloudflare-ddns-root
-            # renovate: repository=mirioeggmann/cloudflare-ddns depName=mirioeggmann/cloudflare-ddns
-            image: mirioeggmann/cloudflare-ddns:661bb6f10ed69e910dad7f68654685610306586d
-            envFrom:
-            - secretRef:
-                name: cloudflare-ddns-root
-                optional: false
-          - name: cloudflare-ddns-star-homelab
-            # renovate: repository=mirioeggmann/cloudflare-ddns depName=mirioeggmann/cloudflare-ddns
-            image: mirioeggmann/cloudflare-ddns:661bb6f10ed69e910dad7f68654685610306586d
-            envFrom:
-            - secretRef:
-                name: cloudflare-ddns-star-homelab
-                optional: false
-          restartPolicy: OnFailure
+            - name: ipv4
+              # renovate: datasource=docker depName=favonia/cloudflare-ddns
+              image: favonia/cloudflare-ddns:1.18.0@sha256:345b41895a8846d74c62d30bd27e61101a754f8ab8da10c68115823883803afb
+              envFrom:
+                - secretRef:
+                    name: cloudflare-ddns
+              env:
+                - name: IP4_DOMAINS
+                  value: "heyser.xyz,*.heyser.xyz,*.homelab.heyser.xyz"
+                - name: IP4_PROVIDER
+                  value: "cloudflare.trace"
+                - name: IP6_PROVIDER
+                  value: "none"
+                - name: UPDATE_CRON
+                  value: "@once"
+                - name: UPDATE_ON_START
+                  value: "true"
+                - name: PROXIED
+                  value: "false"
+                - name: TZ
+                  value: "UTC"
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                capabilities:
+                  drop: ["ALL"]
+              resources:
+                requests:
+                  cpu: 5m
+                  memory: 16Mi
+                limits:
+                  memory: 64Mi

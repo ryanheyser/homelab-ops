@@ -1,6 +1,7 @@
 # default
 
-This namespace contains the general-purpose user-facing workloads for the homelab. These apps are deployed as regular services in the cluster and typically live under a single namespace for simpler ingress and shared infrastructure.
+This namespace contains the general-purpose user-facing workloads for the homelab. These apps are deployed as
+regular services in the cluster and live under a single namespace for simpler ingress and shared infrastructure.
 
 Current workloads in this namespace include:
 
@@ -26,4 +27,6 @@ Current workloads in this namespace include:
 * [uptime-kuma](uptime-kuma/)
 * [vaultwarden](vaultwarden/)
 
-This area is intentionally broad; individual subdirectories hold the Kubernetes manifests for each workload and any associated configuration.
+This area is intentionally broad; individual subdirectories hold the Kubernetes manifests for each workload and any
+associated configuration. Most workloads use the [bjw-s app-template](https://bjw-s-labs.github.io/helm-charts/)
+chart (v5), which gives each app its own ServiceAccount and does not mount an API token.

@@ -33,4 +33,6 @@ spec:
     nodeFeatureRule: true
     initImage:
       enable: true
+    # Set to true (with monitoringMode: single) to enable the commented-out
+    # exporter in exporter.yaml.
     enableMonitoring: false

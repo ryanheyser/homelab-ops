@@ -12,7 +12,7 @@ spec:
     spec:
       # renovate: registryUrl=https://bjw-s-labs.github.io/helm-charts
       chart: app-template
-      version: 4.6.2
+      version: 5.3.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -100,12 +100,16 @@ spec:
       bittorrent:
         controller: main
         type: LoadBalancer
+        ipFamilyPolicy: PreferDualStack
+        ipFamilies:
+          - IPv4
+          - IPv6
         externalIPs:
         - 10.0.101.5
         annotations:
           metallb.io/allow-shared-ip: "qbittorrent-share"
           metallb.io/address-pool: "default"
-          metallb.io/loadBalancerIPs: 10.0.101.5
+          metallb.io/loadBalancerIPs: "10.0.101.5,${MLB_V6_PREFIX:=2601:c2:a00:74cf}::101:5"
           cni.projectcalico.org/ipAddrs: '["10.0.101.5"]'
         ports:
           bittorrent:
@@ -151,7 +155,7 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
           traefik.ingress.kubernetes.io/router.middlewares: "network-system-authentik@kubernetescrd"
         hosts:
-        - host: &host "seedbox2.homelab.heyser.xyz"
+        - host: &host2 "seedbox2.homelab.heyser.xyz"
           paths:
           - path: /
             pathType: Prefix
@@ -160,7 +164,7 @@ spec:
               port: http
         tls:
         - hosts:
-          - *host
+          - *host2
           secretName: seedbox2-homelab-heyser-xyz-tls
 
     # Note: If downloading very large torrents it might be worth using NFS for your download directory.
