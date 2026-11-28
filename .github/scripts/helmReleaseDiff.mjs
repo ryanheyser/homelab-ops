@@ -75,8 +75,11 @@ async function chartRef(release) {
   if (repo.type === 'oci' || repo.url.startsWith('oci://')) {
     return { ref: `${repo.url.replace(/\/$/, '')}/${chart.chart}`, version: chart.version }
   }
-  await $`${helm} repo add --force-update ${chart.sourceRef.name} ${repo.url}`
-  return { ref: `${chart.sourceRef.name}/${chart.chart}`, version: chart.version }
+  // Prefix the local repo alias: Helm treats "<alias>/<chart>" as a path when a
+  // matching directory exists (e.g. ./external-secrets/external-secrets).
+  const alias = `hrdiff-${chart.sourceRef.name}`
+  await $`${helm} repo add --force-update ${alias} ${repo.url}`
+  return { ref: `${alias}/${chart.chart}`, version: chart.version }
 }
 
 async function helmTemplate(release) {
@@ -84,10 +87,12 @@ async function helmTemplate(release) {
   if (!chart) {
     return undefined
   }
-  const values = new YAML.Document()
-  values.contents = release.spec.values ?? {}
+  // Write values as JSON (valid YAML). The YAML library emits YAML 1.2, which
+  // leaves strings such as "on"/"off"/"yes" unquoted; Helm reads them as YAML 1.1
+  // booleans, so a quoted "on" annotation would reach the chart as true.
+  // Flux hands values to Helm as JSON too.
   const valuesFile = (await $`mktemp`).stdout.trim()
-  await fs.writeFile(valuesFile, values.toString())
+  await fs.writeFile(valuesFile, JSON.stringify(release.spec.values ?? {}))
 
   const versionArgs = chart.version ? ['--version', chart.version] : []
   const manifests = await $`${helm} template ${release.metadata.name} ${chart.ref} ${versionArgs} --kube-version ${kubeVersion} --include-crds=false --values ${valuesFile}`
